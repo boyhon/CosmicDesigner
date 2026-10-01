@@ -1,0 +1,182 @@
+using System.Globalization;
+using System.Windows;
+using System.Windows.Controls;
+using System.Windows.Input;
+using System.Windows.Media;
+using System.Windows.Media.Media3D;
+
+namespace CosmicDesigner;
+public sealed record HolePlacementEventArgs(string Shape,double X,double Y);
+public sealed record PointerPositionEventArgs(double X,double Y,bool InsideMaterial);
+
+static class ViewText
+{
+    public static void Draw(DrawingContext dc,Visual v,string text,Point p,Brush? brush=null,double size=11)=>dc.DrawText(new FormattedText(text,CultureInfo.CurrentCulture,FlowDirection.LeftToRight,new Typeface("Segoe UI"),size,brush??Brushes.DimGray,VisualTreeHelper.GetDpi(v).PixelsPerDip),p);
+}
+
+public sealed class FlatDesignerView : FrameworkElement
+{
+    public CosmicDesignerDocument? Document { get; set; }
+    public DesignObject? SelectedObject { get; set; }
+    public string? ActiveHoleShape { get; set; }
+    public bool ShowRuler { get; set; }=true;
+    public bool ShowGrid { get; set; }=true;
+    public event EventHandler<HolePlacementEventArgs>? HolePlacementRequested;
+    public event EventHandler<PointerPositionEventArgs>? PointerPositionChanged;
+    public event EventHandler<DesignObject>? ObjectSelected;
+    public event EventHandler? BeforeEdit;
+    public event EventHandler? HoleToolCancelled;
+    enum DragMode{None,Pan,Move,NW,NE,SW,SE,N,S,E,W}
+    DragMode _dragMode;Point _dragStartScreen;Vector _panStart;double _startX,_startY,_startWidth,_startHeight;double _zoom=1;Vector _pan;bool _editRecorded;
+    public FlatDesignerView(){Focusable=true;ClipToBounds=true;Cursor=Cursors.Arrow;MouseLeftButtonDown+=LeftDown;MouseRightButtonDown+=RightDown;MouseMove+=Move;MouseLeftButtonUp+=Up;MouseRightButtonUp+=Up;MouseWheel+=Wheel;MouseLeave+=(_,_)=>{if(ActiveHoleShape is not null){ActiveHoleShape=null;Cursor=Cursors.Arrow;HoleToolCancelled?.Invoke(this,EventArgs.Empty);InvalidateVisual();}};LostMouseCapture+=(_,_)=>EndDrag();SizeChanged+=(_,_)=>InvalidateVisual();}
+    public void Refresh()=>InvalidateVisual();
+    public void FitToWindow(){_zoom=1;_pan=new();InvalidateVisual();}
+    public void ZoomIn()=>ZoomAt(new(ActualWidth/2,ActualHeight/2),1.2);
+    public void ZoomOut()=>ZoomAt(new(ActualWidth/2,ActualHeight/2),1/1.2);
+    FlatViewportTransform Transform()=>Document is null?new(1,new()):FlatViewportEngine.Calculate(ActualWidth,ActualHeight,Document.Material.Width,Document.Material.Height,ShowRuler,_zoom,_pan);
+    Point ToScreen(double x,double y)=>Transform().ToScreen(new(x,y));
+    Point ToDesign(Point p)=>Transform().ToDesign(p);
+    protected override void OnRender(DrawingContext dc)
+    {
+        dc.DrawRectangle(new SolidColorBrush(Color.FromRgb(250,251,253)),null,new Rect(RenderSize));if(Document is null)return;var transform=Transform();if(!double.IsFinite(transform.Scale)||transform.Scale<=0)return;Point P(double x,double y)=>ToScreen(x,y);var materialRect=new Rect(P(0,Document.Material.Height),P(Document.Material.Width,0));var designViewport=ShowRuler?new Rect(39,25,Math.Max(0,ActualWidth-39),Math.Max(0,ActualHeight-25)):new Rect(RenderSize);dc.PushClip(new RectangleGeometry(designViewport));dc.DrawRectangle(new SolidColorBrush(Color.FromRgb(239,242,246)),null,materialRect);if(ShowGrid)DrawGrid(dc,materialRect,transform.Scale);foreach(var geometry in Document.OuterContour.Segments)DrawGeometry(dc,geometry,P,new Pen(Brushes.Black,2));
+        foreach(var cut in Document.Cuts)foreach(var geometry in cut.Geometry)DrawGeometry(dc,geometry,P,new Pen(Brushes.Black,2));
+        foreach(var b in Document.Bends){var pen=new Pen(b.Layer=="V"?Brushes.Red:Brushes.DodgerBlue,2);if(b.Axis==SectionAxis.W)dc.DrawLine(pen,P(b.Position,0),P(b.Position,Document.Material.Height));else dc.DrawLine(pen,P(0,b.Position),P(Document.Material.Width,b.Position));}
+        if(SelectedObject is CutOperation selectedCut){foreach(var geometry in selectedCut.Geometry)DrawGeometry(dc,geometry,P,new Pen(Brushes.Gold,4));DrawHandles(dc,selectedCut);}
+        if(TrySelectedLine(Document,SelectedObject,out var selected)){var a=P(selected.X1,selected.Y1);var b=P(selected.X2,selected.Y2);var glow=new Pen(new SolidColorBrush(Color.FromArgb(90,255,215,0)),8);var highlight=new Pen(Brushes.Gold,3);dc.DrawLine(glow,a,b);dc.DrawLine(highlight,a,b);dc.DrawEllipse(Brushes.White,new Pen(Brushes.Gold,3),a,6,6);dc.DrawEllipse(Brushes.White,new Pen(Brushes.Gold,3),b,6,6);ViewText.Draw(dc,this,SelectedObject?.Id??"",new((a.X+b.X)/2+7,(a.Y+b.Y)/2-20),Brushes.DarkGoldenrod,12);}
+        if(ActiveHoleShape is not null)ViewText.Draw(dc,this,$"Hole tool: {ActiveHoleShape} — click inside material",new(ShowRuler?46:8,ShowRuler?28:8),Brushes.DarkGoldenrod,12);dc.Pop();if(ShowRuler)DrawRuler(dc,materialRect,transform.Scale);
+    }
+    void DrawGrid(DrawingContext dc,Rect rect,double scale){if(Document is null)return;var step=GridStep(scale);var pen=new Pen(new SolidColorBrush(Color.FromArgb(55,75,105,130)),1);for(var x=0d;x<=Document.Material.Width+step/2;x+=step)dc.DrawLine(pen,ToScreen(x,0),ToScreen(x,Document.Material.Height));for(var y=0d;y<=Document.Material.Height+step/2;y+=step)dc.DrawLine(pen,ToScreen(0,y),ToScreen(Document.Material.Width,y));}
+    void DrawRuler(DrawingContext dc,Rect rect,double scale){if(Document is null)return;var step=GridStep(scale);var brush=new SolidColorBrush(Color.FromRgb(235,239,243));dc.DrawRectangle(brush,new Pen(Brushes.SlateGray,1),new Rect(rect.Left,0,rect.Width,24));dc.DrawRectangle(brush,new Pen(Brushes.SlateGray,1),new Rect(0,rect.Top,38,rect.Height));for(var x=0d;x<=Document.Material.Width+step/2;x+=step){var p=ToScreen(x,0);dc.DrawLine(new Pen(Brushes.SlateGray,1),new(p.X,16),new(p.X,24));ViewText.Draw(dc,this,$"{x:0.##}",new(p.X+2,1),Brushes.DimGray,9);}for(var y=0d;y<=Document.Material.Height+step/2;y+=step){var p=ToScreen(0,y);dc.DrawLine(new Pen(Brushes.SlateGray,1),new(30,p.Y),new(38,p.Y));ViewText.Draw(dc,this,$"{y:0.##}",new(1,p.Y-12),Brushes.DimGray,9);}}
+    static double GridStep(double scale)=>FlatViewportEngine.GridStep(scale);
+    void DrawHandles(DrawingContext dc,CutOperation cut){var rect=CutRect(cut);var a=ToScreen(rect.Left,rect.Top);var b=ToScreen(rect.Right,rect.Bottom);var screen=new Rect(new Point(Math.Min(a.X,b.X),Math.Min(a.Y,b.Y)),new Point(Math.Max(a.X,b.X),Math.Max(a.Y,b.Y)));dc.DrawRectangle(null,new Pen(Brushes.Goldenrod,1),screen);foreach(var p in HandlePoints(screen))dc.DrawEllipse(Brushes.White,new Pen(Brushes.Gold,2),p,5,5);}
+    static Rect CutRect(CutOperation c)=>new(c.CenterX-c.Width/2,c.CenterY-c.Height/2,c.Width,c.Height);
+    static Point[] HandlePoints(Rect r)=>[r.TopLeft,new(r.Left,r.Top+r.Height/2),r.BottomLeft,new(r.Left+r.Width/2,r.Bottom),r.BottomRight,new(r.Right,r.Top+r.Height/2),r.TopRight,new(r.Left+r.Width/2,r.Top)];
+    void LeftDown(object sender,MouseButtonEventArgs e){if(Document is null)return;Focus();var screen=e.GetPosition(this);var d=ToDesign(screen);if(ActiveHoleShape is not null){if(Inside(d)){HolePlacementRequested?.Invoke(this,new(ActiveHoleShape,d.X,d.Y));e.Handled=true;}return;}var hit=Hit(screen,out var mode);if(hit is null){SelectedObject=null;ObjectSelected?.Invoke(this,Document.Material);InvalidateVisual();return;}SelectedObject=hit;ObjectSelected?.Invoke(this,hit);_dragMode=mode==DragMode.None?DragMode.Move:mode;_dragStartScreen=screen;_startX=hit.CenterX;_startY=hit.CenterY;_startWidth=hit.Width;_startHeight=hit.Height;_editRecorded=false;CaptureMouse();e.Handled=true;}
+    void RightDown(object sender,MouseButtonEventArgs e){_dragMode=DragMode.Pan;_dragStartScreen=e.GetPosition(this);_panStart=_pan;Cursor=Cursors.Hand;CaptureMouse();e.Handled=true;}
+    void Move(object sender,MouseEventArgs e){if(Document is null)return;var screen=e.GetPosition(this);var design=ToDesign(screen);PointerPositionChanged?.Invoke(this,new(design.X,design.Y,Inside(design)));if(_dragMode==DragMode.Pan){var delta=screen-_dragStartScreen;_pan=_panStart+delta;InvalidateVisual();return;}if(_dragMode!=DragMode.None&&SelectedObject is CutOperation cut&&e.LeftButton==MouseButtonState.Pressed){ResizeOrMove(cut,design,ToDesign(_dragStartScreen));return;}Cursor=ActiveHoleShape is not null?Cursors.Cross:CursorFor(screen);}
+    void ResizeOrMove(CutOperation cut,Point current,Point start){var document=Document;if(document is null)return;var dx=current.X-start.X;var dy=current.Y-start.Y;if(Math.Abs(dx)+Math.Abs(dy)<.0001)return;if(!_editRecorded){BeforeEdit?.Invoke(this,EventArgs.Empty);_editRecorded=true;}double x=_startX,y=_startY,w=_startWidth,h=_startHeight;if(_dragMode==DragMode.Move){x+=dx;y+=dy;}else{var left=_startX-_startWidth/2;var right=_startX+_startWidth/2;var bottom=_startY-_startHeight/2;var top=_startY+_startHeight/2;if(_dragMode is DragMode.NW or DragMode.SW or DragMode.W)left+=dx;if(_dragMode is DragMode.NE or DragMode.SE or DragMode.E)right+=dx;if(_dragMode is DragMode.NW or DragMode.NE or DragMode.N)top+=dy;if(_dragMode is DragMode.SW or DragMode.SE or DragMode.S)bottom+=dy;w=Math.Max(.1,right-left);h=Math.Max(.1,top-bottom);x=(left+right)/2;y=(bottom+top)/2;if(cut.Shape=="Circle"){var size=_dragMode is DragMode.N or DragMode.S?h:_dragMode is DragMode.E or DragMode.W?w:Math.Max(w,h);w=h=size;}}document.UpdateCut(cut,x,y,w,h,cut.Sides);ObjectSelected?.Invoke(this,cut);InvalidateVisual();}
+    CutOperation? Hit(Point screen,out DragMode mode){mode=DragMode.None;if(Document is null)return null;if(SelectedObject is CutOperation selected){mode=HandleHit(selected,screen);if(mode!=DragMode.None)return selected;}var d=ToDesign(screen);foreach(var cut in Document.Cuts.Reverse())if(CutRect(cut).Contains(d)){mode=DragMode.Move;return cut;}return null;}
+    DragMode HandleHit(CutOperation cut,Point p){var r=CutRect(cut);var a=ToScreen(r.Left,r.Top);var b=ToScreen(r.Right,r.Bottom);var s=new Rect(new Point(Math.Min(a.X,b.X),Math.Min(a.Y,b.Y)),new Point(Math.Max(a.X,b.X),Math.Max(a.Y,b.Y)));var points=HandlePoints(s);var modes=new[]{DragMode.NW,DragMode.W,DragMode.SW,DragMode.S,DragMode.SE,DragMode.E,DragMode.NE,DragMode.N};for(var i=0;i<points.Length;i++)if((points[i]-p).Length<=8)return modes[i];if(p.X>=s.Left-5&&p.X<=s.Right+5){if(Math.Abs(p.Y-s.Top)<=5)return DragMode.N;if(Math.Abs(p.Y-s.Bottom)<=5)return DragMode.S;}if(p.Y>=s.Top-5&&p.Y<=s.Bottom+5){if(Math.Abs(p.X-s.Left)<=5)return DragMode.W;if(Math.Abs(p.X-s.Right)<=5)return DragMode.E;}return s.Contains(p)?DragMode.Move:DragMode.None;}
+    Cursor CursorFor(Point p){var cut=Hit(p,out var mode);if(cut is null)return Cursors.Arrow;return mode switch{DragMode.NW or DragMode.SE=>Cursors.SizeNWSE,DragMode.NE or DragMode.SW=>Cursors.SizeNESW,DragMode.N or DragMode.S=>Cursors.SizeNS,DragMode.E or DragMode.W=>Cursors.SizeWE,_=>Cursors.SizeAll};}
+    bool Inside(Point d)=>Document is not null&&d.X>=0&&d.Y>=0&&d.X<=Document.Material.Width&&d.Y<=Document.Material.Height;
+    void Up(object sender,MouseButtonEventArgs e){if(_dragMode!=DragMode.None){EndDrag();e.Handled=true;}}
+    void EndDrag(){_dragMode=DragMode.None;_editRecorded=false;if(IsMouseCaptured)ReleaseMouseCapture();Cursor=ActiveHoleShape is not null?Cursors.Cross:Cursors.Arrow;}
+    void Wheel(object sender,MouseWheelEventArgs e){ZoomAt(e.GetPosition(this),e.Delta>0?1.15:1/1.15);e.Handled=true;}
+    void ZoomAt(Point anchor,double factor){if(Document is null)return;var before=ToDesign(anchor);var old=_zoom;_zoom=Math.Clamp(_zoom*factor,.2,20);if(Math.Abs(old-_zoom)<1e-9)return;var after=ToScreen(before.X,before.Y);_pan+=anchor-after;InvalidateVisual();}
+    static void DrawGeometry(DrawingContext dc,GeometrySegment geometry,Func<double,double,Point> p,Pen pen){if(geometry is LineSegment l)dc.DrawLine(pen,p(l.X1,l.Y1),p(l.X2,l.Y2));else if(geometry is CircleSegment circle){var center=p(circle.Cx,circle.Cy);var edge=p(circle.Cx+circle.Radius,circle.Cy);var r=Math.Abs(edge.X-center.X);dc.DrawEllipse(null,pen,center,r,r);}else if(geometry is ArcSegment a){var start=p(a.Cx+a.Radius*Math.Cos(a.StartDegrees*Math.PI/180),a.Cy+a.Radius*Math.Sin(a.StartDegrees*Math.PI/180));var end=p(a.Cx+a.Radius*Math.Cos(a.EndDegrees*Math.PI/180),a.Cy+a.Radius*Math.Sin(a.EndDegrees*Math.PI/180));var g=new StreamGeometry();using(var context=g.Open()){context.BeginFigure(start,false,false);context.ArcTo(end,new Size(a.Radius,a.Radius),0,a.EndDegrees-a.StartDegrees>180,SweepDirection.Counterclockwise,true,false);}dc.DrawGeometry(null,pen,g);}}
+    public static bool TrySelectedLine(CosmicDesignerDocument document,DesignObject? selected,out LineSegment line)
+    {
+        if(selected is BendObject bend){line=bend.Axis==SectionAxis.W?new LineSegment(bend.Position,0,bend.Position,document.Material.Height):new LineSegment(0,bend.Position,document.Material.Width,bend.Position);return true;}
+        if(selected is GeometryObject{Geometry:LineSegment geometry}){line=geometry;return true;}
+        line=new LineSegment(0,0,0,0);return false;
+    }
+}
+
+public sealed class SectionDesignerView : Canvas
+{
+    sealed record DimensionEditContext(SectionSegment Segment,bool Exterior,int SegmentCount);
+    public CosmicDesignerDocument? Document { get; set; }
+    public DesignObject? SelectedObject { get; set; }
+    public SectionAxis Axis { get; set; }
+    public bool BentMode { get; set; }
+    public bool ShowDimensions { get; set; }=true;
+    public int ViewRotationQuarterTurns { get; private set; }
+    public event EventHandler? BeforeEdit;
+    public event EventHandler<BendObject>? BendCreated;
+    bool _rebuildingEditors;double _viewZoom=1;Vector _viewPan;
+    public SectionDesignerView(){Cursor=Cursors.Cross;ClipToBounds=true;Background=Brushes.White;MouseLeftButtonDown+=Click;MouseWheel+=SectionWheel;SizeChanged+=(_,_)=>RebuildDimensionEditors();}
+    public void Refresh(){InvalidateVisual();RebuildDimensionEditors();}
+    public void RotateClockwise(){ViewRotationQuarterTurns=(ViewRotationQuarterTurns+1)%4;Refresh();}
+    public void SetRotation(int quarterTurns){ViewRotationQuarterTurns=((quarterTurns%4)+4)%4;Refresh();}
+    SectionPoint2 RotateForView(SectionPoint2 point)=>ViewRotationQuarterTurns switch{1=>new(point.Y,-point.X),2=>new(-point.X,-point.Y),3=>new(-point.Y,point.X),_=>point};
+    void Click(object sender,MouseButtonEventArgs e)
+    {
+        if(Document is null||BentMode||e.OriginalSource is TextBox)return;var p=FromView(e.GetPosition(this));var length=Axis==SectionAxis.W?Document.Material.Width:Document.Material.Height;if(!SectionViewportEngine.IsInsideFlatMaterial(Axis,p,ActualWidth,ActualHeight))return;var logical=Axis==SectionAxis.W?Math.Clamp((p.X-55)/Math.Max(1,ActualWidth-110)*length,0,length):Math.Clamp((ActualHeight-p.Y-55)/Math.Max(1,ActualHeight-110)*length,0,length);
+        var direction=Axis==SectionAxis.W?(p.Y<ActualHeight/2?BendDirection.Up:BendDirection.Down):(p.X<ActualWidth/2?BendDirection.Left:BendDirection.Right);BeforeEdit?.Invoke(this,EventArgs.Empty);var bend=Document.AddBend(Axis,logical,direction);BendCreated?.Invoke(this,bend);Refresh();
+    }
+    protected override void OnRender(DrawingContext dc){dc.DrawRectangle(Brushes.White,null,new Rect(RenderSize));if(Document is null)return;dc.PushTransform(ViewTransform());if(BentMode)DrawBent(dc);else DrawFlat(dc);dc.Pop();}
+    MatrixTransform ViewTransform()=>new(SectionViewportEngine.Transform(ActualWidth,ActualHeight,new(_viewZoom,_viewPan)));
+    Point ToView(Point point)=>ViewTransform().Transform(point);
+    Point FromView(Point point){var matrix=ViewTransform().Matrix;if(matrix.HasInverse){matrix.Invert();return matrix.Transform(point);}return point;}
+    void SectionWheel(object sender,MouseWheelEventArgs e){var state=SectionViewportEngine.ZoomAt(ActualWidth,ActualHeight,new(_viewZoom,_viewPan),e.GetPosition(this),e.Delta>0?1.15:1/1.15);_viewZoom=state.Zoom;_viewPan=state.Pan;Refresh();e.Handled=true;}
+    void RebuildDimensionEditors()
+    {
+        _rebuildingEditors=true;Children.Clear();if(Document is null||!ShowDimensions||ActualWidth<120||ActualHeight<120){_rebuildingEditors=false;return;}var segments=(Axis==SectionAxis.W?Document.WSegments:Document.HSegments).OrderBy(s=>s.Index).ToList();
+        if(BentMode){var geometry=SectionGeometryEngine.Build(Document,Axis,true);if(geometry.Points.Count==segments.Count+1){var viewPoints=geometry.Points.Select(RotateForView).ToList();double minX=viewPoints.Min(p=>p.X),maxX=viewPoints.Max(p=>p.X),minY=viewPoints.Min(p=>p.Y),maxY=viewPoints.Max(p=>p.Y);var scale=Math.Min((ActualWidth-190)/Math.Max(1,maxX-minX),(ActualHeight-190)/Math.Max(1,maxY-minY));scale=Math.Min(scale,1.5);double ox=ActualWidth/2-(minX+maxX)/2*scale,oy=ActualHeight/2+(minY+maxY)/2*scale;Point P(SectionPoint2 p)=>new(ox+p.X*scale,oy-p.Y*scale);var half=Math.Max(5,Document.Material.Thickness*scale/2);var center=viewPoints.Select(P).ToList();var edges=SectionEdges(center,half);var bounds=PointBounds(edges.Plus.Concat(edges.Minus));for(var i=0;i<segments.Count;i++){var edge=ExteriorEdge(edges.Plus,edges.Minus,i,bounds);var layout=OutsideDimension(edge.A,edge.B,bounds,0);var label=ToView(new(layout.Label.X-36,layout.Label.Y-25));AddDimensionEditor(segments[i],label.X,label.Y,true,segments.Count,BendCalculationEngine.ExteriorSegmentLength(Document,Axis,i));}}}
+        else{var total=segments.Sum(s=>s.Length);if(total>0){double cumulative=0;foreach(var segment in segments){var mid=cumulative+segment.Length/2;var raw=Axis==SectionAxis.W?new Point(55+mid/total*Math.Max(1,ActualWidth-110)-36,ActualHeight/2-61):new Point(ActualWidth/2+40,ActualHeight-55-mid/total*Math.Max(1,ActualHeight-110)-11);var label=ToView(raw);AddDimensionEditor(segment,label.X,label.Y);cumulative+=segment.Length;}}}_rebuildingEditors=false;
+    }
+    void AddDimensionEditor(SectionSegment segment,double left,double top,bool exterior=false,int segmentCount=0,double? displayedValue=null){var box=new TextBox{Text=(displayedValue??segment.Length).ToString("0.###",CultureInfo.CurrentCulture),Width=72,Height=22,HorizontalContentAlignment=HorizontalAlignment.Center,ToolTip=exterior?$"{segment.Id} exterior length (cm)":$"{segment.Id} center length (cm)",Tag=new DimensionEditContext(segment,exterior,segmentCount),Background=Brushes.Transparent,BorderBrush=Brushes.Transparent,BorderThickness=new Thickness(1)};box.MouseEnter+=(_,_)=>box.Background=new SolidColorBrush(Color.FromArgb(70,255,255,255));box.MouseLeave+=(_,_)=>{if(!box.IsKeyboardFocusWithin)box.Background=Brushes.Transparent;};box.GotKeyboardFocus+=(_,_)=>{box.Background=Brushes.White;box.BorderBrush=Brushes.SteelBlue;};box.LostKeyboardFocus+=DimensionEditor_LostKeyboardFocus;box.LostKeyboardFocus+=(_,_)=>{box.Background=Brushes.Transparent;box.BorderBrush=Brushes.Transparent;};box.PreviewKeyDown+=(_,e)=>{if(e.Key==Key.Enter){box.MoveFocus(new TraversalRequest(FocusNavigationDirection.Next));e.Handled=true;}};SetLeft(box,left);SetTop(box,top);Children.Add(box);}
+    void DimensionEditor_LostKeyboardFocus(object sender,KeyboardFocusChangedEventArgs e)
+    {
+        if(_rebuildingEditors||Document is null||sender is not TextBox{Tag:DimensionEditContext context} box)return;if(!double.TryParse(box.Text,NumberStyles.Float,CultureInfo.CurrentCulture,out var entered)||entered<=0){box.Text=(context.Exterior?BendCalculationEngine.ExteriorSegmentLength(Document,context.Segment.Axis,context.Segment.Index):context.Segment.Length).ToString("0.##",CultureInfo.CurrentCulture);return;}var centerLength=context.Exterior?BendCalculationEngine.CenterSegmentLengthFromExterior(entered,Document.Material.Thickness,context.Segment.Index,context.SegmentCount):entered;if(Math.Abs(centerLength-context.Segment.Length)<1e-9)return;BeforeEdit?.Invoke(this,EventArgs.Empty);Document.UpdateSegment(context.Segment,centerLength);
+    }
+    void DrawFlat(DrawingContext dc)
+    {
+        if(Document is null)return;var length=Axis==SectionAxis.W?Document.Material.Width:Document.Material.Height;var t=18d;var m=55d;var bodyPen=new Pen(new SolidColorBrush(Color.FromRgb(43,70,96)),2);var cutPen=new Pen(Brushes.OrangeRed,2);
+        if(Axis==SectionAxis.W){var y=ActualHeight/2;dc.DrawRectangle(new SolidColorBrush(Color.FromRgb(220,228,235)),bodyPen,new Rect(m,y-t/2,Math.Max(1,ActualWidth-2*m),t));foreach(var b in Document.Bends.Where(x=>x.Axis==Axis)){var x=m+b.Position/length*(ActualWidth-2*m);var surfaceY=b.Direction==BendDirection.Up?y-t/2:y+t/2;DrawWedge(dc,new(x,surfaceY),b);}if(ShowDimensions)DrawDimensions(dc,m,ActualWidth-m,y-t/2-32,length);}
+        else{var x=ActualWidth/2;dc.DrawRectangle(new SolidColorBrush(Color.FromRgb(220,228,235)),bodyPen,new Rect(x-t/2,m,t,Math.Max(1,ActualHeight-2*m)));foreach(var b in Document.Bends.Where(q=>q.Axis==Axis)){var y=ActualHeight-m-b.Position/length*(ActualHeight-2*m);var surfaceX=b.Direction==BendDirection.Left?x-t/2:x+t/2;DrawWedge(dc,new(surfaceX,y),b);}if(ShowDimensions)DrawVerticalDimensions(dc,x+t/2+30,m,ActualHeight-m,length);}
+    }
+    void DrawBent(DrawingContext dc)
+    {
+        if(Document is null)return;var g=SectionGeometryEngine.Build(Document,Axis,true);if(g.Points.Count<2)return;var viewPoints=g.Points.Select(RotateForView).ToList();double minX=viewPoints.Min(p=>p.X),maxX=viewPoints.Max(p=>p.X),minY=viewPoints.Min(p=>p.Y),maxY=viewPoints.Max(p=>p.Y);var scale=Math.Min((ActualWidth-190)/Math.Max(1,maxX-minX),(ActualHeight-190)/Math.Max(1,maxY-minY));scale=Math.Min(scale,1.5);double ox=ActualWidth/2-(minX+maxX)/2*scale,oy=ActualHeight/2+(minY+maxY)/2*scale;Point P(SectionPoint2 p)=>new(ox+p.X*scale,oy-p.Y*scale);var center=viewPoints.Select(P).ToList();var halfThickness=Math.Max(5,Document.Material.Thickness*scale/2);var edges=SectionEdges(center,halfThickness);var bounds=PointBounds(edges.Plus.Concat(edges.Minus));var polygon=BuildSectionPolygon(edges);dc.DrawGeometry(new SolidColorBrush(Color.FromRgb(205,220,231)),new Pen(new SolidColorBrush(Color.FromRgb(43,70,96)),2),polygon);
+        for(var i=1;i<center.Count-1;i++){var bend=g.Bends[i-1];var selected=ReferenceEquals(SelectedObject,bend)||SelectedObject?.Id==bend.Id;if(selected)dc.DrawLine(new Pen(Brushes.Gold,3),edges.Plus[i],edges.Minus[i]);}
+        if(ShowDimensions)for(var i=0;i<g.SegmentLengths.Count;i++){var edge=ExteriorEdge(edges.Plus,edges.Minus,i,bounds);DrawBentDimension(dc,edge.A,edge.B,bounds,BendCalculationEngine.ExteriorSegmentLength(Document,Axis,i));}
+    }
+    readonly record struct SectionEdgePoints(List<Point> Plus,List<Point> Minus);
+    static SectionEdgePoints SectionEdges(IReadOnlyList<Point> center,double halfThickness)
+    {
+        var plus=new List<Point>();var minus=new List<Point>();for(var i=0;i<center.Count;i++){var offset=VertexOffset(center,i,halfThickness);plus.Add(center[i]+offset);minus.Add(center[i]-offset);}return new(plus,minus);
+    }
+    static StreamGeometry BuildSectionPolygon(SectionEdgePoints edges)
+    {
+        var geometry=new StreamGeometry();using var c=geometry.Open();c.BeginFigure(edges.Plus[0],true,true);for(var i=1;i<edges.Plus.Count;i++)c.LineTo(edges.Plus[i],true,false);for(var i=edges.Minus.Count-1;i>=0;i--)c.LineTo(edges.Minus[i],true,false);geometry.Freeze();return geometry;
+    }
+    static Vector VertexOffset(IReadOnlyList<Point> points,int index,double distance)
+    {
+        static Vector Normal(Point a,Point b){var v=b-a;if(v.Length<1e-9)return new Vector(0,-1);v.Normalize();return new Vector(-v.Y,v.X);}
+        if(index==0)return Normal(points[0],points[1])*distance;if(index==points.Count-1)return Normal(points[^2],points[^1])*distance;var n1=Normal(points[index-1],points[index]);var n2=Normal(points[index],points[index+1]);var sum=n1+n2;if(sum.Length<1e-6)return n2*distance;var denominator=Vector.Multiply(sum,n2);if(Math.Abs(denominator)<.15)return n2*distance;return sum*(distance/denominator);
+    }
+    readonly record struct DimensionLayout(Point EdgeA,Point EdgeB,Point A,Point B,Point Label,Vector Direction,Vector Normal);
+    static Rect CenterBounds(IReadOnlyList<Point> points,double padding){var minX=points.Min(p=>p.X)-padding;var maxX=points.Max(p=>p.X)+padding;var minY=points.Min(p=>p.Y)-padding;var maxY=points.Max(p=>p.Y)+padding;return new Rect(new Point(minX,minY),new Point(maxX,maxY));}
+    static Rect PointBounds(IEnumerable<Point> source){var points=source.ToList();return new Rect(new Point(points.Min(p=>p.X),points.Min(p=>p.Y)),new Point(points.Max(p=>p.X),points.Max(p=>p.Y)));}
+    static (Point A,Point B) ExteriorEdge(IReadOnlyList<Point> plus,IReadOnlyList<Point> minus,int segment,Rect bounds){var center=new Point(bounds.Left+bounds.Width/2,bounds.Top+bounds.Height/2);static double DistanceSquared(Point p,Point c){var d=p-c;return d.X*d.X+d.Y*d.Y;}var plusMid=new Point((plus[segment].X+plus[segment+1].X)/2,(plus[segment].Y+plus[segment+1].Y)/2);var minusMid=new Point((minus[segment].X+minus[segment+1].X)/2,(minus[segment].Y+minus[segment+1].Y)/2);return DistanceSquared(plusMid,center)>=DistanceSquared(minusMid,center)?(plus[segment],plus[segment+1]):(minus[segment],minus[segment+1]);}
+    static DimensionLayout OutsideDimension(Point a,Point b,Rect bounds,double halfThickness)
+    {
+        var direction=b-a;if(direction.Length<1e-6)direction=new Vector(1,0);else direction.Normalize();var normal=new Vector(-direction.Y,direction.X);var midpoint=new Point((a.X+b.X)/2,(a.Y+b.Y)/2);var boxCenter=new Point(bounds.Left+bounds.Width/2,bounds.Top+bounds.Height/2);if(Vector.Multiply(midpoint-boxCenter,normal)<0)normal=-normal;var corners=new[]{bounds.TopLeft,bounds.TopRight,bounds.BottomLeft,bounds.BottomRight};var extreme=corners.Max(p=>Vector.Multiply((Vector)p,normal));var current=Vector.Multiply((Vector)midpoint,normal);var shift=Math.Max(halfThickness+30,extreme+34-current);var da=a+normal*shift;var db=b+normal*shift;return new(a+normal*halfThickness,b+normal*halfThickness,da,db,new((da.X+db.X)/2,(da.Y+db.Y)/2),direction,normal);
+    }
+    void DrawBentDimension(DrawingContext dc,Point a,Point b,Rect bounds,double value)
+    {
+        var layout=OutsideDimension(a,b,bounds,0);var pen=new Pen(Brushes.SlateGray,1);dc.DrawLine(pen,layout.EdgeA,layout.A+layout.Normal*5);dc.DrawLine(pen,layout.EdgeB,layout.B+layout.Normal*5);dc.DrawLine(pen,layout.A,layout.B);var arrow=layout.Direction*6;var wing=layout.Normal*3;dc.DrawLine(pen,layout.A,layout.A+arrow+wing);dc.DrawLine(pen,layout.A,layout.A+arrow-wing);dc.DrawLine(pen,layout.B,layout.B-arrow+wing);dc.DrawLine(pen,layout.B,layout.B-arrow-wing);
+    }
+    void DrawDimensions(DrawingContext dc,double start,double end,double y,double length){var nodes=new List<double>{0};nodes.AddRange(Document!.Bends.Where(b=>b.Axis==Axis).OrderBy(b=>b.Position).Select(b=>b.Position));nodes.Add(length);for(var i=1;i<nodes.Count;i++){var x1=start+nodes[i-1]/length*(end-start);var x2=start+nodes[i]/length*(end-start);DimensionH(dc,x1,x2,y,nodes[i]-nodes[i-1]);}}
+    void DrawVerticalDimensions(DrawingContext dc,double x,double top,double bottom,double length){var nodes=new List<double>{0};nodes.AddRange(Document!.Bends.Where(b=>b.Axis==Axis).OrderBy(b=>b.Position).Select(b=>b.Position));nodes.Add(length);for(var i=1;i<nodes.Count;i++){var y1=bottom-nodes[i-1]/length*(bottom-top);var y2=bottom-nodes[i]/length*(bottom-top);DimensionV(dc,x,y1,y2,nodes[i]-nodes[i-1]);}}
+    void DimensionH(DrawingContext dc,double x1,double x2,double y,double value){var p=new Pen(Brushes.SlateGray,1);dc.DrawLine(p,new(x1,y-8),new(x1,y+8));dc.DrawLine(p,new(x2,y-8),new(x2,y+8));dc.DrawLine(p,new(x1,y),new(x2,y));dc.DrawLine(p,new(x1,y),new(x1+5,y-3));dc.DrawLine(p,new(x1,y),new(x1+5,y+3));dc.DrawLine(p,new(x2,y),new(x2-5,y-3));dc.DrawLine(p,new(x2,y),new(x2-5,y+3));}
+    void DimensionV(DrawingContext dc,double x,double y1,double y2,double value){var p=new Pen(Brushes.SlateGray,1);dc.DrawLine(p,new(x-8,y1),new(x+8,y1));dc.DrawLine(p,new(x-8,y2),new(x+8,y2));dc.DrawLine(p,new(x,y1),new(x,y2));}
+    void DrawWedge(DrawingContext dc,Point position,BendObject bend){var selected=ReferenceEquals(SelectedObject,bend)||SelectedObject?.Id==bend.Id;if(selected)dc.DrawGeometry(null,new Pen(new SolidColorBrush(Color.FromArgb(90,255,215,0)),8),Wedge(position,bend.Direction));dc.DrawGeometry(null,new Pen(selected?Brushes.Gold:Brushes.OrangeRed,selected?3:2),Wedge(position,bend.Direction));}
+    static StreamGeometry Wedge(Point p,BendDirection d){var g=new StreamGeometry();using var c=g.Open();Point a,b,tip;if(d is BendDirection.Up or BendDirection.Down){a=new(p.X-7,p.Y);b=new(p.X+7,p.Y);tip=new(p.X,p.Y+(d==BendDirection.Up?9:-9));}else{a=new(p.X,p.Y-7);b=new(p.X,p.Y+7);tip=new(p.X+(d==BendDirection.Left?9:-9),p.Y);}c.BeginFigure(a,true,true);c.LineTo(tip,true,false);c.LineTo(b,true,false);return g;}
+}
+
+public sealed class Preview3DView : Grid
+{
+    readonly Viewport3D _viewport=new();readonly PerspectiveCamera _camera=new();readonly Model3DGroup _group=new();Point _last;bool _dragging;double _yaw=-25,_pitch=-20,_distance=520;
+    public CosmicDesignerDocument? Document { get; set; }
+    public bool Transparent { get; set; }
+    public Preview3DView(){Background=Brushes.White;Children.Add(_viewport);_camera.FieldOfView=45;_viewport.Camera=_camera;_viewport.Children.Add(new ModelVisual3D{Content=_group});_group.Children.Add(new AmbientLight(Colors.White));MouseLeftButtonDown+=Down;MouseLeftButtonUp+=Up;MouseMove+=Move;MouseWheel+=Wheel;Loaded+=(_,_)=>Refresh();}
+    public void ResetView(){_yaw=-25;_pitch=-20;Fit();}
+    public void Fit(){if(Document is not null)_distance=Math.Max(Document.Material.Width,Document.Material.Height)*1.35;UpdateCamera();}
+    public void Refresh(){BuildModel();UpdateCamera();}
+    void BuildModel()
+    {
+        while(_group.Children.Count>1)_group.Children.RemoveAt(1);if(Document is null)return;var wg=SectionGeometryEngine.Build(Document,SectionAxis.W,true);var hg=SectionGeometryEngine.Build(Document,SectionAxis.H,true);var mesh=new MeshGeometry3D();var x0=(wg.Points.Min(p=>p.X)+wg.Points.Max(p=>p.X))/2;var y0=(hg.Points.Min(p=>p.X)+hg.Points.Max(p=>p.X))/2;foreach(var hp in hg.Points)foreach(var wp in wg.Points)mesh.Positions.Add(new Point3D(wp.X-x0,hp.X-y0,wp.Y+hp.Y));var cols=wg.Points.Count;for(var row=0;row<hg.Points.Count-1;row++)for(var col=0;col<cols-1;col++){var i=row*cols+col;mesh.TriangleIndices.Add(i);mesh.TriangleIndices.Add(i+1);mesh.TriangleIndices.Add(i+cols+1);mesh.TriangleIndices.Add(i);mesh.TriangleIndices.Add(i+cols+1);mesh.TriangleIndices.Add(i+cols);}var alpha=Transparent?(byte)105:(byte)175;var acrylicBrush=new SolidColorBrush(Color.FromArgb(alpha,185,195,205));var material=new DiffuseMaterial(acrylicBrush);_group.Children.Add(new GeometryModel3D(mesh,material){BackMaterial=material});
+        var edgeMaterial=new DiffuseMaterial(Brushes.Black);var radius=Math.Max(.45,Math.Min(Document.Material.Width,Document.Material.Height)/400);for(var row=0;row<hg.Points.Count;row++)for(var col=0;col<cols-1;col++){var i=row*cols+col;_group.Children.Add(EdgeModel(mesh.Positions[i],mesh.Positions[i+1],radius,edgeMaterial));}for(var col=0;col<cols;col++)for(var row=0;row<hg.Points.Count-1;row++){var i=row*cols+col;_group.Children.Add(EdgeModel(mesh.Positions[i],mesh.Positions[i+cols],radius,edgeMaterial));}
+    }
+    static GeometryModel3D EdgeModel(Point3D start,Point3D end,double radius,Material material)
+    {
+        var axis=end-start;if(axis.Length<1e-9)return new GeometryModel3D();axis.Normalize();var reference=Math.Abs(Vector3D.DotProduct(axis,new Vector3D(0,0,1)))<.9?new Vector3D(0,0,1):new Vector3D(0,1,0);var u=Vector3D.CrossProduct(axis,reference);u.Normalize();var v=Vector3D.CrossProduct(axis,u);v.Normalize();const int sides=6;var mesh=new MeshGeometry3D();for(var i=0;i<sides;i++){var angle=2*Math.PI*i/sides;var offset=(u*Math.Cos(angle)+v*Math.Sin(angle))*radius;mesh.Positions.Add(start+offset);mesh.Positions.Add(end+offset);}for(var i=0;i<sides;i++){var next=(i+1)%sides;var a=i*2;var b=next*2;mesh.TriangleIndices.Add(a);mesh.TriangleIndices.Add(b);mesh.TriangleIndices.Add(a+1);mesh.TriangleIndices.Add(a+1);mesh.TriangleIndices.Add(b);mesh.TriangleIndices.Add(b+1);}return new GeometryModel3D(mesh,material){BackMaterial=material};
+    }
+    void Down(object s,MouseButtonEventArgs e){_dragging=true;_last=e.GetPosition(this);CaptureMouse();}
+    void Up(object s,MouseButtonEventArgs e){_dragging=false;ReleaseMouseCapture();}
+    void Move(object s,MouseEventArgs e){if(!_dragging)return;var p=e.GetPosition(this);_yaw+=(p.X-_last.X)*.5;_pitch=Math.Clamp(_pitch+(p.Y-_last.Y)*.5,-85,85);_last=p;UpdateCamera();}
+    void Wheel(object s,MouseWheelEventArgs e){_distance*=e.Delta>0?.88:1.14;UpdateCamera();}
+    void UpdateCamera(){var yr=_yaw*Math.PI/180;var pr=_pitch*Math.PI/180;var cp=Math.Cos(pr);_camera.Position=new(_distance*cp*Math.Sin(yr),-_distance*cp*Math.Cos(yr),_distance*Math.Sin(-pr));_camera.LookDirection=new(-_camera.Position.X,-_camera.Position.Y,-_camera.Position.Z);_camera.UpDirection=new(0,0,1);_camera.NearPlaneDistance=.1;_camera.FarPlaneDistance=Math.Max(10000,_distance*10);}
+}

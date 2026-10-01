@@ -1,0 +1,12 @@
+<Project>
+  <ItemGroup Condition="'$(OutputType)' == 'WinExe'">
+    <Content Include="$(MSBuildThisFileDirectory)help-content\*_help.html"
+             Link="%(Filename)%(Extension)"
+             CopyToOutputDirectory="PreserveNewest"
+             CopyToPublishDirectory="PreserveNewest" />
+    <Content Include="$(MSBuildThisFileDirectory)help-content\help\**\*"
+             Link="help\%(RecursiveDir)%(Filename)%(Extension)"
+             CopyToOutputDirectory="PreserveNewest"
+             CopyToPublishDirectory="PreserveNewest" />
+  </ItemGroup>
+</Project>

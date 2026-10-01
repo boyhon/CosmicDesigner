@@ -1,0 +1,51 @@
+# Change Request Index
+
+Change Requests after the `2026-10-01` baseline are stored in this directory.
+
+Users submit requirements in natural language; they are not expected to assign CR numbers or follow the template. Codex checks this index and existing CR files, updates overlaps or issues the next unused sequential number, preserves the source, and updates `PROJECT_STATUS.md` according to the [Change Request Intake policy](../DEVELOPMENT_POLICY.md#4-change-request-intake).
+
+## Next available number
+
+`CR-011`
+
+The project-management setup and baseline documentation do not consume a CR because they do not change application behavior.
+
+## Index
+
+| CR | Title | Status | Release | Commit |
+|---|---|---|---|---|
+| [CR-001](CR-001.md) | CDF 파일 포맷 제안 및 승인 정책 | Verified | 1.2.0 | — |
+| [CR-002](CR-002.md) | 최근 파일 10개 열기 및 지속성 | Verified | 1.2.0 | — |
+| [CR-003](CR-003.md) | View 메뉴와 전역 표시 상태 지속성 | Verified | 1.2.0 | — |
+| [CR-004](CR-004.md) | Flat Designer 기본 포인터, Pan, Zoom, 눈금자와 격자 | Implemented | 1.3.0 | — |
+| [CR-005](CR-005.md) | 모든 Hole 객체의 선택, 이동과 Resize 직접 조작 | Implemented | 1.3.0 | — |
+| [CR-006](CR-006.md) | Section Designer 치수 편집기의 투명 표시와 외곽 치수 기준 | Implemented | 1.3.1 | — |
+| [CR-007](CR-007.md) | W/H Section Designer 보기 상태의 파일별 저장 | Implemented | 1.3.0 | — |
+| [CR-008](CR-008.md) | W/H Section Designer 마우스 휠 확대·축소 | Implemented | 1.3.0 | — |
+| [CR-009](CR-009.md) | Section Designer 쐐기 생성 클릭 범위 제한 | Implemented | 1.3.0 | — |
+| [CR-010](CR-010.md) | 3D Preview 단순 투명 아크릴 골격 표현 | Implemented | 1.3.3 | — |
+
+## File naming
+
+```text
+CR-001.md
+CR-002.md
+...
+```
+
+## Source-document decomposition
+
+The initial source bundle is preserved unchanged at [COSMIC_DESIGNER_CHANGE_REQUIREMENTS.md](../../COSMIC_DESIGNER_CHANGE_REQUIREMENTS.md). Its requirement IDs map to CRs as follows:
+
+| Source requirement | Registered CR |
+|---|---|
+| `POL-001` | `CR-001` |
+| `MENU-001`, `VIEW-002` | `CR-002` |
+| `MENU-002`, `VIEW-001` | `CR-003` |
+| `FLAT-001`–`FLAT-005`, coordinate-transform validation | `CR-004` |
+| `FLAT-006`–`FLAT-010`, Undo/Redo and direct-manipulation validation | `CR-005` |
+| `SECT-001` | `CR-006` |
+| `SECT-002`, file-state persistence validation | `CR-007` |
+| `TEST-004` common regression requirement | `CR-002`–`CR-007` |
+
+Never reuse an issued number. Use the required structure in [DEVELOPMENT_POLICY.md](../DEVELOPMENT_POLICY.md). When a CR changes state, update this index and [PROJECT_STATUS.md](../PROJECT_STATUS.md).

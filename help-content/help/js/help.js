@@ -1,0 +1,1 @@
+document.addEventListener("DOMContentLoaded",()=>{const here=location.pathname.split(/[\\/]/).pop();document.querySelectorAll(".nav a").forEach(a=>{if(a.getAttribute("href")?.split("#")[0]===here)a.classList.add("active")});document.addEventListener("keydown",e=>{if(e.key==="Home"&&e.altKey)location.href="../DXFExplorer_help.html"})});

@@ -1,0 +1,15 @@
+**/bin/
+**/obj/
+.dotnet-home/
+.dotnet-cli/
+.appdata/
+.verification-bin/
+.verification-build/
+.vs/
+artifacts/
+installer/output/
+installer/publish/
+installer/stage/
+*.user
+*.suo
+*.log

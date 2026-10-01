@@ -1,0 +1,70 @@
+# Cosmic Designer 개발 — Current Requirements
+
+Only behavior confirmed by current source, tests, project configuration, or existing product documentation is listed here. Proposed future behavior belongs in a Change Request or the proposed-requirements backlog.
+
+## Project identity
+
+- The project-management name is **Cosmic Designer 개발**.
+- Existing technical names and product outputs remain unchanged unless an approved CR changes them.
+
+## Platform and composition
+
+- Applications are Windows WPF projects targeting .NET 10.
+- Existing outputs include DXFExplorer, DXFViewer, DXFSimulator, DXFDrawer, and CosmicDesigner.
+- Shared DXF models and parsing are supplied by the DXFExplorer project to dependent applications.
+
+## DXF processing
+
+- ASCII DXF is supported; binary DXF is rejected with an explanatory error.
+- The shared geometry parser supports `LINE`, `CIRCLE`, and `ARC` entities.
+- Entity layer names are retained and unsupported entity types are reported.
+- Manufacturing geometry uses L for cutting and V/V1 for opposite bend directions.
+
+## CosmicDesigner domain behavior
+
+- Internal and displayed length units are centimeters.
+- A new document starts with `300 × 300 cm` material and `0.2 cm` thickness.
+- The document manages one outer contour, inner contours/cuts, bend objects, W/H section segments, and micro joints.
+- Material-thickness changes recalculate thickness-dependent bend properties.
+- Section dimensions and corresponding bend positions are editable and synchronized.
+- Bent section previews render a closed, thickness-bearing profile.
+- Cut geometry includes the supported hole-shape tools and is emitted on the L layer.
+- Supported design objects can be selected through the object tree and edited through the Property panel.
+- Supported selected objects can be deleted with the Delete key; deletions participate in Undo/Redo.
+- The 3D preview supports mouse-driven viewpoint rotation and wheel zoom.
+- File > Recent retains up to 10 successfully opened files in a user-level persistent setting.
+- View provides Zoom In, Zoom Out, Fit to Window, Ruler, Grid, and Status Bar controls.
+- Ruler, Grid, and Status Bar visibility are global persistent settings.
+- Flat Designer supports right-button Pan and wheel/menu Zoom with a shared centimeter coordinate transform.
+- Flat Designer supports Cut Object selection, control handles, Move, corner Resize, and edge Resize across the supported Hole shapes.
+- Flat Designer keeps design geometry outside the ruler bands and provides explicit Select/Hole mode switching.
+- Flat Designer selection is synchronized with the Object Tree and supports focused Delete; leaving the designer cancels Hole mode.
+- Section dimension editors use a transparent idle appearance with focus feedback and are the single rendered dimension value.
+- Bent Section dimensions use measurable thickness-polygon exterior edges; center-axis bend dots are not rendered.
+- H/W Section Designers support pointer-anchored mouse-wheel Zoom and only create bends from clicks inside the flat material body.
+- View provides synchronized H/W Dimensions, Bent and Rotation controls.
+- The 3D preview uses a white background, visibly light-gray translucent acrylic surfaces and sufficiently thick opaque black exterior/bend edges without directional lighting or shadow-like shading.
+
+## Persistence and compatibility
+
+- CosmicDesigner saves DXF in centimeters and embeds CosmicDesigner metadata for application-specific state.
+- A DXF containing valid CosmicDesigner metadata reopens as a design document.
+- A general ASCII DXF without metadata can be imported from L/V/V1 geometry after user confirmation.
+- Millimeter or unit-unspecified general DXF input is converted to centimeters; centimeter DXF input remains in centimeters.
+- General import requires Save As so the source is not overwritten implicitly.
+- Legacy CosmicDesigner metadata without a unit marker is interpreted as the earlier millimeter representation and converted to centimeters.
+- W/H Section Dimensions, Bent Mode, and rotation states are saved independently in backward-compatible optional DXF metadata fields.
+- The last-used W/H Section view states are also stored globally for new/imported documents; file metadata takes precedence when present.
+
+## History and verification
+
+- Undo/Redo uses bounded FIFO-style history with a configured capacity of 100 in the main window.
+- Functional changes should be covered by the relevant verification project and regression build.
+
+## Proposed requirements, not current behavior
+
+The following document is a structured proposal backlog and is not evidence that its items are implemented:
+
+- [CosmicDesigner 변경 개발 요건서](../../COSMIC_DESIGNER_CHANGE_REQUIREMENTS.md)
+
+The source bundle and subsequent natural-language requests are tracked in the [Change Request Index](../change-requests/README.md). Registration alone does not make a proposal a current implemented requirement.
