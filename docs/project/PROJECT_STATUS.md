@@ -105,6 +105,7 @@ CosmicDesigner 1.5.1 implements all registered CRs through CR-015. CR-015 now ke
 - Added candidate-state, four-corner sequential merge, Undo and DXF round-trip regression coverage.
 - Release build and all CosmicDesigner verification checks passed.
 - Published `artifacts/CosmicDesigner-1.5.1/CosmicDesigner.exe` with file version `1.5.1.0`.
+- Implementation commit: `ade8b61`.
 
 ## In Progress
 
