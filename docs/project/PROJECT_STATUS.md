@@ -114,6 +114,7 @@ CosmicDesigner 1.6.0 implements all registered CRs through CR-016. H/W Section D
 - Preserved stored SectionSegment lengths and editable dimensions for uncut full sections; clipped contour-derived dimensions are read-only.
 - Release build completed with zero warnings and errors, and all CosmicDesigner verification checks passed.
 - Published `artifacts/CosmicDesigner-1.6.0/CosmicDesigner.exe` with file version `1.6.0.0`.
+- Implementation commit: `daad64f`.
 
 ## In Progress
 
