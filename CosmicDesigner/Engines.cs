@@ -109,6 +109,24 @@ public static class SectionGeometryEngine
     static int Turn(BendObject b)=>b.Direction is BendDirection.Up or BendDirection.Left?1:-1;
 }
 
+public readonly record struct SurfacePoint3(double X,double Y,double Z);
+public sealed record SurfaceMeshData(IReadOnlyList<SurfacePoint3> Points,IReadOnlyList<int> Triangles,IReadOnlyList<(int A,int B)> Edges);
+public static class BentSurfaceEngine
+{
+    const double Epsilon=1e-7;
+    public static SurfaceMeshData Build(CosmicDesignerDocument document)
+    {
+        var polygon=document.OuterContour.Segments.OfType<LineSegment>().Select(x=>new Point(x.X1,x.Y1)).ToList();if(polygon.Count<3)return new([],[],[]);var xs=polygon.Select(p=>p.X).Concat(document.Bends.Where(b=>b.Axis==SectionAxis.W).Select(b=>b.Position)).Distinct().Order().ToList();var ys=polygon.Select(p=>p.Y).Concat(document.Bends.Where(b=>b.Axis==SectionAxis.H).Select(b=>b.Position)).Distinct().Order().ToList();var wg=SectionGeometryEngine.Build(document,SectionAxis.W,true);var hg=SectionGeometryEngine.Build(document,SectionAxis.H,true);var points=new List<SurfacePoint3>();var triangles=new List<int>();var indices=new Dictionary<(double X,double Y),int>();var counts=new Dictionary<(int A,int B),int>();var folds=new HashSet<(int A,int B)>();
+        int Vertex(double x,double y){if(indices.TryGetValue((x,y),out var existing))return existing;var wp=MapAxis(document,SectionAxis.W,wg,x);var hp=MapAxis(document,SectionAxis.H,hg,y);var index=points.Count;points.Add(new(wp.X,hp.X,wp.Y+hp.Y));indices[(x,y)]=index;return index;}
+        void Edge(int a,int b,bool fold){var key=a<b?(a,b):(b,a);counts[key]=counts.GetValueOrDefault(key)+1;if(fold)folds.Add(key);}
+        var wx=document.Bends.Where(b=>b.Axis==SectionAxis.W).Select(b=>b.Position).ToList();var hy=document.Bends.Where(b=>b.Axis==SectionAxis.H).Select(b=>b.Position).ToList();
+        for(var xi=0;xi<xs.Count-1;xi++)for(var yi=0;yi<ys.Count-1;yi++){var x0=xs[xi];var x1=xs[xi+1];var y0=ys[yi];var y1=ys[yi+1];if(x1-x0<=Epsilon||y1-y0<=Epsilon||!Inside(polygon,new((x0+x1)/2,(y0+y1)/2)))continue;var a=Vertex(x0,y0);var b=Vertex(x1,y0);var c=Vertex(x1,y1);var d=Vertex(x0,y1);triangles.AddRange([a,b,c,a,c,d]);Edge(a,b,hy.Any(y=>Math.Abs(y-y0)<=Epsilon));Edge(b,c,wx.Any(x=>Math.Abs(x-x1)<=Epsilon));Edge(c,d,hy.Any(y=>Math.Abs(y-y1)<=Epsilon));Edge(d,a,wx.Any(x=>Math.Abs(x-x0)<=Epsilon));}
+        var edges=counts.Where(x=>x.Value==1).Select(x=>x.Key).Concat(folds).Distinct().ToList();return new(points,triangles,edges);
+    }
+    static SectionPoint2 MapAxis(CosmicDesignerDocument document,SectionAxis axis,SectionGeometry geometry,double station){var total=axis==SectionAxis.W?document.Material.Width:document.Material.Height;var knots=new List<double>{0};knots.AddRange(document.Bends.Where(b=>b.Axis==axis).OrderBy(b=>b.Position).Select(b=>b.Position));knots.Add(total);for(var i=0;i<knots.Count-1&&i+1<geometry.Points.Count;i++){if(station>knots[i+1]+Epsilon)continue;var span=Math.Max(Epsilon,knots[i+1]-knots[i]);var t=Math.Clamp((station-knots[i])/span,0,1);var a=geometry.Points[i];var b=geometry.Points[i+1];return new(a.X+(b.X-a.X)*t,a.Y+(b.Y-a.Y)*t);}return geometry.Points[^1];}
+    static bool Inside(IReadOnlyList<Point> polygon,Point p){var inside=false;for(int i=0,j=polygon.Count-1;i<polygon.Count;j=i++){var a=polygon[i];var b=polygon[j];if((a.Y>p.Y)!=(b.Y>p.Y)&&p.X<(b.X-a.X)*(p.Y-a.Y)/(b.Y-a.Y)+a.X)inside=!inside;}return inside;}
+}
+
 public static class MicroJointGeometryEngine
 {
     public static IReadOnlyList<LineSegment> Split(LineSegment line, IEnumerable<MicroJoint> joints)

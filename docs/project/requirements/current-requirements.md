@@ -56,6 +56,7 @@ Only behavior confirmed by current source, tests, project configuration, or exis
 - Bent H/W Section views use a shared adaptive Fit scale that preserves dimension space without collapsing geometry in short, wide panels.
 - View provides synchronized H/W Dimensions, Bent and Rotation controls.
 - The 3D preview uses a white background, visibly light-gray translucent acrylic surfaces and sufficiently thick opaque black exterior/bend edges without directional lighting or shadow-like shading.
+- The 3D preview surface mesh is clipped to the current rectilinear Outer Contour, so merged boundary cuts and subsequent contour edits remove the corresponding 3D faces and update exterior black edges while preserving fold edges.
 
 ## Persistence and compatibility
 

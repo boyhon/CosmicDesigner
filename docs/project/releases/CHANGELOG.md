@@ -4,6 +4,13 @@ Release-relevant changes after the baseline are recorded here. CR identifiers mu
 
 ## Unreleased
 
+## 1.9.0 — 2026-10-03
+
+- `CR-019`: clipped the 3D Preview surface mesh to the current rectilinear Outer Contour.
+- Removed triangle faces from merged boundary-notch areas and regenerated black exterior edges from the actual mesh boundary.
+- Preserved W/H bend deformation and visible fold edges across the contour-aware mesh.
+- CosmicDesigner assembly version is now `1.9.0`.
+
 ## 1.8.0 — 2026-10-03
 
 - `CR-018`: made clipped H/W Section dimensions editable in Flat and Bent modes.

@@ -10,11 +10,11 @@
 ## Current Version
 
 - DXFExplorer installer suite: `1.1.0` (`installer/DXFExplorer.iss`)
-- CosmicDesigner: `1.8.0`
+- CosmicDesigner: `1.9.0`
 
 ## Current Development Phase
 
-CosmicDesigner 1.8.0 implements all registered CRs through CR-018. Dimensions remain editable at clipped H/W Section positions and now propagate changes through bends and connected Outer Contour LINE geometry.
+CosmicDesigner 1.9.0 implements all registered CRs through CR-019. The 3D Preview surface and black edges now follow the current cut and edited Outer Contour instead of always rendering a full rectangle.
 
 ## Recovery Audit — 2026-10-01
 
@@ -136,6 +136,14 @@ CosmicDesigner 1.8.0 implements all registered CRs through CR-018. Dimensions re
 - Published `artifacts/CosmicDesigner-1.8.0/CosmicDesigner.exe` with file version `1.8.0.0`.
 - Implementation commit: `037bce9`.
 
+## 1.9.0 Contour-aware 3D Preview — 2026-10-03
+
+- Replaced the full rectangular tensor-grid surface with Outer Contour-clipped cell triangulation.
+- Removed 3D faces from merged notch areas and generated black exterior edges from the resulting mesh boundary.
+- Split the mesh at W/H bend stations and retained visible fold edges after contour clipping.
+- Release build completed with zero warnings and errors, and all CosmicDesigner verification checks passed.
+- Published `artifacts/CosmicDesigner-1.9.0/CosmicDesigner.exe` with file version `1.9.0.0`.
+
 ## In Progress
 
 - None.
@@ -161,6 +169,7 @@ CosmicDesigner 1.8.0 implements all registered CRs through CR-018. Dimensions re
 - [CR-016](change-requests/CR-016.md) — 선택 위치의 실제 Outer Contour 단면 표시
 - [CR-017](change-requests/CR-017.md) — Flat Designer Outer Contour LINE 직접 편집
 - [CR-018](change-requests/CR-018.md) — 잘린 Section 치수 편집과 Outer Contour 연쇄 갱신
+- [CR-019](change-requests/CR-019.md) — 3D Preview Outer Contour 컷 형상 반영
 
 ## Completed Change Requests
 
@@ -179,8 +188,8 @@ CosmicDesigner 1.8.0 implements all registered CRs through CR-018. Dimensions re
 ## Next Work
 
 1. User-test CR-004 through CR-010 and promote passing CRs to Verified.
-2. Complete final UI acceptance for CR-011 through CR-018 using the latest `1.8.0` artifact.
+2. Complete final UI acceptance for CR-011 through CR-019 using the latest `1.9.0` artifact.
 
 ## Next Change Request Number
 
-`CR-019`
+`CR-020`
