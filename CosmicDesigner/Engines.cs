@@ -25,6 +25,27 @@ public static class BoundaryCutEngine
     static void RemoveCollinear(List<Point> points){for(var changed=true;changed&&points.Count>3;){changed=false;for(var i=0;i<points.Count;i++){var a=points[(i+points.Count-1)%points.Count];var b=points[i];var c=points[(i+1)%points.Count];if(Math.Abs(Vector.CrossProduct(b-a,c-b))<=Epsilon){points.RemoveAt(i);changed=true;break;}}}}
 }
 
+public static class OuterContourEditEngine
+{
+    const double Epsilon=1e-6;
+    public static IReadOnlyList<GeometrySegment> UpdateConnectedLine(IReadOnlyList<GeometrySegment> source,int index,LineSegment replacement)
+    {
+        if(index<0||index>=source.Count||source[index] is not LineSegment original)throw new ArgumentOutOfRangeException(nameof(index));
+        var result=source.ToList();result[index]=replacement;
+        for(var i=0;i<result.Count;i++){
+            if(i==index||result[i] is not LineSegment neighbor)continue;
+            var changed=false;var x1=neighbor.X1;var y1=neighbor.Y1;var x2=neighbor.X2;var y2=neighbor.Y2;
+            if(Same(x1,y1,original.X1,original.Y1)){x1=replacement.X1;y1=replacement.Y1;changed=true;}
+            else if(Same(x2,y2,original.X1,original.Y1)){x2=replacement.X1;y2=replacement.Y1;changed=true;}
+            if(Same(x1,y1,original.X2,original.Y2)){x1=replacement.X2;y1=replacement.Y2;changed=true;}
+            else if(Same(x2,y2,original.X2,original.Y2)){x2=replacement.X2;y2=replacement.Y2;changed=true;}
+            if(changed)result[i]=new LineSegment(x1,y1,x2,y2);
+        }
+        return result;
+    }
+    static bool Same(double x1,double y1,double x2,double y2)=>Math.Abs(x1-x2)<=Epsilon&&Math.Abs(y1-y2)<=Epsilon;
+}
+
 public static class BendCalculationEngine
 {
     public static void Recalculate(CosmicDesignerDocument document)

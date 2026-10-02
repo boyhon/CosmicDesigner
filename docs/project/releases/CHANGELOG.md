@@ -4,6 +4,13 @@ Release-relevant changes after the baseline are recorded here. CR identifiers mu
 
 ## Unreleased
 
+## 1.7.0 — 2026-10-03
+
+- `CR-017`: added direct Flat Designer selection and editing for Outer Contour LINE objects.
+- Selected LINE bodies move perpendicular to themselves and endpoint handles resize their length with orientation-aware cursors.
+- Connected neighboring LINE endpoints follow every shared-vertex change, preserving contour connectivity and Undo support.
+- CosmicDesigner assembly version is now `1.7.0`.
+
 ## 1.6.0 — 2026-10-03
 
 - `CR-016`: H/W Section Designer now uses the actual local material interval where its Flat Designer selector intersects the current Outer Contour.

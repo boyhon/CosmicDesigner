@@ -145,6 +145,7 @@ public sealed class CosmicDesignerDocument : INotifyPropertyChanged
         if(!TryGetBoundaryMerge(cut,out var contour))return false;Cuts.Remove(cut);var inner=InnerContours.FirstOrDefault(x=>x.Id==cut.Id);if(inner is not null)InnerContours.Remove(inner);OuterContour.Segments.Clear();OuterContour.Segments.AddRange(contour);_preserveOuterContour=true;Recalculate();return true;
     }
     public bool CanMergeBoundaryCut(CutOperation cut)=>TryGetBoundaryMerge(cut,out _);
+    public void UpdateOuterContourLine(IReadOnlyList<GeometrySegment> source,int index,LineSegment replacement){var updated=OuterContourEditEngine.UpdateConnectedLine(source,index,replacement);OuterContour.Segments.Clear();OuterContour.Segments.AddRange(updated);_preserveOuterContour=true;Recalculate();}
     bool TryGetBoundaryMerge(CutOperation cut,out IReadOnlyList<GeometrySegment> contour){contour=[];if(!string.Equals(cut.Shape,"Rectangle",StringComparison.OrdinalIgnoreCase))return false;var rect=new Rect(cut.CenterX-cut.Width/2,cut.CenterY-cut.Height/2,cut.Width,cut.Height);return BoundaryCutEngine.TrySubtractRectangle(OuterContour.Segments,rect,out contour);}
     public void UpdateSegment(SectionSegment segment,double length)
     {

@@ -10,11 +10,11 @@
 ## Current Version
 
 - DXFExplorer installer suite: `1.1.0` (`installer/DXFExplorer.iss`)
-- CosmicDesigner: `1.6.0`
+- CosmicDesigner: `1.7.0`
 
 ## Current Development Phase
 
-CosmicDesigner 1.6.0 implements all registered CRs through CR-016. H/W Section Designer now renders the actual material interval intersected by its movable Flat Designer selector, including merged Outer Contour notches.
+CosmicDesigner 1.7.0 implements all registered CRs through CR-017. Outer Contour LINE objects can now be selected and edited directly in Flat Designer while connected neighboring LINE endpoints remain synchronized.
 
 ## Recovery Audit — 2026-10-01
 
@@ -116,6 +116,15 @@ CosmicDesigner 1.6.0 implements all registered CRs through CR-016. H/W Section D
 - Published `artifacts/CosmicDesigner-1.6.0/CosmicDesigner.exe` with file version `1.6.0.0`.
 - Implementation commit: `daad64f`.
 
+## 1.7.0 Outer Contour Direct Editing — 2026-10-03
+
+- Added direct Flat Designer Hit Testing and selection for Outer Contour LINE objects.
+- Added orientation-aware cursors and perpendicular body dragging for LINE movement.
+- Added endpoint-handle Resize with material-bound and minimum-length constraints.
+- Propagated changed shared vertices to connected neighboring LINEs so the Outer Contour remains connected.
+- Release build completed with zero warnings and errors, and all CosmicDesigner verification checks passed.
+- Published `artifacts/CosmicDesigner-1.7.0/CosmicDesigner.exe` with file version `1.7.0.0`.
+
 ## In Progress
 
 - None.
@@ -139,6 +148,7 @@ CosmicDesigner 1.6.0 implements all registered CRs through CR-016. H/W Section D
 - [CR-014](change-requests/CR-014.md) — Section Designer 중앙 고정 Zoom
 - [CR-015](change-requests/CR-015.md) — Outer Contour 경계 천공 병합
 - [CR-016](change-requests/CR-016.md) — 선택 위치의 실제 Outer Contour 단면 표시
+- [CR-017](change-requests/CR-017.md) — Flat Designer Outer Contour LINE 직접 편집
 
 ## Completed Change Requests
 
@@ -157,8 +167,8 @@ CosmicDesigner 1.6.0 implements all registered CRs through CR-016. H/W Section D
 ## Next Work
 
 1. User-test CR-004 through CR-010 and promote passing CRs to Verified.
-2. Complete final UI acceptance for CR-011 through CR-016 using the latest `1.6.0` artifact.
+2. Complete final UI acceptance for CR-011 through CR-017 using the latest `1.7.0` artifact.
 
 ## Next Change Request Number
 
-`CR-017`
+`CR-018`
