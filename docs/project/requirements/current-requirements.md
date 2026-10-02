@@ -38,6 +38,7 @@ Only behavior confirmed by current source, tests, project configuration, or exis
 - The 3D preview supports mouse-driven viewpoint rotation and wheel zoom.
 - File > Recent retains up to 10 successfully opened files in a user-level persistent setting.
 - File > New, Open and Save display and execute the global keyboard shortcuts `Ctrl+N`, `Ctrl+O` and `Ctrl+S` respectively.
+- When the current design has unsaved document changes, New, Open/Recent, Exit and window close ask whether to save. Yes completes saving before continuing, No discards the pending changes, and Cancel or a cancelled/failed Save As leaves the current document open.
 - View provides Zoom In, Zoom Out, Fit to Window, Ruler, Grid, and Status Bar controls.
 - Ruler, Grid, and Status Bar visibility are global persistent settings.
 - Flat Designer supports right-button Pan and wheel/menu Zoom with a shared centimeter coordinate transform.

@@ -10,11 +10,11 @@
 ## Current Version
 
 - DXFExplorer installer suite: `1.1.0` (`installer/DXFExplorer.iss`)
-- CosmicDesigner: `1.10.0`
+- CosmicDesigner: `1.11.0`
 
 ## Current Development Phase
 
-CosmicDesigner 1.10.0 implements all registered CRs through CR-020. File New, Open and Save now provide global Ctrl+N, Ctrl+O and Ctrl+S shortcuts with matching menu labels.
+CosmicDesigner 1.11.0 implements all registered CRs through CR-021. Unsaved document changes now require a save/discard/cancel decision before New, Open/Recent, Exit or window close.
 
 ## Recovery Audit — 2026-10-01
 
@@ -154,6 +154,14 @@ CosmicDesigner 1.10.0 implements all registered CRs through CR-020. File New, Op
 - Published `artifacts/CosmicDesigner-1.10.0/CosmicDesigner.exe` with file version `1.10.0.0`.
 - Implementation commit: `24762b7`.
 
+## 1.11.0 Unsaved Changes Confirmation — 2026-10-03
+
+- Added document dirty-state tracking for geometry changes, Undo/Redo and file-specific Section view changes.
+- Added one Save/Discard/Cancel confirmation path for New, Open, Recent, File Exit and window close.
+- Prevented document replacement or shutdown when the user cancels confirmation, cancels Save As or saving fails.
+- Release build completed with zero warnings and errors, and all CosmicDesigner verification checks passed.
+- Published `artifacts/CosmicDesigner-1.11.0/CosmicDesigner.exe` with file version `1.11.0.0`.
+
 ## In Progress
 
 - None.
@@ -181,6 +189,7 @@ CosmicDesigner 1.10.0 implements all registered CRs through CR-020. File New, Op
 - [CR-018](change-requests/CR-018.md) — 잘린 Section 치수 편집과 Outer Contour 연쇄 갱신
 - [CR-019](change-requests/CR-019.md) — 3D Preview Outer Contour 컷 형상 반영
 - [CR-020](change-requests/CR-020.md) — File 메뉴 New/Open/Save 단축키
+- [CR-021](change-requests/CR-021.md) — 미저장 변경 사항 저장 확인
 
 ## Completed Change Requests
 
@@ -199,8 +208,8 @@ CosmicDesigner 1.10.0 implements all registered CRs through CR-020. File New, Op
 ## Next Work
 
 1. User-test CR-004 through CR-010 and promote passing CRs to Verified.
-2. Complete final UI acceptance for CR-011 through CR-020 using the latest `1.10.0` artifact.
+2. Complete final UI acceptance for CR-011 through CR-021 using the latest `1.11.0` artifact.
 
 ## Next Change Request Number
 
-`CR-021`
+`CR-022`

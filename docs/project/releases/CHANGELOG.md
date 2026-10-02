@@ -4,6 +4,13 @@ Release-relevant changes after the baseline are recorded here. CR identifiers mu
 
 ## Unreleased
 
+## 1.11.0 — 2026-10-03
+
+- `CR-021`: added unsaved-change tracking and Save/Discard/Cancel confirmation before New, Open/Recent, Exit and window close.
+- Continued the requested operation only after successful saving or an explicit discard choice.
+- Kept the current design open when confirmation, Save As or saving is cancelled or fails.
+- CosmicDesigner assembly version is now `1.11.0`.
+
 ## 1.10.0 — 2026-10-03
 
 - `CR-020`: added global Ctrl+N, Ctrl+O and Ctrl+S shortcuts for File > New, Open and Save.

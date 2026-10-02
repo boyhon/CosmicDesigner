@@ -7,6 +7,12 @@ using System.Windows;
 namespace CosmicDesigner;
 
 public enum FileShortcutAction{None,New,Open,Save}
+public sealed class DocumentDirtyState
+{
+    public bool IsDirty { get; private set; }
+    public void MarkChanged()=>IsDirty=true;
+    public void MarkSaved()=>IsDirty=false;
+}
 public static class FileShortcutEngine
 {
     public static FileShortcutAction Resolve(System.Windows.Input.Key key,System.Windows.Input.ModifierKeys modifiers)
