@@ -4,6 +4,13 @@ Release-relevant changes after the baseline are recorded here. CR identifiers mu
 
 ## Unreleased
 
+## 1.6.0 — 2026-10-03
+
+- `CR-016`: H/W Section Designer now uses the actual local material interval where its Flat Designer selector intersects the current Outer Contour.
+- Merged boundary notches shorten Flat/Bent section profiles and omit bends outside the selected material interval.
+- Existing full-section segment calculations remain editable; contour-derived clipped dimensions are displayed read-only.
+- CosmicDesigner assembly version is now `1.6.0`.
+
 ## 1.5.1 — 2026-10-02
 
 - `CR-015`: replaced automatic boundary merging with an orange merge-candidate state and explicit `Outer Contour로 통합` right-click command.

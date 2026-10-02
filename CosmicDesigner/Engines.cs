@@ -42,8 +42,9 @@ public static class BendCalculationEngine
     }
     public static double ExteriorSegmentLength(CosmicDesignerDocument document,SectionAxis axis,int segmentIndex)
     {
-        var segments=(axis==SectionAxis.W?document.WSegments:document.HSegments).OrderBy(s=>s.Index).ToList();if(segmentIndex<0||segmentIndex>=segments.Count)throw new ArgumentOutOfRangeException(nameof(segmentIndex));return segments[segmentIndex].Length+ExteriorCorrection(document.Material.Thickness,segmentIndex,segments.Count);
+        var segments=(axis==SectionAxis.W?document.WSegments:document.HSegments).OrderBy(s=>s.Index).ToList();if(segmentIndex<0||segmentIndex>=segments.Count)throw new ArgumentOutOfRangeException(nameof(segmentIndex));return ExteriorSegmentLength(segments[segmentIndex].Length,document.Material.Thickness,segmentIndex,segments.Count);
     }
+    public static double ExteriorSegmentLength(double centerLength,double thickness,int segmentIndex,int segmentCount)=>centerLength+ExteriorCorrection(thickness,segmentIndex,segmentCount);
     public static double CenterSegmentLengthFromExterior(double exteriorLength,double thickness,int segmentIndex,int segmentCount)=>Math.Max(.01,exteriorLength-ExteriorCorrection(thickness,segmentIndex,segmentCount));
     public static double ExteriorCorrection(double thickness,int segmentIndex,int segmentCount)
     {
@@ -52,20 +53,33 @@ public static class BendCalculationEngine
 }
 
 public readonly record struct SectionPoint2(double X,double Y);
-public sealed record SectionGeometry(IReadOnlyList<SectionPoint2> Points,IReadOnlyList<BendObject> Bends,IReadOnlyList<double> SegmentLengths);
+public readonly record struct SectionInterval(double Start,double End){public double Length=>Math.Max(0,End-Start);}
+public static class ContourSectionEngine
+{
+    const double Epsilon=1e-7;
+    public static SectionInterval MaterialInterval(IEnumerable<GeometrySegment> outer,SectionAxis axis,double position,double fallbackLength)
+    {
+        var crossings=new List<double>();foreach(var line in outer.OfType<LineSegment>()){if(axis==SectionAxis.H){if(Math.Abs(line.Y1-line.Y2)>Epsilon)continue;var min=Math.Min(line.X1,line.X2);var max=Math.Max(line.X1,line.X2);if(position>=min-Epsilon&&position<max-Epsilon)crossings.Add(line.Y1);}else{if(Math.Abs(line.X1-line.X2)>Epsilon)continue;var min=Math.Min(line.Y1,line.Y2);var max=Math.Max(line.Y1,line.Y2);if(position>=min-Epsilon&&position<max-Epsilon)crossings.Add(line.X1);}}
+        crossings=crossings.Distinct().Order().ToList();var intervals=new List<SectionInterval>();for(var i=0;i+1<crossings.Count;i+=2)if(crossings[i+1]-crossings[i]>Epsilon)intervals.Add(new(crossings[i],crossings[i+1]));return intervals.Count==0?new(0,fallbackLength):intervals.OrderByDescending(x=>x.Length).First();
+    }
+}
+public sealed record SectionGeometry(IReadOnlyList<SectionPoint2> Points,IReadOnlyList<BendObject> Bends,IReadOnlyList<double> SegmentLengths,double StartPosition,double EndPosition)
+{
+    public bool IsClipped(double fullLength)=>StartPosition>1e-6||EndPosition<fullLength-1e-6;
+}
 public static class SectionGeometryEngine
 {
-    public static SectionGeometry Build(CosmicDesignerDocument document,SectionAxis axis,bool bent)
+    public static SectionGeometry Build(CosmicDesignerDocument document,SectionAxis axis,bool bent,double sectionPosition=double.NaN)
     {
-        var bends=document.Bends.Where(b=>b.Axis==axis).OrderBy(b=>b.Position).ToList();
-        var segments=(axis==SectionAxis.W?document.WSegments:document.HSegments).OrderBy(s=>s.Index).Select(s=>s.Length).ToList();
-        if(segments.Count!=bends.Count+1){var total=axis==SectionAxis.W?document.Material.Width:document.Material.Height;segments=[];double last=0;foreach(var b in bends){segments.Add(Math.Max(.01,b.Position-last));last=b.Position;}segments.Add(Math.Max(.01,total-last));}
+        var total=axis==SectionAxis.W?document.Material.Width:document.Material.Height;var selectorExtent=axis==SectionAxis.H?document.Material.Width:document.Material.Height;var selector=double.IsFinite(sectionPosition)?Math.Clamp(sectionPosition,0,selectorExtent):selectorExtent/2;var interval=ContourSectionEngine.MaterialInterval(document.OuterContour.Segments,axis,selector,total);var bends=document.Bends.Where(b=>b.Axis==axis&&b.Position>interval.Start+1e-7&&b.Position<interval.End-1e-7).OrderBy(b=>b.Position).ToList();var clipped=interval.Start>1e-6||interval.End<total-1e-6;List<double> segments;
+        if(!clipped){segments=(axis==SectionAxis.W?document.WSegments:document.HSegments).OrderBy(s=>s.Index).Select(s=>s.Length).ToList();}
+        else{segments=[];var last=interval.Start;foreach(var bend in bends){segments.Add(Math.Max(.01,bend.Position-last));last=bend.Position;}segments.Add(Math.Max(.01,interval.End-last));}
         var points=new List<SectionPoint2>{new(0,0)};double angle=0,x=0,y=0;
         for(var i=0;i<segments.Count;i++){
             x+=segments[i]*Math.Cos(angle);y+=segments[i]*Math.Sin(angle);points.Add(new(x,y));
             if(bent&&i<bends.Count)angle+=Turn(bends[i])*Math.PI/2;
         }
-        return new(points,bends,segments);
+        return new(points,bends,segments,interval.Start,interval.End);
     }
     static int Turn(BendObject b)=>b.Direction is BendDirection.Up or BendDirection.Left?1:-1;
 }

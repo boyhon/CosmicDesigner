@@ -44,6 +44,7 @@ Only behavior confirmed by current source, tests, project configuration, or exis
 - Flat Designer selection is synchronized with the Object Tree and supports focused Delete; leaving the designer cancels Hole mode.
 - Flat Designer displays labeled H and W section selectors as colored dashed lines; H moves horizontally, W moves vertically, and both are clamped to the material bounds.
 - Moving a Flat Designer section selector immediately refreshes the corresponding H or W Section Designer and displays its selected X or Y coordinate.
+- H/W Section Designer intersects the selected Flat Designer section line with the current Outer Contour, so boundary notches shorten the displayed local Flat/Bent profile and exclude bends outside that material interval.
 - Section dimension editors use a transparent idle appearance with focus feedback and are the single rendered dimension value.
 - Bent Section dimensions use measurable thickness-polygon exterior edges; center-axis bend dots are not rendered.
 - Bent dimension witness points align with the rendered dark material surface edges and never use the invisible center axis as a measurement reference.

@@ -10,11 +10,11 @@
 ## Current Version
 
 - DXFExplorer installer suite: `1.1.0` (`installer/DXFExplorer.iss`)
-- CosmicDesigner: `1.5.1`
+- CosmicDesigner: `1.6.0`
 
 ## Current Development Phase
 
-CosmicDesigner 1.5.1 implements all registered CRs through CR-015. CR-015 now keeps boundary Cuts editable, shows an orange merge-candidate state and merges only through an explicit right-click command, including after earlier contour merges.
+CosmicDesigner 1.6.0 implements all registered CRs through CR-016. H/W Section Designer now renders the actual material interval intersected by its movable Flat Designer selector, including merged Outer Contour notches.
 
 ## Recovery Audit — 2026-10-01
 
@@ -107,6 +107,14 @@ CosmicDesigner 1.5.1 implements all registered CRs through CR-015. CR-015 now ke
 - Published `artifacts/CosmicDesigner-1.5.1/CosmicDesigner.exe` with file version `1.5.1.0`.
 - Implementation commit: `ade8b61`.
 
+## 1.6.0 Selected Local Section — 2026-10-03
+
+- Connected H/W Section geometry to the actual scan-line intersection of the selected Flat Designer coordinate and current Outer Contour.
+- Shortened Flat and Bent profiles at merged boundary notches and excluded bends outside the remaining local material interval.
+- Preserved stored SectionSegment lengths and editable dimensions for uncut full sections; clipped contour-derived dimensions are read-only.
+- Release build completed with zero warnings and errors, and all CosmicDesigner verification checks passed.
+- Published `artifacts/CosmicDesigner-1.6.0/CosmicDesigner.exe` with file version `1.6.0.0`.
+
 ## In Progress
 
 - None.
@@ -129,6 +137,7 @@ CosmicDesigner 1.5.1 implements all registered CRs through CR-015. CR-015 now ke
 - [CR-013](change-requests/CR-013.md) — W Section Bent 적응형 화면 배율 교정
 - [CR-014](change-requests/CR-014.md) — Section Designer 중앙 고정 Zoom
 - [CR-015](change-requests/CR-015.md) — Outer Contour 경계 천공 병합
+- [CR-016](change-requests/CR-016.md) — 선택 위치의 실제 Outer Contour 단면 표시
 
 ## Completed Change Requests
 
@@ -147,8 +156,8 @@ CosmicDesigner 1.5.1 implements all registered CRs through CR-015. CR-015 now ke
 ## Next Work
 
 1. User-test CR-004 through CR-010 and promote passing CRs to Verified.
-2. Complete final UI acceptance for CR-011 through CR-015 using the latest `1.5.1` artifact.
+2. Complete final UI acceptance for CR-011 through CR-016 using the latest `1.6.0` artifact.
 
 ## Next Change Request Number
 
-`CR-016`
+`CR-017`
