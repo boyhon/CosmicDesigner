@@ -143,6 +143,7 @@ CosmicDesigner 1.9.0 implements all registered CRs through CR-019. The 3D Previe
 - Split the mesh at W/H bend stations and retained visible fold edges after contour clipping.
 - Release build completed with zero warnings and errors, and all CosmicDesigner verification checks passed.
 - Published `artifacts/CosmicDesigner-1.9.0/CosmicDesigner.exe` with file version `1.9.0.0`.
+- Implementation commit: `0ecd6cd`.
 
 ## In Progress
 
