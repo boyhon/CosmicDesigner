@@ -24,11 +24,11 @@ The project-management setup and baseline documentation do not consume a CR beca
 | [CR-008](CR-008.md) | W/H Section Designer 마우스 휠 확대·축소 | Implemented | 1.3.0 | — |
 | [CR-009](CR-009.md) | Section Designer 쐐기 생성 클릭 범위 제한 | Implemented | 1.3.0 | — |
 | [CR-010](CR-010.md) | 3D Preview 단순 투명 아크릴 골격 표현 | Implemented | 1.3.3 | — |
-| [CR-011](CR-011.md) | Section Designer CAD 외곽 치수 기준 및 판재 두께 표시 | Implemented | 1.3.4 | — |
-| [CR-012](CR-012.md) | Flat Designer H/W 단면 선택선 및 연동 | Implemented | 1.4.0 | — |
-| [CR-013](CR-013.md) | W Section Bent 적응형 화면 배율 교정 | Implemented | 1.4.1 | — |
-| [CR-014](CR-014.md) | Section Designer 중앙 고정 Zoom | Implemented | 1.4.2 | — |
-| [CR-015](CR-015.md) | Outer Contour 경계 천공 병합 | Implemented | 1.5.0 | — |
+| [CR-011](CR-011.md) | Section Designer CAD 외곽 치수 기준 및 판재 두께 표시 | Implemented | 1.3.4 | `f1c55a0` |
+| [CR-012](CR-012.md) | Flat Designer H/W 단면 선택선 및 연동 | Implemented | 1.4.0 | `f1c55a0` |
+| [CR-013](CR-013.md) | W Section Bent 적응형 화면 배율 교정 | Implemented | 1.4.1 | `f1c55a0` |
+| [CR-014](CR-014.md) | Section Designer 중앙 고정 Zoom | Implemented | 1.4.2 | `f1c55a0` |
+| [CR-015](CR-015.md) | Outer Contour 경계 천공 병합 | Implemented | 1.5.0 | `f1c55a0` |
 
 ## File naming
 

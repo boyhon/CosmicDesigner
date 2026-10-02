@@ -128,7 +128,7 @@ CosmicDesigner 1.5.0 implements all registered CRs through CR-015. CR-015 merges
 
 ## Known Issues
 
-- Git metadata is absent from the current workspace, so history and related commits cannot be inspected or recorded here.
+- CR-011 through CR-015 share implementation commit `f1c55a0` because they were completed as one continuous user-review sequence before final Git recording.
 - Manual UI acceptance remains for CR-004 through CR-010, particularly cursor transitions, extreme Pan/Zoom clipping, Section visual alignment, restart persistence and 3D transparency quality.
 - The shared DXF geometry parser supports ASCII `LINE`, `CIRCLE`, and `ARC`; unsupported entities are reported rather than converted.
 - Binary DXF is not supported by the current parser.
@@ -136,10 +136,8 @@ CosmicDesigner 1.5.0 implements all registered CRs through CR-015. CR-015 merges
 
 ## Next Work
 
-1. Initialize or connect the intended Git repository without renaming technical artifacts solely for the management-name change.
-2. User-test CR-004 through CR-010 in the CosmicDesigner 1.3.0 artifact and promote passing CRs to Verified.
-3. User-test CR-011 against the supplied `CD_3.dxf` and drawing example.
-4. User-test CR-012 H/W selector drag, cursor feedback and corresponding Section Designer position display.
+1. User-test CR-004 through CR-010 and promote passing CRs to Verified.
+2. Complete final UI acceptance for CR-011 through CR-015 using the latest `1.5.0` artifact.
 
 ## Next Change Request Number
 
