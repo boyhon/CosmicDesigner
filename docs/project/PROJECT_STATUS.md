@@ -134,6 +134,7 @@ CosmicDesigner 1.8.0 implements all registered CRs through CR-018. Dimensions re
 - Preserved other local segment lengths and the existing Bent exterior-thickness correction policy.
 - Release build completed with zero warnings and errors, and all CosmicDesigner verification checks passed.
 - Published `artifacts/CosmicDesigner-1.8.0/CosmicDesigner.exe` with file version `1.8.0.0`.
+- Implementation commit: `037bce9`.
 
 ## In Progress
 
