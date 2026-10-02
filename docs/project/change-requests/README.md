@@ -30,7 +30,7 @@ The project-management setup and baseline documentation do not consume a CR beca
 | [CR-014](CR-014.md) | Section Designer 중앙 고정 Zoom | Implemented | 1.4.2 | `f1c55a0` |
 | [CR-015](CR-015.md) | Outer Contour 경계 천공 병합 | Implemented | 1.5.1 | `f1c55a0`, `ade8b61` |
 | [CR-016](CR-016.md) | 선택 위치의 실제 Outer Contour 단면 표시 | Implemented | 1.6.0 | `daad64f` |
-| [CR-017](CR-017.md) | Flat Designer Outer Contour LINE 직접 편집 | Implemented | 1.7.0 | Pending |
+| [CR-017](CR-017.md) | Flat Designer Outer Contour LINE 직접 편집 | Implemented | 1.7.0 | `2b1a9d3` |
 
 ## File naming
 

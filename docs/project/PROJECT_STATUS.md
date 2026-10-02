@@ -124,6 +124,7 @@ CosmicDesigner 1.7.0 implements all registered CRs through CR-017. Outer Contour
 - Propagated changed shared vertices to connected neighboring LINEs so the Outer Contour remains connected.
 - Release build completed with zero warnings and errors, and all CosmicDesigner verification checks passed.
 - Published `artifacts/CosmicDesigner-1.7.0/CosmicDesigner.exe` with file version `1.7.0.0`.
+- Implementation commit: `2b1a9d3`.
 
 ## In Progress
 
