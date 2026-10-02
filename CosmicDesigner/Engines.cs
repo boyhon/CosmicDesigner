@@ -44,6 +44,10 @@ public static class OuterContourEditEngine
         return result;
     }
     static bool Same(double x1,double y1,double x2,double y2)=>Math.Abs(x1-x2)<=Epsilon&&Math.Abs(y1-y2)<=Epsilon;
+    public static bool TryMoveSectionBoundary(IReadOnlyList<GeometrySegment> source,SectionAxis axis,double selector,double boundary,double delta,out IReadOnlyList<GeometrySegment> updated)
+    {
+        updated=source;for(var i=0;i<source.Count;i++){if(source[i] is not LineSegment line)continue;if(axis==SectionAxis.H&&Math.Abs(line.Y1-boundary)<=Epsilon&&Math.Abs(line.Y2-boundary)<=Epsilon&&selector>=Math.Min(line.X1,line.X2)-Epsilon&&selector<=Math.Max(line.X1,line.X2)+Epsilon){updated=UpdateConnectedLine(source,i,new(line.X1,line.Y1+delta,line.X2,line.Y2+delta));return true;}if(axis==SectionAxis.W&&Math.Abs(line.X1-boundary)<=Epsilon&&Math.Abs(line.X2-boundary)<=Epsilon&&selector>=Math.Min(line.Y1,line.Y2)-Epsilon&&selector<=Math.Max(line.Y1,line.Y2)+Epsilon){updated=UpdateConnectedLine(source,i,new(line.X1+delta,line.Y1,line.X2+delta,line.Y2));return true;}}return false;
+    }
 }
 
 public static class BendCalculationEngine

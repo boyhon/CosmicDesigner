@@ -4,6 +4,13 @@ Release-relevant changes after the baseline are recorded here. CR identifiers mu
 
 ## Unreleased
 
+## 1.8.0 — 2026-10-03
+
+- `CR-018`: made clipped H/W Section dimensions editable in Flat and Bent modes.
+- Length changes propagate through local bend stations and the selected Outer Contour boundary while preserving the other local segment lengths.
+- Connected contour LINE endpoints follow the moved boundary and Bent exterior values retain material-thickness correction.
+- CosmicDesigner assembly version is now `1.8.0`.
+
 ## 1.7.0 — 2026-10-03
 
 - `CR-017`: added direct Flat Designer selection and editing for Outer Contour LINE objects.

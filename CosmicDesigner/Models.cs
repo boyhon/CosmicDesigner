@@ -146,6 +146,13 @@ public sealed class CosmicDesignerDocument : INotifyPropertyChanged
     }
     public bool CanMergeBoundaryCut(CutOperation cut)=>TryGetBoundaryMerge(cut,out _);
     public void UpdateOuterContourLine(IReadOnlyList<GeometrySegment> source,int index,LineSegment replacement){var updated=OuterContourEditEngine.UpdateConnectedLine(source,index,replacement);OuterContour.Segments.Clear();OuterContour.Segments.AddRange(updated);_preserveOuterContour=true;Recalculate();}
+    public bool UpdateClippedSectionSegment(SectionAxis axis,SectionGeometry geometry,int segmentIndex,double newLength,double selector)
+    {
+        if(segmentIndex<0||segmentIndex>=geometry.SegmentLengths.Count||newLength<=0)return false;var total=axis==SectionAxis.W?Material.Width:Material.Height;var delta=newLength-geometry.SegmentLengths[segmentIndex];if(Math.Abs(delta)<1e-9)return true;var moveEnd=geometry.EndPosition<total-1e-6;var boundary=moveEnd?geometry.EndPosition:geometry.StartPosition;var boundaryDelta=moveEnd?delta:-delta;var newBoundary=boundary+boundaryDelta;if(newBoundary<0||newBoundary>total)return false;if(!OuterContourEditEngine.TryMoveSectionBoundary(OuterContour.Segments,axis,selector,boundary,boundaryDelta,out var contour))return false;
+        if(moveEnd){for(var i=segmentIndex;i<geometry.Bends.Count;i++)geometry.Bends[i].Position+=delta;}
+        else{for(var i=0;i<Math.Min(segmentIndex,geometry.Bends.Count);i++)geometry.Bends[i].Position-=delta;}
+        OuterContour.Segments.Clear();OuterContour.Segments.AddRange(contour);_preserveOuterContour=true;RebuildSegments(axis);Recalculate();return true;
+    }
     bool TryGetBoundaryMerge(CutOperation cut,out IReadOnlyList<GeometrySegment> contour){contour=[];if(!string.Equals(cut.Shape,"Rectangle",StringComparison.OrdinalIgnoreCase))return false;var rect=new Rect(cut.CenterX-cut.Width/2,cut.CenterY-cut.Height/2,cut.Width,cut.Height);return BoundaryCutEngine.TrySubtractRectangle(OuterContour.Segments,rect,out contour);}
     public void UpdateSegment(SectionSegment segment,double length)
     {

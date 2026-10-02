@@ -6,7 +6,7 @@ Users submit requirements in natural language; they are not expected to assign C
 
 ## Next available number
 
-`CR-018`
+`CR-019`
 
 The project-management setup and baseline documentation do not consume a CR because they do not change application behavior.
 
@@ -31,6 +31,7 @@ The project-management setup and baseline documentation do not consume a CR beca
 | [CR-015](CR-015.md) | Outer Contour 경계 천공 병합 | Implemented | 1.5.1 | `f1c55a0`, `ade8b61` |
 | [CR-016](CR-016.md) | 선택 위치의 실제 Outer Contour 단면 표시 | Implemented | 1.6.0 | `daad64f` |
 | [CR-017](CR-017.md) | Flat Designer Outer Contour LINE 직접 편집 | Implemented | 1.7.0 | `2b1a9d3` |
+| [CR-018](CR-018.md) | 잘린 Section 치수 편집과 Outer Contour 연쇄 갱신 | Implemented | 1.8.0 | Pending |
 
 ## File naming
 

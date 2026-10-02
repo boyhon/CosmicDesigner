@@ -10,11 +10,11 @@
 ## Current Version
 
 - DXFExplorer installer suite: `1.1.0` (`installer/DXFExplorer.iss`)
-- CosmicDesigner: `1.7.0`
+- CosmicDesigner: `1.8.0`
 
 ## Current Development Phase
 
-CosmicDesigner 1.7.0 implements all registered CRs through CR-017. Outer Contour LINE objects can now be selected and edited directly in Flat Designer while connected neighboring LINE endpoints remain synchronized.
+CosmicDesigner 1.8.0 implements all registered CRs through CR-018. Dimensions remain editable at clipped H/W Section positions and now propagate changes through bends and connected Outer Contour LINE geometry.
 
 ## Recovery Audit — 2026-10-01
 
@@ -126,6 +126,15 @@ CosmicDesigner 1.7.0 implements all registered CRs through CR-017. Outer Contour
 - Published `artifacts/CosmicDesigner-1.7.0/CosmicDesigner.exe` with file version `1.7.0.0`.
 - Implementation commit: `2b1a9d3`.
 
+## 1.8.0 Clipped Section Dimension Editing — 2026-10-03
+
+- Replaced read-only clipped Section dimensions with editable Flat/Bent dimension controls.
+- Propagated an edited local length through subsequent bend stations and the intersected Outer Contour boundary.
+- Reused connected-vertex editing so both LINEs attached to a moved boundary remain connected.
+- Preserved other local segment lengths and the existing Bent exterior-thickness correction policy.
+- Release build completed with zero warnings and errors, and all CosmicDesigner verification checks passed.
+- Published `artifacts/CosmicDesigner-1.8.0/CosmicDesigner.exe` with file version `1.8.0.0`.
+
 ## In Progress
 
 - None.
@@ -150,6 +159,7 @@ CosmicDesigner 1.7.0 implements all registered CRs through CR-017. Outer Contour
 - [CR-015](change-requests/CR-015.md) — Outer Contour 경계 천공 병합
 - [CR-016](change-requests/CR-016.md) — 선택 위치의 실제 Outer Contour 단면 표시
 - [CR-017](change-requests/CR-017.md) — Flat Designer Outer Contour LINE 직접 편집
+- [CR-018](change-requests/CR-018.md) — 잘린 Section 치수 편집과 Outer Contour 연쇄 갱신
 
 ## Completed Change Requests
 
@@ -168,8 +178,8 @@ CosmicDesigner 1.7.0 implements all registered CRs through CR-017. Outer Contour
 ## Next Work
 
 1. User-test CR-004 through CR-010 and promote passing CRs to Verified.
-2. Complete final UI acceptance for CR-011 through CR-017 using the latest `1.7.0` artifact.
+2. Complete final UI acceptance for CR-011 through CR-018 using the latest `1.8.0` artifact.
 
 ## Next Change Request Number
 
-`CR-018`
+`CR-019`
