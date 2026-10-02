@@ -4,6 +4,13 @@ Release-relevant changes after the baseline are recorded here. CR identifiers mu
 
 ## Unreleased
 
+## 1.5.1 — 2026-10-02
+
+- `CR-015`: replaced automatic boundary merging with an orange merge-candidate state and explicit `Outer Contour로 통합` right-click command.
+- Generalized Rectangle subtraction to the current rectilinear Outer Contour so later Cuts can merge after earlier notches.
+- Kept candidate Cuts editable until confirmation and retained Undo support.
+- CosmicDesigner assembly version is now `1.5.1`.
+
 ## 1.5.0 — 2026-10-02
 
 - `CR-015`: converts boundary-touching Rectangle Cuts into open Outer Contour notches.

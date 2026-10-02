@@ -31,8 +31,9 @@ Only behavior confirmed by current source, tests, project configuration, or exis
 - Cut geometry includes the supported hole-shape tools and is emitted on the L layer.
 - Supported design objects can be selected through the object tree and edited through the Property panel.
 - Supported selected objects can be deleted with the Delete key; deletions participate in Undo/Redo.
-- A boundary-touching axis-aligned Rectangle Cut on the basic rectangular material is converted into an open Outer Contour notch when created or when its drag ends; the Cut and matching Inner Contour are removed.
-- Corner Rectangle notches produce a six-LINE Outer Contour, edge-center notches produce eight LINEs, and fully interior rectangles remain Cut objects.
+- A mergeable boundary-touching Rectangle Cut remains editable and is shown with an orange selection; moving it away restores the normal gold selection.
+- A mergeable Rectangle Cut provides an `Outer Contour로 통합` right-click command. Only that explicit command converts it into an open notch and removes the Cut and matching Inner Contour.
+- Rectangle notches can be merged repeatedly into the current rectilinear Outer Contour; fully interior rectangles and cuts that would produce multiple material components remain Cut objects.
 - The 3D preview supports mouse-driven viewpoint rotation and wheel zoom.
 - File > Recent retains up to 10 successfully opened files in a user-level persistent setting.
 - View provides Zoom In, Zoom Out, Fit to Window, Ruler, Grid, and Status Bar controls.

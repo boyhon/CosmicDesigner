@@ -10,11 +10,11 @@
 ## Current Version
 
 - DXFExplorer installer suite: `1.1.0` (`installer/DXFExplorer.iss`)
-- CosmicDesigner: `1.5.0`
+- CosmicDesigner: `1.5.1`
 
 ## Current Development Phase
 
-CosmicDesigner 1.5.0 implements all registered CRs through CR-015. CR-015 merges boundary-touching Rectangle Cuts into the Outer Contour as open notches. CR-001 through CR-003 are Verified; CR-004 through CR-015 passed automated/build verification and await user UI acceptance.
+CosmicDesigner 1.5.1 implements all registered CRs through CR-015. CR-015 now keeps boundary Cuts editable, shows an orange merge-candidate state and merges only through an explicit right-click command, including after earlier contour merges.
 
 ## Recovery Audit — 2026-10-01
 
@@ -97,6 +97,15 @@ CosmicDesigner 1.5.0 implements all registered CRs through CR-015. CR-015 merges
 - Release build, complete verification and DXF metadata round-trip checks passed.
 - Published `artifacts/CosmicDesigner-1.5.0/CosmicDesigner.exe` with file version `1.5.0.0`.
 
+## 1.5.1 Explicit Boundary Merge Workflow — 2026-10-02
+
+- Kept boundary-touching Rectangle Cuts editable instead of merging immediately.
+- Added orange merge-candidate rendering, status guidance and an explicit right-click merge command.
+- Generalized sequential Rectangle merging to the current rectilinear Outer Contour.
+- Added candidate-state, four-corner sequential merge, Undo and DXF round-trip regression coverage.
+- Release build and all CosmicDesigner verification checks passed.
+- Published `artifacts/CosmicDesigner-1.5.1/CosmicDesigner.exe` with file version `1.5.1.0`.
+
 ## In Progress
 
 - None.
@@ -137,7 +146,7 @@ CosmicDesigner 1.5.0 implements all registered CRs through CR-015. CR-015 merges
 ## Next Work
 
 1. User-test CR-004 through CR-010 and promote passing CRs to Verified.
-2. Complete final UI acceptance for CR-011 through CR-015 using the latest `1.5.0` artifact.
+2. Complete final UI acceptance for CR-011 through CR-015 using the latest `1.5.1` artifact.
 
 ## Next Change Request Number
 

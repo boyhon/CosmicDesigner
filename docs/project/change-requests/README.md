@@ -28,7 +28,7 @@ The project-management setup and baseline documentation do not consume a CR beca
 | [CR-012](CR-012.md) | Flat Designer H/W 단면 선택선 및 연동 | Implemented | 1.4.0 | `f1c55a0` |
 | [CR-013](CR-013.md) | W Section Bent 적응형 화면 배율 교정 | Implemented | 1.4.1 | `f1c55a0` |
 | [CR-014](CR-014.md) | Section Designer 중앙 고정 Zoom | Implemented | 1.4.2 | `f1c55a0` |
-| [CR-015](CR-015.md) | Outer Contour 경계 천공 병합 | Implemented | 1.5.0 | `f1c55a0` |
+| [CR-015](CR-015.md) | Outer Contour 경계 천공 병합 | Implemented | 1.5.1 | `f1c55a0` + pending refinement commit |
 
 ## File naming
 

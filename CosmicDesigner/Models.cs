@@ -142,8 +142,10 @@ public sealed class CosmicDesignerDocument : INotifyPropertyChanged
     }
     public bool TryMergeBoundaryCut(CutOperation cut)
     {
-        if(!string.Equals(cut.Shape,"Rectangle",StringComparison.OrdinalIgnoreCase)||OuterContour.Segments.Count!=4)return false;var rect=new Rect(cut.CenterX-cut.Width/2,cut.CenterY-cut.Height/2,cut.Width,cut.Height);if(!BoundaryCutEngine.TrySubtractRectangle(Material.Width,Material.Height,rect,out var contour))return false;Cuts.Remove(cut);var inner=InnerContours.FirstOrDefault(x=>x.Id==cut.Id);if(inner is not null)InnerContours.Remove(inner);OuterContour.Segments.Clear();OuterContour.Segments.AddRange(contour);_preserveOuterContour=true;Recalculate();return true;
+        if(!TryGetBoundaryMerge(cut,out var contour))return false;Cuts.Remove(cut);var inner=InnerContours.FirstOrDefault(x=>x.Id==cut.Id);if(inner is not null)InnerContours.Remove(inner);OuterContour.Segments.Clear();OuterContour.Segments.AddRange(contour);_preserveOuterContour=true;Recalculate();return true;
     }
+    public bool CanMergeBoundaryCut(CutOperation cut)=>TryGetBoundaryMerge(cut,out _);
+    bool TryGetBoundaryMerge(CutOperation cut,out IReadOnlyList<GeometrySegment> contour){contour=[];if(!string.Equals(cut.Shape,"Rectangle",StringComparison.OrdinalIgnoreCase))return false;var rect=new Rect(cut.CenterX-cut.Width/2,cut.CenterY-cut.Height/2,cut.Width,cut.Height);return BoundaryCutEngine.TrySubtractRectangle(OuterContour.Segments,rect,out contour);}
     public void UpdateSegment(SectionSegment segment,double length)
     {
         segment.Length=Math.Max(.01,length);var list=segment.Axis==SectionAxis.W?WSegments:HSegments;var bends=Bends.Where(b=>b.Axis==segment.Axis).OrderBy(b=>b.Position).ToList();double p=0;
