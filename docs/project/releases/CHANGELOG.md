@@ -4,7 +4,40 @@ Release-relevant changes after the baseline are recorded here. CR identifiers mu
 
 ## Unreleased
 
-- No changes registered after 1.3.3.
+## 1.5.0 — 2026-10-02
+
+- `CR-015`: converts boundary-touching Rectangle Cuts into open Outer Contour notches.
+- Removes the merged Cut and matching Inner Contour while preserving interior Rectangle Cuts.
+- Adds 6-LINE corner-notch and 8-LINE edge-notch regression coverage.
+- CosmicDesigner assembly version is now `1.5.0`.
+
+## 1.4.2 — 2026-10-01
+
+- `CR-014`: changed Section Designer wheel Zoom to remain fixed on the viewport center.
+- Cleared accumulated Section Pan on every Zoom step so repeated scaling does not drift toward a corner.
+- Kept Flat Designer pointer-anchored Zoom unchanged.
+- CosmicDesigner assembly version is now `1.4.2`.
+
+## 1.4.1 — 2026-10-01
+
+- `CR-013`: replaced the fixed 190-pixel Bent viewport deduction with an adaptive W/H Fit calculation.
+- Kept Bent geometry and dimension-editor placement on the same scale.
+- Added short-wide and maximum-scale regression checks.
+- CosmicDesigner assembly version is now `1.4.1`.
+
+## 1.4.0 — 2026-10-01
+
+- `CR-012`: added draggable, labeled H/W section selector lines to Flat Designer.
+- Linked H selector X positions and W selector Y positions to the corresponding Section Designer views.
+- Added material-bound clamping and section-position feedback.
+- CosmicDesigner assembly version is now `1.4.0`.
+
+## 1.3.4 — 2026-10-01
+
+- Corrected Bent dimension witness points to align with the rendered dark material surface edges instead of invisible center-axis coordinates.
+- Extended each Bent segment dimension through its bend ends to the opposing exterior contact faces, so adjacent dimensions are separated by the material thickness as in caliper measurement.
+- Added a material-thickness dimension to W Section Designer Flat and Bent views.
+- CosmicDesigner assembly version is now `1.3.4`.
 
 ## 1.3.3 — 2026-10-01
 

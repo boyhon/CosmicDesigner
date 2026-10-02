@@ -6,7 +6,7 @@
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
     <AssemblyName>CosmicDesigner</AssemblyName>
-    <Version>1.3.3</Version>
+    <Version>1.5.0</Version>
     <ApplicationIcon>Resources\cosmic_dmi.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>

@@ -2,8 +2,27 @@ using System.Globalization;
 using System.IO;
 using System.Text;
 using System.Text.Json;
+using System.Windows;
 
 namespace CosmicDesigner;
+
+public static class SectionSelectionEngine
+{
+    public static double Clamp(double position,double extent)=>Math.Clamp(position,0,Math.Max(0,extent));
+}
+
+public static class BoundaryCutEngine
+{
+    const double Epsilon=1e-6;
+    public static bool TrySubtractRectangle(double width,double height,Rect cut,out IReadOnlyList<GeometrySegment> contour)
+    {
+        contour=[];var left=Math.Clamp(cut.Left,0,width);var right=Math.Clamp(cut.Right,0,width);var bottom=Math.Clamp(cut.Top,0,height);var top=Math.Clamp(cut.Bottom,0,height);if(right-left<=Epsilon||top-bottom<=Epsilon)return false;
+        var touchesLeft=left<=Epsilon;var touchesRight=right>=width-Epsilon;var touchesBottom=bottom<=Epsilon;var touchesTop=top>=height-Epsilon;if(!touchesLeft&&!touchesRight&&!touchesBottom&&!touchesTop)return false;if((touchesLeft&&touchesRight)||(touchesBottom&&touchesTop))return false;
+        List<Point> points;if(touchesTop)points=[new(0,0),new(width,0),new(width,height),new(right,height),new(right,bottom),new(left,bottom),new(left,height),new(0,height)];else if(touchesBottom)points=[new(0,0),new(left,0),new(left,top),new(right,top),new(right,0),new(width,0),new(width,height),new(0,height)];else if(touchesLeft)points=[new(0,0),new(width,0),new(width,height),new(0,height),new(0,top),new(right,top),new(right,bottom),new(0,bottom)];else points=[new(0,0),new(left,0),new(left,bottom),new(width,bottom),new(width,top),new(left,top),new(left,height),new(0,height)];
+        var normalized=new List<Point>();foreach(var p in points)if(normalized.Count==0||(normalized[^1]-p).Length>Epsilon)normalized.Add(p);if(normalized.Count>1&&(normalized[0]-normalized[^1]).Length<=Epsilon)normalized.RemoveAt(normalized.Count-1);RemoveCollinear(normalized);if(normalized.Count<4)return false;contour=Enumerable.Range(0,normalized.Count).Select(i=>(GeometrySegment)new LineSegment(normalized[i].X,normalized[i].Y,normalized[(i+1)%normalized.Count].X,normalized[(i+1)%normalized.Count].Y)).ToList();return true;
+    }
+    static void RemoveCollinear(List<Point> points){for(var changed=true;changed&&points.Count>3;){changed=false;for(var i=0;i<points.Count;i++){var a=points[(i+points.Count-1)%points.Count];var b=points[i];var c=points[(i+1)%points.Count];if(Math.Abs(Vector.CrossProduct(b-a,c-b))<=Epsilon){points.RemoveAt(i);changed=true;break;}}}}
+}
 
 public static class BendCalculationEngine
 {

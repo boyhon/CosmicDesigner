@@ -1,5 +1,6 @@
 using System.Collections.ObjectModel;
 using System.ComponentModel;
+using System.Windows;
 using System.Runtime.CompilerServices;
 
 namespace CosmicDesigner;
@@ -138,6 +139,10 @@ public sealed class CosmicDesignerDocument : INotifyPropertyChanged
         if(item is MicroJoint joint&&MicroJoints.Remove(joint)){Recalculate();return true;}
         if(item is GeometryObject geometry&&OuterContour.Segments.Remove(geometry.Geometry)){_preserveOuterContour=true;Recalculate();return true;}
         return false;
+    }
+    public bool TryMergeBoundaryCut(CutOperation cut)
+    {
+        if(!string.Equals(cut.Shape,"Rectangle",StringComparison.OrdinalIgnoreCase)||OuterContour.Segments.Count!=4)return false;var rect=new Rect(cut.CenterX-cut.Width/2,cut.CenterY-cut.Height/2,cut.Width,cut.Height);if(!BoundaryCutEngine.TrySubtractRectangle(Material.Width,Material.Height,rect,out var contour))return false;Cuts.Remove(cut);var inner=InnerContours.FirstOrDefault(x=>x.Id==cut.Id);if(inner is not null)InnerContours.Remove(inner);OuterContour.Segments.Clear();OuterContour.Segments.AddRange(contour);_preserveOuterContour=true;Recalculate();return true;
     }
     public void UpdateSegment(SectionSegment segment,double length)
     {

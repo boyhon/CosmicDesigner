@@ -31,6 +31,8 @@ Only behavior confirmed by current source, tests, project configuration, or exis
 - Cut geometry includes the supported hole-shape tools and is emitted on the L layer.
 - Supported design objects can be selected through the object tree and edited through the Property panel.
 - Supported selected objects can be deleted with the Delete key; deletions participate in Undo/Redo.
+- A boundary-touching axis-aligned Rectangle Cut on the basic rectangular material is converted into an open Outer Contour notch when created or when its drag ends; the Cut and matching Inner Contour are removed.
+- Corner Rectangle notches produce a six-LINE Outer Contour, edge-center notches produce eight LINEs, and fully interior rectangles remain Cut objects.
 - The 3D preview supports mouse-driven viewpoint rotation and wheel zoom.
 - File > Recent retains up to 10 successfully opened files in a user-level persistent setting.
 - View provides Zoom In, Zoom Out, Fit to Window, Ruler, Grid, and Status Bar controls.
@@ -39,9 +41,15 @@ Only behavior confirmed by current source, tests, project configuration, or exis
 - Flat Designer supports Cut Object selection, control handles, Move, corner Resize, and edge Resize across the supported Hole shapes.
 - Flat Designer keeps design geometry outside the ruler bands and provides explicit Select/Hole mode switching.
 - Flat Designer selection is synchronized with the Object Tree and supports focused Delete; leaving the designer cancels Hole mode.
+- Flat Designer displays labeled H and W section selectors as colored dashed lines; H moves horizontally, W moves vertically, and both are clamped to the material bounds.
+- Moving a Flat Designer section selector immediately refreshes the corresponding H or W Section Designer and displays its selected X or Y coordinate.
 - Section dimension editors use a transparent idle appearance with focus feedback and are the single rendered dimension value.
 - Bent Section dimensions use measurable thickness-polygon exterior edges; center-axis bend dots are not rendered.
-- H/W Section Designers support pointer-anchored mouse-wheel Zoom and only create bends from clicks inside the flat material body.
+- Bent dimension witness points align with the rendered dark material surface edges and never use the invisible center axis as a measurement reference.
+- Bent segment dimensions span the opposing exterior contact faces a caliper can measure; adjacent segment endpoints at a bend are offset by the rendered material thickness rather than sharing one miter point.
+- W Section Designer shows the material thickness dimension in Flat and Bent views.
+- H/W Section Designers support center-fixed mouse-wheel Zoom that keeps geometry centered and only create bends from clicks inside the flat material body.
+- Bent H/W Section views use a shared adaptive Fit scale that preserves dimension space without collapsing geometry in short, wide panels.
 - View provides synchronized H/W Dimensions, Bent and Rotation controls.
 - The 3D preview uses a white background, visibly light-gray translucent acrylic surfaces and sufficiently thick opaque black exterior/bend edges without directional lighting or shadow-like shading.
 

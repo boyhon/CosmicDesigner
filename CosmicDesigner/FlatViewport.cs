@@ -36,6 +36,11 @@ public readonly record struct SectionViewportState(double Zoom,Vector Pan);
 
 public static class SectionViewportEngine
 {
+    public static double BentFitScale(double viewportWidth,double viewportHeight,double geometryWidth,double geometryHeight)
+    {
+        var availableWidth=Math.Max(1,viewportWidth-120);var availableHeight=Math.Max(1,viewportHeight-72);return Math.Min(1.5,Math.Min(availableWidth/Math.Max(1,geometryWidth),availableHeight/Math.Max(1,geometryHeight)));
+    }
+
     public static Matrix Transform(double width,double height,SectionViewportState state)
     {
         var center=new Point(width/2,height/2);var matrix=Matrix.Identity;matrix.Translate(-center.X,-center.Y);matrix.Scale(Math.Clamp(state.Zoom,.4,5),Math.Clamp(state.Zoom,.4,5));matrix.Translate(center.X+state.Pan.X,center.Y+state.Pan.Y);return matrix;
@@ -45,6 +50,8 @@ public static class SectionViewportEngine
     {
         var before=Transform(width,height,state);var inverse=before;if(inverse.HasInverse)inverse.Invert();var design=inverse.Transform(anchor);var zoom=Math.Clamp(state.Zoom*factor,.4,5);var provisional=new SectionViewportState(zoom,state.Pan);var moved=Transform(width,height,provisional).Transform(design);return provisional with{Pan=state.Pan+(anchor-moved)};
     }
+
+    public static SectionViewportState CenteredZoom(SectionViewportState state,double factor)=>new(Math.Clamp(state.Zoom*factor,.4,5),new Vector());
 
     public static bool IsInsideFlatMaterial(SectionAxis axis,Point point,double width,double height)
     {
