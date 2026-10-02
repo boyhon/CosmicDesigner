@@ -152,6 +152,7 @@ CosmicDesigner 1.10.0 implements all registered CRs through CR-020. File New, Op
 - Retained Save-to-Save-As fallback and existing Ctrl+Z/Ctrl+Y behavior.
 - Release build completed with zero warnings and errors, and all CosmicDesigner verification checks passed.
 - Published `artifacts/CosmicDesigner-1.10.0/CosmicDesigner.exe` with file version `1.10.0.0`.
+- Implementation commit: `24762b7`.
 
 ## In Progress
 
