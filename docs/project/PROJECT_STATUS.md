@@ -10,11 +10,11 @@
 ## Current Version
 
 - DXFExplorer installer suite: `1.1.0` (`installer/DXFExplorer.iss`)
-- CosmicDesigner: `1.9.0`
+- CosmicDesigner: `1.10.0`
 
 ## Current Development Phase
 
-CosmicDesigner 1.9.0 implements all registered CRs through CR-019. The 3D Preview surface and black edges now follow the current cut and edited Outer Contour instead of always rendering a full rectangle.
+CosmicDesigner 1.10.0 implements all registered CRs through CR-020. File New, Open and Save now provide global Ctrl+N, Ctrl+O and Ctrl+S shortcuts with matching menu labels.
 
 ## Recovery Audit — 2026-10-01
 
@@ -145,6 +145,14 @@ CosmicDesigner 1.9.0 implements all registered CRs through CR-019. The 3D Previe
 - Published `artifacts/CosmicDesigner-1.9.0/CosmicDesigner.exe` with file version `1.9.0.0`.
 - Implementation commit: `0ecd6cd`.
 
+## 1.10.0 File Command Shortcuts — 2026-10-03
+
+- Added global Ctrl+N, Ctrl+O and Ctrl+S handling through the existing New/Open/Save command paths.
+- Added matching shortcut text to the File menu items.
+- Retained Save-to-Save-As fallback and existing Ctrl+Z/Ctrl+Y behavior.
+- Release build completed with zero warnings and errors, and all CosmicDesigner verification checks passed.
+- Published `artifacts/CosmicDesigner-1.10.0/CosmicDesigner.exe` with file version `1.10.0.0`.
+
 ## In Progress
 
 - None.
@@ -171,6 +179,7 @@ CosmicDesigner 1.9.0 implements all registered CRs through CR-019. The 3D Previe
 - [CR-017](change-requests/CR-017.md) — Flat Designer Outer Contour LINE 직접 편집
 - [CR-018](change-requests/CR-018.md) — 잘린 Section 치수 편집과 Outer Contour 연쇄 갱신
 - [CR-019](change-requests/CR-019.md) — 3D Preview Outer Contour 컷 형상 반영
+- [CR-020](change-requests/CR-020.md) — File 메뉴 New/Open/Save 단축키
 
 ## Completed Change Requests
 
@@ -189,8 +198,8 @@ CosmicDesigner 1.9.0 implements all registered CRs through CR-019. The 3D Previe
 ## Next Work
 
 1. User-test CR-004 through CR-010 and promote passing CRs to Verified.
-2. Complete final UI acceptance for CR-011 through CR-019 using the latest `1.9.0` artifact.
+2. Complete final UI acceptance for CR-011 through CR-020 using the latest `1.10.0` artifact.
 
 ## Next Change Request Number
 
-`CR-020`
+`CR-021`

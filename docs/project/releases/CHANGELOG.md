@@ -4,6 +4,13 @@ Release-relevant changes after the baseline are recorded here. CR identifiers mu
 
 ## Unreleased
 
+## 1.10.0 — 2026-10-03
+
+- `CR-020`: added global Ctrl+N, Ctrl+O and Ctrl+S shortcuts for File > New, Open and Save.
+- Displayed each shortcut beside its corresponding File menu item.
+- Reused existing command handlers, including Save As fallback for unsaved documents.
+- CosmicDesigner assembly version is now `1.10.0`.
+
 ## 1.9.0 — 2026-10-03
 
 - `CR-019`: clipped the 3D Preview surface mesh to the current rectilinear Outer Contour.

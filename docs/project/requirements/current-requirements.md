@@ -37,6 +37,7 @@ Only behavior confirmed by current source, tests, project configuration, or exis
 - Flat Designer supports direct selection of Outer Contour LINE objects. Dragging a selected line body moves it perpendicular to itself, while dragging either endpoint changes its length; every shared endpoint is propagated to the connected neighboring LINE so the contour stays connected.
 - The 3D preview supports mouse-driven viewpoint rotation and wheel zoom.
 - File > Recent retains up to 10 successfully opened files in a user-level persistent setting.
+- File > New, Open and Save display and execute the global keyboard shortcuts `Ctrl+N`, `Ctrl+O` and `Ctrl+S` respectively.
 - View provides Zoom In, Zoom Out, Fit to Window, Ruler, Grid, and Status Bar controls.
 - Ruler, Grid, and Status Bar visibility are global persistent settings.
 - Flat Designer supports right-button Pan and wheel/menu Zoom with a shared centimeter coordinate transform.

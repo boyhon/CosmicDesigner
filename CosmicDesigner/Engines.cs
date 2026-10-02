@@ -6,6 +6,15 @@ using System.Windows;
 
 namespace CosmicDesigner;
 
+public enum FileShortcutAction{None,New,Open,Save}
+public static class FileShortcutEngine
+{
+    public static FileShortcutAction Resolve(System.Windows.Input.Key key,System.Windows.Input.ModifierKeys modifiers)
+    {
+        if(modifiers!=System.Windows.Input.ModifierKeys.Control)return FileShortcutAction.None;return key switch{System.Windows.Input.Key.N=>FileShortcutAction.New,System.Windows.Input.Key.O=>FileShortcutAction.Open,System.Windows.Input.Key.S=>FileShortcutAction.Save,_=>FileShortcutAction.None};
+    }
+}
+
 public static class SectionSelectionEngine
 {
     public static double Clamp(double position,double extent)=>Math.Clamp(position,0,Math.Max(0,extent));
