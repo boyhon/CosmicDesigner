@@ -10,11 +10,11 @@
 ## Current Version
 
 - DXFExplorer installer suite: `1.1.0` (`installer/DXFExplorer.iss`)
-- CosmicDesigner: `1.13.2`
+- CosmicDesigner: `1.13.3`
 
 ## Current Development Phase
 
-CosmicDesigner 1.13.2 implements all registered CRs through CR-027. Internal Cut Object regions are now removed from the 3D Preview surface mesh.
+CosmicDesigner 1.13.3 implements all registered CRs through CR-028. The 3D Preview now shows only exterior and Cut boundary edges without internal bend lines.
 
 ## Recovery Audit — 2026-10-01
 
@@ -206,6 +206,13 @@ CosmicDesigner 1.13.2 implements all registered CRs through CR-027. Internal Cut
 - Published `artifacts/CosmicDesigner-1.13.2/CosmicDesigner.exe` with file version `1.13.2.0`.
 - Implementation commit: `d178aff`.
 
+## 1.13.3 Clean 3D Boundary Edges — 2026-10-03
+
+- Removed internal bend-station and triangulation edges from the 3D Preview.
+- Retained only one-sided mesh boundary edges for the Outer Contour and Cut contours while preserving folded surface geometry.
+- Release build completed with zero warnings and errors, and all CosmicDesigner verification checks passed.
+- Published `artifacts/CosmicDesigner-1.13.3/CosmicDesigner.exe` with file version `1.13.3.0`.
+
 ## In Progress
 
 - None.
@@ -240,6 +247,7 @@ CosmicDesigner 1.13.2 implements all registered CRs through CR-027. Internal Cut
 - [CR-025](change-requests/CR-025.md) — Ruler 및 Grid 간격 설정
 - [CR-026](change-requests/CR-026.md) — Flat Designer 절삭 영역 흰색 표시
 - [CR-027](change-requests/CR-027.md) — 3D Preview 내부 Cut 투명 표시
+- [CR-028](change-requests/CR-028.md) — 3D Preview 내부 절곡 Edge 제거
 
 ## Completed Change Requests
 
@@ -258,8 +266,8 @@ CosmicDesigner 1.13.2 implements all registered CRs through CR-027. Internal Cut
 ## Next Work
 
 1. User-test CR-004 through CR-010 and promote passing CRs to Verified.
-2. Complete final UI acceptance for CR-011 through CR-027 using the latest `1.13.2` artifact.
+2. Complete final UI acceptance for CR-011 through CR-028 using the latest `1.13.3` artifact.
 
 ## Next Change Request Number
 
-`CR-028`
+`CR-029`

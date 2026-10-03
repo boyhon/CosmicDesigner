@@ -4,6 +4,11 @@ Release-relevant changes after the baseline are recorded here. CR identifiers mu
 
 ## Unreleased
 
+## 1.13.3 — 2026-10-03
+
+- CR-028: Removed internal bend and mesh-partition lines from the 3D Preview while retaining exterior and Cut boundary edges.
+- CosmicDesigner assembly version is now `1.13.3`.
+
 ## 1.13.2 — 2026-10-03
 
 - CR-027: Removed 3D surface faces from internal Cut Object regions and generated visible hole boundary edges.

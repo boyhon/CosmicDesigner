@@ -6,6 +6,7 @@ Only behavior confirmed by current source, tests, project configuration, or exis
 - Settings에서 Flat Designer의 가로 Ruler, 세로 Ruler와 Grid 간격을 각각 Auto 또는 물리 길이 기준 사용자 값으로 설정하며 축소 시 과밀 표시를 자동 생략한다.
 - Flat Designer는 Outer Contour 내부에서 Cut Object를 제외한 실제 재료 영역에만 재료색, Grid와 절곡선을 표시하고 절삭 영역은 흰색으로 표시한다.
 - 3D Preview는 Outer Contour 외부와 모든 내부 Cut Object에 surface face를 생성하지 않아 잘려 나간 영역을 투명하게 표시한다.
+- 3D Preview의 검은 Edge는 Outer Contour와 Cut 경계에만 표시하며 내부 절곡선과 메시 분할선은 표시하지 않는다.
 
 ## Project identity
 
