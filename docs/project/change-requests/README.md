@@ -41,7 +41,7 @@ The project-management setup and baseline documentation do not consume a CR beca
 | [CR-025](CR-025.md) | Ruler 및 Grid 간격 설정 | Implemented | 1.13.0 | `f1486b2` |
 | [CR-026](CR-026.md) | Flat Designer 절삭 영역 흰색 표시 | Implemented | 1.13.1 | `cf205bf` |
 | [CR-027](CR-027.md) | 3D Preview 내부 Cut 투명 표시 | Implemented | 1.13.2 | `d178aff` |
-| [CR-028](CR-028.md) | 3D Preview 내부 절곡 Edge 제거 | Implemented | 1.13.3 | Pending |
+| [CR-028](CR-028.md) | 3D Preview 내부 절곡 Edge 제거 | Implemented | 1.13.3 | `0592574` |
 
 ## File naming
 

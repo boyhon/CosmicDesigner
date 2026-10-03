@@ -212,6 +212,7 @@ CosmicDesigner 1.13.3 implements all registered CRs through CR-028. The 3D Previ
 - Retained only one-sided mesh boundary edges for the Outer Contour and Cut contours while preserving folded surface geometry.
 - Release build completed with zero warnings and errors, and all CosmicDesigner verification checks passed.
 - Published `artifacts/CosmicDesigner-1.13.3/CosmicDesigner.exe` with file version `1.13.3.0`.
+- Implementation commit: `0592574`.
 
 ## In Progress
 
