@@ -4,6 +4,11 @@ Release-relevant changes after the baseline are recorded here. CR identifiers mu
 
 ## Unreleased
 
+## 1.12.1 — 2026-10-03
+
+- CR-024: Changed the Main Window Title to `Filename.dxf - CosmicDesigner`, uses `Untitled` for new documents, and prefixes unsaved documents with `*`.
+- CosmicDesigner assembly version is now `1.12.1`.
+
 ## 1.12.0 — 2026-10-03
 
 - `CR-022`: added Edit > Settings for persistent folders, Recent count, interaction tolerances, Zoom step, 3D presentation and new-document defaults.

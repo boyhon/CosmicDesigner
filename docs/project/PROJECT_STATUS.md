@@ -10,11 +10,11 @@
 ## Current Version
 
 - DXFExplorer installer suite: `1.1.0` (`installer/DXFExplorer.iss`)
-- CosmicDesigner: `1.12.0`
+- CosmicDesigner: `1.12.1`
 
 ## Current Development Phase
 
-CosmicDesigner 1.12.0 implements all registered CRs through CR-023. Edit now provides persistent tool Settings and document-unit conversion between mm/cm/m with both numeric-preserving and physical-size-preserving policies.
+CosmicDesigner 1.12.1 implements all registered CRs through CR-024. Window titles now identify the active document before the application name.
 
 ## Recovery Audit — 2026-10-01
 
@@ -172,6 +172,13 @@ CosmicDesigner 1.12.0 implements all registered CRs through CR-023. Edit now pro
 - Published `artifacts/CosmicDesigner-1.12.0/CosmicDesigner.exe` with file version `1.12.0.0`.
 - Implementation commit: `c72934b`.
 
+## 1.12.1 Document-first Window Title — 2026-10-03
+
+- Changed the title order to `Filename.dxf - CosmicDesigner` and use `Untitled` for a new document.
+- Added an immediate leading `*` indicator whenever the current document has unsaved changes; saving removes it.
+- Release build completed with zero warnings and errors, and all CosmicDesigner verification checks passed.
+- Published `artifacts/CosmicDesigner-1.12.1/CosmicDesigner.exe` with file version `1.12.1.0`.
+
 ## In Progress
 
 - None.
@@ -202,6 +209,7 @@ CosmicDesigner 1.12.0 implements all registered CRs through CR-023. Edit now pro
 - [CR-021](change-requests/CR-021.md) — 미저장 변경 사항 저장 확인
 - [CR-022](change-requests/CR-022.md) — Edit Settings 사용자 환경 설정창
 - [CR-023](change-requests/CR-023.md) — 문서 단위와 두 가지 단위 변경 방식
+- [CR-024](change-requests/CR-024.md) — 문서명 우선 Window Title
 
 ## Completed Change Requests
 
@@ -220,8 +228,8 @@ CosmicDesigner 1.12.0 implements all registered CRs through CR-023. Edit now pro
 ## Next Work
 
 1. User-test CR-004 through CR-010 and promote passing CRs to Verified.
-2. Complete final UI acceptance for CR-011 through CR-023 using the latest `1.12.0` artifact.
+2. Complete final UI acceptance for CR-011 through CR-024 using the latest `1.12.1` artifact.
 
 ## Next Change Request Number
 
-`CR-024`
+`CR-025`

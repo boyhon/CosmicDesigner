@@ -2,6 +2,8 @@
 
 Only behavior confirmed by current source, tests, project configuration, or existing product documentation is listed here. Proposed future behavior belongs in a Change Request or the proposed-requirements backlog.
 
+- Main Window Title은 새 문서에서 `Untitled - CosmicDesigner`, 파일 문서에서 `Filename.dxf - CosmicDesigner` 형식을 사용하고 저장되지 않은 변경이 있으면 맨 앞에 `*`를 표시한다.
+
 ## Project identity
 
 - The project-management name is **Cosmic Designer 개발**.

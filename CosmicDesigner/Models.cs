@@ -5,6 +5,11 @@ using System.Runtime.CompilerServices;
 
 namespace CosmicDesigner;
 
+public static class WindowTitleFormatter
+{
+    public static string Format(string? path,bool modified=false)=>$"{(modified?"*":"")}{(string.IsNullOrWhiteSpace(path)?"Untitled":System.IO.Path.GetFileName(path))} - CosmicDesigner";
+}
+
 public enum MeasurementUnit{Millimeter,Centimeter,Meter}
 public enum UnitChangeMode{PreserveNumbers,PreservePhysicalSize}
 public static class MeasurementUnits

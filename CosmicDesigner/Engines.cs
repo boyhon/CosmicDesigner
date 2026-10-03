@@ -10,8 +10,9 @@ public enum FileShortcutAction{None,New,Open,Save}
 public sealed class DocumentDirtyState
 {
     public bool IsDirty { get; private set; }
-    public void MarkChanged()=>IsDirty=true;
-    public void MarkSaved()=>IsDirty=false;
+    public event EventHandler? StateChanged;
+    public void MarkChanged(){if(IsDirty)return;IsDirty=true;StateChanged?.Invoke(this,EventArgs.Empty);}
+    public void MarkSaved(){if(!IsDirty)return;IsDirty=false;StateChanged?.Invoke(this,EventArgs.Empty);}
 }
 public static class FileShortcutEngine
 {
