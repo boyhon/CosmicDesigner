@@ -29,6 +29,9 @@ public sealed class CosmicDesignerSettings
     public int Transparent3DOpacity { get; set; }=105;
     public int Solid3DOpacity { get; set; }=175;
     public double Edge3DScale { get; set; }=1;
+    public double HorizontalRulerIntervalMetres { get; set; }
+    public double VerticalRulerIntervalMetres { get; set; }
+    public double GridIntervalMetres { get; set; }
 }
 
 public static class UserSettingsStore
@@ -54,7 +57,7 @@ public static class UserSettingsStore
         {
             var settings=JsonSerializer.Deserialize<CosmicDesignerSettings>(json)??new();
             settings.RecentFiles=(settings.RecentFiles??[]).Select(NormalizePath).Where(x=>x is not null).Cast<string>().Distinct(StringComparer.OrdinalIgnoreCase).Take(10).ToList();
-            settings.WRotation=NormalizeRotation(settings.WRotation);settings.HRotation=NormalizeRotation(settings.HRotation);settings.RecentFileCount=Math.Clamp(settings.RecentFileCount,1,50);settings.ZoomStepPercent=Math.Clamp(settings.ZoomStepPercent,1,100);settings.SelectionTolerancePixels=Math.Clamp(settings.SelectionTolerancePixels,2,30);settings.HandleRadiusPixels=Math.Clamp(settings.HandleRadiusPixels,3,20);settings.Transparent3DOpacity=Math.Clamp(settings.Transparent3DOpacity,20,240);settings.Solid3DOpacity=Math.Clamp(settings.Solid3DOpacity,20,255);settings.Edge3DScale=Math.Clamp(settings.Edge3DScale,.25,4);if(settings.NewWidth<=0)settings.NewWidth=300;if(settings.NewHeight<=0)settings.NewHeight=300;if(settings.NewThickness<=0)settings.NewThickness=.2;
+            settings.WRotation=NormalizeRotation(settings.WRotation);settings.HRotation=NormalizeRotation(settings.HRotation);settings.RecentFileCount=Math.Clamp(settings.RecentFileCount,1,50);settings.ZoomStepPercent=Math.Clamp(settings.ZoomStepPercent,1,100);settings.SelectionTolerancePixels=Math.Clamp(settings.SelectionTolerancePixels,2,30);settings.HandleRadiusPixels=Math.Clamp(settings.HandleRadiusPixels,3,20);settings.Transparent3DOpacity=Math.Clamp(settings.Transparent3DOpacity,20,240);settings.Solid3DOpacity=Math.Clamp(settings.Solid3DOpacity,20,255);settings.Edge3DScale=Math.Clamp(settings.Edge3DScale,.25,4);settings.HorizontalRulerIntervalMetres=NormalizeInterval(settings.HorizontalRulerIntervalMetres);settings.VerticalRulerIntervalMetres=NormalizeInterval(settings.VerticalRulerIntervalMetres);settings.GridIntervalMetres=NormalizeInterval(settings.GridIntervalMetres);if(settings.NewWidth<=0)settings.NewWidth=300;if(settings.NewHeight<=0)settings.NewHeight=300;if(settings.NewThickness<=0)settings.NewThickness=.2;
             return settings;
         }
         catch{return new();}
@@ -67,4 +70,5 @@ public static class UserSettingsStore
     }
     static string? NormalizePath(string? path){if(string.IsNullOrWhiteSpace(path))return null;try{return Path.GetFullPath(path);}catch{return null;}}
     static int NormalizeRotation(int value)=>((value%4)+4)%4;
+    static double NormalizeInterval(double value)=>double.IsFinite(value)&&value>0?value:0;
 }

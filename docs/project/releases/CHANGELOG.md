@@ -4,6 +4,12 @@ Release-relevant changes after the baseline are recorded here. CR identifiers mu
 
 ## Unreleased
 
+## 1.13.0 — 2026-10-03
+
+- CR-025: Added independent Auto/custom spacing preferences for horizontal Ruler, vertical Ruler and Grid.
+- Custom display spacing retains its physical length across document-unit changes and safely thins at low Zoom.
+- CosmicDesigner assembly version is now `1.13.0`.
+
 ## 1.12.1 — 2026-10-03
 
 - CR-024: Changed the Main Window Title to `Filename.dxf - CosmicDesigner`, uses `Untitled` for new documents, and prefixes unsaved documents with `*`.

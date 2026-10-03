@@ -10,11 +10,11 @@
 ## Current Version
 
 - DXFExplorer installer suite: `1.1.0` (`installer/DXFExplorer.iss`)
-- CosmicDesigner: `1.12.1`
+- CosmicDesigner: `1.13.0`
 
 ## Current Development Phase
 
-CosmicDesigner 1.12.1 implements all registered CRs through CR-024. Window titles now identify the active document before the application name.
+CosmicDesigner 1.13.0 implements all registered CRs through CR-025. Flat Designer Ruler and Grid intervals can now be configured independently while retaining physical spacing across document units.
 
 ## Recovery Audit — 2026-10-01
 
@@ -180,6 +180,14 @@ CosmicDesigner 1.12.1 implements all registered CRs through CR-024. Window title
 - Published `artifacts/CosmicDesigner-1.12.1/CosmicDesigner.exe` with file version `1.12.1.0`.
 - Implementation commit: `41151ca`.
 
+## 1.13.0 Ruler and Grid Spacing — 2026-10-03
+
+- Added a Settings `Ruler & Grid` tab with independent Auto/custom horizontal Ruler, vertical Ruler and Grid intervals.
+- Stored custom intervals as physical lengths and converted them to the active document unit at render time.
+- Added adaptive 1·2·5 thinning with 8px Grid and 45px Ruler density thresholds.
+- Release build completed with zero warnings and errors, and all CosmicDesigner verification checks passed.
+- Published `artifacts/CosmicDesigner-1.13.0/CosmicDesigner.exe` with file version `1.13.0.0`.
+
 ## In Progress
 
 - None.
@@ -211,6 +219,7 @@ CosmicDesigner 1.12.1 implements all registered CRs through CR-024. Window title
 - [CR-022](change-requests/CR-022.md) — Edit Settings 사용자 환경 설정창
 - [CR-023](change-requests/CR-023.md) — 문서 단위와 두 가지 단위 변경 방식
 - [CR-024](change-requests/CR-024.md) — 문서명 우선 Window Title
+- [CR-025](change-requests/CR-025.md) — Ruler 및 Grid 간격 설정
 
 ## Completed Change Requests
 
@@ -229,8 +238,8 @@ CosmicDesigner 1.12.1 implements all registered CRs through CR-024. Window title
 ## Next Work
 
 1. User-test CR-004 through CR-010 and promote passing CRs to Verified.
-2. Complete final UI acceptance for CR-011 through CR-024 using the latest `1.12.1` artifact.
+2. Complete final UI acceptance for CR-011 through CR-025 using the latest `1.13.0` artifact.
 
 ## Next Change Request Number
 
-`CR-025`
+`CR-026`

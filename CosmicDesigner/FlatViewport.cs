@@ -30,6 +30,15 @@ public static class FlatViewportEngine
     {
         var desired=70/Math.Max(.0001,scale);var power=Math.Pow(10,Math.Floor(Math.Log10(desired)));var n=desired/power;return(n<2?2:n<5?5:10)*power;
     }
+
+    public static double DisplayStep(double scale,double baseStep,double minimumPixels)
+    {
+        if(!double.IsFinite(baseStep)||baseStep<=0)return GridStep(scale);
+        var required=Math.Max(1,minimumPixels/Math.Max(.0001,baseStep*scale));
+        var power=Math.Pow(10,Math.Floor(Math.Log10(required)));var normalized=required/power;
+        var multiplier=normalized<=1?1:normalized<=2?2:normalized<=5?5:10;
+        return baseStep*multiplier*power;
+    }
 }
 
 public readonly record struct SectionViewportState(double Zoom,Vector Pan);
