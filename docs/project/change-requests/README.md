@@ -44,7 +44,7 @@ The project-management setup and baseline documentation do not consume a CR beca
 | [CR-028](CR-028.md) | 3D Preview 내부 절곡 Edge 제거 | Implemented | 1.13.3, 1.13.4 | `0592574`, `94d9fcd` |
 | [CR-029](CR-029.md) | 3D Preview V/V1 절곡선 색상 표시 | Implemented | 1.14.0 | `e33bb68` |
 | [CR-030](CR-030.md) | 삼각형 Cut 꼭짓점 직접 편집 | Implemented | 1.15.0 | `62bc5b6` |
-| [CR-031](CR-031.md) | 원·삼각형·사각형 Cut 드래그 생성 | Implemented | 1.16.0 | — |
+| [CR-031](CR-031.md) | 원·삼각형·사각형 Cut 드래그 생성 | Implemented | 1.16.0 | `6fbf06b` |
 
 ## File naming
 
