@@ -255,6 +255,7 @@ CosmicDesigner 1.17.0 implements all registered CRs through CR-032. Boundary-tou
 - Preserved non-orthogonal Triangle edges in the resulting Outer Contour.
 - Release build completed with zero warnings and errors, and all CosmicDesigner verification checks passed.
 - Published `artifacts/CosmicDesigner-1.17.0/CosmicDesigner.exe` with file version `1.17.0.0`.
+- Implementation commit: `e244747`.
 
 ## In Progress
 
