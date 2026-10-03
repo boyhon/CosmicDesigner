@@ -4,6 +4,13 @@ Release-relevant changes after the baseline are recorded here. CR identifiers mu
 
 ## Unreleased
 
+## 1.18.0 — 2026-10-03
+
+- CR-033: Added numeric-radius Fillet creation for convex right-angle Outer Contour corners with live dashed preview.
+- Saved exact tangent quarter-circle ARCs in DXF while using straight chord approximations in the overview-oriented 3D Preview.
+- Corrected Flat Designer ARC rendering to scale radius with the current viewport Zoom.
+- CosmicDesigner assembly version is now `1.18.0`.
+
 ## 1.17.0 — 2026-10-03
 
 - CR-032: Extended orange candidate highlighting and explicit right-click Outer Contour merging to Triangle Cuts.
