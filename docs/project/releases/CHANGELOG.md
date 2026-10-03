@@ -4,6 +4,12 @@ Release-relevant changes after the baseline are recorded here. CR identifiers mu
 
 ## Unreleased
 
+## 1.14.0 — 2026-10-03
+
+- CR-029: Added red V and blue V1 bend edges to the 3D Preview, clipped to remaining material.
+- Retained black edges only for actual Outer and Cut contours.
+- CosmicDesigner assembly version is now `1.14.0`.
+
 ## 1.13.4 — 2026-10-03
 
 - CR-028 refinement: Replaced inferred one-sided mesh edges with explicit Outer Contour and Cut contour edges, removing residual radial lines around circular holes.

@@ -205,7 +205,7 @@ public sealed class Preview3DView : Grid
     void BuildModel()
     {
         while(_group.Children.Count>1)_group.Children.RemoveAt(1);if(Document is null)return;var surface=BentSurfaceEngine.Build(Document);if(surface.Points.Count==0)return;var mesh=new MeshGeometry3D();var x0=(surface.Points.Min(p=>p.X)+surface.Points.Max(p=>p.X))/2;var y0=(surface.Points.Min(p=>p.Y)+surface.Points.Max(p=>p.Y))/2;foreach(var p in surface.Points)mesh.Positions.Add(new Point3D(p.X-x0,p.Y-y0,p.Z));foreach(var i in surface.Triangles)mesh.TriangleIndices.Add(i);var alpha=Transparent?TransparentOpacity:SolidOpacity;var acrylicBrush=new SolidColorBrush(Color.FromArgb(alpha,185,195,205));var material=new DiffuseMaterial(acrylicBrush);_group.Children.Add(new GeometryModel3D(mesh,material){BackMaterial=material});
-        var edgeMaterial=new DiffuseMaterial(Brushes.Black);var radius=Math.Max(.45,Math.Min(Document.Material.Width,Document.Material.Height)/400)*EdgeScale;foreach(var edge in surface.Edges)_group.Children.Add(EdgeModel(mesh.Positions[edge.A],mesh.Positions[edge.B],radius,edgeMaterial));
+        var edgeMaterial=new DiffuseMaterial(Brushes.Black);var vMaterial=new DiffuseMaterial(Brushes.Red);var v1Material=new DiffuseMaterial(Brushes.DodgerBlue);var radius=Math.Max(.45,Math.Min(Document.Material.Width,Document.Material.Height)/400)*EdgeScale;foreach(var edge in surface.Edges)_group.Children.Add(EdgeModel(mesh.Positions[edge.A],mesh.Positions[edge.B],radius,edgeMaterial));foreach(var edge in surface.BendEdges)_group.Children.Add(EdgeModel(mesh.Positions[edge.A],mesh.Positions[edge.B],radius*1.15,edge.Layer=="V"?vMaterial:v1Material));
     }
     static GeometryModel3D EdgeModel(Point3D start,Point3D end,double radius,Material material)
     {

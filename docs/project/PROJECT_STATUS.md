@@ -10,11 +10,11 @@
 ## Current Version
 
 - DXFExplorer installer suite: `1.1.0` (`installer/DXFExplorer.iss`)
-- CosmicDesigner: `1.13.4`
+- CosmicDesigner: `1.14.0`
 
 ## Current Development Phase
 
-CosmicDesigner 1.13.4 refines CR-028 so 3D Preview edges are generated only from the actual Outer Contour and Cut contours, eliminating residual radial mesh lines.
+CosmicDesigner 1.14.0 implements all registered CRs through CR-029. The 3D Preview identifies real V bends in red and V1 bends in blue while retaining black contour-only edges.
 
 ## Recovery Audit — 2026-10-01
 
@@ -222,6 +222,13 @@ CosmicDesigner 1.13.4 refines CR-028 so 3D Preview edges are generated only from
 - Published `artifacts/CosmicDesigner-1.13.4/CosmicDesigner.exe` with file version `1.13.4.0`.
 - Refinement commit: `94d9fcd`.
 
+## 1.14.0 Colored 3D Bend Edges — 2026-10-03
+
+- Added material-clipped bend edges generated from actual W/H bend stations.
+- Rendered V bend edges in red and V1 bend edges in blue while retaining black Outer/Cut contour edges.
+- Release build completed with zero warnings and errors, and all CosmicDesigner verification checks passed.
+- Published `artifacts/CosmicDesigner-1.14.0/CosmicDesigner.exe` with file version `1.14.0.0`.
+
 ## In Progress
 
 - None.
@@ -257,6 +264,7 @@ CosmicDesigner 1.13.4 refines CR-028 so 3D Preview edges are generated only from
 - [CR-026](change-requests/CR-026.md) — Flat Designer 절삭 영역 흰색 표시
 - [CR-027](change-requests/CR-027.md) — 3D Preview 내부 Cut 투명 표시
 - [CR-028](change-requests/CR-028.md) — 3D Preview 내부 절곡 Edge 제거
+- [CR-029](change-requests/CR-029.md) — 3D Preview V/V1 절곡선 색상 표시
 
 ## Completed Change Requests
 
@@ -275,8 +283,8 @@ CosmicDesigner 1.13.4 refines CR-028 so 3D Preview edges are generated only from
 ## Next Work
 
 1. User-test CR-004 through CR-010 and promote passing CRs to Verified.
-2. Complete final UI acceptance for CR-011 through CR-028 using the latest `1.13.4` artifact.
+2. Complete final UI acceptance for CR-011 through CR-029 using the latest `1.14.0` artifact.
 
 ## Next Change Request Number
 
-`CR-029`
+`CR-030`
