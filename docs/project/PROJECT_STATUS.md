@@ -220,6 +220,7 @@ CosmicDesigner 1.13.4 refines CR-028 so 3D Preview edges are generated only from
 - Split explicit contour edges at bend stations so they follow folded surfaces without adding internal or radial lines.
 - Release build completed with zero warnings and errors, and all CosmicDesigner verification checks passed.
 - Published `artifacts/CosmicDesigner-1.13.4/CosmicDesigner.exe` with file version `1.13.4.0`.
+- Refinement commit: `94d9fcd`.
 
 ## In Progress
 
