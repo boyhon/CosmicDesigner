@@ -10,11 +10,11 @@
 ## Current Version
 
 - DXFExplorer installer suite: `1.1.0` (`installer/DXFExplorer.iss`)
-- CosmicDesigner: `1.13.3`
+- CosmicDesigner: `1.13.4`
 
 ## Current Development Phase
 
-CosmicDesigner 1.13.3 implements all registered CRs through CR-028. The 3D Preview now shows only exterior and Cut boundary edges without internal bend lines.
+CosmicDesigner 1.13.4 refines CR-028 so 3D Preview edges are generated only from the actual Outer Contour and Cut contours, eliminating residual radial mesh lines.
 
 ## Recovery Audit — 2026-10-01
 
@@ -214,6 +214,13 @@ CosmicDesigner 1.13.3 implements all registered CRs through CR-028. The 3D Previ
 - Published `artifacts/CosmicDesigner-1.13.3/CosmicDesigner.exe` with file version `1.13.3.0`.
 - Implementation commit: `0592574`.
 
+## 1.13.4 Explicit 3D Contour Edges — 2026-10-03
+
+- Replaced inferred one-sided mesh edges with edges generated explicitly from Outer Contour and Cut contours.
+- Split explicit contour edges at bend stations so they follow folded surfaces without adding internal or radial lines.
+- Release build completed with zero warnings and errors, and all CosmicDesigner verification checks passed.
+- Published `artifacts/CosmicDesigner-1.13.4/CosmicDesigner.exe` with file version `1.13.4.0`.
+
 ## In Progress
 
 - None.
@@ -267,7 +274,7 @@ CosmicDesigner 1.13.3 implements all registered CRs through CR-028. The 3D Previ
 ## Next Work
 
 1. User-test CR-004 through CR-010 and promote passing CRs to Verified.
-2. Complete final UI acceptance for CR-011 through CR-028 using the latest `1.13.3` artifact.
+2. Complete final UI acceptance for CR-011 through CR-028 using the latest `1.13.4` artifact.
 
 ## Next Change Request Number
 
