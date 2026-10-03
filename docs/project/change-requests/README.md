@@ -42,7 +42,7 @@ The project-management setup and baseline documentation do not consume a CR beca
 | [CR-026](CR-026.md) | Flat Designer 절삭 영역 흰색 표시 | Implemented | 1.13.1 | `cf205bf` |
 | [CR-027](CR-027.md) | 3D Preview 내부 Cut 투명 표시 | Implemented | 1.13.2 | `d178aff` |
 | [CR-028](CR-028.md) | 3D Preview 내부 절곡 Edge 제거 | Implemented | 1.13.3, 1.13.4 | `0592574`, `94d9fcd` |
-| [CR-029](CR-029.md) | 3D Preview V/V1 절곡선 색상 표시 | Implemented | 1.14.0 | Pending |
+| [CR-029](CR-029.md) | 3D Preview V/V1 절곡선 색상 표시 | Implemented | 1.14.0 | `e33bb68` |
 
 ## File naming
 
