@@ -10,11 +10,11 @@
 ## Current Version
 
 - DXFExplorer installer suite: `1.1.0` (`installer/DXFExplorer.iss`)
-- CosmicDesigner: `1.11.0`
+- CosmicDesigner: `1.12.0`
 
 ## Current Development Phase
 
-CosmicDesigner 1.11.0 implements all registered CRs through CR-021. Unsaved document changes now require a save/discard/cancel decision before New, Open/Recent, Exit or window close.
+CosmicDesigner 1.12.0 implements all registered CRs through CR-023. Edit now provides persistent tool Settings and document-unit conversion between mm/cm/m with both numeric-preserving and physical-size-preserving policies.
 
 ## Recovery Audit — 2026-10-01
 
@@ -163,6 +163,14 @@ CosmicDesigner 1.11.0 implements all registered CRs through CR-021. Unsaved docu
 - Published `artifacts/CosmicDesigner-1.11.0/CosmicDesigner.exe` with file version `1.11.0.0`.
 - Implementation commit: `882f035`.
 
+## 1.12.0 Settings and Document Units — 2026-10-03
+
+- Added Edit > Settings with persistent General, Editing, 3D Preview and New Document preferences without duplicating transient View commands.
+- Added Edit > Document Units for mm/cm/m using either preserved numbers or converted values that preserve physical size.
+- Stored the active unit in CosmicDesigner metadata and DXF `$INSUNITS`, including Undo/Redo and legacy compatibility.
+- Release build completed with zero warnings and errors, and all CosmicDesigner verification checks passed.
+- Published `artifacts/CosmicDesigner-1.12.0/CosmicDesigner.exe` with file version `1.12.0.0`.
+
 ## In Progress
 
 - None.
@@ -191,6 +199,8 @@ CosmicDesigner 1.11.0 implements all registered CRs through CR-021. Unsaved docu
 - [CR-019](change-requests/CR-019.md) — 3D Preview Outer Contour 컷 형상 반영
 - [CR-020](change-requests/CR-020.md) — File 메뉴 New/Open/Save 단축키
 - [CR-021](change-requests/CR-021.md) — 미저장 변경 사항 저장 확인
+- [CR-022](change-requests/CR-022.md) — Edit Settings 사용자 환경 설정창
+- [CR-023](change-requests/CR-023.md) — 문서 단위와 두 가지 단위 변경 방식
 
 ## Completed Change Requests
 
@@ -209,8 +219,8 @@ CosmicDesigner 1.11.0 implements all registered CRs through CR-021. Unsaved docu
 ## Next Work
 
 1. User-test CR-004 through CR-010 and promote passing CRs to Verified.
-2. Complete final UI acceptance for CR-011 through CR-021 using the latest `1.11.0` artifact.
+2. Complete final UI acceptance for CR-011 through CR-023 using the latest `1.12.0` artifact.
 
 ## Next Change Request Number
 
-`CR-022`
+`CR-024`

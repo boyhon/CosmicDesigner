@@ -22,7 +22,7 @@ Only behavior confirmed by current source, tests, project configuration, or exis
 
 ## CosmicDesigner domain behavior
 
-- Internal and displayed length units are centimeters.
+- Each document explicitly uses millimeters, centimeters or meters. Legacy metadata without a unit retains its historical millimeter-to-centimeter migration behavior.
 - A new document starts with `300 × 300 cm` material and `0.2 cm` thickness.
 - The document manages one outer contour, inner contours/cuts, bend objects, W/H section segments, and micro joints.
 - Material-thickness changes recalculate thickness-dependent bend properties.
@@ -38,6 +38,8 @@ Only behavior confirmed by current source, tests, project configuration, or exis
 - The 3D preview supports mouse-driven viewpoint rotation and wheel zoom.
 - File > Recent retains up to 10 successfully opened files in a user-level persistent setting.
 - File > New, Open and Save display and execute the global keyboard shortcuts `Ctrl+N`, `Ctrl+O` and `Ctrl+S` respectively.
+- Edit > Settings provides persistent user preferences for default folders, Recent count, interaction tolerances, Zoom step, 3D opacity/edge scale and new-document dimensions/unit without duplicating transient View commands.
+- Edit > Document Units changes the active document between mm/cm/m either by preserving numeric values (rescaling physical interpretation) or by converting every length value to preserve physical size; the operation participates in Undo/Redo.
 - When the current design has unsaved document changes, New, Open/Recent, Exit and window close ask whether to save. Yes completes saving before continuing, No discards the pending changes, and Cancel or a cancelled/failed Save As leaves the current document open.
 - View provides Zoom In, Zoom Out, Fit to Window, Ruler, Grid, and Status Bar controls.
 - Ruler, Grid, and Status Bar visibility are global persistent settings.

@@ -4,6 +4,13 @@ Release-relevant changes after the baseline are recorded here. CR identifiers mu
 
 ## Unreleased
 
+## 1.12.0 — 2026-10-03
+
+- `CR-022`: added Edit > Settings for persistent folders, Recent count, interaction tolerances, Zoom step, 3D presentation and new-document defaults.
+- `CR-023`: added mm/cm/m document units with numeric-preserving rescale and physical-size-preserving conversion modes.
+- Persisted units in DXF `$INSUNITS` and CosmicDesigner metadata with Undo/Redo and legacy-file compatibility.
+- CosmicDesigner assembly version is now `1.12.0`.
+
 ## 1.11.0 — 2026-10-03
 
 - `CR-021`: added unsaved-change tracking and Save/Discard/Cancel confirmation before New, Open/Recent, Exit and window close.

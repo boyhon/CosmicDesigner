@@ -6,7 +6,7 @@ Users submit requirements in natural language; they are not expected to assign C
 
 ## Next available number
 
-`CR-022`
+`CR-024`
 
 The project-management setup and baseline documentation do not consume a CR because they do not change application behavior.
 
@@ -35,6 +35,8 @@ The project-management setup and baseline documentation do not consume a CR beca
 | [CR-019](CR-019.md) | 3D Preview Outer Contour 컷 형상 반영 | Implemented | 1.9.0 | `0ecd6cd` |
 | [CR-020](CR-020.md) | File 메뉴 New/Open/Save 단축키 | Implemented | 1.10.0 | `24762b7` |
 | [CR-021](CR-021.md) | 미저장 변경 사항 저장 확인 | Implemented | 1.11.0 | `882f035` |
+| [CR-022](CR-022.md) | Edit Settings 사용자 환경 설정창 | Implemented | 1.12.0 | Pending |
+| [CR-023](CR-023.md) | 문서 단위와 두 가지 단위 변경 방식 | Implemented | 1.12.0 | Pending |
 
 ## File naming
 

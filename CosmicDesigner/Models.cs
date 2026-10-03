@@ -5,6 +5,16 @@ using System.Runtime.CompilerServices;
 
 namespace CosmicDesigner;
 
+public enum MeasurementUnit{Millimeter,Centimeter,Meter}
+public enum UnitChangeMode{PreserveNumbers,PreservePhysicalSize}
+public static class MeasurementUnits
+{
+    public static string Symbol(this MeasurementUnit unit)=>unit switch{MeasurementUnit.Millimeter=>"mm",MeasurementUnit.Meter=>"m",_=>"cm"};
+    public static double Metres(this MeasurementUnit unit)=>unit switch{MeasurementUnit.Millimeter=>.001,MeasurementUnit.Meter=>1,_=>.01};
+    public static int DxfCode(this MeasurementUnit unit)=>unit switch{MeasurementUnit.Millimeter=>4,MeasurementUnit.Meter=>6,_=>5};
+    public static bool TryParse(string? value,out MeasurementUnit unit){unit=value?.ToLowerInvariant() switch{"mm"=>MeasurementUnit.Millimeter,"m"=>MeasurementUnit.Meter,_=>MeasurementUnit.Centimeter};return value is not null&&(value.Equals("mm",StringComparison.OrdinalIgnoreCase)||value.Equals("cm",StringComparison.OrdinalIgnoreCase)||value.Equals("m",StringComparison.OrdinalIgnoreCase));}
+}
+
 public enum SectionAxis { W, H }
 public enum BendDirection { Up, Down, Left, Right }
 public enum CutKind { Corner, Edge, Hole }
@@ -106,6 +116,7 @@ public sealed class CosmicDesignerDocument : INotifyPropertyChanged
     public ObservableCollection<MicroJoint> MicroJoints { get; } = [];
     public SectionViewState WView { get; } = new();
     public SectionViewState HView { get; } = new();
+    public MeasurementUnit Unit { get; private set; }=MeasurementUnit.Centimeter;
     public event PropertyChangedEventHandler? PropertyChanged;
     public event EventHandler? Changed;
 
@@ -160,6 +171,11 @@ public sealed class CosmicDesignerDocument : INotifyPropertyChanged
         for(var i=0;i<bends.Count;i++){p+=list[i].Length;bends[i].Position=p;}Recalculate();
     }
     public void ChangeThickness(double thickness) { if (thickness <= 0) throw new ArgumentOutOfRangeException(nameof(thickness)); Material.Thickness = thickness; Recalculate(); }
+    public void ConfigureNew(double width,double height,double thickness,MeasurementUnit unit){if(width<=0||height<=0||thickness<=0)throw new ArgumentOutOfRangeException();Unit=unit;Bends.Clear();Cuts.Clear();InnerContours.Clear();MicroJoints.Clear();WSegments.Clear();HSegments.Clear();WSegments.Add(new(){Id="W-S001",Axis=SectionAxis.W,Index=0,Length=width});HSegments.Add(new(){Id="H-S001",Axis=SectionAxis.H,Index=0,Length=height});Material.Thickness=thickness;_preserveOuterContour=false;Recalculate();}
+    public void ChangeUnit(MeasurementUnit unit,UnitChangeMode mode)
+    {
+        if(unit==Unit)return;if(mode==UnitChangeMode.PreserveNumbers){Unit=unit;PropertyChanged?.Invoke(this,new(null));Changed?.Invoke(this,EventArgs.Empty);return;}var factor=Unit.Metres()/unit.Metres();foreach(var s in WSegments.Concat(HSegments))s.Length*=factor;foreach(var b in Bends)b.Position*=factor;foreach(var c in Cuts){c.CenterX*=factor;c.CenterY*=factor;c.Width*=factor;c.Height*=factor;for(var i=0;i<c.Geometry.Count;i++)c.Geometry[i]=ScaleGeometry(c.Geometry[i],factor);var inner=InnerContours.FirstOrDefault(x=>x.Id==c.Id);if(inner is not null){inner.Segments.Clear();inner.Segments.AddRange(c.Geometry);}}foreach(var j in MicroJoints){j.Position*=factor;j.Width*=factor;}for(var i=0;i<OuterContour.Segments.Count;i++)OuterContour.Segments[i]=ScaleGeometry(OuterContour.Segments[i],factor);Material.Thickness*=factor;Unit=unit;_preserveOuterContour=true;Recalculate();
+    }
     public void Recalculate() { BendCalculationEngine.Recalculate(this); RebuildOuterContour(); PropertyChanged?.Invoke(this, new(null)); Changed?.Invoke(this, EventArgs.Empty); }
     internal void ApplyImportedGeometry(double width,double height,IEnumerable<GeometrySegment> outer,IEnumerable<CutOperation> cuts,IEnumerable<(SectionAxis Axis,double Position,BendDirection Direction)> bends,double thickness=.2)
     {
@@ -173,6 +189,7 @@ public sealed class CosmicDesignerDocument : INotifyPropertyChanged
         _preserveOuterContour=true;OuterContour.Segments.Clear();OuterContour.Segments.AddRange(outer);Recalculate();
     }
     internal void PreserveOuterGeometry(IEnumerable<GeometrySegment> geometry){_preserveOuterContour=true;OuterContour.Segments.Clear();OuterContour.Segments.AddRange(geometry);}
+    internal void SetUnit(MeasurementUnit unit)=>Unit=unit;
     public int NextSequence() => Bends.Count + Cuts.Count + MicroJoints.Count + 1;
     void RebuildSegments(SectionAxis axis)
     {
@@ -186,4 +203,5 @@ public sealed class CosmicDesignerDocument : INotifyPropertyChanged
         OuterContour.Segments.Clear(); var w = Material.Width; var h = Material.Height;
         OuterContour.Segments.AddRange([new LineSegment(0,0,w,0), new LineSegment(w,0,w,h), new LineSegment(w,h,0,h), new LineSegment(0,h,0,0)]);
     }
+    static GeometrySegment ScaleGeometry(GeometrySegment geometry,double scale)=>geometry switch{LineSegment l=>new LineSegment(l.X1*scale,l.Y1*scale,l.X2*scale,l.Y2*scale),CircleSegment c=>new CircleSegment(c.Cx*scale,c.Cy*scale,c.Radius*scale),ArcSegment a=>new ArcSegment(a.Cx*scale,a.Cy*scale,a.Radius*scale,a.StartDegrees,a.EndDegrees),_=>geometry};
 }
