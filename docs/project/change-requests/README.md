@@ -46,7 +46,7 @@ The project-management setup and baseline documentation do not consume a CR beca
 | [CR-030](CR-030.md) | 삼각형 Cut 꼭짓점 직접 편집 | Implemented | 1.15.0 | `62bc5b6` |
 | [CR-031](CR-031.md) | 원·삼각형·사각형 Cut 드래그 생성 | Implemented | 1.16.0 | `6fbf06b` |
 | [CR-032](CR-032.md) | Triangle Cut Outer Contour 명시적 통합 | Implemented | 1.17.0 | `e244747` |
-| [CR-033](CR-033.md) | Outer Contour 직각 모서리 Fillet | Implemented | 1.18.0 | — |
+| [CR-033](CR-033.md) | Outer Contour 직각 모서리 Fillet | Implemented | 1.18.0 | `09c2abb` |
 
 ## File naming
 

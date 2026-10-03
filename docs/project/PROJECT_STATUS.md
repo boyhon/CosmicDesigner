@@ -264,6 +264,7 @@ CosmicDesigner 1.18.0 implements all registered CRs through CR-033. Flat Designe
 - Preserved the exact ARC in DXF while representing it as a straight chord in 3D Preview.
 - Release build completed with zero warnings and errors, and all CosmicDesigner verification checks passed.
 - Published `artifacts/CosmicDesigner-1.18.0/CosmicDesigner.exe` with file version `1.18.0.0`.
+- Implementation commit: `09c2abb`.
 
 ## In Progress
 
