@@ -4,6 +4,12 @@ Release-relevant changes after the baseline are recorded here. CR identifiers mu
 
 ## Unreleased
 
+## 1.18.1 — 2026-10-03
+
+- CR-034: Allowed additional eligible corners to receive Fillets after the Outer Contour already contains one or more ARC segments.
+- Added four-corner sequential Fillet and four-ARC DXF round-trip regression coverage.
+- CosmicDesigner assembly version is now `1.18.1`.
+
 ## 1.18.0 — 2026-10-03
 
 - CR-033: Added numeric-radius Fillet creation for convex right-angle Outer Contour corners with live dashed preview.

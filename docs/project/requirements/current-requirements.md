@@ -44,6 +44,7 @@ Only behavior confirmed by current source, tests, project configuration, or exis
 - Rectangle notches can be merged repeatedly into the current rectilinear Outer Contour; fully interior rectangles and cuts that would produce multiple material components remain Cut objects.
 - Flat Designer supports direct selection of Outer Contour LINE objects. Dragging a selected line body moves it perpendicular to itself, while dragging either endpoint changes its length; every shared endpoint is propagated to the connected neighboring LINE so the contour stays connected.
 - Flat Designer provides a numeric-radius Fillet tool for convex right-angle Outer Contour LINE corners, with orange dashed preview, tangent quarter-circle ARC insertion, invalid-radius rejection and Undo support.
+- Existing Fillet ARCs do not prevent additional eligible LINE–LINE corners on the same Outer Contour from receiving subsequent Fillets.
 - The 3D preview supports mouse-driven viewpoint rotation and wheel zoom.
 - File > Recent retains up to 10 successfully opened files in a user-level persistent setting.
 - File > New, Open and Save display and execute the global keyboard shortcuts `Ctrl+N`, `Ctrl+O` and `Ctrl+S` respectively.

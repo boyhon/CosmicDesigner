@@ -59,13 +59,14 @@ public static class OuterContourFilletEngine
     const double Epsilon=1e-6;
     public static bool TryApply(IReadOnlyList<GeometrySegment> source,int vertexIndex,double radius,out IReadOnlyList<GeometrySegment> contour)
     {
-        contour=source;if(radius<=Epsilon||source.Count<3||vertexIndex<0||vertexIndex>=source.Count||source.Any(segment=>segment is not LineSegment))return false;
-        var current=(LineSegment)source[vertexIndex];var previousIndex=(vertexIndex+source.Count-1)%source.Count;var previous=(LineSegment)source[previousIndex];var a=new Point(previous.X1,previous.Y1);var b=new Point(current.X1,current.Y1);var previousEnd=new Point(previous.X2,previous.Y2);var c=new Point(current.X2,current.Y2);if((previousEnd-b).Length>Epsilon)return false;
+        contour=source;if(radius<=Epsilon||source.Count<3||vertexIndex<0||vertexIndex>=source.Count)return false;
+        var previousIndex=(vertexIndex+source.Count-1)%source.Count;if(source[vertexIndex] is not LineSegment current||source[previousIndex] is not LineSegment previous)return false;var a=new Point(previous.X1,previous.Y1);var b=new Point(current.X1,current.Y1);var previousEnd=new Point(previous.X2,previous.Y2);var c=new Point(current.X2,current.Y2);if((previousEnd-b).Length>Epsilon)return false;
         var incoming=b-a;var outgoing=c-b;var incomingLength=incoming.Length;var outgoingLength=outgoing.Length;if(incomingLength<=radius+Epsilon||outgoingLength<=radius+Epsilon)return false;incoming.Normalize();outgoing.Normalize();if(Math.Abs(Vector.Multiply(incoming,outgoing))>Epsilon||Math.Abs(Vector.CrossProduct(incoming,outgoing))<1-Epsilon)return false;
-        var points=source.Cast<LineSegment>().Select(line=>new Point(line.X1,line.Y1)).ToList();var area=SignedArea(points);var turn=Vector.CrossProduct(incoming,outgoing);if(Math.Sign(turn)!=Math.Sign(area))return false;
+        var points=source.Select(StartPoint).ToList();var area=SignedArea(points);var turn=Vector.CrossProduct(incoming,outgoing);if(Math.Sign(turn)!=Math.Sign(area))return false;
         var start=b-incoming*radius;var end=b+outgoing*radius;var center=start+outgoing*radius;var startAngle=Math.Atan2(start.Y-center.Y,start.X-center.X)*180/Math.PI;var endAngle=Math.Atan2(end.Y-center.Y,end.X-center.X)*180/Math.PI;if(endAngle<=startAngle)endAngle+=360;if(endAngle-startAngle>180+Epsilon)return false;
         var result=source.ToList();result[previousIndex]=new LineSegment(previous.X1,previous.Y1,start.X,start.Y);result[vertexIndex]=new LineSegment(end.X,end.Y,current.X2,current.Y2);result.Insert(vertexIndex,new ArcSegment(center.X,center.Y,radius,startAngle,endAngle));contour=result;return true;
     }
+    static Point StartPoint(GeometrySegment segment)=>segment switch{LineSegment line=>new(line.X1,line.Y1),ArcSegment arc=>new(arc.Cx+arc.Radius*Math.Cos(arc.StartDegrees*Math.PI/180),arc.Cy+arc.Radius*Math.Sin(arc.StartDegrees*Math.PI/180)),_=>new(double.NaN,double.NaN)};
     static double SignedArea(IReadOnlyList<Point> points){double area=0;for(var i=0;i<points.Count;i++){var next=(i+1)%points.Count;area+=points[i].X*points[next].Y-points[next].X*points[i].Y;}return area/2;}
 }
 
