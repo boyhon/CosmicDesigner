@@ -292,6 +292,7 @@ CosmicDesigner 1.20.0 implements all registered CRs through CR-036. Fillet now s
 - Approximated Hole ARCs as straight chords in the overview-oriented 3D Preview.
 - Release build completed with zero warnings and errors, and all CosmicDesigner verification checks passed.
 - Published `artifacts/CosmicDesigner-1.20.0/CosmicDesigner.exe` with file version `1.20.0.0`.
+- Implementation commit: `45557d9`.
 
 ## In Progress
 

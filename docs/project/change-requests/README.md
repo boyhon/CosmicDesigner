@@ -49,7 +49,7 @@ The project-management setup and baseline documentation do not consume a CR beca
 | [CR-033](CR-033.md) | Outer Contour 직각 모서리 Fillet | Implemented | 1.18.0 | `09c2abb` |
 | [CR-034](CR-034.md) | 다중 모서리 연속 Fillet 교정 | Implemented | 1.18.1 | `41e53f3` |
 | [CR-035](CR-035.md) | Fillet ARC 선택 표시 및 반지름 편집 | Implemented | 1.19.0 | `d57839a` |
-| [CR-036](CR-036.md) | 임의 각도 및 내부 Hole Fillet | Implemented | 1.20.0 | — |
+| [CR-036](CR-036.md) | 임의 각도 및 내부 Hole Fillet | Implemented | 1.20.0 | `45557d9` |
 
 ## File naming
 
