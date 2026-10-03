@@ -273,6 +273,7 @@ CosmicDesigner 1.18.1 implements all registered CRs through CR-034. Multiple eli
 - Added four-corner sequential Fillet and four-ARC persistence regression coverage.
 - Release build completed with zero warnings and errors, and all CosmicDesigner verification checks passed.
 - Published `artifacts/CosmicDesigner-1.18.1/CosmicDesigner.exe` with file version `1.18.1.0`.
+- Implementation commit: `41e53f3`.
 
 ## In Progress
 
