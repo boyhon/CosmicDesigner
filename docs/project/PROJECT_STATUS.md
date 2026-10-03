@@ -170,6 +170,7 @@ CosmicDesigner 1.12.0 implements all registered CRs through CR-023. Edit now pro
 - Stored the active unit in CosmicDesigner metadata and DXF `$INSUNITS`, including Undo/Redo and legacy compatibility.
 - Release build completed with zero warnings and errors, and all CosmicDesigner verification checks passed.
 - Published `artifacts/CosmicDesigner-1.12.0/CosmicDesigner.exe` with file version `1.12.0.0`.
+- Implementation commit: `c72934b`.
 
 ## In Progress
 
