@@ -170,7 +170,7 @@ public sealed class CosmicDesignerDocument : INotifyPropertyChanged
         else{for(var i=0;i<Math.Min(segmentIndex,geometry.Bends.Count);i++)geometry.Bends[i].Position-=delta;}
         OuterContour.Segments.Clear();OuterContour.Segments.AddRange(contour);_preserveOuterContour=true;RebuildSegments(axis);Recalculate();return true;
     }
-    bool TryGetBoundaryMerge(CutOperation cut,out IReadOnlyList<GeometrySegment> contour){contour=[];if(!string.Equals(cut.Shape,"Rectangle",StringComparison.OrdinalIgnoreCase))return false;var rect=new Rect(cut.CenterX-cut.Width/2,cut.CenterY-cut.Height/2,cut.Width,cut.Height);return BoundaryCutEngine.TrySubtractRectangle(OuterContour.Segments,rect,out contour);}
+    bool TryGetBoundaryMerge(CutOperation cut,out IReadOnlyList<GeometrySegment> contour){contour=[];if(string.Equals(cut.Shape,"Rectangle",StringComparison.OrdinalIgnoreCase)){var rect=new Rect(cut.CenterX-cut.Width/2,cut.CenterY-cut.Height/2,cut.Width,cut.Height);return BoundaryCutEngine.TrySubtractRectangle(OuterContour.Segments,rect,out contour);}return string.Equals(cut.Shape,"Triangle",StringComparison.OrdinalIgnoreCase)&&BoundaryCutEngine.TrySubtractPolygon(OuterContour.Segments,cut.Geometry,out contour);}
     public void UpdateSegment(SectionSegment segment,double length)
     {
         segment.Length=Math.Max(.01,length);var list=segment.Axis==SectionAxis.W?WSegments:HSegments;var bends=Bends.Where(b=>b.Axis==segment.Axis).OrderBy(b=>b.Position).ToList();double p=0;

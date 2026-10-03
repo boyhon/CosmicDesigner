@@ -4,6 +4,12 @@ Release-relevant changes after the baseline are recorded here. CR identifiers mu
 
 ## Unreleased
 
+## 1.17.0 — 2026-10-03
+
+- CR-032: Extended orange candidate highlighting and explicit right-click Outer Contour merging to Triangle Cuts.
+- Preserved Triangle diagonal edges while rejecting fully internal holes or multi-contour subtraction results.
+- CosmicDesigner assembly version is now `1.17.0`.
+
 ## 1.16.0 — 2026-10-03
 
 - CR-031: Added drag-to-size creation with live previews for Circle, Triangle and Rectangle Cuts.

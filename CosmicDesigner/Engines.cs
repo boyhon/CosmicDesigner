@@ -3,6 +3,7 @@ using System.IO;
 using System.Text;
 using System.Text.Json;
 using System.Windows;
+using System.Windows.Media;
 
 namespace CosmicDesigner;
 
@@ -37,6 +38,18 @@ public static class BoundaryCutEngine
         for(var xi=0;xi<xs.Count-1;xi++)for(var yi=0;yi<ys.Count-1;yi++){var x0=xs[xi];var x1=xs[xi+1];var y0=ys[yi];var y1=ys[yi+1];if(x1-x0<=Epsilon||y1-y0<=Epsilon)continue;var mid=new Point((x0+x1)/2,(y0+y1)/2);var inside=InsidePolygon(polygon,mid);var inCut=cut.Contains(mid);if(inside&&inCut){removed=true;continue;}if(!inside)continue;Add(new(x0,y0),new(x1,y0));Add(new(x1,y0),new(x1,y1));Add(new(x1,y1),new(x0,y1));Add(new(x0,y1),new(x0,y0));}
         if(!removed||edges.Count==0)return false;var remaining=new HashSet<(Point A,Point B)>(edges);var loops=new List<List<Point>>();while(remaining.Count>0){var first=remaining.First();var loop=new List<Point>{first.A};var edge=first;while(true){remaining.Remove(edge);loop.Add(edge.B);if((edge.B-first.A).Length<=Epsilon)break;var next=remaining.Where(x=>(x.A-edge.B).Length<=Epsilon).ToList();if(next.Count!=1)return false;edge=next[0];if(loop.Count>edges.Count+1)return false;}loop.RemoveAt(loop.Count-1);RemoveCollinear(loop);loops.Add(loop);}if(loops.Count!=1||loops[0].Count<4)return false;var points=loops[0];contour=Enumerable.Range(0,points.Count).Select(i=>(GeometrySegment)new LineSegment(points[i].X,points[i].Y,points[(i+1)%points.Count].X,points[(i+1)%points.Count].Y)).ToList();return true;
     }
+    public static bool TrySubtractPolygon(IReadOnlyList<GeometrySegment> outer,IReadOnlyList<GeometrySegment> cut,out IReadOnlyList<GeometrySegment> contour)
+    {
+        contour=[];var outerLines=outer.OfType<LineSegment>().ToList();var cutLines=cut.OfType<LineSegment>().ToList();if(outerLines.Count!=outer.Count||cutLines.Count!=cut.Count||outerLines.Count<3||cutLines.Count<3)return false;
+        var outerPoints=outerLines.Select(line=>new Point(line.X1,line.Y1)).ToList();var cutPoints=cutLines.Select(line=>new Point(line.X1,line.Y1)).ToList();
+        var difference=Geometry.Combine(PolygonGeometry(outerPoints),PolygonGeometry(cutPoints),GeometryCombineMode.Exclude,Transform.Identity).GetFlattenedPathGeometry(Epsilon,ToleranceType.Absolute);
+        if(difference.Figures.Count!=1||!difference.Figures[0].IsClosed)return false;var points=FigurePoints(difference.Figures[0]);RemoveCollinear(points);if(points.Count<3)return false;
+        var removedArea=Math.Abs(Area(outerPoints))-Math.Abs(Area(points));if(removedArea<=Epsilon)return false;
+        contour=Enumerable.Range(0,points.Count).Select(i=>(GeometrySegment)new LineSegment(points[i].X,points[i].Y,points[(i+1)%points.Count].X,points[(i+1)%points.Count].Y)).ToList();return true;
+    }
+    static PathGeometry PolygonGeometry(IReadOnlyList<Point> points){var figure=new PathFigure{StartPoint=points[0],IsClosed=true,IsFilled=true};figure.Segments.Add(new PolyLineSegment(points.Skip(1),true));return new PathGeometry([figure]){FillRule=FillRule.Nonzero};}
+    static List<Point> FigurePoints(PathFigure figure){var points=new List<Point>{figure.StartPoint};foreach(var segment in figure.Segments){if(segment is System.Windows.Media.LineSegment line)points.Add(line.Point);else if(segment is PolyLineSegment polyline)points.AddRange(polyline.Points);}if(points.Count>1&&(points[0]-points[^1]).Length<=Epsilon)points.RemoveAt(points.Count-1);return points;}
+    static double Area(IReadOnlyList<Point> points){double area=0;for(var i=0;i<points.Count;i++){var next=(i+1)%points.Count;area+=points[i].X*points[next].Y-points[next].X*points[i].Y;}return area/2;}
     static bool InsidePolygon(IReadOnlyList<Point> polygon,Point p){var inside=false;for(int i=0,j=polygon.Count-1;i<polygon.Count;j=i++){var a=polygon[i];var b=polygon[j];if((a.Y>p.Y)!=(b.Y>p.Y)&&p.X<(b.X-a.X)*(p.Y-a.Y)/(b.Y-a.Y)+a.X)inside=!inside;}return inside;}
     static void RemoveCollinear(List<Point> points){for(var changed=true;changed&&points.Count>3;){changed=false;for(var i=0;i<points.Count;i++){var a=points[(i+points.Count-1)%points.Count];var b=points[i];var c=points[(i+1)%points.Count];if(Math.Abs(Vector.CrossProduct(b-a,c-b))<=Epsilon){points.RemoveAt(i);changed=true;break;}}}}
 }

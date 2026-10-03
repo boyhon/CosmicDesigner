@@ -40,6 +40,7 @@ Only behavior confirmed by current source, tests, project configuration, or exis
 - Supported selected objects can be deleted with the Delete key; deletions participate in Undo/Redo.
 - A mergeable boundary-touching Rectangle Cut remains editable and is shown with an orange selection; moving it away restores the normal gold selection.
 - A mergeable Rectangle Cut provides an `Outer Contour로 통합` right-click command. Only that explicit command converts it into an open notch and removes the Cut and matching Inner Contour.
+- A Triangle Cut whose subtraction leaves one closed Outer Contour uses the same orange candidate and explicit right-click merge workflow, preserving diagonal Triangle edges in the resulting LINE contour.
 - Rectangle notches can be merged repeatedly into the current rectilinear Outer Contour; fully interior rectangles and cuts that would produce multiple material components remain Cut objects.
 - Flat Designer supports direct selection of Outer Contour LINE objects. Dragging a selected line body moves it perpendicular to itself, while dragging either endpoint changes its length; every shared endpoint is propagated to the connected neighboring LINE so the contour stays connected.
 - The 3D preview supports mouse-driven viewpoint rotation and wheel zoom.
