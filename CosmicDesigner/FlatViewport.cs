@@ -41,6 +41,29 @@ public static class FlatViewportEngine
     }
 }
 
+public readonly record struct HoleDragGeometry(double CenterX,double CenterY,double Width,double Height);
+
+public static class HoleDragEngine
+{
+    public static bool Supports(string? shape)=>shape is "Circle" or "Triangle" or "Rectangle";
+
+    public static bool TryCalculate(string shape,Point start,Point end,double materialWidth,double materialHeight,out HoleDragGeometry geometry)
+    {
+        geometry=default;if(!Supports(shape))return false;
+        start=new(Math.Clamp(start.X,0,materialWidth),Math.Clamp(start.Y,0,materialHeight));
+        end=new(Math.Clamp(end.X,0,materialWidth),Math.Clamp(end.Y,0,materialHeight));
+        var dx=end.X-start.X;var dy=end.Y-start.Y;
+        if(shape=="Circle")
+        {
+            var size=Math.Min(Math.Abs(dx),Math.Abs(dy));if(size<.1)return false;
+            end=new(start.X+Math.Sign(dx)*size,start.Y+Math.Sign(dy)*size);
+        }
+        var left=Math.Min(start.X,end.X);var right=Math.Max(start.X,end.X);var bottom=Math.Min(start.Y,end.Y);var top=Math.Max(start.Y,end.Y);
+        if(right-left<.1||top-bottom<.1)return false;
+        geometry=new((left+right)/2,(bottom+top)/2,right-left,top-bottom);return true;
+    }
+}
+
 public static class FlatMaterialMaskEngine
 {
     public static StreamGeometry Build(CosmicDesignerDocument document,FlatViewportTransform transform)

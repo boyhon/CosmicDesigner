@@ -4,6 +4,12 @@ Release-relevant changes after the baseline are recorded here. CR identifiers mu
 
 ## Unreleased
 
+## 1.16.0 — 2026-10-03
+
+- CR-031: Added drag-to-size creation with live previews for Circle, Triangle and Rectangle Cuts.
+- Ignored short clicks and returned to Select mode after creation to prevent accidental duplicate Cuts.
+- CosmicDesigner assembly version is now `1.16.0`.
+
 ## 1.15.0 — 2026-10-03
 
 - CR-030: Replaced Triangle Cut bounding-box resizing with three independent vertex handles over its closed three-LINE contour.
