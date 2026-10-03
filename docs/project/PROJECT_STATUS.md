@@ -237,6 +237,7 @@ CosmicDesigner 1.15.0 implements all registered CRs through CR-030. Triangle Cut
 - Kept the Triangle as a closed three-LINE contour for Flat masking, persistence and 3D Cut rendering.
 - Release build completed with zero warnings and errors, and all CosmicDesigner verification checks passed.
 - Published `artifacts/CosmicDesigner-1.15.0/CosmicDesigner.exe` with file version `1.15.0.0`.
+- Implementation commit: `62bc5b6`.
 
 ## In Progress
 
