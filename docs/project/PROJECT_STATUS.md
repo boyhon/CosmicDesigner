@@ -187,6 +187,7 @@ CosmicDesigner 1.13.0 implements all registered CRs through CR-025. Flat Designe
 - Added adaptive 1·2·5 thinning with 8px Grid and 45px Ruler density thresholds.
 - Release build completed with zero warnings and errors, and all CosmicDesigner verification checks passed.
 - Published `artifacts/CosmicDesigner-1.13.0/CosmicDesigner.exe` with file version `1.13.0.0`.
+- Implementation commit: `f1486b2`.
 
 ## In Progress
 

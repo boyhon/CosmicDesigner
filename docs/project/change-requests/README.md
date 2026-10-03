@@ -38,7 +38,7 @@ The project-management setup and baseline documentation do not consume a CR beca
 | [CR-022](CR-022.md) | Edit Settings 사용자 환경 설정창 | Implemented | 1.12.0 | `c72934b` |
 | [CR-023](CR-023.md) | 문서 단위와 두 가지 단위 변경 방식 | Implemented | 1.12.0 | `c72934b` |
 | [CR-024](CR-024.md) | 문서명 우선 Window Title | Implemented | 1.12.1 | `41151ca` |
-| [CR-025](CR-025.md) | Ruler 및 Grid 간격 설정 | Implemented | 1.13.0 | Pending |
+| [CR-025](CR-025.md) | Ruler 및 Grid 간격 설정 | Implemented | 1.13.0 | `f1486b2` |
 
 ## File naming
 
