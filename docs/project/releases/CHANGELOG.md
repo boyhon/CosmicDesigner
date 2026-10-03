@@ -4,6 +4,13 @@ Release-relevant changes after the baseline are recorded here. CR identifiers mu
 
 ## Unreleased
 
+## 1.20.0 — 2026-10-03
+
+- CR-036: Generalized Fillet tangent calculations from right angles to arbitrary convex LINE–LINE angles.
+- Added Fillet preview, application, Object Tree child geometry and radius editing for LINE-based internal Hole contours.
+- Added straight-chord 3D approximation for internal Hole ARC segments.
+- CosmicDesigner assembly version is now `1.20.0`.
+
 ## 1.19.0 — 2026-10-03
 
 - CR-035: Added gold Flat Designer highlighting and tangent endpoint handles for selected Outer Contour ARC objects.

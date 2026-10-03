@@ -10,11 +10,11 @@
 ## Current Version
 
 - DXFExplorer installer suite: `1.1.0` (`installer/DXFExplorer.iss`)
-- CosmicDesigner: `1.19.0`
+- CosmicDesigner: `1.20.0`
 
 ## Current Development Phase
 
-CosmicDesigner 1.19.0 implements all registered CRs through CR-035. Outer Contour Fillet ARCs now have Flat Designer selection feedback and editable tangent-preserving radius properties.
+CosmicDesigner 1.20.0 implements all registered CRs through CR-036. Fillet now supports arbitrary convex LINE angles on Outer and internal Hole contours with selectable/editable Cut ARC children.
 
 ## Recovery Audit — 2026-10-01
 
@@ -284,6 +284,15 @@ CosmicDesigner 1.19.0 implements all registered CRs through CR-035. Outer Contou
 - Published `artifacts/CosmicDesigner-1.19.0/CosmicDesigner.exe` with file version `1.19.0.0`.
 - Implementation commit: `d57839a`.
 
+## 1.20.0 Arbitrary-angle and Hole Fillets — 2026-10-03
+
+- Generalized tangent-point calculation to arbitrary convex LINE–LINE interior angles.
+- Applied the same Fillet workflow to LINE-based internal Hole contours.
+- Added Cut child geometry to the Object Tree for Hole ARC selection and radius editing.
+- Approximated Hole ARCs as straight chords in the overview-oriented 3D Preview.
+- Release build completed with zero warnings and errors, and all CosmicDesigner verification checks passed.
+- Published `artifacts/CosmicDesigner-1.20.0/CosmicDesigner.exe` with file version `1.20.0.0`.
+
 ## In Progress
 
 - None.
@@ -326,6 +335,7 @@ CosmicDesigner 1.19.0 implements all registered CRs through CR-035. Outer Contou
 - [CR-033](change-requests/CR-033.md) — Outer Contour 직각 모서리 Fillet
 - [CR-034](change-requests/CR-034.md) — 다중 모서리 연속 Fillet 교정
 - [CR-035](change-requests/CR-035.md) — Fillet ARC 선택 표시 및 반지름 편집
+- [CR-036](change-requests/CR-036.md) — 임의 각도 및 내부 Hole Fillet
 
 ## Completed Change Requests
 
@@ -344,8 +354,8 @@ CosmicDesigner 1.19.0 implements all registered CRs through CR-035. Outer Contou
 ## Next Work
 
 1. User-test CR-004 through CR-010 and promote passing CRs to Verified.
-2. Complete final UI acceptance for CR-011 through CR-035 using the latest `1.19.0` artifact.
+2. Complete final UI acceptance for CR-011 through CR-036 using the latest `1.20.0` artifact.
 
 ## Next Change Request Number
 
-`CR-036`
+`CR-037`

@@ -46,6 +46,7 @@ Only behavior confirmed by current source, tests, project configuration, or exis
 - Flat Designer provides a numeric-radius Fillet tool for convex right-angle Outer Contour LINE corners, with orange dashed preview, tangent quarter-circle ARC insertion, invalid-radius rejection and Undo support.
 - Existing Fillet ARCs do not prevent additional eligible LINE–LINE corners on the same Outer Contour from receiving subsequent Fillets.
 - Selecting an Outer Contour Fillet ARC in the Object Tree highlights the arc and its tangent endpoints in Flat Designer, and Selected object provides an editable `Radius R` that recalculates both adjacent LINE endpoints while preserving contour closure.
+- Fillet supports convex non-parallel LINE–LINE corners at arbitrary angles on both the Outer Contour and LINE-based internal Hole contours; Cut child LINE/ARC objects can be selected in the Object Tree and their ARC radii remain editable.
 - The 3D preview supports mouse-driven viewpoint rotation and wheel zoom.
 - File > Recent retains up to 10 successfully opened files in a user-level persistent setting.
 - File > New, Open and Save display and execute the global keyboard shortcuts `Ctrl+N`, `Ctrl+O` and `Ctrl+S` respectively.
@@ -75,6 +76,7 @@ Only behavior confirmed by current source, tests, project configuration, or exis
 - The 3D preview uses a white background, visibly light-gray translucent acrylic surfaces and sufficiently thick opaque black exterior/bend edges without directional lighting or shadow-like shading.
 - The 3D preview surface mesh is clipped to the current rectilinear Outer Contour, so merged boundary cuts and subsequent contour edits remove the corresponding 3D faces and update exterior black edges while preserving fold edges.
 - Outer Contour Fillet ARCs are represented in 3D Preview by a straight chord between their tangent endpoints; the exact quarter-circle remains visible and persistent in Flat Designer and DXF.
+- Internal Hole Fillet ARCs use the same straight-chord approximation in 3D Preview while remaining exact ARC entities in Flat Designer and DXF.
 
 ## Persistence and compatibility
 
