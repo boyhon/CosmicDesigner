@@ -10,11 +10,11 @@
 ## Current Version
 
 - DXFExplorer installer suite: `1.1.0` (`installer/DXFExplorer.iss`)
-- CosmicDesigner: `1.13.1`
+- CosmicDesigner: `1.13.2`
 
 ## Current Development Phase
 
-CosmicDesigner 1.13.1 implements all registered CRs through CR-026. Flat Designer now renders Cut interiors and regions outside the actual Outer Contour as removed white space.
+CosmicDesigner 1.13.2 implements all registered CRs through CR-027. Internal Cut Object regions are now removed from the 3D Preview surface mesh.
 
 ## Recovery Audit — 2026-10-01
 
@@ -198,6 +198,13 @@ CosmicDesigner 1.13.1 implements all registered CRs through CR-026. Flat Designe
 - Published `artifacts/CosmicDesigner-1.13.1/CosmicDesigner.exe` with file version `1.13.1.0`.
 - Implementation commit: `cf205bf`.
 
+## 1.13.2 Transparent 3D Cut Regions — 2026-10-03
+
+- Added all internal Cut contours to 3D mesh partitioning and excluded triangles whose centers lie in a Cut region.
+- Added Cut boundary edges while preserving Outer Contour notches, folds and existing Preview interaction.
+- Release build completed with zero warnings and errors, and all CosmicDesigner verification checks passed.
+- Published `artifacts/CosmicDesigner-1.13.2/CosmicDesigner.exe` with file version `1.13.2.0`.
+
 ## In Progress
 
 - None.
@@ -231,6 +238,7 @@ CosmicDesigner 1.13.1 implements all registered CRs through CR-026. Flat Designe
 - [CR-024](change-requests/CR-024.md) — 문서명 우선 Window Title
 - [CR-025](change-requests/CR-025.md) — Ruler 및 Grid 간격 설정
 - [CR-026](change-requests/CR-026.md) — Flat Designer 절삭 영역 흰색 표시
+- [CR-027](change-requests/CR-027.md) — 3D Preview 내부 Cut 투명 표시
 
 ## Completed Change Requests
 
@@ -249,8 +257,8 @@ CosmicDesigner 1.13.1 implements all registered CRs through CR-026. Flat Designe
 ## Next Work
 
 1. User-test CR-004 through CR-010 and promote passing CRs to Verified.
-2. Complete final UI acceptance for CR-011 through CR-026 using the latest `1.13.1` artifact.
+2. Complete final UI acceptance for CR-011 through CR-027 using the latest `1.13.2` artifact.
 
 ## Next Change Request Number
 
-`CR-027`
+`CR-028`

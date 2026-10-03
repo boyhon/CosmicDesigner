@@ -4,6 +4,12 @@ Release-relevant changes after the baseline are recorded here. CR identifiers mu
 
 ## Unreleased
 
+## 1.13.2 — 2026-10-03
+
+- CR-027: Removed 3D surface faces from internal Cut Object regions and generated visible hole boundary edges.
+- Preserved Outer Contour notch and folded-surface behavior.
+- CosmicDesigner assembly version is now `1.13.2`.
+
 ## 1.13.1 — 2026-10-03
 
 - CR-026: Rendered Cut interiors and areas outside the actual Outer Contour as white removed material.
