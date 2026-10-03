@@ -178,6 +178,7 @@ CosmicDesigner 1.12.1 implements all registered CRs through CR-024. Window title
 - Added an immediate leading `*` indicator whenever the current document has unsaved changes; saving removes it.
 - Release build completed with zero warnings and errors, and all CosmicDesigner verification checks passed.
 - Published `artifacts/CosmicDesigner-1.12.1/CosmicDesigner.exe` with file version `1.12.1.0`.
+- Implementation commit: `41151ca`.
 
 ## In Progress
 
