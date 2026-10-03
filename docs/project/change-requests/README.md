@@ -40,7 +40,7 @@ The project-management setup and baseline documentation do not consume a CR beca
 | [CR-024](CR-024.md) | 문서명 우선 Window Title | Implemented | 1.12.1 | `41151ca` |
 | [CR-025](CR-025.md) | Ruler 및 Grid 간격 설정 | Implemented | 1.13.0 | `f1486b2` |
 | [CR-026](CR-026.md) | Flat Designer 절삭 영역 흰색 표시 | Implemented | 1.13.1 | `cf205bf` |
-| [CR-027](CR-027.md) | 3D Preview 내부 Cut 투명 표시 | Implemented | 1.13.2 | Pending |
+| [CR-027](CR-027.md) | 3D Preview 내부 Cut 투명 표시 | Implemented | 1.13.2 | `d178aff` |
 
 ## File naming
 
