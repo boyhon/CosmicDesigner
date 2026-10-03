@@ -10,11 +10,11 @@
 ## Current Version
 
 - DXFExplorer installer suite: `1.1.0` (`installer/DXFExplorer.iss`)
-- CosmicDesigner: `1.18.1`
+- CosmicDesigner: `1.19.0`
 
 ## Current Development Phase
 
-CosmicDesigner 1.18.1 implements all registered CRs through CR-034. Multiple eligible corners can receive sequential Fillets even after the Outer Contour contains existing ARC segments.
+CosmicDesigner 1.19.0 implements all registered CRs through CR-035. Outer Contour Fillet ARCs now have Flat Designer selection feedback and editable tangent-preserving radius properties.
 
 ## Recovery Audit — 2026-10-01
 
@@ -275,6 +275,14 @@ CosmicDesigner 1.18.1 implements all registered CRs through CR-034. Multiple eli
 - Published `artifacts/CosmicDesigner-1.18.1/CosmicDesigner.exe` with file version `1.18.1.0`.
 - Implementation commit: `41e53f3`.
 
+## 1.19.0 Fillet ARC Selection and Radius Editing — 2026-10-03
+
+- Added gold ARC highlighting and tangent endpoint handles for Object Tree selection.
+- Added the editable `Radius R` property using the active document unit.
+- Reconstructed the original corner and recalculated both adjacent LINE endpoints when changing radius.
+- Release build completed with zero warnings and errors, and all CosmicDesigner verification checks passed.
+- Published `artifacts/CosmicDesigner-1.19.0/CosmicDesigner.exe` with file version `1.19.0.0`.
+
 ## In Progress
 
 - None.
@@ -316,6 +324,7 @@ CosmicDesigner 1.18.1 implements all registered CRs through CR-034. Multiple eli
 - [CR-032](change-requests/CR-032.md) — Triangle Cut Outer Contour 명시적 통합
 - [CR-033](change-requests/CR-033.md) — Outer Contour 직각 모서리 Fillet
 - [CR-034](change-requests/CR-034.md) — 다중 모서리 연속 Fillet 교정
+- [CR-035](change-requests/CR-035.md) — Fillet ARC 선택 표시 및 반지름 편집
 
 ## Completed Change Requests
 
@@ -334,8 +343,8 @@ CosmicDesigner 1.18.1 implements all registered CRs through CR-034. Multiple eli
 ## Next Work
 
 1. User-test CR-004 through CR-010 and promote passing CRs to Verified.
-2. Complete final UI acceptance for CR-011 through CR-034 using the latest `1.18.1` artifact.
+2. Complete final UI acceptance for CR-011 through CR-035 using the latest `1.19.0` artifact.
 
 ## Next Change Request Number
 
-`CR-035`
+`CR-036`

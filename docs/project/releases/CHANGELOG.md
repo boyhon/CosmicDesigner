@@ -4,6 +4,12 @@ Release-relevant changes after the baseline are recorded here. CR identifiers mu
 
 ## Unreleased
 
+## 1.19.0 — 2026-10-03
+
+- CR-035: Added gold Flat Designer highlighting and tangent endpoint handles for selected Outer Contour ARC objects.
+- Added editable `Radius R` properties that rebuild the tangent ARC and both adjacent LINE endpoints while preserving contour closure.
+- CosmicDesigner assembly version is now `1.19.0`.
+
 ## 1.18.1 — 2026-10-03
 
 - CR-034: Allowed additional eligible corners to receive Fillets after the Outer Contour already contains one or more ARC segments.

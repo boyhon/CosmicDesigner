@@ -66,6 +66,12 @@ public static class OuterContourFilletEngine
         var start=b-incoming*radius;var end=b+outgoing*radius;var center=start+outgoing*radius;var startAngle=Math.Atan2(start.Y-center.Y,start.X-center.X)*180/Math.PI;var endAngle=Math.Atan2(end.Y-center.Y,end.X-center.X)*180/Math.PI;if(endAngle<=startAngle)endAngle+=360;if(endAngle-startAngle>180+Epsilon)return false;
         var result=source.ToList();result[previousIndex]=new LineSegment(previous.X1,previous.Y1,start.X,start.Y);result[vertexIndex]=new LineSegment(end.X,end.Y,current.X2,current.Y2);result.Insert(vertexIndex,new ArcSegment(center.X,center.Y,radius,startAngle,endAngle));contour=result;return true;
     }
+    public static bool TryResize(IReadOnlyList<GeometrySegment> source,int arcIndex,double radius,out IReadOnlyList<GeometrySegment> contour)
+    {
+        contour=source;if(radius<=Epsilon||source.Count<4||arcIndex<0||arcIndex>=source.Count||source[arcIndex] is not ArcSegment)return false;var previousIndex=(arcIndex+source.Count-1)%source.Count;var nextIndex=(arcIndex+1)%source.Count;if(source[previousIndex] is not LineSegment previous||source[nextIndex] is not LineSegment next||!TryIntersection(previous,next,out var corner))return false;
+        var restored=source.ToList();restored[previousIndex]=new LineSegment(previous.X1,previous.Y1,corner.X,corner.Y);restored[nextIndex]=new LineSegment(corner.X,corner.Y,next.X2,next.Y2);restored.RemoveAt(arcIndex);var vertexIndex=arcIndex<restored.Count?arcIndex:0;return TryApply(restored,vertexIndex,radius,out contour);
+    }
+    static bool TryIntersection(LineSegment first,LineSegment second,out Point intersection){intersection=new();var p=new Point(first.X1,first.Y1);var r=new Vector(first.X2-first.X1,first.Y2-first.Y1);var q=new Point(second.X1,second.Y1);var s=new Vector(second.X2-second.X1,second.Y2-second.Y1);var cross=Vector.CrossProduct(r,s);if(Math.Abs(cross)<=Epsilon)return false;var t=Vector.CrossProduct(q-p,s)/cross;intersection=p+r*t;return double.IsFinite(intersection.X)&&double.IsFinite(intersection.Y);}
     static Point StartPoint(GeometrySegment segment)=>segment switch{LineSegment line=>new(line.X1,line.Y1),ArcSegment arc=>new(arc.Cx+arc.Radius*Math.Cos(arc.StartDegrees*Math.PI/180),arc.Cy+arc.Radius*Math.Sin(arc.StartDegrees*Math.PI/180)),_=>new(double.NaN,double.NaN)};
     static double SignedArea(IReadOnlyList<Point> points){double area=0;for(var i=0;i<points.Count;i++){var next=(i+1)%points.Count;area+=points[i].X*points[next].Y-points[next].X*points[i].Y;}return area/2;}
 }

@@ -6,7 +6,7 @@ Users submit requirements in natural language; they are not expected to assign C
 
 ## Next available number
 
-`CR-035`
+`CR-036`
 
 The project-management setup and baseline documentation do not consume a CR because they do not change application behavior.
 
@@ -48,6 +48,7 @@ The project-management setup and baseline documentation do not consume a CR beca
 | [CR-032](CR-032.md) | Triangle Cut Outer Contour 명시적 통합 | Implemented | 1.17.0 | `e244747` |
 | [CR-033](CR-033.md) | Outer Contour 직각 모서리 Fillet | Implemented | 1.18.0 | `09c2abb` |
 | [CR-034](CR-034.md) | 다중 모서리 연속 Fillet 교정 | Implemented | 1.18.1 | `41e53f3` |
+| [CR-035](CR-035.md) | Fillet ARC 선택 표시 및 반지름 편집 | Implemented | 1.19.0 | — |
 
 ## File naming
 
