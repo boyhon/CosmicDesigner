@@ -10,11 +10,11 @@
 ## Current Version
 
 - DXFExplorer installer suite: `1.1.0` (`installer/DXFExplorer.iss`)
-- CosmicDesigner: `1.13.0`
+- CosmicDesigner: `1.13.1`
 
 ## Current Development Phase
 
-CosmicDesigner 1.13.0 implements all registered CRs through CR-025. Flat Designer Ruler and Grid intervals can now be configured independently while retaining physical spacing across document units.
+CosmicDesigner 1.13.1 implements all registered CRs through CR-026. Flat Designer now renders Cut interiors and regions outside the actual Outer Contour as removed white space.
 
 ## Recovery Audit — 2026-10-01
 
@@ -189,6 +189,14 @@ CosmicDesigner 1.13.0 implements all registered CRs through CR-025. Flat Designe
 - Published `artifacts/CosmicDesigner-1.13.0/CosmicDesigner.exe` with file version `1.13.0.0`.
 - Implementation commit: `f1486b2`.
 
+## 1.13.1 Flat Cut-area Mask — 2026-10-03
+
+- Added an Even-Odd material mask from the actual Outer Contour and all Cut contours.
+- Rendered Cut interiors and Outer Contour exterior as white background, with Grid and bend lines clipped to remaining material.
+- Preserved visible contour boundaries and H/W Section selection overlays.
+- Release build completed with zero warnings and errors, and all CosmicDesigner verification checks passed.
+- Published `artifacts/CosmicDesigner-1.13.1/CosmicDesigner.exe` with file version `1.13.1.0`.
+
 ## In Progress
 
 - None.
@@ -221,6 +229,7 @@ CosmicDesigner 1.13.0 implements all registered CRs through CR-025. Flat Designe
 - [CR-023](change-requests/CR-023.md) — 문서 단위와 두 가지 단위 변경 방식
 - [CR-024](change-requests/CR-024.md) — 문서명 우선 Window Title
 - [CR-025](change-requests/CR-025.md) — Ruler 및 Grid 간격 설정
+- [CR-026](change-requests/CR-026.md) — Flat Designer 절삭 영역 흰색 표시
 
 ## Completed Change Requests
 
@@ -239,8 +248,8 @@ CosmicDesigner 1.13.0 implements all registered CRs through CR-025. Flat Designe
 ## Next Work
 
 1. User-test CR-004 through CR-010 and promote passing CRs to Verified.
-2. Complete final UI acceptance for CR-011 through CR-025 using the latest `1.13.0` artifact.
+2. Complete final UI acceptance for CR-011 through CR-026 using the latest `1.13.1` artifact.
 
 ## Next Change Request Number
 
-`CR-026`
+`CR-027`

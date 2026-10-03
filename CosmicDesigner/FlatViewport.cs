@@ -41,6 +41,27 @@ public static class FlatViewportEngine
     }
 }
 
+public static class FlatMaterialMaskEngine
+{
+    public static StreamGeometry Build(CosmicDesignerDocument document,FlatViewportTransform transform)
+    {
+        var geometry=new StreamGeometry{FillRule=FillRule.EvenOdd};using var context=geometry.Open();
+        AddContour(context,document.OuterContour.Segments,transform);
+        foreach(var cut in document.Cuts)AddContour(context,cut.Geometry,transform);
+        geometry.Freeze();return geometry;
+    }
+
+    static void AddContour(StreamGeometryContext context,IReadOnlyList<GeometrySegment> segments,FlatViewportTransform transform)
+    {
+        if(segments.Count==0)return;
+        if(segments.Count==1&&segments[0] is CircleSegment circle){var center=transform.ToScreen(new(circle.Cx,circle.Cy));var radius=Math.Abs(circle.Radius*transform.Scale);var right=new Point(center.X+radius,center.Y);var left=new Point(center.X-radius,center.Y);context.BeginFigure(right,true,true);context.ArcTo(left,new(radius,radius),0,false,SweepDirection.Clockwise,true,false);context.ArcTo(right,new(radius,radius),0,false,SweepDirection.Clockwise,true,false);return;}
+        var start=Start(segments[0]);context.BeginFigure(transform.ToScreen(start),true,true);
+        foreach(var segment in segments){if(segment is LineSegment line)context.LineTo(transform.ToScreen(new(line.X2,line.Y2)),true,false);else if(segment is ArcSegment arc){var end=transform.ToScreen(new(arc.Cx+arc.Radius*Math.Cos(arc.EndDegrees*Math.PI/180),arc.Cy+arc.Radius*Math.Sin(arc.EndDegrees*Math.PI/180)));context.ArcTo(end,new(Math.Abs(arc.Radius*transform.Scale),Math.Abs(arc.Radius*transform.Scale)),0,Math.Abs(arc.EndDegrees-arc.StartDegrees)>180,SweepDirection.Counterclockwise,true,false);}}
+    }
+
+    static Point Start(GeometrySegment segment)=>segment switch{LineSegment line=>new(line.X1,line.Y1),ArcSegment arc=>new(arc.Cx+arc.Radius*Math.Cos(arc.StartDegrees*Math.PI/180),arc.Cy+arc.Radius*Math.Sin(arc.StartDegrees*Math.PI/180)),CircleSegment circle=>new(circle.Cx+circle.Radius,circle.Cy),_=>new()};
+}
+
 public readonly record struct SectionViewportState(double Zoom,Vector Pan);
 
 public static class SectionViewportEngine

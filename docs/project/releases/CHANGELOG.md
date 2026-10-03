@@ -4,6 +4,12 @@ Release-relevant changes after the baseline are recorded here. CR identifiers mu
 
 ## Unreleased
 
+## 1.13.1 — 2026-10-03
+
+- CR-026: Rendered Cut interiors and areas outside the actual Outer Contour as white removed material.
+- Grid and bend lines are now clipped to the remaining material region.
+- CosmicDesigner assembly version is now `1.13.1`.
+
 ## 1.13.0 — 2026-10-03
 
 - CR-025: Added independent Auto/custom spacing preferences for horizontal Ruler, vertical Ruler and Grid.
