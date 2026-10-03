@@ -4,6 +4,12 @@ Release-relevant changes after the baseline are recorded here. CR identifiers mu
 
 ## Unreleased
 
+## 1.15.0 — 2026-10-03
+
+- CR-030: Replaced Triangle Cut bounding-box resizing with three independent vertex handles over its closed three-LINE contour.
+- Preserved an edited triangle's exact shape during whole-object movement, DXF metadata round-trip, Flat masking and 3D cut rendering.
+- CosmicDesigner assembly version is now `1.15.0`.
+
 ## 1.14.0 — 2026-10-03
 
 - CR-029: Added red V and blue V1 bend edges to the 3D Preview, clipped to remaining material.

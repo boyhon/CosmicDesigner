@@ -6,7 +6,7 @@ Users submit requirements in natural language; they are not expected to assign C
 
 ## Next available number
 
-`CR-030`
+`CR-031`
 
 The project-management setup and baseline documentation do not consume a CR because they do not change application behavior.
 
@@ -43,6 +43,7 @@ The project-management setup and baseline documentation do not consume a CR beca
 | [CR-027](CR-027.md) | 3D Preview 내부 Cut 투명 표시 | Implemented | 1.13.2 | `d178aff` |
 | [CR-028](CR-028.md) | 3D Preview 내부 절곡 Edge 제거 | Implemented | 1.13.3, 1.13.4 | `0592574`, `94d9fcd` |
 | [CR-029](CR-029.md) | 3D Preview V/V1 절곡선 색상 표시 | Implemented | 1.14.0 | `e33bb68` |
+| [CR-030](CR-030.md) | 삼각형 Cut 꼭짓점 직접 편집 | Implemented | 1.15.0 | — |
 
 ## File naming
 

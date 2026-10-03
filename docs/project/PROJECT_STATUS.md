@@ -10,11 +10,11 @@
 ## Current Version
 
 - DXFExplorer installer suite: `1.1.0` (`installer/DXFExplorer.iss`)
-- CosmicDesigner: `1.14.0`
+- CosmicDesigner: `1.15.0`
 
 ## Current Development Phase
 
-CosmicDesigner 1.14.0 implements all registered CRs through CR-029. The 3D Preview identifies real V bends in red and V1 bends in blue while retaining black contour-only edges.
+CosmicDesigner 1.15.0 implements all registered CRs through CR-030. Triangle Cuts expose three independent vertex handles while remaining closed three-LINE Cut contours.
 
 ## Recovery Audit — 2026-10-01
 
@@ -230,6 +230,14 @@ CosmicDesigner 1.14.0 implements all registered CRs through CR-029. The 3D Previ
 - Published `artifacts/CosmicDesigner-1.14.0/CosmicDesigner.exe` with file version `1.14.0.0`.
 - Implementation commit: `e33bb68`.
 
+## 1.15.0 Triangle Vertex Editing — 2026-10-03
+
+- Replaced Triangle Cut bounding-box Resize with three direct vertex handles.
+- Preserved the edited arbitrary triangle while moving the whole shape and kept all vertices within material bounds.
+- Kept the Triangle as a closed three-LINE contour for Flat masking, persistence and 3D Cut rendering.
+- Release build completed with zero warnings and errors, and all CosmicDesigner verification checks passed.
+- Published `artifacts/CosmicDesigner-1.15.0/CosmicDesigner.exe` with file version `1.15.0.0`.
+
 ## In Progress
 
 - None.
@@ -266,6 +274,7 @@ CosmicDesigner 1.14.0 implements all registered CRs through CR-029. The 3D Previ
 - [CR-027](change-requests/CR-027.md) — 3D Preview 내부 Cut 투명 표시
 - [CR-028](change-requests/CR-028.md) — 3D Preview 내부 절곡 Edge 제거
 - [CR-029](change-requests/CR-029.md) — 3D Preview V/V1 절곡선 색상 표시
+- [CR-030](change-requests/CR-030.md) — 삼각형 Cut 꼭짓점 직접 편집
 
 ## Completed Change Requests
 
@@ -284,8 +293,8 @@ CosmicDesigner 1.14.0 implements all registered CRs through CR-029. The 3D Previ
 ## Next Work
 
 1. User-test CR-004 through CR-010 and promote passing CRs to Verified.
-2. Complete final UI acceptance for CR-011 through CR-029 using the latest `1.14.0` artifact.
+2. Complete final UI acceptance for CR-011 through CR-030 using the latest `1.15.0` artifact.
 
 ## Next Change Request Number
 
-`CR-030`
+`CR-031`

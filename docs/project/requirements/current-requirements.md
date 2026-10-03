@@ -52,6 +52,7 @@ Only behavior confirmed by current source, tests, project configuration, or exis
 - Ruler, Grid, and Status Bar visibility are global persistent settings.
 - Flat Designer supports right-button Pan and wheel/menu Zoom with a shared centimeter coordinate transform.
 - Flat Designer supports Cut Object selection, control handles, Move, corner Resize, and edge Resize across the supported Hole shapes.
+- Triangle Cut은 폐합된 세 LINE으로 유지되며, 선택 시 세 꼭짓점 핸들을 각각 이동하여 임의·직각·이등변 삼각형으로 편집할 수 있고 몸체 드래그는 현재 모양을 유지한 채 전체를 이동한다.
 - Flat Designer keeps design geometry outside the ruler bands and provides explicit Select/Hole mode switching.
 - Flat Designer selection is synchronized with the Object Tree and supports focused Delete; leaving the designer cancels Hole mode.
 - Flat Designer displays labeled H and W section selectors as colored dashed lines; H moves horizontally, W moves vertically, and both are clamped to the material bounds.
