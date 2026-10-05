@@ -531,3 +531,6 @@ Implemented: 실제 연결부 힌지 기준 날개 회전 및 90도 방향 대�
 
 ## CR-064 — 2026-10-06
 Implemented: HTML 사용자 도움말 22개, 과거 CR 63건 영향 평가(Yes 62), Help 메뉴/배포 및 Living Documentation. Build 0 warnings/errors; New AUTO 1/1, affected 5/5, full 73/73 PASS. TC-064-002/003 PENDING_MANUAL / WAITING FOR USER VERIFICATION. Installer configuration/publish verified; actual install NOT_RUN. Report: HELP_SYSTEM_REPORT-2026-10-06.md. Next CR-065.
+
+## Release Candidate Freeze Result — 2026-10-06
+Source Freeze `8fe11260f62932021ef92210dd32552abdffd93a`, candidate 1.20.29-rc1, 302 managed inputs. Pushed boyhon; [Draft PR #1](https://github.com/boyhon/CosmicDesigner/pull/1) to main. Five Release/win-x64/self-contained app publishes and Inno Setup compile PASS; stage has 35 HTML. Full AUTO 73/73 plus shared/Drawer checks and startup 5/5 PASS. Installer 46,789,650 bytes; 453 artifact checksums recorded. Actual clean install/upgrade/uninstall and human UI/Help review remain pending; same-AppId existing install records, non-admin host and no Sandbox. See [Freeze report](releases/FREEZE-RESULT-2026-10-06.md). Freeze not amended; follow-up changes are documentation only. Next CR-065.
