@@ -79,6 +79,7 @@ Open → In Progress → Implemented → Verified → Closed
 - `Implemented`: code and documentation changes are complete, but final verification is pending.
 - `Verified`: acceptance criteria have passed.
 - `Closed`: all records, release linkage, and commits are complete.
+- Required MANUAL or human-reviewed SEMI_AUTO tests still pending: retain Implemented and record `Verification Status: WAITING FOR USER VERIFICATION`. Automated PASS alone cannot promote a CR to Verified/Closed; record actual human verification evidence first.
 - `Rejected`: the request will not be implemented; the reason must remain documented.
 
 ## 7. Required CR structure
@@ -159,3 +160,13 @@ After implementing a CR:
 5. add a changelog entry when the change is release-relevant;
 6. inspect Git changes;
 7. keep source, CR status, requirements, status, ADRs, and changelog mutually consistent.
+
+## 13. CR-based Regression Test Suite
+The user-approved [Regression Policy](REGRESSION_POLICY.md) is mandatory. CRs include Impact Analysis, Test Cases, Affected Regression Tests and Regression Result; execute new, affected and full automated cases in that order. Stable TC IDs accumulate in tests/regression; supersession requires a recorded CR and reason. Merge readiness is separate from the existing lifecycle.
+
+## 14. User Documentation Management
+Every CR includes Documentation Impact: User Visible Change (Yes/No), Manual Impact (Yes/No with reason), Affected Feature, Affected Manual Sections, Related Tests/Regression Tests and Manual Status. Required CR structure includes this section; evaluate at intake and revisit when scope changes. The official source is HTML in help-content/help; Word/PDF are derivative outputs only.
+
+For Manual Impact Yes, update relevant HTML, workflow, troubleshooting, screenshots when needed and manual-traceability.md before full completion. Use current source/tests over superseded historical descriptions; preserve original CR history. Unconfirmed material goes in DOCUMENTATION_GAPS.md. Internal non-user changes should not cause unnecessary user manual edits. See help-content/help/README.md for navigation and validation rules.
+
+Definition of Done: Implementation Complete + Relevant Automated Tests Passed + Required Manual/Human Tests Completed + Regression Tests Passed + User Documentation Updated (when Manual Impact Yes). Keep Implemented / WAITING FOR USER VERIFICATION when required people review remains. No Verified/Closed while required documentation remains outstanding.

@@ -4,6 +4,74 @@ Release-relevant changes after the baseline are recorded here. CR identifiers mu
 
 ## Unreleased
 
+- 2026-10-06: Freeze current source, HTML Help, resources, accumulated regression/project records and installer definitions as 1.20.29-rc1 on boyhon. No new product features; isolate RC installer output, redact personal temporary-path references and make historical manual scripts repository-relative. Installer suite remains 1.1.0; manual acceptance remains pending.
+
+- CR-064: Add a Korean offline HTML user manual with 22 current-source pages, workflows, troubleshooting, terminology, shortcuts, local navigation/search and print styles. Connect four Help routes, include CosmicDesigner/help in installer configuration and track documentation impact for all past CRs. Automated regression 73/73 PASS; required browser/UI and actual installation review pending.
+
+## 1.20.26 — 2026-10-05
+
+- CR-054 follow-up: Improve Flat Line/Arc/Polyline slit click selection with exact LINE/ARC distance and screen-space tolerance. Slits take selection priority over overlapping bends while drawing tools retain their input. Existing gold highlight and tree/property synchronization apply. Manual UI acceptance pending.
+
+## 1.20.20 — 2026-10-05
+
+- CR-055: Reorder the left object/property area to OBJECTS above PROPERTIES (Material and Selected object), preserving selection/property controls and scrolling. Manual UI acceptance pending.
+
+## 1.20.19 — 2026-10-05
+
+- CR-054: Add supplied-image Line, Arc and Polyline slit buttons with click-based drawing, dashed preview, Enter completion and Esc cancellation. Store open L paths separately from holes, preserving material area and supporting selection/Delete, Undo/Redo, document units, DXF and folded 3D edge display. Manual UI acceptance pending.
+
+## 1.20.13 — 2026-10-05
+
+- CR-048: Circle properties show one editable Radius R in document units instead of Width/Height. Edits retain center and reject invalid/out-of-material values; other shapes retain size properties.
+
+## 1.20.12 — 2026-10-05
+
+- CR-047 follow-up: Triangle Width/Height edits preserve lower-left X/Y and the unedited dimension. Scale existing vertices from the lower-left anchor, preserving orientation; reject out-of-material sizes and unsupported ARC scaling without changing the contour.
+
+## 1.20.11 — 2026-10-05
+
+- CR-047: Triangle position properties use the bounding rectangle lower-left X/Y in document units. Position edits translate the existing contour, preserving arbitrary vertices and Fillet geometry, with bounds, Undo/Redo and DXF persistence.
+
+## 1.20.10 — 2026-10-05
+
+- CR-046: Automatically insert explicit LINE connectors at Outer Contour LINE/ARC gaps after editing or deletion, preserving exact ARC geometry and aligning actual boundaries with material masks and 3D previews.
+
+## 1.20.9 — 2026-10-05
+
+- CR-045: Restored Rectangle/Triangle/Parallelogram boundary merging on Fillet ARC Outer Contours. Exact ARC geometry is retained, with direct intersections trimming ARC angle ranges; orange selection and explicit merge workflow remain available.
+
+## 1.20.8 — 2026-10-04
+
+- CR-044: Outer and Hole Fillet ARCs now appear rounded in 3D through maximum 5-degree tessellation shared by surface clipping and outline edges; exact Flat/DXF ARCs are preserved.
+
+## 1.20.7 — 2026-10-04
+
+- CR-043: Restored Rectangle boundary merge availability on diagonal LINE-based Outer Contours after line deletion or Triangle/Parallelogram merging, retaining orange candidate selection and explicit context-menu integration.
+
+## 1.20.6 — 2026-10-04
+
+- CR-042: Reconnect neighboring Outer Contour LINE geometry after edge deletion so gray material and white exterior match the actual closed outline; retain Undo/Redo and DXF persistence.
+
+## 1.20.5 — 2026-10-04
+
+- CR-041: Triangle holes now point in the vertical drag direction, with matching preview/result vertices and preserved editing, Undo/Redo and persistence.
+
+## 1.20.4 — 2026-10-04
+
+- CR-040: Boundary-touching Parallelogram Cuts now use orange selection and the explicit Outer Contour merge command, preserving diagonal edges and existing Undo/Redo and persistence behavior.
+
+## 1.20.3 — 2026-10-04
+
+- CR-039: Replaced whole-triangle centroid deletion with contour-aligned surface splitting, correcting gaps/overlap between 3D Cut openings and outline edges for sloped and circular shapes.
+
+## 1.20.2 — 2026-10-04
+
+- CR-038: Diamond and Parallelogram now preview and create a single Cut sized by dragging, matching the existing Circle/Triangle/Rectangle interaction; click rejection, Select return and Undo are preserved.
+
+## 1.20.1 — 2026-10-04
+
+- CR-037: Removed Arc, Sector, Ellipse, Pentagon, Hexagon and Polygon Hole buttons; converted the five remaining shapes to compact outline icon buttons with tooltips and accessibility names.
+
 ## 1.20.0 — 2026-10-03
 
 - CR-036: Generalized Fillet tangent calculations from right angles to arbitrary convex LINE–LINE angles.
@@ -225,3 +293,49 @@ Release-relevant changes after the baseline are recorded here. CR identifiers mu
 - Established the observable current source state as the project-management baseline.
 - Introduced CR, ADR, current-requirements, project-status, and release documentation policies.
 - Did not change application logic or rename existing technical/product artifacts.
+
+## 1.20.14 — 2026-10-05
+- CR-049: 원 천공 다음에 첨부 윤곽 형태의 반원 천공 버튼. 네 방향 드래그로 정확한 반원 생성, 점선 미리보기, 재료 경계 제한, 방향 보존 편집/Undo/DXF.
+- 자동 신규/영향/전체 회귀 PASS; UI 수동 검증 대기.
+
+## 1.20.15 — 2026-10-05
+- CR-050: 반원 지름이 외곽과 겹치면 명시적 우클릭으로 정확한 ARC 홈 통합. 부분 겹침/연속 LINE/Fillet 유지, Undo/DXF 지원.
+- 반대 진행 방향 ARC의 Flat 표시와 DXF 출력을 일치시키고 단면에 원호 홈의 교점을 반영. 신규/영향/전체 자동 회귀 PASS; UI 수동 검증 대기.
+
+## 1.20.16 — 2026-10-05
+- CR-051: 반원 속성을 실제 원호 Center X/Y와 Radius R로 개선. 우측 외곽 접촉 반원은 Center X=300 표시. 반지름 변경 시 중심 및 지름 유지, 유효 범위 검증.
+- 신규/영향/전체 AUTO 1/1, 6/6, 61/61 PASS; UI 수동 검증 대기.
+
+## 1.20.17 — 2026-10-05
+- CR-052: 반원 다음 4분원 도구, 드래그 사분면의 정확한 원호, 두 반지름 경계 겹침 통합 및 Radius R 속성.
+- Release 0 warnings/errors; new AUTO 1/1, affected 11/11, full 62/62 PASS. Manual UI acceptance PENDING_MANUAL.
+## 1.20.18 — 2026-10-05
+
+- Corrected Flat W/H to equal the exact sum of non-Bent Section segment lengths instead of subtracting bend thickness compensation a second time.
+- Preserved material-thickness compensation exclusively for Bent exterior measurement dimensions.
+- Added CR-053 automated and manual regression cases for the `199 / 1998 / 199 = 2396` scenario.
+- Release build passed with zero warnings/errors; new 1/1, affected 11/11 and full AUTO 63/63 passed. Manual UI acceptance remains pending.
+## 1.20.21 — 2026-10-05
+- CR-056: 불러오기/Undo 이후 기본 사각 재료의 Section 치수와 Flat 외곽 불일치를 수정했다.
+- Release build 0 warnings/errors. New AUTO 1/1, affected 7/7, full 65/65 PASS. MANUAL PENDING_MANUAL.
+## 1.20.22 — 2026-10-05
+- CR-057: Slit 아이콘 선을 Hole과 동일한 1.8 DIP로 통일하고 Hole 아이콘을 줄여 하단 잘림을 방지했다.
+- Release warning/error 0. Affected AUTO 3/3, Full AUTO 65/65 PASS; manual visual acceptance pending.
+## 1.20.23 — 2026-10-05
+- CR-058: H/W Bent 단면의 과장된 최소 화면 두께를 제거하고 윤곽과 치수 기준을 실제 재료 두께/배율로 통일했다.
+- Release 0 warnings/errors; new AUTO 1/1, affected 7/7, full 66/66 PASS. MANUAL PENDING_MANUAL.
+## 1.20.24 — 2026-10-05
+- CR-059: Section Bent 치수값 중앙 정렬 및 겹치는 큰 치수선 바깥 배치.
+- Release 0 warnings/errors; new 1/1, affected 6/6, full AUTO 67/67 PASS; MANUAL PENDING_MANUAL.
+## 1.20.25 — 2026-10-05
+- CR-060: Flat V/V1 생성 버튼, 방향별 Section 쐐기 연동, 절곡선 클릭 선택 및 평행 이동.
+- Release 0 warnings/errors; new 1/1, affected 9/9, full AUTO 68/68 PASS; MANUAL PENDING_MANUAL.
+
+## 1.20.27 — 2026-10-05
+- CR-061: 홈 사이 연결부의 실제 절곡축으로 나비 날개 3D 회전 교정. 신규 1/1, 영향 9/9, 전체 70/70 AUTO PASS. 사용자 시각 검증 대기.
+
+## 1.20.28 — 2026-10-05
+- CR-062: H/W Section의 모든 분리 구간과 Outer Contour 홈 표시; 빈 공간 절곡 생성 방지. 신규 1/1, 영향 10/10, 전체 71/71 AUTO PASS; 사용자 도면 시각 검증 대기.
+
+## 1.20.29 — 2026-10-06
+- CR-063: Cut 이동 중 인접 외곽/절곡선 중앙 점선 안내. 신규 1/1, 영향 9/9, 전체 72/72 AUTO PASS; 사용자 UI 확인 대기.

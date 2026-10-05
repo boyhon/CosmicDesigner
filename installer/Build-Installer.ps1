@@ -1,13 +1,20 @@
 ﻿[CmdletBinding()]
-param([string]$Runtime = "win-x64", [string]$Configuration = "Release", [string]$IsccPath)
+param([string]$Runtime = "win-x64", [string]$Configuration = "Release", [string]$IsccPath, [string]$OutputRoot)
 $ErrorActionPreference = "Stop"
 $installerDir = $PSScriptRoot
 $repoDir = Split-Path $installerDir -Parent
 $env:DOTNET_CLI_HOME = Join-Path $repoDir ".dotnet-home"
 $env:DOTNET_SKIP_FIRST_TIME_EXPERIENCE = "1"
-$publishDir = Join-Path $installerDir "publish"
-$stageDir = Join-Path $installerDir "stage"
+if (-not $OutputRoot) { $OutputRoot = $installerDir }
+$OutputRoot = [IO.Path]::GetFullPath($OutputRoot)
+$repoBoundary = [IO.Path]::GetFullPath($repoDir).TrimEnd('\') + '\'
+if (-not $OutputRoot.StartsWith($repoBoundary, [StringComparison]::OrdinalIgnoreCase)) { throw "Installer output must be inside this repository." }
+$publishDir = Join-Path $OutputRoot "publish"
+$stageDir = Join-Path $OutputRoot "stage"
+$setupOutput = Join-Path $OutputRoot "output"
 function Reset-Directory([string]$Path) {
+    $resolved = [IO.Path]::GetFullPath($Path)
+    if ($resolved -notin @($publishDir, $stageDir) -or -not $resolved.StartsWith($OutputRoot.TrimEnd('\') + '\', [StringComparison]::OrdinalIgnoreCase)) { throw "Unsafe installer reset path: $resolved" }
     if (Test-Path -LiteralPath $Path) { Remove-Item -LiteralPath $Path -Recurse -Force }
     New-Item -ItemType Directory -Path $Path | Out-Null
 }
@@ -17,7 +24,8 @@ $projects = @(
     @{ Name = "viewer"; Path = "DXFExplorer\DXFExplorer.csproj" },
     @{ Name = "explorer"; Path = "DXFFileExplorer\DXFFileExplorer.csproj" },
     @{ Name = "simulator"; Path = "DXFSimulater\DXFSimulater.csproj" },
-    @{ Name = "drawer"; Path = "DXFDrawer\DXFDrawer.csproj" }
+    @{ Name = "drawer"; Path = "DXFDrawer\DXFDrawer.csproj" },
+    @{ Name = "cosmic"; Path = "CosmicDesigner\CosmicDesigner.csproj" }
 )
 foreach ($project in $projects) {
     $projectPath = Join-Path $repoDir $project.Path
@@ -42,7 +50,7 @@ foreach ($project in $projects) {
         }
     }
 }
-foreach ($name in @("DXFExplorer.exe", "DXFViewer.exe", "DXFSimulator.exe", "DXFDrawer.exe")) {
+foreach ($name in @("DXFExplorer.exe", "DXFViewer.exe", "DXFSimulator.exe", "DXFDrawer.exe", "CosmicDesigner.exe")) {
     if (-not (Test-Path -LiteralPath (Join-Path $stageDir $name))) { throw "Required executable is missing: $name" }
 }
 & (Join-Path $installerDir "Verify-Help.ps1") -Root $stageDir
@@ -55,13 +63,14 @@ $isccCandidates = @(
 ) | Where-Object { $_ -and (Test-Path -LiteralPath $_) }
 $iscc = $isccCandidates | Select-Object -First 1
 if (-not $iscc) { throw "Inno Setup 6 compiler (ISCC.exe) was not found." }
-& $iscc (Join-Path $installerDir "DXFExplorer.iss")
+New-Item -ItemType Directory -Path $setupOutput -Force | Out-Null
+& $iscc "/DStageRoot=$stageDir" "/O$setupOutput" (Join-Path $installerDir "DXFExplorer.iss")
 if ($LASTEXITCODE -ne 0) { throw "Inno Setup compilation failed." }
-$setup = Join-Path $installerDir "output\DXFExplorerSetup.exe"
+$setup = Join-Path $setupOutput "DXFExplorerSetup.exe"
 if (-not (Test-Path -LiteralPath $setup)) { throw "Installer output was not created: $setup" }
-$helpSource = Join-Path $repoDir "help-content"
+$helpSource = $stageDir
 $outputDir = Split-Path $setup -Parent
-Get-ChildItem -LiteralPath $helpSource -File | Copy-Item -Destination $outputDir -Force
+Get-ChildItem -LiteralPath $helpSource -File -Filter "*_help.html" | Copy-Item -Destination $outputDir -Force
 Copy-Item -LiteralPath (Join-Path $helpSource "help") -Destination $outputDir -Recurse -Force
 Get-Item -LiteralPath $setup | Select-Object FullName, Length, LastWriteTime
 

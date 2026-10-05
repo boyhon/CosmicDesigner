@@ -5,6 +5,7 @@
              CopyToOutputDirectory="PreserveNewest"
              CopyToPublishDirectory="PreserveNewest" />
     <Content Include="$(MSBuildThisFileDirectory)help-content\help\**\*"
+             Exclude="$(MSBuildThisFileDirectory)help-content\help\**\*.md;$(MSBuildThisFileDirectory)help-content\help\**\*.json"
              Link="help\%(RecursiveDir)%(Filename)%(Extension)"
              CopyToOutputDirectory="PreserveNewest"
              CopyToPublishDirectory="PreserveNewest" />

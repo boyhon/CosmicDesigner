@@ -33,3 +33,12 @@ After implementation:
 6. Inspect Git changes and keep documentation consistent with the source.
 
 Do not create an ADR for routine small changes. Do not change application behavior solely to satisfy project-management documentation.
+
+## CR Regression Test Suite
+Follow docs/project/REGRESSION_POLICY.md for CR impact analysis, immutable TC IDs, accumulated regression cases, new/affected/full execution, merge gates and completion reporting. Never delete or change existing test expectations solely to accommodate an implementation.
+Every test case must specify Execution Type (AUTO / MANUAL / SEMI_AUTO / NOT_AUTOMATED). Report automated and human-reviewed results separately. Never invent human PASS; keep required human verification pending and do not close the CR until it is recorded.
+
+## User Documentation Management
+Every CR must evaluate User Visible Change and Manual Impact as Yes/No, including a reason for No. HTML under help-content/help is the official user manual source. When Manual Impact = Yes, identify and update affected HTML pages, workflows, troubleshooting and screenshots as applicable, then link sections and tests in the CR and manual-traceability.md. Current implementation takes precedence over older CR descriptions. Keep internal implementation details and gaps out of user navigation; record unverified information in DOCUMENTATION_GAPS.md. Internal changes without user impact should not unnecessarily change the manual.
+
+CR Definition of Done = Implementation Complete + Relevant Automated Tests Passed + Required Manual/Human Tests Completed + Regression Tests Passed + User Documentation Updated (when Manual Impact = Yes). A CR with required human verification or documentation outstanding is not fully complete and must not be Verified/Closed.

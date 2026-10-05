@@ -8,7 +8,7 @@ from docx.oxml.ns import qn
 from docx.shared import Cm, Pt, RGBColor
 
 
-ROOT = Path(r"C:\MyDisk\Projects\DXF-explorer")
+ROOT = Path(__file__).resolve().parents[1]
 OUT = ROOT / "docs" / "DXFExplorer_설치_매뉴얼.docx"
 ICON = ROOT / "cnc_vgroove_icon.png"
 

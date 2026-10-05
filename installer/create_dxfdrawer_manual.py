@@ -9,9 +9,9 @@ from docx.oxml.ns import qn
 from docx.shared import Cm, Inches, Pt, RGBColor
 
 
-ROOT = Path(r"C:\MyDisk\Projects\DXF-explorer")
+ROOT = Path(__file__).resolve().parents[1]
 OUT = ROOT / "docs" / "DXFDrawer_사용자_매뉴얼.docx"
-SCREENSHOT = Path(r"C:\Users\boyho\AppData\Local\Temp\codex-clipboard-5f6b8fee-f927-4e25-bebb-dea6b7ce2534.png")
+SCREENSHOT = ROOT / "help-content" / "help" / "images" / "dxfdrawer-main-window.png"
 
 
 def set_cell_shading(cell, fill):

@@ -6,7 +6,7 @@ Users submit requirements in natural language; they are not expected to assign C
 
 ## Next available number
 
-`CR-037`
+`CR-065`
 
 The project-management setup and baseline documentation do not consume a CR because they do not change application behavior.
 
@@ -50,6 +50,20 @@ The project-management setup and baseline documentation do not consume a CR beca
 | [CR-034](CR-034.md) | 다중 모서리 연속 Fillet 교정 | Implemented | 1.18.1 | `41e53f3` |
 | [CR-035](CR-035.md) | Fillet ARC 선택 표시 및 반지름 편집 | Implemented | 1.19.0 | `d57839a` |
 | [CR-036](CR-036.md) | 임의 각도 및 내부 Hole Fillet | Implemented | 1.20.0 | `45557d9` |
+| [CR-037](CR-037.md) | 천공 도구 정리 및 도형 아이콘 버튼 | Implemented | 1.20.1 | — |
+| [CR-038](CR-038.md) | 다이아몬드·평행사변형 드래그 생성 | Implemented | 1.20.2 | — |
+| [CR-039](CR-039.md) | 3D 천공 면과 윤곽선 정합성 교정 | Implemented | 1.20.3 | — |
+| [CR-040](CR-040.md) | 평행사변형 Cut Outer Contour 통합 | Implemented | 1.20.4 | — |
+| [CR-041](CR-041.md) | 삼각형 천공 드래그 방향 반영 | Implemented | 1.20.5 | — |
+| [CR-042](CR-042.md) | Outer Contour LINE 삭제 후 폐합 및 재료 영역 정합성 | Implemented | 1.20.6 | — |
+| [CR-043](CR-043.md) | 사선 Outer Contour의 사각형 통합 복구 | Implemented | 1.20.7 | — |
+| [CR-044](CR-044.md) | 3D Preview Fillet 곡선 표시 | Implemented | 1.20.8 | — |
+| [CR-045](CR-045.md) | Fillet ARC 외곽의 천공 통합 | Implemented | 1.20.9 | — |
+| [CR-046](CR-046.md) | Outer Contour 편집 후 틈 자동 LINE 연결 | Implemented | 1.20.10 | — |
+
+| [CR-047](CR-047.md) | Triangle Cut 좌하단 위치 속성 | Implemented | 1.20.12 | — |
+
+| [CR-048](CR-048.md) | Circle 반지름 속성 | Implemented | 1.20.13 | — |
 
 ## File naming
 
@@ -75,3 +89,37 @@ The initial source bundle is preserved unchanged at [COSMIC_DESIGNER_CHANGE_REQU
 | `TEST-004` common regression requirement | `CR-002`–`CR-007` |
 
 Never reuse an issued number. Use the required structure in [DEVELOPMENT_POLICY.md](../DEVELOPMENT_POLICY.md). When a CR changes state, update this index and [PROJECT_STATUS.md](../PROJECT_STATUS.md).
+
+- [CR-049](CR-049.md) — Implemented — 드래그 방향별 반원 천공; 다음 번호 CR-050.
+
+- [CR-050](CR-050.md) — Implemented — 반원 지름 Outer Contour 통합.
+
+- [CR-051](CR-051.md) — Implemented — 반원 실제 중심 및 반지름 속성.
+
+- [CR-052](CR-052.md) — Implemented — 사분면 방향 4분원 천공. 다음 번호 CR-053.
+
+- [CR-053](CR-053.md) — Implemented — Section 구간 합계와 Flat W/H 계산 일치. 다음 번호 CR-054.
+
+- [CR-054](CR-054.md) — Implemented (WAITING FOR USER VERIFICATION) — 직선·원호·연결선 절개 도구. 다음 번호 CR-055.
+
+- [CR-055](CR-055.md) — Implemented (WAITING FOR USER VERIFICATION) — 객체 속성 영역 OBJECTS / PROPERTIES 순서.
+
+- [CR-056](CR-056.md) — Section 기본 사각 외곽 동기화; Implemented; 1.20.21. AUTO 신규 1/1, 영향 7/7, 전체 65/65 PASS. MANUAL PENDING_MANUAL; WAITING FOR USER VERIFICATION.
+
+- CR-057 — Hole/Slit 아이콘 굵기 및 크기; Implemented; 1.20.22. 영향 AUTO 3/3, 전체 65/65 PASS; MANUAL PENDING_MANUAL; WAITING FOR USER VERIFICATION.
+
+- CR-058 — Bent Section 실제 두께 축척 정합성; Implemented; 1.20.23. New AUTO 1/1, affected 7/7, full 66/66 PASS. TC-058-002 PENDING_MANUAL; WAITING FOR USER VERIFICATION.
+
+- CR-059 — Section 치수 중앙 및 겹침 배치; Implemented; 1.20.24. New AUTO 1/1, affected 6/6, full 67/67 PASS. TC-059-002 PENDING_MANUAL; WAITING FOR USER VERIFICATION.
+
+- CR-060 — Flat V/V1 절곡선 생성 및 이동; Implemented; 1.20.25. New AUTO 1/1, affected 9/9, full 68/68 PASS; TC-060-002 PENDING_MANUAL; WAITING FOR USER VERIFICATION.
+
+- CR-054 follow-up — Implemented (WAITING FOR USER VERIFICATION) — 직선/원호/연결선 직접 클릭 선택 보완. 신규 CR 번호 미소비.
+
+- [CR-061](CR-061.md) — Implemented — 홈 사이 실제 힌지 기준 3D 날개 회전; 1.20.27. New AUTO 1/1, affected 9/9, full 70/70 PASS; TC-061-002 PENDING_MANUAL.
+
+- [CR-062](CR-062.md) — Implemented: Section의 모든 재료 구간과 빈 공간 표시; 1.20.28; New AUTO 1/1, affected 10/10, full 71/71 PASS. TC-062-002 PENDING_MANUAL / WAITING FOR USER VERIFICATION.
+
+- CR-063 — Implemented: Cut 이동 중앙 안내선; 1.20.29. New AUTO 1/1, affected 9/9, full 72/72 PASS; TC-063-002 PENDING_MANUAL / WAITING FOR USER VERIFICATION.
+
+- [CR-064](CR-064.md) — Implemented (WAITING FOR USER VERIFICATION) — 사용자 HTML 매뉴얼 및 Living Documentation 도움말 시스템.
