@@ -2082,6 +2082,34 @@
       "implementation": "tests/regression/cr/CR-065/test-cases.md",
       "introduced": "2026-10-06",
       "origin": "User installer filename/Freeze request"
+    },
+    {
+      "testId": "TC-066-001",
+      "relatedCR": "CR-066",
+      "status": "ACTIVE",
+      "executionType": "AUTO",
+      "automation": "AUTO",
+      "purpose": "Installer CosmicDesigner branding",
+      "preconditions": "CR-066 build",
+      "procedure": "cr/CR-066/test-cases.md",
+      "expected": "See immutable specification",
+      "implementation": "CosmicDesigner.Verification/Program.cs::InstallerBranding",
+      "introduced": "2026-10-06",
+      "origin": "User installer branding screenshot request"
+    },
+    {
+      "testId": "TC-066-002",
+      "relatedCR": "CR-066",
+      "status": "ACTIVE",
+      "executionType": "MANUAL",
+      "automation": "MANUAL",
+      "purpose": "Installer CosmicDesigner branding",
+      "preconditions": "CR-066 build",
+      "procedure": "cr/CR-066/test-cases.md",
+      "expected": "See immutable specification",
+      "implementation": "tests/regression/cr/CR-066/test-cases.md",
+      "introduced": "2026-10-06",
+      "origin": "User installer branding screenshot request"
     }
   ],
   "baselineMethods": [

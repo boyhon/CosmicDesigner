@@ -483,7 +483,7 @@ CosmicDesigner 1.20.29 source includes CR-064 Help baseline alongside CR-001~063
 
 ## Next Change Request Number
 
-`CR-066`
+`CR-067`
 
 ## CR-049 — 2026-10-05
 Implemented: 원 다음에 반원 윤곽 버튼, 지름 중심에서 네 방향 드래그 생성. 이동/크기/DXF/Undo에서 방향 유지. 자동 신규 1/1, 영향 11/11, 전체 59/59 PASS. Release build 0 warnings/errors. Published artifacts/CosmicDesigner-1.20.14/CosmicDesigner.exe.
@@ -537,3 +537,6 @@ Source Freeze `8fe11260f62932021ef92210dd32552abdffd93a`, candidate 1.20.29-rc1,
 
 ## CR-065 — 2026-10-06
 Implemented: CosmicDesignerSetup.exe, Freeze 1.20.29-rc1 (numeric Windows version 1.20.29.0). New AUTO 1/1, affected 1/1, full 74/74 PASS; build 0 warnings/errors; Inno compile and Help links PASS. Output artifacts/release/1.20.29-rc1-cr065/output/CosmicDesignerSetup.exe, 46,789,675 bytes. Original Freeze preserved; packaging follow-up includes updated installation help. TC-065-002 / TC-064-003 PENDING_MANUAL; WAITING FOR USER VERIFICATION. Next CR-066. See tests/regression/results/CR-065-2026-10-06.md.
+
+## CR-066 — 2026-10-06
+Implemented: 설치 화면/제품명/기본 폴더/그룹/선택형 바탕 화면/완료 후 실행 CosmicDesigner. Existing AppId/upgrade path reuse retained. Freeze 1.20.29-rc1. New AUTO 1/1, affected 2/2, full 75/75 PASS; build 0 warnings/errors; Inno compile and Help PASS. Output artifacts/release/1.20.29-rc1-cr066/output/CosmicDesignerSetup.exe. TC-066-002 / TC-064-003 PENDING_MANUAL; WAITING FOR USER VERIFICATION. Next CR-067.

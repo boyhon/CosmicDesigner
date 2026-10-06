@@ -3,6 +3,7 @@ using System.IO;
 using System.Text;
 
 var regressionTests=new (string Id,Action Run)[]{
+    ("TC-066-001", (Action)InstallerBranding),
     ("TC-065-001", (Action)InstallerRelease),
     ("TC-064-001", (Action)UserDocumentation),
     ("TC-063-001", (Action)CutCenterGuides),
@@ -93,6 +94,15 @@ foreach(var group in selected.GroupBy(test=>test.Run))
 }
 Console.WriteLine($"Regression: {selected.Count-failures.Count}/{selected.Count} PASS; manual cases are NOT RUN");
 if(failures.Count>0)Environment.ExitCode=1;
+static void InstallerBranding()
+{
+    var root = new DirectoryInfo(AppContext.BaseDirectory);
+    while (root is not null && !File.Exists(Path.Combine(root.FullName,"Directory.Build.props"))) root = root.Parent;
+    if(root is null) throw new InvalidOperationException("Repository output required");
+    var setup=File.ReadAllText(Path.Combine(root.FullName,"installer","DXFExplorer.iss"));
+    foreach(var required in new[]{"#define AppName \"CosmicDesigner\"", "DefaultDirName={autopf}\\CosmicDesigner", "DefaultGroupName=CosmicDesigner", "바탕 화면에 CosmicDesigner 바로가기 만들기", "Name: \"{autodesktop}\\CosmicDesigner\"; Filename: \"{app}\\CosmicDesigner.exe\"", "Filename: \"{app}\\CosmicDesigner.exe\"; Description: \"CosmicDesigner 실행\"", "AppId={{72D5CE59-6E07-47D0-88C6-ADE37D3368A1}"})
+        if(!setup.Contains(required)) Fail("installer branding/upgrade contract: "+required);
+}
 static void InstallerRelease()
 {
     var root = new DirectoryInfo(AppContext.BaseDirectory);

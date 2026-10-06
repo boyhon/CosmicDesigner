@@ -137,3 +137,5 @@ The source bundle and subsequent natural-language requests are tracked in the [C
 
 - CR-063: Cut 몸체 이동 중, 중심을 가로지르는 인접 평행 외곽 LINE/V/V1 사이 중앙과 1.5 DIP 이내면 빨간 점선 가로/세로 중앙 안내와 중심 십자를 표시한다. 두 축은 독립. 확대/Pan 대응, 자동 흡착 없음, resize/이동 종료/다른 선택에는 표시하지 않는다. Semicircle/QuarterCircle은 실제 ARC 중심 사용.
 - CR-065: 설치 출력 CosmicDesignerSetup.exe; Freeze 설치 버전 1.20.29-rc1, 숫자형 FileVersion 1.20.29.0. 기존 AppId/제품명 유지.
+
+- CR-066: CR-065 이후 설치 제품명 CosmicDesigner; 새 기본 폴더/그룹 CosmicDesigner; desktop/run CosmicDesigner.exe. 기존 AppId와 업데이트 기존 경로 유지.

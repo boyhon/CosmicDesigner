@@ -35,3 +35,5 @@ ACTIVE 테스트는 누적 보존한다. 변경은 근거 CR, 목적 유지/요�
 2026-10-05 기록은 기존 함수/CR의 사후 매핑이다. 과거 구현 전 영향 분석이나 신규 UI 실행 결과를 꾸며 기록하지 않는다. 수동 테스트는 아직 NOT RUN이다. 기존 lifecycle과 수동 승인 기록을 유지하며 READY FOR MERGE로 일괄 승격하지 않는다.
 
 CR-065: AUTO TC-065-001 is registered in the application runner and checks the compiled installer. Compile it first; default artifact is artifacts/release/1.20.29-rc1-cr065/output/CosmicDesignerSetup.exe. Set COSMIC_INSTALLER_PATH for another location. Build-Installer.ps1 also runs the independent PowerShell verifier. Current AUTO 68 + BASE 6 = 74; MANUAL 68.
+
+CR-066 adds TC-066-001 installer branding/shortcut/upgrade contract to the runner. Set COSMIC_INSTALLER_PATH to the cr066 package when validating the delivered installer. Current AUTO 69 + BASE 6 = 75; MANUAL 69.

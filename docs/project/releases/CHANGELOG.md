@@ -342,3 +342,6 @@ Release-relevant changes after the baseline are recorded here. CR identifiers mu
 
 ## CR-065 — 2026-10-06
 설치 파일을 CosmicDesignerSetup.exe로 생성하고 Freeze 버전 1.20.29-rc1을 적용한다 (Windows FileVersion 1.20.29.0).
+
+## CR-066 — 2026-10-06
+설치 화면/기본 경로/그룹/바탕 화면/완료 후 실행을 CosmicDesigner로 변경.

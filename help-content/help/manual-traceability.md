@@ -69,3 +69,5 @@ HTML이 공식 사용자 원본. 현재 소스 우선, 과거 CR은 변화 근�
 | CR-063 | CR-063 Cut 이동 중 인접 선 사이 중앙 정렬 안내 | Yes | Yes | 천공 만들기와 편집 | [features/holes.html](features/holes.html) | TC-063-002 | TC-063-001 | 반영; 사람 검증 대기 | 2026-10-06 |
 | CR-064 | CR-064 사용자 HTML 매뉴얼 및 Living Documentation 도움말 시스템 | Yes | Yes | 설치 및 시작, 문제 해결, 키보드와 마우스 | [getting-started.html](getting-started.html), [troubleshooting/common-errors.html](troubleshooting/common-errors.html), [reference/shortcuts.html](reference/shortcuts.html) | TC-064-002, TC-064-003 | TC-064-001 | 반영; 사람 검증 대기 | 2026-10-06 |
 | CR-065 | 설치 파일명 및 Freeze 버전 | Yes | Yes | 설치 및 시작 | [getting-started.html](getting-started.html) | TC-065-002 | TC-065-001, TC-064-001 | 반영; 사람 검증 대기 | 2026-10-06 |
+
+| CR-066 | 설치 화면 제품명 | Yes | Yes | 설치 및 시작 | [getting-started.html](getting-started.html) | TC-066-002 | TC-066-001, TC-065-001, TC-064-001 | 반영; 사람 검증 대기 | 2026-10-06 |
