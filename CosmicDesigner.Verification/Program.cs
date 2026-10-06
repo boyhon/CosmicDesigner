@@ -3,6 +3,7 @@ using System.IO;
 using System.Text;
 
 var regressionTests=new (string Id,Action Run)[]{
+    ("TC-065-001", (Action)InstallerRelease),
     ("TC-064-001", (Action)UserDocumentation),
     ("TC-063-001", (Action)CutCenterGuides),
     ("TC-062-001", (Action)DisconnectedSections),
@@ -92,6 +93,18 @@ foreach(var group in selected.GroupBy(test=>test.Run))
 }
 Console.WriteLine($"Regression: {selected.Count-failures.Count}/{selected.Count} PASS; manual cases are NOT RUN");
 if(failures.Count>0)Environment.ExitCode=1;
+static void InstallerRelease()
+{
+    var root = new DirectoryInfo(AppContext.BaseDirectory);
+    while (root is not null && !File.Exists(Path.Combine(root.FullName,"Directory.Build.props"))) root = root.Parent;
+    if(root is null) throw new InvalidOperationException("Run installer checks from a repository build output");
+    var path = Environment.GetEnvironmentVariable("COSMIC_INSTALLER_PATH") ?? Path.Combine(root.FullName,"artifacts","release","1.20.29-rc1-cr065","output","CosmicDesignerSetup.exe");
+    if(!File.Exists(path)) throw new InvalidOperationException("Compile installer first or set COSMIC_INSTALLER_PATH");
+    if(Path.GetFileName(path)!="CosmicDesignerSetup.exe") Fail("installer filename");
+    var version=System.Diagnostics.FileVersionInfo.GetVersionInfo(path);
+    if(version.FileMajorPart!=1 || version.FileMinorPart!=20 || version.FileBuildPart!=29 || version.FilePrivatePart!=0) Fail("installer numeric Freeze version");
+    if(version.FileVersion?.Trim()!="1.20.29-rc1" || version.ProductVersion?.Trim()!="1.20.29-rc1") Fail("installer displayed Freeze version");
+}
 static void UserDocumentation()
 {
     var root = new DirectoryInfo(AppContext.BaseDirectory);

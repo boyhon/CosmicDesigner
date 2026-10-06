@@ -9,7 +9,7 @@
 
 ## Current Version
 
-- DXFExplorer installer suite: `1.1.0` (`installer/DXFExplorer.iss`)
+- Installer: `CosmicDesignerSetup.exe`, Freeze `1.20.29-rc1` (FileVersion `1.20.29.0`; `installer/ReleaseVersion.iss`)
 - CosmicDesigner: `1.20.29`
 
 ## Current Development Phase
@@ -483,7 +483,7 @@ CosmicDesigner 1.20.29 source includes CR-064 Help baseline alongside CR-001~063
 
 ## Next Change Request Number
 
-`CR-065`
+`CR-066`
 
 ## CR-049 — 2026-10-05
 Implemented: 원 다음에 반원 윤곽 버튼, 지름 중심에서 네 방향 드래그 생성. 이동/크기/DXF/Undo에서 방향 유지. 자동 신규 1/1, 영향 11/11, 전체 59/59 PASS. Release build 0 warnings/errors. Published artifacts/CosmicDesigner-1.20.14/CosmicDesigner.exe.
@@ -534,3 +534,6 @@ Implemented: HTML 사용자 도움말 22개, 과거 CR 63건 영향 평가(Yes 6
 
 ## Release Candidate Freeze Result — 2026-10-06
 Source Freeze `8fe11260f62932021ef92210dd32552abdffd93a`, candidate 1.20.29-rc1, 302 managed inputs. Pushed boyhon; [Draft PR #1](https://github.com/boyhon/CosmicDesigner/pull/1) to main. Five Release/win-x64/self-contained app publishes and Inno Setup compile PASS; stage has 35 HTML. Full AUTO 73/73 plus shared/Drawer checks and startup 5/5 PASS. Installer 46,789,650 bytes; 453 artifact checksums recorded. Actual clean install/upgrade/uninstall and human UI/Help review remain pending; same-AppId existing install records, non-admin host and no Sandbox. See [Freeze report](releases/FREEZE-RESULT-2026-10-06.md). Freeze not amended; follow-up changes are documentation only. Next CR-065.
+
+## CR-065 — 2026-10-06
+Implemented: CosmicDesignerSetup.exe, Freeze 1.20.29-rc1 (numeric Windows version 1.20.29.0). New AUTO 1/1, affected 1/1, full 74/74 PASS; build 0 warnings/errors; Inno compile and Help links PASS. Output artifacts/release/1.20.29-rc1-cr065/output/CosmicDesignerSetup.exe, 46,789,675 bytes. Original Freeze preserved; packaging follow-up includes updated installation help. TC-065-002 / TC-064-003 PENDING_MANUAL; WAITING FOR USER VERIFICATION. Next CR-066. See tests/regression/results/CR-065-2026-10-06.md.

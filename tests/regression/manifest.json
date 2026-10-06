@@ -2054,6 +2054,34 @@
       "coverage": "Human UI acceptance",
       "introduced": "2026-10-05",
       "origin": "CR-054 follow-up"
+    },
+    {
+      "testId": "TC-065-001",
+      "relatedCR": "CR-065",
+      "status": "ACTIVE",
+      "executionType": "AUTO",
+      "automation": "AUTO",
+      "purpose": "Installer filename and Freeze version",
+      "preconditions": "CR-065 compiled installer",
+      "procedure": "cr/CR-065/test-cases.md",
+      "expected": "See immutable specification",
+      "implementation": "CosmicDesigner.Verification/Program.cs::InstallerRelease; installer/Verify-Installer.ps1",
+      "introduced": "2026-10-06",
+      "origin": "User installer filename/Freeze request"
+    },
+    {
+      "testId": "TC-065-002",
+      "relatedCR": "CR-065",
+      "status": "ACTIVE",
+      "executionType": "MANUAL",
+      "automation": "MANUAL",
+      "purpose": "Installer filename and Freeze version",
+      "preconditions": "CR-065 compiled installer",
+      "procedure": "cr/CR-065/test-cases.md",
+      "expected": "See immutable specification",
+      "implementation": "tests/regression/cr/CR-065/test-cases.md",
+      "introduced": "2026-10-06",
+      "origin": "User installer filename/Freeze request"
     }
   ],
   "baselineMethods": [

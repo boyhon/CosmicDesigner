@@ -1,5 +1,5 @@
 ﻿#define AppName "DXFExplorer"
-#define AppVersion "1.1.0"
+#include "ReleaseVersion.iss"
 #define AppPublisher "DXFExplorer"
 #ifndef StageRoot
 #define StageRoot "stage"
@@ -14,7 +14,7 @@ DefaultDirName={autopf}\DXFExplorer
 DefaultGroupName=DXFExplorer
 DisableProgramGroupPage=yes
 OutputDir=output
-OutputBaseFilename=DXFExplorerSetup
+OutputBaseFilename={#SetupBaseFilename}
 Compression=lzma2/max
 SolidCompression=yes
 WizardStyle=modern
@@ -27,7 +27,10 @@ RestartApplications=no
 SetupLogging=yes
 UsePreviousAppDir=yes
 UsePreviousGroup=yes
-VersionInfoVersion={#AppVersion}
+VersionInfoVersion={#AppNumericVersion}
+VersionInfoProductVersion={#AppNumericVersion}
+VersionInfoProductTextVersion={#AppVersion}
+VersionInfoTextVersion={#AppVersion}
 SetupIconFile=..\cnc_vgroove_icon.ico
 
 [Languages]

@@ -66,8 +66,9 @@ if (-not $iscc) { throw "Inno Setup 6 compiler (ISCC.exe) was not found." }
 New-Item -ItemType Directory -Path $setupOutput -Force | Out-Null
 & $iscc "/DStageRoot=$stageDir" "/O$setupOutput" (Join-Path $installerDir "DXFExplorer.iss")
 if ($LASTEXITCODE -ne 0) { throw "Inno Setup compilation failed." }
-$setup = Join-Path $setupOutput "DXFExplorerSetup.exe"
+$setup = Join-Path $setupOutput "CosmicDesignerSetup.exe"
 if (-not (Test-Path -LiteralPath $setup)) { throw "Installer output was not created: $setup" }
+& (Join-Path $installerDir "Verify-Installer.ps1") -Path $setup
 $helpSource = $stageDir
 $outputDir = Split-Path $setup -Parent
 Get-ChildItem -LiteralPath $helpSource -File -Filter "*_help.html" | Copy-Item -Destination $outputDir -Force

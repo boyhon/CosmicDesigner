@@ -6,7 +6,7 @@ Users submit requirements in natural language; they are not expected to assign C
 
 ## Next available number
 
-`CR-065`
+`CR-066`
 
 The project-management setup and baseline documentation do not consume a CR because they do not change application behavior.
 
@@ -123,3 +123,5 @@ Never reuse an issued number. Use the required structure in [DEVELOPMENT_POLICY.
 - CR-063 — Implemented: Cut 이동 중앙 안내선; 1.20.29. New AUTO 1/1, affected 9/9, full 72/72 PASS; TC-063-002 PENDING_MANUAL / WAITING FOR USER VERIFICATION.
 
 - [CR-064](CR-064.md) — Implemented (WAITING FOR USER VERIFICATION) — 사용자 HTML 매뉴얼 및 Living Documentation 도움말 시스템.
+
+- [CR-065](CR-065.md) — Implemented / WAITING FOR USER VERIFICATION — 설치 파일명 및 Freeze 버전.

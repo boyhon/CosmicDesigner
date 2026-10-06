@@ -339,3 +339,6 @@ Release-relevant changes after the baseline are recorded here. CR identifiers mu
 
 ## 1.20.29 — 2026-10-06
 - CR-063: Cut 이동 중 인접 외곽/절곡선 중앙 점선 안내. 신규 1/1, 영향 9/9, 전체 72/72 AUTO PASS; 사용자 UI 확인 대기.
+
+## CR-065 — 2026-10-06
+설치 파일을 CosmicDesignerSetup.exe로 생성하고 Freeze 버전 1.20.29-rc1을 적용한다 (Windows FileVersion 1.20.29.0).
