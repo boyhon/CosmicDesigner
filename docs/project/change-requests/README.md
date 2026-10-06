@@ -6,7 +6,7 @@ Users submit requirements in natural language; they are not expected to assign C
 
 ## Next available number
 
-`CR-067`
+`CR-068`
 
 The project-management setup and baseline documentation do not consume a CR because they do not change application behavior.
 
@@ -127,3 +127,5 @@ Never reuse an issued number. Use the required structure in [DEVELOPMENT_POLICY.
 - [CR-065](CR-065.md) — Implemented / WAITING FOR USER VERIFICATION — 설치 파일명 및 Freeze 버전.
 
 - [CR-066](CR-066.md) — Implemented / WAITING FOR USER VERIFICATION — 설치 화면 CosmicDesigner.
+
+- [CR-067](CR-067.md) — Implemented / WAITING FOR USER VERIFICATION — 클래식 설치 아이콘 및 실제 실행 확인.

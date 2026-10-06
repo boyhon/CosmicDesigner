@@ -2110,6 +2110,20 @@
       "implementation": "tests/regression/cr/CR-066/test-cases.md",
       "introduced": "2026-10-06",
       "origin": "User installer branding screenshot request"
+    },
+    {
+      "testId": "TC-067-001",
+      "relatedCR": "CR-067",
+      "status": "ACTIVE",
+      "executionType": "SEMI_AUTO",
+      "automation": "SEMI_AUTO",
+      "purpose": "Installer live icon review",
+      "preconditions": "Compiled CR-067 installer and Windows",
+      "procedure": "cr/CR-067/test-cases.md",
+      "expected": "Classic icon; human confirmation required",
+      "implementation": "computer-use @oai/sky",
+      "introduced": "2026-10-06",
+      "origin": "User classic installer icon request"
     }
   ],
   "baselineMethods": [

@@ -25,3 +25,5 @@ CR-064의 실제 새/사용자 지정 경로 설치, 업그레이드 및 제거 
 `ReleaseVersion.iss`가 설치 버전 설정 원본이다. AppVersion/ProductVersion: 1.20.29-rc1; Windows FileVersion: 1.20.29.0. Build-Installer.ps1은 생성 EXE를 Verify-Installer.ps1으로 검사한다. 새 Freeze 승인 시 해당 정의를 갱신한다.
 
 CR-066: 설치 화면/설치 목록/새 기본 폴더/시작 메뉴 그룹은 CosmicDesigner. 바탕 화면 및 완료 후 실행은 CosmicDesigner.exe. 기존 AppId/UsePreviousAppDir는 유지하므로 업데이트는 이전 설치 경로를 사용한다. 포함된 다른 앱의 이름은 유지한다.
+
+CR-067: SetupIconFile=compiler:SetupClassicIcon.ico; Inno Setup 제공 클래식 설치 아이콘 사용.

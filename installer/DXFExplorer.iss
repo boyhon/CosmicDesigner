@@ -31,7 +31,7 @@ VersionInfoVersion={#AppNumericVersion}
 VersionInfoProductVersion={#AppNumericVersion}
 VersionInfoProductTextVersion={#AppVersion}
 VersionInfoTextVersion={#AppVersion}
-SetupIconFile=..\cnc_vgroove_icon.ico
+SetupIconFile=compiler:SetupClassicIcon.ico
 
 [Languages]
 Name: "korean"; MessagesFile: "compiler:Languages\Korean.isl"

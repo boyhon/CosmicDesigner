@@ -345,3 +345,6 @@ Release-relevant changes after the baseline are recorded here. CR identifiers mu
 
 ## CR-066 — 2026-10-06
 설치 화면/기본 경로/그룹/바탕 화면/완료 후 실행을 CosmicDesigner로 변경.
+
+## CR-067 — 2026-10-06
+설치 EXE 아이콘을 Inno Setup 기본 클래식 아이콘으로 변경.
