@@ -543,3 +543,5 @@ Implemented: 설치 화면/제품명/기본 폴더/그룹/선택형 바탕 화�
 
 ## CR-067 — 2026-10-06
 Implemented: SetupClassicIcon.ico applied; Freeze 1.20.29-rc1 rebuilt. Affected AUTO 3/3 and full 75/75 PASS. Actual installer progress window title-bar classic icon observed via computer-use. Taskbar/user visual confirmation pending; TC-067-001 SEMI_AUTO PENDING_MANUAL. No actual installation action performed by Codex; user advanced installer independently. Output artifacts/release/1.20.29-rc1-cr067/output/CosmicDesignerSetup.exe. Next CR-068.
+
+CR-067 verification update: user confirmed taskbar classic icon in conversation (2026-10-06); TC-067-001 SEMI_AUTO PASS, CR-067 Verified. Initial language-dialog visual capture coverage limited; no installation lifecycle PASS asserted.

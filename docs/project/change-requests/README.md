@@ -129,3 +129,4 @@ Never reuse an issued number. Use the required structure in [DEVELOPMENT_POLICY.
 - [CR-066](CR-066.md) — Implemented / WAITING FOR USER VERIFICATION — 설치 화면 CosmicDesigner.
 
 - [CR-067](CR-067.md) — Implemented / WAITING FOR USER VERIFICATION — 클래식 설치 아이콘 및 실제 실행 확인.
+- CR-067 status update — Verified: requester confirmed taskbar classic icon; TC-067-001 SEMI_AUTO PASS. Prior pending entry is historical.
