@@ -16,9 +16,11 @@
     <Exec CustomErrorRegularExpression="^BLOCKED:" Command="&quot;$(VCuttingReleasePython)&quot; &quot;$(MSBuildThisFileDirectory)release\versioning.py&quot; validate --freeze &quot;$(VCuttingFreezeRecord)&quot; --props &quot;$(VCuttingFreezeProps)&quot; --display &quot;$(VCuttingDisplayVersion)&quot; --numeric &quot;$(VCuttingNumericVersion)&quot; --customer &quot;$(VCuttingCustomerVersion)&quot;" />
   </Target>
   <Target Name="VCuttingHelpVersion" BeforeTargets="AssignTargetPaths" Condition="'$(OutputType)' == 'WinExe'">
-    <WriteLinesToFile File="$(IntermediateOutputPath)vcutting-version.js" Lines="window.VCuttingVersion = &quot;$(VCuttingDisplayVersion)&quot;%3B" Overwrite="true" WriteOnlyWhenDifferent="true" />
+    <PropertyGroup><_VCuttingHelpVersionDirectory>$(MSBuildThisFileDirectory)artifacts\help-versions\$(VCuttingDisplayVersion)\</_VCuttingHelpVersionDirectory></PropertyGroup>
+    <MakeDir Directories="$(_VCuttingHelpVersionDirectory)" />
+    <WriteLinesToFile File="$(_VCuttingHelpVersionDirectory)version.js" Lines="window.VCuttingVersion = &quot;$(VCuttingDisplayVersion)&quot;%3B" Overwrite="true" WriteOnlyWhenDifferent="true" />
     <ItemGroup>
-      <Content Include="$(IntermediateOutputPath)vcutting-version.js" Link="help\js\version.js" CopyToOutputDirectory="PreserveNewest" CopyToPublishDirectory="PreserveNewest" />
+      <Content Include="$(_VCuttingHelpVersionDirectory)version.js" Link="help\js\version.js" CopyToOutputDirectory="PreserveNewest" CopyToPublishDirectory="PreserveNewest" />
     </ItemGroup>
   </Target>
 </Project>

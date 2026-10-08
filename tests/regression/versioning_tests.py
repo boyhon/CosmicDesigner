@@ -33,6 +33,17 @@ class VersionTests(unittest.TestCase):
         v.validate(self.root, f)
         (self.root / 'Viewer/Actual.csproj').write_text('new real source')
         with self.assertRaisesRegex(ValueError, 'input mismatch'): v.validate(self.root, f)
+    def test_referenced_apps_publish_one_help_version(self):
+        shutil.copy(ROOT/'Directory.Build.targets', self.root/'Directory.Build.targets')
+        for name in ('Viewer','Simulator'):
+            folder=self.root/name;folder.mkdir()
+            reference='<ItemGroup><ProjectReference Include="../Viewer/Viewer.csproj" /></ItemGroup>' if name=='Simulator' else ''
+            (folder/(name+'.csproj')).write_text('<Project Sdk="Microsoft.NET.Sdk"><PropertyGroup><OutputType>WinExe</OutputType><TargetFramework>net10.0-windows</TargetFramework><ImplicitUsings>enable</ImplicitUsings><VCuttingDisplayVersion>Development</VCuttingDisplayVersion><VCuttingNumericVersion>1.20.29.0</VCuttingNumericVersion><DevelopmentVersion>1.20.29</DevelopmentVersion></PropertyGroup>'+reference+'</Project>')
+            (folder/'Program.cs').write_text('class Program { static void Main() {} }')
+        output=self.root/'artifacts/publish'
+        result=subprocess.run(['dotnet','publish',str(self.root/'Simulator/Simulator.csproj'),'-c','Release','-p:UseAppHost=false','-o',str(output),'-v','quiet'],cwd=self.root,capture_output=True,text=True,encoding='utf-8',errors='replace',timeout=180)
+        self.assertEqual(result.returncode,0,result.stdout+result.stderr)
+        self.assertEqual((output/'help/js/version.js').read_text(encoding='utf-8-sig').strip(),'window.VCuttingVersion = "Development";')
     def test_rebuild_and_inputs(self):
         with self.assertRaises(ValueError): v.allocate(self.root, None)
         f = v.allocate(self.root, self.approval)

@@ -399,3 +399,4 @@ CR-088 Development: skip proven invisible auxiliary leaf text; bounded fill topo
 - CR-089: H/W Section Designer Fit/Reset restores the panel-centered full-section view after zoom.
 - CR-090: include CosmicConvert in VCutting installer and Start Menu.
 - CR-091: exclude WPF-generated temporary project files from Freeze source comparison.
+- CR-092: fix duplicate Help version output when publishing referenced programs.
