@@ -118,3 +118,4 @@ CR-087 | cosmicconvert.html#limits/#geometry | native Compound/Slit restoration,
 CR-088 | cosmicconvert.html#limits | invisible auxiliary leaf text, visible text troubleshooting | TC088001 AUTO/002 MANUAL; human pending
 | CR-089 | H/W Section Fit/Reset | features/sections.html#fit-reset; troubleshooting/common-errors.html#section-fit-reset | TC-089-001/002; TC-064-001 | Updated; human review pending |
 | CR-090 | CosmicConvert package/Start Menu | installation.html#installed-programs; cosmicconvert.html | TC-090-001/002; TC-064-001 | Updated; human installation pending |
+| CR-093 | Pre-Freeze integration installer | installation.html#integration-test | TC-093-001/002; TC-090-002; TC-064-001 | Updated; actual human review pending |

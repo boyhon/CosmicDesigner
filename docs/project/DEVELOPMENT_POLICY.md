@@ -183,3 +183,6 @@ New CosmicDesigner user text must use stable external language keys and validate
 
 ## Build report identity — user2026-10-07
 Whenever delivering an executable/build, include its exact Help > About Build identifier alongside absolute path. Read AssemblyMetadata BuildIdentity from that artifact; do not infer from current source or reuse earlier values. Use existing development override to distinguish concurrent working builds. Freeze/customer version authority unchanged. AGENTS persistent rule applies.
+
+## CR-093 — pre-Freeze installation testing (user2026-10-08)
+User explicitly requires an installable integration-test package before manual installation/use review and Freeze approval. This supersedes the prior all-installers-require-Freeze interpretation for Development testing only. Build-IntegrationInstaller.ps1 creates a Development installer with internal DevelopmentVersion numeric mapping and unique source/build identity, exact source inputs/checksums, same AppId/install/settings and a separate IntegrationTest filename/output. It never allocates a customer version or Freeze. Frozen customer/production paths retain all existing gates. Complete manual review and requested fixes first, then request explicit Freeze approval of the reviewed source. Existing RC1/RC2 records retained; pending RC3 approval request superseded, no RC3 issued.

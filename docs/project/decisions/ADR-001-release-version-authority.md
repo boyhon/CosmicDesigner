@@ -27,3 +27,6 @@ Windows 숫자형 매핑: (customer major + epoch 1).minor.patch.revision. RC re
 [CR-070](../change-requests/CR-070.md)
 
 Toolchain: Freeze records exact selected .NET SDK and policy-pinned Inno Setup engine; validate checks SDK, installer probes engine before compilation. Framework/runtime selection follows the frozen SDK; source dependency declarations and feed configuration are hashed. Future package dependencies must use exact versions/committed locks.
+
+## CR-093 — pre-Freeze installation testing (user2026-10-08)
+User explicitly requires an installable integration-test package before manual installation/use review and Freeze approval. This supersedes the prior all-installers-require-Freeze interpretation for Development testing only. Build-IntegrationInstaller.ps1 creates a Development installer with internal DevelopmentVersion numeric mapping and unique source/build identity, exact source inputs/checksums, same AppId/install/settings and a separate IntegrationTest filename/output. It never allocates a customer version or Freeze. Frozen customer/production paths retain all existing gates. Complete manual review and requested fixes first, then request explicit Freeze approval of the reviewed source. Existing RC1/RC2 records retained; pending RC3 approval request superseded, no RC3 issued.

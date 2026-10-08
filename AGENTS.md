@@ -50,6 +50,9 @@ Installer builds consume immutable release/freezes records and must block input/
 
 Freeze source must be clean and committed. Record approval/source SHA/inputs hashes/included CRs/settings/verification; append build checksums under release/builds. Ledger-only commits are allowed after the source anchor; other changed source blocks builds. Production promotion requires complete actual automated and human verification plus separate user approval; never invent reviewer/evidence. Stable Windows mapping and future release increments follow ADR-001. Preserve historical 1.20.29-rc1 records/artifacts and user data/AppId.
 
+## Pre-Freeze integration installers — User correction 2026-10-08 / CR-093
+사용자는 설치부터 사용까지 수동 통합 점검을 마친 다음 Freeze를 승인한다. 이 점검을 위한 설치 파일은 Freeze 없이 생성할 수 있다. installer/Build-IntegrationInstaller.ps1을 사용하며 App/About/Help/installer는 Development로 표시하고 고유 BuildIdentity, 소스 Commit/입력 해시/산출물 체크섬을 기록한다. 고객 버전/RC/Freeze를 자동 발급하지 않는다. 기존 AppId/설치·업그레이드/사용자 설정을 유지하며 별도 출력 루트와 IntegrationTest 파일명으로 구별한다. 고객 RC/정식 설치 파일에는 기존 불변 Freeze 규칙을 계속 적용한다. 수동 점검과 수정이 끝난 소스에 대해서만 이후 명시적인 Freeze 승인을 요청한다.
+
 ## Package and Application Identity — User correction 2026-10-06
 VCutting은 여러 프로그램을 포함하는 패키지 이름이다. 현재 이 공식 사용자 도움말의 대상 실행 프로그램은 CosmicDesigner이며, 실행 프로그램 이름을 패키지 이름과 혼동하지 않는다. CosmicExplorer는 향후 패키지에 추가할 계획이며 현재 구현/배포된 프로그램으로 안내하지 않는다. 사용자 2026-10-06 정정이 기존 CR-069의 주 프로그램명 VCutting 해석보다 우선한다. 기존 기술 경로/실행 산출물 이름이 아직 다르면 내부 문서에 불일치를 기록하고 별도 구현 변경에서 처리한다.
 

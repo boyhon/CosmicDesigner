@@ -204,3 +204,4 @@ CR-088: skip proven invisible leaf text only (fill/stroke none or explicit paint
 ## CR-089 H/W Section viewport fit
 Each H/W Section toolbar provides Fit/Reset to restore zoom1/pan0 and existing panel-centered fit. Current Flat/Bent, rotation, dimension visibility, section station and geometry are preserved; only the target Section is reset.
 CR-090: six-program installer includes CosmicConvert.exe/Start Menu, preserving CosmicDesigner.exe as main program and existing package/AppId/upgrade paths.
+CR-093 user correction: create Development integration-test installer before actual installation/use manual review and subsequent explicit Freeze. Same AppId/path/settings, unique BuildIdentity and source/checksum evidence; no customer version allocation. Customer/production installer Freeze gates unchanged.

@@ -62,3 +62,4 @@ CR-089 adds AUTO TC-089-001 actual WPF Section Fit/Reset and MANUAL TC-089-002 v
 CR-090 adds AUTO TC-090-001 package contract and MANUAL TC-090-002 actual install/shortcuts. Designer108/108PASS; accumulated115PASS/1historicalNOT_RUN. Human pending; release ledger records actual RC builds.
 CR-091 adds AUTO TC-091-001 sharing ReleaseVersionPolicy:5Python checks PASS, Designer109/109PASS, accumulated116PASS/1historicalNOT_RUN. WPF generated project ignored, actual source still blocked. RC2 separately approved.
 CR-092 adds AUTO TC-092-001 shared policy runner: actual2WinExe referenced publish and correct Help version text. Policy6/6PASS, Designer110/110PASS; six-program self-contained pre-Freeze publish/stage PASS; accumulated117PASS/1historicalNOT_RUN.
+CR-093 adds AUTO TC-093-001 integration installer validation/no Freeze and MANUAL002 actual install/use before Freeze. FullDesigner111/111PASS, accumulated118PASS/1historicalNOT_RUN. Human pending.

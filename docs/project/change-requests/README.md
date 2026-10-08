@@ -186,3 +186,5 @@ CR-084 Implemented / WAITING FOR USER VERIFICATION: new3/3 affected9/9 full106/1
 - [CR-091](CR-091.md) — Implemented: exclude generated WPF projects from Freeze inputs; real projects remain protected. NextCR092.
 - [CR-092](CR-092.md) — In Progress: shared generated Help version for referenced applications. NextCR093.
 - [CR-092](CR-092.md) — Implemented: six-project publish/stage verification PASS; RC3 approval pending. NextCR093.
+- [CR-093](CR-093.md) — In Progress: Development integration installer before Freeze approval. NextCR094.
+- [CR-093](CR-093.md) — Implemented / WAITING FOR USER VERIFICATION: pre-Freeze Development integration installer. NextCR094.

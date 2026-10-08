@@ -49,3 +49,6 @@ VCutting.sln / VCutting, VCutting.Explorer, VCutting.Viewer, VCutting.Simulator,
 
 ## CR-090 package update — 2026-10-08
 The current package publishes six programs, including standalone CosmicConvert.exe and its Start Menu shortcut. Main design executable is CosmicDesigner.exe; VCutting remains the package/installer name. User explicitly authorized 1.0.0-rc.1 Freeze; pending human verification does not imply production approval.
+
+## CR-093 — pre-Freeze installation testing (user2026-10-08)
+User explicitly requires an installable integration-test package before manual installation/use review and Freeze approval. This supersedes the prior all-installers-require-Freeze interpretation for Development testing only. Build-IntegrationInstaller.ps1 creates a Development installer with internal DevelopmentVersion numeric mapping and unique source/build identity, exact source inputs/checksums, same AppId/install/settings and a separate IntegrationTest filename/output. It never allocates a customer version or Freeze. Frozen customer/production paths retain all existing gates. Complete manual review and requested fixes first, then request explicit Freeze approval of the reviewed source. Existing RC1/RC2 records retained; pending RC3 approval request superseded, no RC3 issued.
