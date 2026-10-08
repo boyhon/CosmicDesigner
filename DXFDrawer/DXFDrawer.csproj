@@ -1,5 +1,0 @@
-<Project Sdk="Microsoft.NET.Sdk">
-  <PropertyGroup><OutputType>WinExe</OutputType><TargetFramework>net10.0-windows</TargetFramework><UseWPF>true</UseWPF><Nullable>enable</Nullable><ImplicitUsings>enable</ImplicitUsings><AssemblyName>DXFDrawer</AssemblyName><ApplicationIcon>..\cnc_vgroove_icon.ico</ApplicationIcon></PropertyGroup>
-  <ItemGroup><ProjectReference Include="..\DXFExplorer\DXFExplorer.csproj" /></ItemGroup>
-  <ItemGroup><Resource Include="..\cnc_vgroove_icon.ico" Link="cnc_vgroove_icon.ico" /></ItemGroup>
-</Project>

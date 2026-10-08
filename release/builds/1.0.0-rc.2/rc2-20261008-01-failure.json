@@ -1,0 +1,1 @@
+{"version":"1.0.0-rc.2","buildNumber":"rc2-20261008-01","result":"FAILED","stage":"VCutting.Simulator publish","reason":"NETSDK1152 duplicate generated Help version.js from Viewer and Simulator","installerCreated":false,"correctiveCR":"CR-092","humanVerification":"PENDING"}

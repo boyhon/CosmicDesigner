@@ -1,0 +1,1 @@
+{"version":"1.0.0-rc.1","buildNumber":"rc1-20261008-01","sourceCommit":"692295439b2ea228cd3e6d5148377d0010790e97","result":"FAILED","stage":"VCutting.Viewer WPF markup compile","reason":"Generated untracked *_wpftmp.csproj incorrectly included in Freeze source inputs","installerCreated":false,"correctiveCR":"CR-091","humanVerification":"PENDING"}

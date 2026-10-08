@@ -1,10 +1,26 @@
 <Project>
+  <Import Project="release\Version.props" />
+  <PropertyGroup>
+    <VCuttingDisplayVersion>Development</VCuttingDisplayVersion>
+    <VCuttingNumericVersion>$(DevelopmentVersion).0</VCuttingNumericVersion>
+  </PropertyGroup>
+  <Import Project="$(VCuttingFreezeProps)" Condition="'$(VCuttingFreezeProps)' != '' And Exists('$(VCuttingFreezeProps)')" />
+  <PropertyGroup>
+    <Version>$(DevelopmentVersion)</Version>
+    <FileVersion>$(VCuttingNumericVersion)</FileVersion>
+    <InformationalVersion Condition="'$(VCuttingCustomerVersion)' == ''">$(DevelopmentVersion)-dev</InformationalVersion>
+    <InformationalVersion Condition="'$(VCuttingCustomerVersion)' != ''">$(VCuttingCustomerVersion)+$(VCuttingBuildIdentity)</InformationalVersion>
+  </PropertyGroup>
+  <ItemGroup Condition="'$(MSBuildProjectName)' != ''">
+    <Compile Include="$(MSBuildThisFileDirectory)Shared\VersionInfo.cs" Link="Shared\VersionInfo.cs" />
+  </ItemGroup>
   <ItemGroup Condition="'$(OutputType)' == 'WinExe'">
     <Content Include="$(MSBuildThisFileDirectory)help-content\*_help.html"
              Link="%(Filename)%(Extension)"
              CopyToOutputDirectory="PreserveNewest"
              CopyToPublishDirectory="PreserveNewest" />
     <Content Include="$(MSBuildThisFileDirectory)help-content\help\**\*"
+             Exclude="$(MSBuildThisFileDirectory)help-content\help\**\*.md;$(MSBuildThisFileDirectory)help-content\help\**\*.json;$(MSBuildThisFileDirectory)help-content\help\js\version.js"
              Link="help\%(RecursiveDir)%(Filename)%(Extension)"
              CopyToOutputDirectory="PreserveNewest"
              CopyToPublishDirectory="PreserveNewest" />

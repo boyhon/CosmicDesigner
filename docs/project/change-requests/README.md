@@ -6,7 +6,7 @@ Users submit requirements in natural language; they are not expected to assign C
 
 ## Next available number
 
-`CR-011`
+`CR-089`
 
 The project-management setup and baseline documentation do not consume a CR because they do not change application behavior.
 
@@ -24,6 +24,46 @@ The project-management setup and baseline documentation do not consume a CR beca
 | [CR-008](CR-008.md) | W/H Section Designer 마우스 휠 확대·축소 | Implemented | 1.3.0 | — |
 | [CR-009](CR-009.md) | Section Designer 쐐기 생성 클릭 범위 제한 | Implemented | 1.3.0 | — |
 | [CR-010](CR-010.md) | 3D Preview 단순 투명 아크릴 골격 표현 | Implemented | 1.3.3 | — |
+| [CR-011](CR-011.md) | Section Designer CAD 외곽 치수 기준 및 판재 두께 표시 | Implemented | 1.3.4 | `f1c55a0` |
+| [CR-012](CR-012.md) | Flat Designer H/W 단면 선택선 및 연동 | Implemented | 1.4.0 | `f1c55a0` |
+| [CR-013](CR-013.md) | W Section Bent 적응형 화면 배율 교정 | Implemented | 1.4.1 | `f1c55a0` |
+| [CR-014](CR-014.md) | Section Designer 중앙 고정 Zoom | Implemented | 1.4.2 | `f1c55a0` |
+| [CR-015](CR-015.md) | Outer Contour 경계 천공 병합 | Implemented | 1.5.1 | `f1c55a0`, `ade8b61` |
+| [CR-016](CR-016.md) | 선택 위치의 실제 Outer Contour 단면 표시 | Implemented | 1.6.0 | `daad64f` |
+| [CR-017](CR-017.md) | Flat Designer Outer Contour LINE 직접 편집 | Implemented | 1.7.0 | `2b1a9d3` |
+| [CR-018](CR-018.md) | 잘린 Section 치수 편집과 Outer Contour 연쇄 갱신 | Implemented | 1.8.0 | `037bce9` |
+| [CR-019](CR-019.md) | 3D Preview Outer Contour 컷 형상 반영 | Implemented | 1.9.0 | `0ecd6cd` |
+| [CR-020](CR-020.md) | File 메뉴 New/Open/Save 단축키 | Implemented | 1.10.0 | `24762b7` |
+| [CR-021](CR-021.md) | 미저장 변경 사항 저장 확인 | Implemented | 1.11.0 | `882f035` |
+| [CR-022](CR-022.md) | Edit Settings 사용자 환경 설정창 | Implemented | 1.12.0 | `c72934b` |
+| [CR-023](CR-023.md) | 문서 단위와 두 가지 단위 변경 방식 | Implemented | 1.12.0 | `c72934b` |
+| [CR-024](CR-024.md) | 문서명 우선 Window Title | Implemented | 1.12.1 | `41151ca` |
+| [CR-025](CR-025.md) | Ruler 및 Grid 간격 설정 | Implemented | 1.13.0 | `f1486b2` |
+| [CR-026](CR-026.md) | Flat Designer 절삭 영역 흰색 표시 | Implemented | 1.13.1 | `cf205bf` |
+| [CR-027](CR-027.md) | 3D Preview 내부 Cut 투명 표시 | Implemented | 1.13.2 | `d178aff` |
+| [CR-028](CR-028.md) | 3D Preview 내부 절곡 Edge 제거 | Implemented | 1.13.3, 1.13.4 | `0592574`, `94d9fcd` |
+| [CR-029](CR-029.md) | 3D Preview V/V1 절곡선 색상 표시 | Implemented | 1.14.0 | `e33bb68` |
+| [CR-030](CR-030.md) | 삼각형 Cut 꼭짓점 직접 편집 | Implemented | 1.15.0 | `62bc5b6` |
+| [CR-031](CR-031.md) | 원·삼각형·사각형 Cut 드래그 생성 | Implemented | 1.16.0 | `6fbf06b` |
+| [CR-032](CR-032.md) | Triangle Cut Outer Contour 명시적 통합 | Implemented | 1.17.0 | `e244747` |
+| [CR-033](CR-033.md) | Outer Contour 직각 모서리 Fillet | Implemented | 1.18.0 | `09c2abb` |
+| [CR-034](CR-034.md) | 다중 모서리 연속 Fillet 교정 | Implemented | 1.18.1 | `41e53f3` |
+| [CR-035](CR-035.md) | Fillet ARC 선택 표시 및 반지름 편집 | Implemented | 1.19.0 | `d57839a` |
+| [CR-036](CR-036.md) | 임의 각도 및 내부 Hole Fillet | Implemented | 1.20.0 | `45557d9` |
+| [CR-037](CR-037.md) | 천공 도구 정리 및 도형 아이콘 버튼 | Implemented | 1.20.1 | — |
+| [CR-038](CR-038.md) | 다이아몬드·평행사변형 드래그 생성 | Implemented | 1.20.2 | — |
+| [CR-039](CR-039.md) | 3D 천공 면과 윤곽선 정합성 교정 | Implemented | 1.20.3 | — |
+| [CR-040](CR-040.md) | 평행사변형 Cut Outer Contour 통합 | Implemented | 1.20.4 | — |
+| [CR-041](CR-041.md) | 삼각형 천공 드래그 방향 반영 | Implemented | 1.20.5 | — |
+| [CR-042](CR-042.md) | Outer Contour LINE 삭제 후 폐합 및 재료 영역 정합성 | Implemented | 1.20.6 | — |
+| [CR-043](CR-043.md) | 사선 Outer Contour의 사각형 통합 복구 | Implemented | 1.20.7 | — |
+| [CR-044](CR-044.md) | 3D Preview Fillet 곡선 표시 | Implemented | 1.20.8 | — |
+| [CR-045](CR-045.md) | Fillet ARC 외곽의 천공 통합 | Implemented | 1.20.9 | — |
+| [CR-046](CR-046.md) | Outer Contour 편집 후 틈 자동 LINE 연결 | Implemented | 1.20.10 | — |
+
+| [CR-047](CR-047.md) | Triangle Cut 좌하단 위치 속성 | Implemented | 1.20.12 | — |
+
+| [CR-048](CR-048.md) | Circle 반지름 속성 | Implemented | 1.20.13 | — |
 
 ## File naming
 
@@ -49,3 +89,102 @@ The initial source bundle is preserved unchanged at [COSMIC_DESIGNER_CHANGE_REQU
 | `TEST-004` common regression requirement | `CR-002`–`CR-007` |
 
 Never reuse an issued number. Use the required structure in [DEVELOPMENT_POLICY.md](../DEVELOPMENT_POLICY.md). When a CR changes state, update this index and [PROJECT_STATUS.md](../PROJECT_STATUS.md).
+
+- [CR-049](CR-049.md) — Implemented — 드래그 방향별 반원 천공; 다음 번호 CR-050.
+
+- [CR-050](CR-050.md) — Implemented — 반원 지름 Outer Contour 통합.
+
+- [CR-051](CR-051.md) — Implemented — 반원 실제 중심 및 반지름 속성.
+
+- [CR-052](CR-052.md) — Implemented — 사분면 방향 4분원 천공. 다음 번호 CR-053.
+
+- [CR-053](CR-053.md) — Implemented — Section 구간 합계와 Flat W/H 계산 일치. 다음 번호 CR-054.
+
+- [CR-054](CR-054.md) — Implemented (WAITING FOR USER VERIFICATION) — 직선·원호·연결선 절개 도구. 다음 번호 CR-055.
+
+- [CR-055](CR-055.md) — Implemented (WAITING FOR USER VERIFICATION) — 객체 속성 영역 OBJECTS / PROPERTIES 순서.
+
+- [CR-056](CR-056.md) — Section 기본 사각 외곽 동기화; Implemented; 1.20.21. AUTO 신규 1/1, 영향 7/7, 전체 65/65 PASS. MANUAL PENDING_MANUAL; WAITING FOR USER VERIFICATION.
+
+- CR-057 — Hole/Slit 아이콘 굵기 및 크기; Implemented; 1.20.22. 영향 AUTO 3/3, 전체 65/65 PASS; MANUAL PENDING_MANUAL; WAITING FOR USER VERIFICATION.
+
+- CR-058 — Bent Section 실제 두께 축척 정합성; Implemented; 1.20.23. New AUTO 1/1, affected 7/7, full 66/66 PASS. TC-058-002 PENDING_MANUAL; WAITING FOR USER VERIFICATION.
+
+- CR-059 — Section 치수 중앙 및 겹침 배치; Implemented; 1.20.24. New AUTO 1/1, affected 6/6, full 67/67 PASS. TC-059-002 PENDING_MANUAL; WAITING FOR USER VERIFICATION.
+
+- CR-060 — Flat V/V1 절곡선 생성 및 이동; Implemented; 1.20.25. New AUTO 1/1, affected 9/9, full 68/68 PASS; TC-060-002 PENDING_MANUAL; WAITING FOR USER VERIFICATION.
+
+- CR-054 follow-up — Implemented (WAITING FOR USER VERIFICATION) — 직선/원호/연결선 직접 클릭 선택 보완. 신규 CR 번호 미소비.
+
+- [CR-061](CR-061.md) — Implemented — 홈 사이 실제 힌지 기준 3D 날개 회전; 1.20.27. New AUTO 1/1, affected 9/9, full 70/70 PASS; TC-061-002 PENDING_MANUAL.
+
+- [CR-062](CR-062.md) — Implemented: Section의 모든 재료 구간과 빈 공간 표시; 1.20.28; New AUTO 1/1, affected 10/10, full 71/71 PASS. TC-062-002 PENDING_MANUAL / WAITING FOR USER VERIFICATION.
+
+- CR-063 — Implemented: Cut 이동 중앙 안내선; 1.20.29. New AUTO 1/1, affected 9/9, full 72/72 PASS; TC-063-002 PENDING_MANUAL / WAITING FOR USER VERIFICATION.
+
+- [CR-064](CR-064.md) — Implemented (WAITING FOR USER VERIFICATION) — 사용자 HTML 매뉴얼 및 Living Documentation 도움말 시스템.
+
+- [CR-065](CR-065.md) — Implemented / WAITING FOR USER VERIFICATION — 설치 파일명 및 Freeze 버전.
+
+- [CR-066](CR-066.md) — Implemented / WAITING FOR USER VERIFICATION — 설치 화면 CosmicDesigner.
+
+- [CR-067](CR-067.md) — Implemented / WAITING FOR USER VERIFICATION — 클래식 설치 아이콘 및 실제 실행 확인.
+- CR-067 status update — Verified: requester confirmed taskbar classic icon; TC-067-001 SEMI_AUTO PASS. Prior pending entry is historical.
+
+- [CR-068](CR-068.md) — Implemented / WAITING FOR USER VERIFICATION — 새 설치 기본 경로 VCutting, CR-069에서 구현.
+
+- [CR-069](CR-069.md) — Implemented / WAITING FOR USER VERIFICATION — VCutting 프로젝트/제품 이름 및 기존 데이터 호환성.
+
+- [CR-070](CR-070.md) — Implemented / WAITING FOR USER VERIFICATION — 고객 버전/불변 Freeze 정책.
+
+- [CR-071](CR-071.md) — Implemented / WAITING FOR USER VERIFICATION — 설치 매뉴얼 6단계 원본 화면. Next CR-072.
+
+- [CR-072](CR-072.md) — Implemented / WAITING FOR USER VERIFICATION — CosmicDesigner 다국어 외부 리소스.
+
+- [CR-073](CR-073.md) — Implemented / WAITING FOR USER VERIFICATION — 새 사용자 문서 기본 단위 mm.
+`n- [CR-074](CR-074.md) — Implemented / WAITING FOR USER VERIFICATION: 타원 Hole 방향 드래그 생성. Next CR-075.
+`n- [CR-075](CR-075.md) — Implemented / WAITING FOR USER VERIFICATION: 타원 고유 속성. Next CR-077.`n- [CR-076](CR-076.md) — Implemented / WAITING FOR USER VERIFICATION: CosmicDesigner 실행 파일명 승인 적용.
+- [CR-077](CR-077.md) — Implemented / WAITING FOR USER VERIFICATION: 내부 Cut 합집합 통합. Next CR-078.
+
+- [CR-078](CR-078.md) — Implemented / WAITING FOR USER VERIFICATION: Regular Polygon. New11/11, affected20/20, full96/96 AUTO PASS. Next CR-079.
+
+- [CR-079](CR-079.md) — Implemented / WAITING FOR USER VERIFICATION: 정다각별 그리기. AUTO new3/3, affected22/22, full99/99 PASS; human pending. Next CR-080.
+
+CR-079 user correction: fully cut star interior implemented, new1/1 affected11/11 full99/99 AUTO PASS; TC-079-006 human pending. Next CR-080.
+
+CR-079 profile-only follow-up Implemented / WAITING FOR USER VERIFICATION: new2/2 affected12/12 full100/100 AUTO PASS; MANUAL009 pending; Next CR-080.
+
+- [CR-080](CR-080.md) — In Progress: toolbar reorder and actual build identifier reporting. Next CR-081.
+
+CR-080 Implemented / WAITING FOR USER VERIFICATION: affected6/6 full100/100 AUTO PASS, MANUAL080001 pending. Next CR-081.
+
+- [CR-081](CR-081.md) — In Progress: all ARC angle editing.
+- [CR-082](CR-082.md) — In Progress: Rectangle rotation. Next CR-083.
+
+CR-081 and CR-082 Implemented / WAITING FOR USER VERIFICATION: new2/2 affected18/18 full102/102 AUTO PASS; MANUAL081002/082002 pending. Next CR-083.
+
+- [CR-083](CR-083.md) — In Progress: selected shape Copy/Paste. Next CR-084.
+
+CR-083 Implemented / WAITING FOR USER VERIFICATION: new1/1 affected14/14 full103/103 AUTO PASS, MANUAL083002 pending. Next CR-084.
+
+- [CR-084](CR-084.md) — In Progress: SVG import. Next CR-085.
+
+CR-084 Implemented / WAITING FOR USER VERIFICATION: new3/3 affected9/9 full106/106 AUTO PASS, MANUAL084004 pending. Next CR-085.
+
+- [CR-085](CR-085.md) — Implemented / WAITING FOR USER VERIFICATION: separate CosmicConvert. New4/4, affected6/6, accumulated110/110 AUTO PASS; MANUAL005 pending. Next CR-086.
+
+- [CR-086](CR-086.md) — Implemented / WAITING FOR USER VERIFICATION: CosmicConvert10mm frame. New1PASS; aggregate110PASS/1NOT_RUN historical fixture; human002 pending. Next CR-087.
+
+- [CR-087](CR-087.md) — In Progress: native object metadata for CosmicConvert. Next CR-088.
+- [CR-087](CR-087.md) — Implemented / WAITING FOR USER VERIFICATION; native Compound/Slit,112AUTO PASS/1NOT_RUN, human003 pending. NextCR088.
+- [CR-088](CR-088.md) — In Progress: invisible SVG auxiliary text. NextCR089.
+- [CR-088](CR-088.md) — Implemented / WAITING FOR USER VERIFICATION: invisible auxiliary text and bounded fill topology. Full113PASS/1historicalNOT_RUN; human002 pending; nextCR089.
+
+- [CR-089](CR-089.md) — Implemented / WAITING FOR USER VERIFICATION: H/W Section Fit/Reset. Next CR-090.
+- [CR-090](CR-090.md) — In Progress: include CosmicConvert in package; user-approved RC1 Freeze. NextCR091.
+- [CR-090](CR-090.md) — Implemented / WAITING FOR USER VERIFICATION; package6programs, source tests PASS, human installation pending. NextCR091.
+- [CR-091](CR-091.md) — Implemented: exclude generated WPF projects from Freeze inputs; real projects remain protected. NextCR092.
+- [CR-092](CR-092.md) — In Progress: shared generated Help version for referenced applications. NextCR093.
+- [CR-092](CR-092.md) — Implemented: six-project publish/stage verification PASS; RC3 approval pending. NextCR093.
+- [CR-093](CR-093.md) — In Progress: Development integration installer before Freeze approval. NextCR094.
+- [CR-093](CR-093.md) — Implemented / WAITING FOR USER VERIFICATION: pre-Freeze Development integration installer. NextCR094.

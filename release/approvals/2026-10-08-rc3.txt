@@ -1,0 +1,6 @@
+User: repository owner, Codex conversation, 2026-10-08 Asia/Seoul.
+Explicit instruction: 네, Freeze 하십시오.
+Context: Development integration installer manual-20261008-01 delivered before Freeze approval per CR-093. Installer SHA25655BAF92AADB6E4A2ED5769E64E634C70A10260A4DAE2C1199CBA2D49F495E8EF; source2b502cf83d5e1ab4b4d00a9caab87f31020fcc4a; actual BuildIdentity2b502cf83d5e1ab4b4d00a9caab87f31020fcc4a.integration.manual-20261008-01.
+Scope: Freeze current committed source as next candidate1.0.0-rc.3; preserve prior records. Not production promotion or public distribution.
+Verification: prior Designer111/111AUTO PASS; unchanged converter7PASS/1historicalNOT_RUN(TC085004 unavailable fixture). Six-program integration publish/stage/Help37/compiler/version/checksum PASS. Actual individual human test observations/reviewer/time were not supplied; Freeze approval alone is not recorded as human PASS. All existing human verification gates retained.
+Comparison against delivered integration input hashes: only PROJECT_STATUS.md, CR-093.md and CR-093 result report changed before recording this approval; no application/Help/installer/dependency changes.

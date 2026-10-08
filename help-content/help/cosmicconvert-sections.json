@@ -1,0 +1,63 @@
+[
+  {
+    "path": "cosmicconvert.html",
+    "section": "quiet",
+    "relatedCR": [
+      "CR-085"
+    ],
+    "tests": [
+      "TC-085-001",
+      "TC-085-005"
+    ]
+  },
+  {
+    "path": "cosmicconvert.html",
+    "section": "window",
+    "relatedCR": [
+      "CR-085",
+      "CR-086"
+    ],
+    "tests": [
+      "TC-085-001",
+      "TC-085-005",
+      "TC-086-001",
+      "TC-086-002"
+    ]
+  },
+  {
+    "path": "cosmicconvert.html",
+    "section": "geometry",
+    "relatedCR": [
+      "CR-085",
+      "CR-086"
+    ],
+    "tests": [
+      "TC-085-001",
+      "TC-085-005",
+      "TC-086-001",
+      "TC-086-002"
+    ]
+  },
+  {
+    "path": "cosmicconvert.html",
+    "section": "limits",
+    "relatedCR": [
+      "CR-085"
+    ],
+    "tests": [
+      "TC-085-001",
+      "TC-085-005"
+    ]
+  },
+  {
+    "path": "cosmicconvert.html",
+    "section": "errors",
+    "relatedCR": [
+      "CR-085"
+    ],
+    "tests": [
+      "TC-085-001",
+      "TC-085-005"
+    ]
+  }
+]

@@ -1,0 +1,3 @@
+# CR-063 Test Cases
+TC-063-001 — Execution Type: AUTO / ACTIVE. --tests TC-063-001. Outer/outer, outer/bend, bend/bend nearest pair, independent axes, .1/1/20 scale screen tolerance, invalid scale, actual semicircle center. WPF red guide pixels during Move and absent after EndDrag/resize; Cut coordinates unchanged.
+TC-063-002 — Execution Type: MANUAL / ACTIVE. Move a Circle/Rectangle/Triangle/Semicircle/QuarterCircle Cut between outer and V/V1 lines; verify dashed red midpoint guides on one/two axes, visibility through Zoom/Pan, removal on Mouse Up/capture loss and no resizing guides. Verify Undo and no automatic snapping. NOT_RUN / PENDING_MANUAL.
