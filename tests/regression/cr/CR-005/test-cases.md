@@ -10,7 +10,7 @@
 - 입력/절차: 검증 executable을 --tests TC-005-001 로 실행
 - 기대 결과: 함수의 모든 assertion PASS, exit code 0
 - Execution Type: AUTO
-- 구현 위치: CosmicDesigner.Verification/Program.cs::HoleOperations
+- 구현 위치: VCutting.Verification/Program.cs::HoleOperations
 - 범위: 함수에 실제 구현된 검사만 포함; CR 전체/UI 승인과 구분
 
 ## TC-005-002
@@ -21,7 +21,7 @@
 - 입력/절차: 검증 executable을 --tests TC-005-002 로 실행
 - 기대 결과: 함수의 모든 assertion PASS, exit code 0
 - Execution Type: AUTO
-- 구현 위치: CosmicDesigner.Verification/Program.cs::SelectionHighlight
+- 구현 위치: VCutting.Verification/Program.cs::SelectionHighlight
 - 범위: 함수에 실제 구현된 검사만 포함; CR 전체/UI 승인과 구분
 
 ## TC-005-003
@@ -32,7 +32,7 @@
 - 입력/절차: 검증 executable을 --tests TC-005-003 로 실행
 - 기대 결과: 함수의 모든 assertion PASS, exit code 0
 - Execution Type: AUTO
-- 구현 위치: CosmicDesigner.Verification/Program.cs::DeleteObjects
+- 구현 위치: VCutting.Verification/Program.cs::DeleteObjects
 - 범위: 함수에 실제 구현된 검사만 포함; CR 전체/UI 승인과 구분
 
 ## TC-005-004
@@ -43,7 +43,7 @@
 - 입력/절차: 검증 executable을 --tests TC-005-004 로 실행
 - 기대 결과: 함수의 모든 assertion PASS, exit code 0
 - Execution Type: AUTO
-- 구현 위치: CosmicDesigner.Verification/Program.cs::UndoRedo
+- 구현 위치: VCutting.Verification/Program.cs::UndoRedo
 - 범위: 함수에 실제 구현된 검사만 포함; CR 전체/UI 승인과 구분
 
 ## TC-005-005

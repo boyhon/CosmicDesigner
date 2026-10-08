@@ -71,3 +71,50 @@ HTML이 공식 사용자 원본. 현재 소스 우선, 과거 CR은 변화 근�
 | CR-065 | 설치 파일명 및 Freeze 버전 | Yes | Yes | 설치 및 시작 | [getting-started.html](getting-started.html) | TC-065-002 | TC-065-001, TC-064-001 | 반영; 사람 검증 대기 | 2026-10-06 |
 
 | CR-066 | 설치 화면 제품명 | Yes | Yes | 설치 및 시작 | [getting-started.html](getting-started.html) | TC-066-002 | TC-066-001, TC-065-001, TC-064-001 | 반영; 사람 검증 대기 | 2026-10-06 |
+
+## CR-068 / CR-069
+User Visible Change: Yes; Manual Impact: Yes. 모든 제품별 대표 HTML 및 공식 HTML의 제품명/실행 파일/설치 경로 갱신. getting-started.html, installation.html, explorer.html, screen-layout.html 및 troubleshooting/common-errors.html. TC-068-001/002, TC-069-001/002, TC-064-001/002/003. AUTO TC-068-001/TC-069-001/TC-064-001 PASS; human review PENDING_MANUAL. 현재 배포 화면 캡처 없음(images/README.md); 새 이름 UI 캡처 및 사람 검증 필요.
+
+## CR-070
+User Visible Change: Yes; Manual Impact: Yes. All current version labels use generated help/js/version.js; source fallback Development. getting-started.html and installation.html explain customer/development displays; About uses shared metadata. TC-070-001/002, TC-064-001, TC-065-001. AUTO TC-070-001/TC-064-001/TC-065-001 PASS; human PENDING_MANUAL. No actual new Freeze or installer created.
+
+| CR-071 | Yes | Yes | getting-started.html#installation-wizard; installation.html#install | TC-071-001 AUTO; TC-071-002 MANUAL; TC-064-001 | 6 screenshots and steps updated; human review pending |
+
+CR-071 follow-up 2026-10-06: 패키지 VCutting / CosmicDesigner 매뉴얼 제목 및 실행 안내 정정. 22 canonical pages and AGENTS updated. Original supplied installer screenshots preserved; binary/installer mismatch tracked in DOCUMENTATION_GAPS. Human review pending.
+
+| CR-072 | Yes | Yes | features/settings.html#display-language; #custom-language; troubleshooting/common-errors.html#language-resources | TC-072-001/002, TC-064-001 | external languages documented; human review pending |
+| CR-073 | Yes | Yes | getting-started.html; features/settings.html; features/material-units.html | TC-073-001/002, TC-023-001 | mm defaults/legacy compatibility documented; human review pending |
+
+2026-10-07 CR-072/073 verification: updated sections/UTF8 resources/delivered Help AUTO PASS; TC-072-002/TC-073-002 human review pending. Full AUTO 81/81; no human PASS inferred.
+
+| CR-074 | Yes | Yes | features/holes.html#ellipse; workflows/new-design.html | TC-074-001 AUTO; TC-074-002 MANUAL | 문서 갱신; 실제 시각 검증 PENDING_MANUAL |
+
+| CR-075 | Yes | Yes | features/holes.html#ellipse-properties; workflows/edit-save.html; troubleshooting/common-errors.html#ellipse-input | TC-075-001 AUTO; TC-075-002 MANUAL | 문서 갱신; 사람 검증 대기 |
+| CR-076 | Yes | Yes | getting-started.html; installation.html | TC-076-001 AUTO; TC-076-002 MANUAL | 기존 CosmicDesigner.exe 안내와 산출물 일치; 실제 upgrade pending |
+
+| CR-077 | Yes | Yes | features/holes.html#internal-merge; features/boundary-merge.html#internal-cuts; workflows/edit-save.html#merged-cut-edit; troubleshooting/common-errors.html#internal-merge | TC-077-001 AUTO; TC-077-002 MANUAL; TC-064-001 | 통합/복합 편집 설명 갱신; 실제 화면 검증 대기 |
+
+| CR-078 | Yes | Yes | features/holes.html#regular-polygon / #regular-polygon-properties; workflows/new-design.html#regular-polygon; workflows/edit-save.html#regular-polygon; features/files.html#regular-polygon-export; troubleshooting/common-errors.html#regular-polygon | TC-078-001..011 AUTO; TC-078-012 MANUAL; TC-064-001 | 도움말 갱신, 실제 UI/AutoCAD 검증 대기 |
+
+| CR-079 | Yes | Yes | features/holes.html#regular-star / #regular-star-properties; troubleshooting/common-errors.html#regular-star | TC-079-001..003 AUTO; TC-079-004 MANUAL; TC-064-001 | 실제 화면/외부 CAD 검증 대기 |
+
+CR-079 correction2026-10-07: holes#regular-star and troubleshooting updated for fully empty center; TC-079-005 AUTO /006 MANUAL replaces003/004; human pending.
+
+CR-079 profile correction: holes#regular-star updated, TC007/008 AUTO and009 MANUAL replace crossing-path expectations. External CAD/CAM verification pending.
+
+| CR-080 | Yes | Yes | features/holes.html#tool-order | TC-080-001 MANUAL; TC-064-001 AUTO | Order list updated; visual/About review pending |
+
+| CR-081 | Yes | Yes | features/slits.html#arc-angles; features/fillet.html#arc-angles; troubleshooting/common-errors.html#angle-input | TC-081-001 AUTO/002 MANUAL | Human UI/CAD pending |
+| CR-082 | Yes | Yes | features/holes.html#rectangle-rotation; troubleshooting/common-errors.html#angle-input | TC-082-001 AUTO/002 MANUAL | Human rotated UI/CAD pending |
+
+| CR-083 | Yes | Yes | workflows/edit-save.html#copy-paste; reference/shortcuts.html#copy-paste; features/holes.html#copy-paste; features/slits.html#copy-paste; troubleshooting/common-errors.html#copy-paste | TC-083-001 AUTO / TC-083-002 MANUAL | Human clipboard/UI/CAD pending |
+
+| CR-084 | Yes | Yes | features/files.html#svg-import; workflows/import-design.html#svg-import; troubleshooting/common-errors.html#svg-import | TC-084-001..003 AUTO/004 MANUAL | Actual source/UI/CAD comparison pending |
+
+CR-085 | separate CosmicConvert | cosmicconvert.html#quiet,#window,#geometry,#limits,#errors | TC-085-001..005 | source written; human GUI/CAD/layout review pending. Converter standalone sections registry cosmicconvert-sections.json; CosmicDesigner navigation unchanged.
+
+CR-086 | cosmicconvert.html#geometry/#window |10mm output frame, rigid translation, status | TC-086-001/002; affected TC-085-002/004 | source updated, human review pending.
+CR-087 | cosmicconvert.html#limits/#geometry | native Compound/Slit restoration,2mm thickness, CAD metadata preservation | TC-087-001/002 AUTO,003 MANUAL | human pending
+CR-088 | cosmicconvert.html#limits | invisible auxiliary leaf text, visible text troubleshooting | TC088001 AUTO/002 MANUAL; human pending
+| CR-089 | H/W Section Fit/Reset | features/sections.html#fit-reset; troubleshooting/common-errors.html#section-fit-reset | TC-089-001/002; TC-064-001 | Updated; human review pending |
+| CR-090 | CosmicConvert package/Start Menu | installation.html#installed-programs; cosmicconvert.html | TC-090-001/002; TC-064-001 | Updated; human installation pending |

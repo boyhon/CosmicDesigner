@@ -9,7 +9,7 @@ from docx.shared import Cm, Pt, RGBColor
 
 
 ROOT = Path(__file__).resolve().parents[1]
-OUT = ROOT / "docs" / "DXFExplorer_설치_매뉴얼.docx"
+OUT = ROOT / "docs" / "VCutting.Viewer_설치_매뉴얼.docx"
 ICON = ROOT / "cnc_vgroove_icon.png"
 
 
@@ -120,10 +120,10 @@ if title_border is not None:
 
 p = doc.add_paragraph(style="Title")
 p.alignment = WD_ALIGN_PARAGRAPH.CENTER
-p.add_run("DXFExplorer 설치 매뉴얼")
+p.add_run("VCutting.Viewer 설치 매뉴얼")
 p = doc.add_paragraph()
 p.alignment = WD_ALIGN_PARAGRAPH.CENTER
-r = p.add_run("DXFExplorerSetup 설치 실행 구성 및 제거 안내")
+r = p.add_run("VCuttingSetup 설치 실행 구성 및 제거 안내")
 r.font.size = Pt(13)
 r.font.color.rgb = RGBColor(70, 70, 70)
 
@@ -134,44 +134,44 @@ if ICON.exists():
 
 p = doc.add_paragraph()
 p.add_run("이 매뉴얼의 목적  ").bold = True
-p.add_run("DXFExplorerSetup.exe를 사용해 DXFExplorer 제품군을 Windows에 설치하고, 설치 후 생성되는 프로그램과 위치를 확인하며, 필요할 때 안전하게 제거할 수 있도록 안내합니다.")
+p.add_run("VCuttingSetup.exe를 사용해 VCutting.Viewer 제품군을 Windows에 설치하고, 설치 후 생성되는 프로그램과 위치를 확인하며, 필요할 때 안전하게 제거할 수 있도록 안내합니다.")
 
 add_table(doc, ["항목", "내용"], [
-    ("설치 파일", "DXFExplorerSetup.exe"),
+    ("설치 파일", "VCuttingSetup.exe"),
     ("제품 버전", "1.1.0"),
     ("지원 환경", "Windows x64 호환 환경"),
-    ("기본 설치 경로", r"C:\Program Files\DXFExplorer"),
+    ("기본 설치 경로", r"C:\Program Files\VCutting.Viewer"),
     ("권한", "설치와 제거 시 관리자 권한 필요"),
     ("설치 언어", "한국어 또는 English"),
 ], [4.2, 13.0])
 
 doc.add_page_break()
 heading(doc, "설치 결과 요약", 1)
-doc.add_paragraph(r"설치가 끝나면 C:\Program Files\DXFExplorer 디렉터리에 다음 네 개의 사용자 프로그램이 생성됩니다. 각 프로그램은 같은 아이콘을 사용하며 시작 메뉴의 DXFExplorer 그룹에서도 실행할 수 있습니다.")
+doc.add_paragraph(r"설치가 끝나면 C:\Program Files\VCutting.Viewer 디렉터리에 다음 네 개의 사용자 프로그램이 생성됩니다. 각 프로그램은 같은 아이콘을 사용하며 시작 메뉴의 VCutting.Viewer 그룹에서도 실행할 수 있습니다.")
 add_table(doc, ["실행 파일", "기능"], [
-    ("DXFExplorer.exe", "DXF 파일을 찾아보고 제품군의 주요 기능으로 접근하는 파일 탐색 프로그램입니다."),
-    ("DXFViewer.exe", "DXF 도면과 레이어 및 형상을 읽고 화면에 표시하는 뷰어입니다."),
-    ("DXFSimulator.exe", "DXF 도면의 가공 및 절곡 관련 정보를 시뮬레이션하는 프로그램입니다."),
-    ("DXFDrawer.exe", "DXF 도면을 새로 작성하거나 기존 도면을 열어 편집하고 저장하는 프로그램입니다."),
+    ("VCutting.Explorer.exe", "DXF 파일을 찾아보고 제품군의 주요 기능으로 접근하는 파일 탐색 프로그램입니다."),
+    ("VCutting.Viewer.exe", "DXF 도면과 레이어 및 형상을 읽고 화면에 표시하는 뷰어입니다."),
+    ("VCutting.Simulator.exe", "DXF 도면의 가공 및 절곡 관련 정보를 시뮬레이션하는 프로그램입니다."),
+    ("VCutting.Drawer.exe", "DXF 도면을 새로 작성하거나 기존 도면을 열어 편집하고 저장하는 프로그램입니다."),
 ], [5.0, 12.2])
 
 doc.add_page_break()
 heading(doc, "1 설치 전 준비", 1)
 bullet(doc, "Windows x64 호환 PC에서 설치합니다.")
-bullet(doc, "설치 중인 프로그램 파일을 교체할 수 있도록 실행 중인 DXFExplorer, DXFViewer, DXFSimulator, DXFDrawer를 닫습니다.")
-bullet(doc, "설치 파일의 전체 이름과 위치를 확인합니다. 기본 배포 파일명은 DXFExplorerSetup.exe입니다.")
+bullet(doc, "설치 중인 프로그램 파일을 교체할 수 있도록 실행 중인 VCutting.Viewer, VCutting.Viewer, VCutting.Simulator, VCutting.Drawer를 닫습니다.")
+bullet(doc, "설치 파일의 전체 이름과 위치를 확인합니다. 기본 배포 파일명은 VCuttingSetup.exe입니다.")
 bullet(doc, "Program Files에 설치하므로 관리자 계정 또는 관리자 승인 수단을 준비합니다.")
 bullet(doc, "기존 도면 파일은 설치 과정에서 삭제되지 않지만, 중요한 DXF 파일은 별도로 백업하는 것이 좋습니다.")
 
 heading(doc, "2 설치 방법", 1)
-step(doc, 1, "설치 파일 실행", "DXFExplorerSetup.exe를 더블 클릭합니다.")
+step(doc, 1, "설치 파일 실행", "VCuttingSetup.exe를 더블 클릭합니다.")
 step(doc, 2, "사용자 계정 컨트롤 승인", "Windows가 이 앱이 장치를 변경하도록 허용할지 묻는 경우 예를 선택합니다.")
 step(doc, 3, "설치 언어 선택", "한국어 또는 English를 선택합니다. 이후 설치 마법사의 버튼과 안내가 선택한 언어로 표시됩니다.")
 step(doc, 4, "설치 시작", "환영 화면의 안내를 읽고 다음을 누릅니다.")
-step(doc, 5, "설치 위치 확인", r"기본 경로 C:\Program Files\DXFExplorer를 확인합니다. 특별한 이유가 없다면 기본 경로를 사용합니다.")
-step(doc, 6, "추가 작업 선택", "바탕 화면에 DXFExplorer 바로가기를 만들려면 해당 항목을 선택합니다. 이 항목은 기본적으로 선택되어 있지 않습니다.")
+step(doc, 5, "설치 위치 확인", r"기본 경로 C:\Program Files\VCutting.Viewer를 확인합니다. 특별한 이유가 없다면 기본 경로를 사용합니다.")
+step(doc, 6, "추가 작업 선택", "바탕 화면에 VCutting.Viewer 바로가기를 만들려면 해당 항목을 선택합니다. 이 항목은 기본적으로 선택되어 있지 않습니다.")
 step(doc, 7, "설치 실행", "설치 준비 내용을 확인하고 설치를 누릅니다. 프로그램과 자체 포함형 .NET 지원 파일이 복사됩니다.")
-step(doc, 8, "설치 완료", "마침 화면에서 DXFExplorer 실행을 선택하면 마침을 누른 직후 DXFExplorer.exe가 시작됩니다.")
+step(doc, 8, "설치 완료", "마침 화면에서 VCutting.Viewer 실행을 선택하면 마침을 누른 직후 VCutting.Explorer.exe가 시작됩니다.")
 
 heading(doc, "2.1 설치 중 표시될 수 있는 안내", 2)
 doc.add_paragraph("설치 프로그램은 현재 실행 중인 관련 프로그램을 닫도록 안내할 수 있습니다. 작업 내용을 먼저 저장한 다음 프로그램을 종료하고 설치를 계속합니다. 설치는 재부팅을 기본으로 요구하지 않습니다.")
@@ -180,15 +180,15 @@ doc.add_page_break()
 heading(doc, "3 설치되는 디렉터리와 파일", 1)
 heading(doc, "3.1 기본 설치 디렉터리", 2)
 p = doc.add_paragraph()
-p.add_run(r"C:\Program Files\DXFExplorer").bold = True
+p.add_run(r"C:\Program Files\VCutting.Viewer").bold = True
 p.add_run("에 제품군의 실행 파일, 프로그램 라이브러리, .NET 실행 지원 파일과 언어별 리소스가 함께 설치됩니다.")
 
 heading(doc, "3.2 사용자가 실행하는 파일", 2)
 add_table(doc, ["전체 경로", "용도"], [
-    (r"C:\Program Files\DXFExplorer\DXFExplorer.exe", "파일 탐색 및 제품군 진입"),
-    (r"C:\Program Files\DXFExplorer\DXFViewer.exe", "DXF 도면 보기"),
-    (r"C:\Program Files\DXFExplorer\DXFSimulator.exe", "DXF 시뮬레이션"),
-    (r"C:\Program Files\DXFExplorer\DXFDrawer.exe", "DXF 신규 작성 및 편집"),
+    (r"C:\Program Files\VCutting.Viewer\VCutting.Explorer.exe", "파일 탐색 및 제품군 진입"),
+    (r"C:\Program Files\VCutting.Viewer\VCutting.Viewer.exe", "DXF 도면 보기"),
+    (r"C:\Program Files\VCutting.Viewer\VCutting.Simulator.exe", "DXF 시뮬레이션"),
+    (r"C:\Program Files\VCutting.Viewer\VCutting.Drawer.exe", "DXF 신규 작성 및 편집"),
 ], [11.2, 6.0])
 
 heading(doc, "3.3 지원 파일", 2)
@@ -204,23 +204,23 @@ add_table(doc, ["파일 또는 폴더", "설명"], [
 doc.add_paragraph("지원 파일을 개별 삭제하거나 다른 위치로 옮기면 프로그램이 실행되지 않을 수 있습니다. 설치 폴더의 파일은 설치 프로그램 또는 Windows의 제거 기능으로 관리합니다.")
 
 heading(doc, "3.4 바로가기", 2)
-bullet(doc, "시작 메뉴의 DXFExplorer 그룹: DXFExplorer, DXFViewer, DXFSimulator, DXFDrawer와 DXFExplorer 제거 바로가기가 생성됩니다.")
-bullet(doc, "바탕 화면: 설치 중 추가 작업을 선택한 경우 DXFExplorer 바로가기 하나가 생성됩니다.")
+bullet(doc, "시작 메뉴의 VCutting.Viewer 그룹: VCutting.Viewer, VCutting.Viewer, VCutting.Simulator, VCutting.Drawer와 VCutting.Viewer 제거 바로가기가 생성됩니다.")
+bullet(doc, "바탕 화면: 설치 중 추가 작업을 선택한 경우 VCutting.Viewer 바로가기 하나가 생성됩니다.")
 bullet(doc, "바로가기를 삭제해도 실제 프로그램 파일은 삭제되지 않습니다.")
 
 doc.add_page_break()
 heading(doc, "4 설치 후 확인", 1)
-step(doc, 1, "설치 폴더 확인", r"파일 탐색기에서 C:\Program Files\DXFExplorer를 엽니다.")
-step(doc, 2, "네 실행 파일 확인", "DXFExplorer.exe, DXFViewer.exe, DXFSimulator.exe, DXFDrawer.exe가 모두 있는지 확인합니다.")
-step(doc, 3, "시작 메뉴 확인", "시작 메뉴에서 DXFExplorer 그룹을 찾아 네 프로그램의 바로가기가 보이는지 확인합니다.")
+step(doc, 1, "설치 폴더 확인", r"파일 탐색기에서 C:\Program Files\VCutting.Viewer를 엽니다.")
+step(doc, 2, "네 실행 파일 확인", "VCutting.Explorer.exe, VCutting.Viewer.exe, VCutting.Simulator.exe, VCutting.Drawer.exe가 모두 있는지 확인합니다.")
+step(doc, 3, "시작 메뉴 확인", "시작 메뉴에서 VCutting.Viewer 그룹을 찾아 네 프로그램의 바로가기가 보이는지 확인합니다.")
 step(doc, 4, "프로그램 실행", "각 프로그램을 한 번씩 실행해 기본 화면이 정상적으로 표시되는지 확인합니다.")
 step(doc, 5, "도면 파일 확인", "업무에 사용하는 DXF 파일을 복사본으로 열어 표시 또는 편집 기능을 점검합니다.")
 
 heading(doc, "5 프로그램 실행 방법", 1)
 add_table(doc, ["방법", "절차"], [
-    ("시작 메뉴", "Windows 시작에서 DXFExplorer 그룹을 열고 원하는 프로그램을 선택합니다."),
-    ("바탕 화면", "설치할 때 바로가기를 선택했다면 DXFExplorer 아이콘을 더블 클릭합니다."),
-    ("설치 폴더", r"C:\Program Files\DXFExplorer에서 원하는 .exe 파일을 직접 실행합니다."),
+    ("시작 메뉴", "Windows 시작에서 VCutting.Viewer 그룹을 열고 원하는 프로그램을 선택합니다."),
+    ("바탕 화면", "설치할 때 바로가기를 선택했다면 VCutting.Viewer 아이콘을 더블 클릭합니다."),
+    ("설치 폴더", r"C:\Program Files\VCutting.Viewer에서 원하는 .exe 파일을 직접 실행합니다."),
 ], [4.6, 12.6])
 
 heading(doc, "6 업데이트 또는 재설치", 1)
@@ -234,12 +234,12 @@ heading(doc, "7 제거 방법", 1)
 heading(doc, "7.1 Windows 설정에서 제거", 2)
 step(doc, 1, "프로그램 종료", "실행 중인 네 프로그램을 모두 닫습니다.")
 step(doc, 2, "설치된 앱 열기", "Windows 설정에서 앱, 설치된 앱을 엽니다.")
-step(doc, 3, "제품 찾기", "DXFExplorer를 검색합니다.")
+step(doc, 3, "제품 찾기", "VCutting.Viewer를 검색합니다.")
 step(doc, 4, "제거 실행", "제거를 선택하고 관리자 권한 요청을 승인합니다.")
-step(doc, 5, "완료 확인", r"제거가 끝난 뒤 C:\Program Files\DXFExplorer 폴더와 시작 메뉴 바로가기가 정리되었는지 확인합니다.")
+step(doc, 5, "완료 확인", r"제거가 끝난 뒤 C:\Program Files\VCutting.Viewer 폴더와 시작 메뉴 바로가기가 정리되었는지 확인합니다.")
 
 heading(doc, "7.2 시작 메뉴에서 제거", 2)
-doc.add_paragraph("시작 메뉴의 DXFExplorer 그룹에서 DXFExplorer 제거를 선택한 뒤 안내에 따라 진행할 수도 있습니다.")
+doc.add_paragraph("시작 메뉴의 VCutting.Viewer 그룹에서 VCutting.Viewer 제거를 선택한 뒤 안내에 따라 진행할 수도 있습니다.")
 
 heading(doc, "7.3 사용자 DXF 파일", 2)
 doc.add_paragraph("설치 제거는 설치 프로그램이 배치한 프로그램 파일을 대상으로 합니다. 사용자가 별도 폴더에 작성하거나 저장한 DXF 파일은 제거 대상이 아닙니다. 단, 중요한 업무 파일은 제거 전에 위치를 확인하고 백업합니다.")
@@ -255,10 +255,10 @@ add_table(doc, ["증상", "확인 및 해결"], [
 ], [5.2, 12.0])
 
 heading(doc, "9 설치 완료 확인표", 1)
-bullet(doc, r"C:\Program Files\DXFExplorer 폴더가 생성되었습니다.")
-bullet(doc, "DXFExplorer.exe, DXFViewer.exe, DXFSimulator.exe, DXFDrawer.exe가 모두 존재합니다.")
-bullet(doc, "시작 메뉴의 DXFExplorer 그룹에서 네 프로그램을 실행할 수 있습니다.")
-bullet(doc, "선택한 경우 바탕 화면에 DXFExplorer 바로가기가 있습니다.")
+bullet(doc, r"C:\Program Files\VCutting.Viewer 폴더가 생성되었습니다.")
+bullet(doc, "VCutting.Explorer.exe, VCutting.Viewer.exe, VCutting.Simulator.exe, VCutting.Drawer.exe가 모두 존재합니다.")
+bullet(doc, "시작 메뉴의 VCutting.Viewer 그룹에서 네 프로그램을 실행할 수 있습니다.")
+bullet(doc, "선택한 경우 바탕 화면에 VCutting.Viewer 바로가기가 있습니다.")
 bullet(doc, "각 프로그램의 기본 화면이 오류 없이 열립니다.")
 
 for paragraph in list(doc.paragraphs) + [p for table in doc.tables for row in table.rows for cell in row.cells for p in cell.paragraphs]:
@@ -270,13 +270,13 @@ for paragraph in list(doc.paragraphs) + [p for table in doc.tables for row in ta
 for sec in doc.sections:
     p = sec.footer.paragraphs[0]
     p.alignment = WD_ALIGN_PARAGRAPH.CENTER
-    r = p.add_run("DXFExplorer 설치 매뉴얼")
+    r = p.add_run("VCutting.Viewer 설치 매뉴얼")
     r.font.size = Pt(8)
     r.font.color.rgb = RGBColor(100, 100, 100)
 
-doc.core_properties.title = "DXFExplorer 설치 매뉴얼"
-doc.core_properties.subject = "DXFExplorerSetup 설치 실행 구성 및 제거 안내"
-doc.core_properties.author = "DXFExplorer"
+doc.core_properties.title = "VCutting.Viewer 설치 매뉴얼"
+doc.core_properties.subject = "VCuttingSetup 설치 실행 구성 및 제거 안내"
+doc.core_properties.author = "VCutting.Viewer"
 OUT.parent.mkdir(parents=True, exist_ok=True)
 doc.save(OUT)
 print(OUT)

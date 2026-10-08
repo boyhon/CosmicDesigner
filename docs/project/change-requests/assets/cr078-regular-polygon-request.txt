@@ -1,0 +1,963 @@
+# CosmicDesigner — 정다각형(Regular Polygon) 그리기 기능 추가
+
+현재 CosmicDesigner의 기존 구조와 구현 방식을 우선 분석한 후, 기존 기능에 영향을 주지 않는 방식으로 **정다각형(Regular Polygon)을 생성·편집·저장할 수 있는 기능**을 추가한다.
+
+이번 작업은 신규 도형 기능 추가이므로 기존 LINE, ARC, CIRCLE, ELLIPSE 및 기타 Contour 관련 기능과 충돌하지 않아야 하며, 기존 Regression Test Suite가 있다면 반드시 전체 회귀 테스트를 수행한다.
+
+---
+
+## 1. 개발 목표
+
+사용자가 툴바 또는 도형 생성 버튼을 이용하여 **원에 내접하는 정다각형**을 생성할 수 있도록 한다.
+
+정다각형은 생성 즉시 여러 개의 독립 LINE으로 분해하지 말고, 편집 단계에서는 하나의 논리적 `RegularPolygon` 객체로 관리한다.
+
+사용자가 다음 속성을 변경하면 정다각형 전체 형상이 자동 재계산되어야 한다.
+
+- Center X
+- Center Y
+- Sides
+- Radius
+- Rotation
+
+DXF 저장 시에는 실제 DXF 표준에 맞게 `LWPOLYLINE` 또는 현재 프로젝트에서 사용하는 호환 가능한 폐곡선 표현으로 변환하여 저장한다.
+
+---
+
+# 2. UI — 정다각형 생성 버튼
+
+기존 도형 생성 툴바 또는 버튼 영역의 디자인과 배치를 분석하여 동일한 스타일로 다음 기능을 추가한다.
+
+버튼명:
+
+`Regular Polygon`
+
+또는 현재 UI가 아이콘 중심이라면 정다각형을 의미하는 아이콘을 사용한다.
+
+버튼 Tooltip:
+
+`Draw Regular Polygon`
+
+기존 UI에서 한국어 Tooltip을 사용한다면:
+
+`정다각형 그리기`
+
+버튼을 클릭하면 정다각형 생성 모드로 전환한다.
+
+기존 LINE / ARC / CIRCLE 등 도형 생성 모드와 동일한 선택·취소·ESC 처리 방식을 따라야 한다.
+
+---
+
+# 3. 정다각형 기본 속성
+
+정다각형은 내부적으로 최소 다음 속성을 가진다.
+
+```text
+EntityType = RegularPolygon
+
+CenterX
+CenterY
+Sides
+Radius
+Rotation
+Layer
+Closed = true
+```
+
+각 속성의 의미는 다음과 같다.
+
+### CenterX / CenterY
+
+정다각형 외접원의 중심 좌표.
+
+### Sides
+
+정다각형의 변 개수.
+
+허용 범위:
+
+```text
+Minimum = 3
+```
+
+최대값은 현재 프로그램의 성능과 UI 특성을 고려하여 적절한 값으로 정의하되, 특별한 이유가 없다면 지나치게 낮게 제한하지 않는다.
+
+예:
+
+```text
+3 = Triangle
+4 = Square
+5 = Pentagon
+6 = Hexagon
+...
+```
+
+### Radius
+
+정다각형 외접원의 반지름.
+
+즉 중심점에서 각 꼭짓점까지의 거리이다.
+
+```text
+Radius > 0
+```
+
+이어야 한다.
+
+### Rotation
+
+첫 번째 꼭짓점의 방향을 결정하는 회전각.
+
+단위:
+
+```text
+degree
+```
+
+기준 방향은 프로젝트의 기존 좌표계와 각도 체계를 따른다.
+
+가능하면 기존 ARC / CIRCLE / 기타 회전 속성과 동일한 각도 정의를 사용한다.
+
+예:
+
+```text
+Rotation = 0°
+```
+
+일 때 첫 번째 꼭짓점이 +X 방향을 향하도록 한다.
+
+---
+
+# 4. 정다각형 꼭짓점 계산
+
+정다각형의 꼭짓점은 다음 계산식을 사용한다.
+
+변 개수를 `N`, 반지름을 `R`, 회전각을 `Rotation`이라고 한다.
+
+각 꼭짓점의 각도:
+
+```text
+theta_i = Rotation + i × 360 / N
+```
+
+여기서:
+
+```text
+i = 0 ... N - 1
+```
+
+꼭짓점 좌표:
+
+```text
+X_i = CenterX + Radius × cos(theta_i)
+Y_i = CenterY + Radius × sin(theta_i)
+```
+
+각도 계산 시 degree → radian 변환에 주의한다.
+
+---
+
+# 5. 마우스를 이용한 생성 방식
+
+기존 도형 생성 UX와 일관성을 유지하면서 다음 방식을 구현한다.
+
+## 1단계 — Center 선택
+
+정다각형 버튼을 클릭한 후 도면 영역에서 첫 번째 클릭:
+
+```text
+Center
+```
+
+를 지정한다.
+
+## 2단계 — Radius 및 Rotation 지정
+
+두 번째 클릭 또는 마우스 이동으로:
+
+```text
+Radius
+Rotation
+```
+
+을 동시에 결정한다.
+
+중심점에서 현재 마우스 위치까지의 거리를 Radius로 한다.
+
+```text
+Radius =
+sqrt(
+    (MouseX - CenterX)^2 +
+    (MouseY - CenterY)^2
+)
+```
+
+Rotation은 중심점에서 현재 마우스 위치를 향하는 각도로 한다.
+
+```text
+Rotation =
+atan2(
+    MouseY - CenterY,
+    MouseX - CenterX
+)
+```
+
+즉 두 번째 클릭 위치가 첫 번째 꼭짓점이 된다.
+
+생성 중에는 반드시 Preview를 표시한다.
+
+---
+
+# 6. Sides 입력
+
+정다각형 버튼을 선택했을 때 사용자가 변 개수를 결정할 수 있어야 한다.
+
+기본값:
+
+```text
+Sides = 6
+```
+
+권장한다.
+
+다만 현재 CosmicDesigner의 UI 구조에 더 적합한 방식이 있다면 기존 UI 패턴을 우선 적용한다.
+
+가능한 방식:
+
+```text
+Sides: [ 6 ]
+```
+
+숫자 입력 또는 Spinner.
+
+최소값:
+
+```text
+3
+```
+
+잘못된 입력은 생성하지 않고 사용자에게 명확히 알려준다.
+
+---
+
+# 7. Preview
+
+Center를 지정한 후 마우스를 움직이면 현재 위치를 기준으로 정다각형 Preview를 실시간 표시한다.
+
+Preview는 다음 변화에 즉시 반응해야 한다.
+
+```text
+Mouse position
+Radius
+Rotation
+Sides
+```
+
+예:
+
+```text
+Sides = 3
+→ 정삼각형
+
+Sides = 4
+→ 정사각형
+
+Sides = 6
+→ 정육각형
+```
+
+Preview는 실제 저장 데이터와 동일한 계산 함수를 사용해야 한다.
+
+Preview용 계산과 실제 생성용 계산을 별도로 작성하여 결과가 달라지는 일이 없도록 한다.
+
+---
+
+# 8. Property Panel
+
+생성된 정다각형을 선택하면 현재 Entity Property 패널에 다음 정보를 표시한다.
+
+```text
+Type: Regular Polygon
+
+Center X
+Center Y
+Sides
+Radius
+Rotation
+Layer
+```
+
+Closed는 항상 true이므로 사용자에게 노출할 필요는 없다.
+
+다만 내부적으로는 폐곡선임이 명확하게 유지되어야 한다.
+
+---
+
+# 9. Property 직접 수정
+
+Property Panel에서 다음 값을 직접 변경할 수 있어야 한다.
+
+```text
+Center X
+Center Y
+Sides
+Radius
+Rotation
+```
+
+값이 변경되면 기존 꼭짓점을 부분 수정하지 말고 모든 꼭짓점을 다시 계산한다.
+
+즉:
+
+```text
+Property 변경
+      ↓
+RegularPolygon 재계산
+      ↓
+전체 Vertex 재생성
+      ↓
+화면 Refresh
+```
+
+구조로 구현한다.
+
+---
+
+# 10. Center 변경
+
+예:
+
+```text
+Center X = 100
+Center Y = 50
+```
+
+에서
+
+```text
+Center X = 120
+Center Y = 80
+```
+
+으로 변경하면,
+
+정다각형의 형태와 방향은 유지하면서 전체 도형이 이동해야 한다.
+
+---
+
+# 11. Radius 변경
+
+예:
+
+```text
+Radius = 20
+```
+
+에서
+
+```text
+Radius = 40
+```
+
+으로 변경하면,
+
+Center와 Rotation은 유지하면서 정다각형의 크기만 변경한다.
+
+---
+
+# 12. Sides 변경
+
+예:
+
+```text
+Sides = 6
+```
+
+에서
+
+```text
+Sides = 8
+```
+
+으로 변경하면,
+
+Center, Radius, Rotation은 그대로 유지하고 정육각형을 정팔각형으로 다시 생성한다.
+
+기존 Vertex를 유지하거나 일부만 추가하지 않는다.
+
+전체 Vertex를 재계산한다.
+
+---
+
+# 13. Rotation 변경
+
+Rotation이 변경되면 Center와 Radius 및 Sides는 유지하고 전체 Polygon을 중심 기준으로 회전시킨다.
+
+예:
+
+```text
+Sides = 4
+Center = (100, 100)
+Radius = 50
+Rotation = 0°
+```
+
+이면 첫 번째 Vertex가 +X 방향을 향한다.
+
+```text
+Rotation = 45°
+```
+
+로 변경하면 전체 정사각형이 중심을 기준으로 45° 회전해야 한다.
+
+---
+
+# 14. 객체 이동
+
+기존 Entity Move 기능과 동일한 방식으로 이동할 수 있어야 한다.
+
+정다각형을 이동하면:
+
+```text
+CenterX
+CenterY
+```
+
+만 변경하고
+
+```text
+Sides
+Radius
+Rotation
+```
+
+은 유지한다.
+
+정다각형을 구성하는 Vertex를 개별적으로 이동시키지 않는다.
+
+---
+
+# 15. 선택 처리
+
+정다각형의 어느 변을 클릭해도 해당 `RegularPolygon` 객체 전체가 선택되어야 한다.
+
+즉 화면에 여러 선분으로 보이더라도 편집 단계에서는 하나의 Entity로 취급한다.
+
+선분 개별 선택이 발생하지 않도록 한다.
+
+---
+
+# 16. 삭제
+
+정다각형 객체를 삭제하면 해당 정다각형 전체가 삭제되어야 한다.
+
+구성 Vertex나 Edge 일부만 삭제되는 일이 없어야 한다.
+
+---
+
+# 17. DXF 저장
+
+DXF 표준에는 `REGULARPOLYGON`이라는 별도 Entity가 없으므로 저장 시 정다각형을 폐곡선 Polyline으로 변환한다.
+
+가능하면:
+
+```text
+LWPOLYLINE
+```
+
+을 사용한다.
+
+기본 구조:
+
+```text
+0
+LWPOLYLINE
+90
+N
+70
+1
+```
+
+여기서:
+
+```text
+N = Sides
+70 = 1
+```
+
+은 Closed Polyline을 의미한다.
+
+각 Vertex를 순서대로 기록한다.
+
+마지막 Vertex와 첫 번째 Vertex는 Closed Flag를 통해 연결한다.
+
+마지막 점을 중복하여 별도로 추가하지 않는다.
+
+---
+
+# 18. DXF Import
+
+현재 프로젝트에서 DXF Import를 지원하고 있다면 다음 원칙을 적용한다.
+
+일반 `LWPOLYLINE`을 읽었다고 해서 무조건 `RegularPolygon`으로 변환하지 않는다.
+
+정다각형인지 확실하게 판단할 수 없는 일반 Polyline은 기존 Polyline으로 유지한다.
+
+즉:
+
+```text
+RegularPolygon → DXF LWPOLYLINE
+```
+
+저장은 지원하지만,
+
+```text
+DXF LWPOLYLINE → RegularPolygon
+```
+
+자동 복원은 이번 범위에서 반드시 요구하지 않는다.
+
+프로젝트 자체 포맷이나 내부 저장 포맷이 따로 존재한다면 `RegularPolygon`의 원래 속성을 보존해야 한다.
+
+---
+
+# 19. 내부 데이터 모델
+
+가능하면 다음과 같은 구조를 사용한다.
+
+```text
+RegularPolygonEntity
+{
+    CenterX
+    CenterY
+    Sides
+    Radius
+    Rotation
+    Layer
+}
+```
+
+Vertex는 파생 데이터로 취급한다.
+
+즉 저장의 기준 데이터는:
+
+```text
+Center
+Sides
+Radius
+Rotation
+```
+
+이고,
+
+Vertex는 필요할 때 다음 함수로 계산한다.
+
+```text
+GetVertices()
+```
+
+예:
+
+```text
+vertices = RegularPolygonGeometry.CalculateVertices(
+    center,
+    radius,
+    sides,
+    rotation
+)
+```
+
+Geometry 계산 함수를 UI, Preview, Renderer, DXF Export가 공통으로 사용하도록 한다.
+
+---
+
+# 20. 좌표계 주의
+
+CosmicDesigner의 화면 좌표계와 DXF 좌표계가 서로 Y 방향이 반대일 가능성이 있으므로 기존 구현을 확인한다.
+
+화면 좌표:
+
+```text
+Y downward
+```
+
+DXF 좌표:
+
+```text
+Y upward
+```
+
+구조라면 기존 Entity와 동일한 좌표 변환 정책을 적용한다.
+
+정다각형 전용으로 별도의 임의 좌표 보정을 추가하지 않는다.
+
+---
+
+# 21. Layer 처리
+
+정다각형은 기존 Entity와 동일하게 Layer를 갖는다.
+
+현재 프로젝트에서 사용하는:
+
+```text
+L
+V
+V1
+V2
+...
+```
+
+등 Layer 구조 및 가시성 규칙을 그대로 따른다.
+
+정다각형을 특정 Layer에 생성했을 경우 DXF 출력에서도 동일한 Layer를 유지한다.
+
+---
+
+# 22. Contour 기능과의 관계
+
+현재 CosmicDesigner가 다음 구조를 사용하고 있다면:
+
+```text
+Outer Contour
+Inner Contour
+```
+
+정다각형도 해당 Contour를 구성할 수 있는 폐곡선 Entity로 사용할 수 있도록 한다.
+
+정다각형은 기하학적으로 반드시 Closed Shape이다.
+
+따라서 기존 폐곡선 판정, Contour 선택, 레이저 절단 경계 판정 등에 사용할 수 있어야 한다.
+
+단, 기존 Contour 알고리즘을 불필요하게 재작성하지 않는다.
+
+---
+
+# 23. 기존 절단선 제거 규칙과의 호환
+
+기존에 구현되어 있는:
+
+- Inner Contour가 Outer Contour와 겹치는 경우
+- Inner Contour가 Outer Contour 밖으로 나가는 경우
+- 절삭되어 사라질 영역에 불필요한 laser cutting segment를 남기지 않는 규칙
+
+이 존재한다면 정다각형 역시 동일한 기하 처리 대상이 되어야 한다.
+
+정다각형이라고 해서 별도 예외 처리를 만들기보다는 기존 Polygon / Contour Geometry 연산에 Vertex를 전달하여 처리하도록 한다.
+
+---
+
+# 24. Undo / Redo
+
+현재 CosmicDesigner에 Undo / Redo 시스템이 있다면 다음 작업이 모두 Undo / Redo 대상이 되어야 한다.
+
+```text
+Create RegularPolygon
+Move RegularPolygon
+Delete RegularPolygon
+
+Change Center
+Change Radius
+Change Sides
+Change Rotation
+```
+
+한 번의 Property 변경은 하나의 Undo Action으로 처리한다.
+
+---
+
+# 25. 입력값 검증
+
+다음 조건을 검증한다.
+
+```text
+Sides >= 3
+Radius > 0
+Center 좌표 = finite number
+Rotation = finite number
+```
+
+NaN, Infinity 등의 값이 Entity에 저장되지 않도록 한다.
+
+Rotation 값은 필요하면 다음과 같이 normalize한다.
+
+```text
+0° <= Rotation < 360°
+```
+
+다만 기존 Entity의 Angle 정책이 있다면 해당 정책을 우선한다.
+
+---
+
+# 26. 테스트 케이스
+
+자동 테스트가 가능한 항목과 사용자 시각 확인이 필요한 항목을 분리한다.
+
+## Automated Test
+
+### TC-RP-001
+
+```text
+Sides = 3
+Radius = 10
+Rotation = 0
+```
+
+Vertex 개수 = 3 확인.
+
+모든 Vertex가 Center에서 거리 10인지 확인.
+
+---
+
+### TC-RP-002
+
+```text
+Sides = 4
+Radius = 10
+Rotation = 0
+```
+
+Vertex:
+
+```text
+(10,0)
+(0,10)
+(-10,0)
+(0,-10)
+```
+
+또는 좌표계 방향에 따른 동등 결과인지 확인.
+
+---
+
+### TC-RP-003
+
+```text
+Sides = 6
+```
+
+모든 변 길이가 동일한지 tolerance 범위 내에서 검증한다.
+
+---
+
+### TC-RP-004
+
+모든 꼭짓점에 대해:
+
+```text
+distance(Vertex, Center) == Radius
+```
+
+인지 확인한다.
+
+---
+
+### TC-RP-005
+
+Sides:
+
+```text
+6 → 8
+```
+
+변경 후 Vertex 개수가 8인지 확인한다.
+
+---
+
+### TC-RP-006
+
+Radius:
+
+```text
+20 → 40
+```
+
+변경 후 모든 Vertex의 중심 거리가 40인지 확인한다.
+
+---
+
+### TC-RP-007
+
+Rotation:
+
+```text
+0° → 45°
+```
+
+변경 후 모든 Vertex가 정확히 회전했는지 확인한다.
+
+---
+
+### TC-RP-008
+
+Center:
+
+```text
+(0,0) → (100,50)
+```
+
+변경 후 모든 Vertex가 동일한 offset으로 이동했는지 확인한다.
+
+---
+
+### TC-RP-009
+
+DXF Export 후 생성된 `LWPOLYLINE`의:
+
+```text
+Vertex Count = Sides
+Closed = true
+Layer = original layer
+```
+
+인지 확인한다.
+
+---
+
+### TC-RP-010
+
+Radius = 0 또는 Sides < 3 입력 시 정상적으로 거부되는지 확인한다.
+
+---
+
+# 27. Manual Test
+
+다음은 사람이 직접 확인한다.
+
+```text
+정다각형 버튼 위치와 아이콘
+Tooltip
+Center 클릭 UX
+Radius 지정 UX
+Mouse Move Preview
+Rotation 방향
+Property Panel
+Sides 변경 시 화면 갱신
+Radius 변경 시 화면 갱신
+Rotation 변경 시 화면 갱신
+객체 선택
+객체 이동
+Delete
+Undo
+Redo
+Zoom / Pan 후 표시
+DXF를 AutoCAD에서 열었을 때 형상 확인
+```
+
+특히 AutoCAD에서 저장된 정다각형이:
+
+```text
+Closed Polyline
+```
+
+으로 정상 표시되는지 확인한다.
+
+---
+
+# 28. Regression Test
+
+이번 기능 추가로 기존 기능이 영향을 받지 않았음을 확인한다.
+
+최소 다음 항목을 다시 테스트한다.
+
+```text
+LINE 생성/편집
+ARC 생성/편집
+CIRCLE 생성/편집
+ELLIPSE가 있다면 생성/편집
+Entity 선택
+Move
+Delete
+Undo / Redo
+Layer visibility
+Outer Contour
+Inner Contour
+DXF Save
+DXF Load
+Laser cutting contour 처리
+```
+
+기존 Regression Test Suite가 있다면 신규 테스트를 Suite에 추가한다.
+
+---
+
+# 29. CR 관리
+
+프로젝트에 기존 CR 관리 규칙이 있다면 이번 변경도 신규 CR로 등록한다.
+
+예:
+
+```text
+CR-XXX
+Add Regular Polygon Drawing Tool
+```
+
+필요하다면 하위 작업을 다음처럼 분리한다.
+
+```text
+CR-XXX-01
+RegularPolygon geometry model
+
+CR-XXX-02
+Toolbar / drawing interaction
+
+CR-XXX-03
+Property editor
+
+CR-XXX-04
+Rendering / selection
+
+CR-XXX-05
+DXF export
+
+CR-XXX-06
+Automated tests
+
+CR-XXX-07
+Regression tests
+```
+
+실제 번호는 현재 프로젝트의 CR 번호 체계를 확인하여 중복 없이 결정한다.
+
+---
+
+# 30. 구현 원칙
+
+다음 원칙을 반드시 지킨다.
+
+1. 기존 Architecture를 먼저 분석한다.
+2. 기존 Entity 구조를 불필요하게 변경하지 않는다.
+3. 기존 정상 기능을 제거하거나 단순화하지 않는다.
+4. RegularPolygon 계산 로직을 여러 곳에 중복 구현하지 않는다.
+5. Geometry 계산 함수는 단일 Source of Truth로 만든다.
+6. Preview와 실제 Entity 생성은 동일한 Geometry 함수를 사용한다.
+7. DXF Export는 Vertex 계산 결과를 이용한다.
+8. 사용자가 편집하는 동안에는 RegularPolygon 객체를 유지한다.
+9. DXF 저장 단계에서만 LWPOLYLINE으로 변환한다.
+10. 모든 변경은 기존 코딩 규칙과 Naming Convention을 따른다.
+
+---
+
+# 31. 완료 보고
+
+작업 완료 후 다음 내용을 보고한다.
+
+```text
+1. 변경한 파일 목록
+2. 신규 생성 파일 목록
+3. RegularPolygon 데이터 모델
+4. Vertex 계산 방법
+5. Drawing UI 동작 방식
+6. Property Panel 구현 내용
+7. DXF Export 구현 방법
+8. Automated Test 결과
+9. Manual Test가 필요한 항목
+10. Regression Test 결과
+11. 기존 기능에 영향을 준 변경사항 여부
+12. 미해결 문제 또는 후속 개선 권고
+```
+
+빌드가 가능한 프로젝트라면 최종적으로 전체 프로젝트를 빌드하고 오류가 없는지 확인한다.
+
+실행 파일 생성이 기존 개발 프로세스에 포함되어 있다면 빌드 후 실제 실행하여 정다각형 기능의 기본 동작까지 확인한다.
+
+**중요: 기존 구현을 추측하여 대규모 재설계하지 말고, 반드시 현재 저장소의 구조와 기존 Entity 구현 패턴을 먼저 분석한 뒤 가장 적은 변경으로 기능을 통합한다.**

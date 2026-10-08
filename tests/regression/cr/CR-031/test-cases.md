@@ -10,7 +10,7 @@
 - 입력/절차: 검증 executable을 --tests TC-031-001 로 실행
 - 기대 결과: 함수의 모든 assertion PASS, exit code 0
 - Execution Type: AUTO
-- 구현 위치: CosmicDesigner.Verification/Program.cs::HoleDragCreation
+- 구현 위치: VCutting.Verification/Program.cs::HoleDragCreation
 - 범위: 함수에 실제 구현된 검사만 포함; CR 전체/UI 승인과 구분
 
 ## TC-031-002
@@ -31,3 +31,6 @@
 - Undo는 생성 작업 전체를 한 번의 편집으로 처리한다.
 
 - 실행 결과: NOT_RUN — 이관 시점에 새 수동 실행을 주장하지 않음.
+
+## CR-074 approved support-set extension — 2026-10-07
+TC-031-001의 Ellipse 제외 predicate는 사용자의 명시적 타원 추가 승인으로 포함 predicate로 갱신했다. 기존 Circle/Triangle/Rectangle bounds/min-size/clamp assertions는 그대로 유지하며 새 타원 동작은 TC-074-001에 추가한다. ID 재발급/삭제 없음.

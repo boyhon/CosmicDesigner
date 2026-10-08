@@ -6,7 +6,7 @@ Users submit requirements in natural language; they are not expected to assign C
 
 ## Next available number
 
-`CR-068`
+`CR-089`
 
 The project-management setup and baseline documentation do not consume a CR because they do not change application behavior.
 
@@ -130,3 +130,56 @@ Never reuse an issued number. Use the required structure in [DEVELOPMENT_POLICY.
 
 - [CR-067](CR-067.md) — Implemented / WAITING FOR USER VERIFICATION — 클래식 설치 아이콘 및 실제 실행 확인.
 - CR-067 status update — Verified: requester confirmed taskbar classic icon; TC-067-001 SEMI_AUTO PASS. Prior pending entry is historical.
+
+- [CR-068](CR-068.md) — Implemented / WAITING FOR USER VERIFICATION — 새 설치 기본 경로 VCutting, CR-069에서 구현.
+
+- [CR-069](CR-069.md) — Implemented / WAITING FOR USER VERIFICATION — VCutting 프로젝트/제품 이름 및 기존 데이터 호환성.
+
+- [CR-070](CR-070.md) — Implemented / WAITING FOR USER VERIFICATION — 고객 버전/불변 Freeze 정책.
+
+- [CR-071](CR-071.md) — Implemented / WAITING FOR USER VERIFICATION — 설치 매뉴얼 6단계 원본 화면. Next CR-072.
+
+- [CR-072](CR-072.md) — Implemented / WAITING FOR USER VERIFICATION — CosmicDesigner 다국어 외부 리소스.
+
+- [CR-073](CR-073.md) — Implemented / WAITING FOR USER VERIFICATION — 새 사용자 문서 기본 단위 mm.
+`n- [CR-074](CR-074.md) — Implemented / WAITING FOR USER VERIFICATION: 타원 Hole 방향 드래그 생성. Next CR-075.
+`n- [CR-075](CR-075.md) — Implemented / WAITING FOR USER VERIFICATION: 타원 고유 속성. Next CR-077.`n- [CR-076](CR-076.md) — Implemented / WAITING FOR USER VERIFICATION: CosmicDesigner 실행 파일명 승인 적용.
+- [CR-077](CR-077.md) — Implemented / WAITING FOR USER VERIFICATION: 내부 Cut 합집합 통합. Next CR-078.
+
+- [CR-078](CR-078.md) — Implemented / WAITING FOR USER VERIFICATION: Regular Polygon. New11/11, affected20/20, full96/96 AUTO PASS. Next CR-079.
+
+- [CR-079](CR-079.md) — Implemented / WAITING FOR USER VERIFICATION: 정다각별 그리기. AUTO new3/3, affected22/22, full99/99 PASS; human pending. Next CR-080.
+
+CR-079 user correction: fully cut star interior implemented, new1/1 affected11/11 full99/99 AUTO PASS; TC-079-006 human pending. Next CR-080.
+
+CR-079 profile-only follow-up Implemented / WAITING FOR USER VERIFICATION: new2/2 affected12/12 full100/100 AUTO PASS; MANUAL009 pending; Next CR-080.
+
+- [CR-080](CR-080.md) — In Progress: toolbar reorder and actual build identifier reporting. Next CR-081.
+
+CR-080 Implemented / WAITING FOR USER VERIFICATION: affected6/6 full100/100 AUTO PASS, MANUAL080001 pending. Next CR-081.
+
+- [CR-081](CR-081.md) — In Progress: all ARC angle editing.
+- [CR-082](CR-082.md) — In Progress: Rectangle rotation. Next CR-083.
+
+CR-081 and CR-082 Implemented / WAITING FOR USER VERIFICATION: new2/2 affected18/18 full102/102 AUTO PASS; MANUAL081002/082002 pending. Next CR-083.
+
+- [CR-083](CR-083.md) — In Progress: selected shape Copy/Paste. Next CR-084.
+
+CR-083 Implemented / WAITING FOR USER VERIFICATION: new1/1 affected14/14 full103/103 AUTO PASS, MANUAL083002 pending. Next CR-084.
+
+- [CR-084](CR-084.md) — In Progress: SVG import. Next CR-085.
+
+CR-084 Implemented / WAITING FOR USER VERIFICATION: new3/3 affected9/9 full106/106 AUTO PASS, MANUAL084004 pending. Next CR-085.
+
+- [CR-085](CR-085.md) — Implemented / WAITING FOR USER VERIFICATION: separate CosmicConvert. New4/4, affected6/6, accumulated110/110 AUTO PASS; MANUAL005 pending. Next CR-086.
+
+- [CR-086](CR-086.md) — Implemented / WAITING FOR USER VERIFICATION: CosmicConvert10mm frame. New1PASS; aggregate110PASS/1NOT_RUN historical fixture; human002 pending. Next CR-087.
+
+- [CR-087](CR-087.md) — In Progress: native object metadata for CosmicConvert. Next CR-088.
+- [CR-087](CR-087.md) — Implemented / WAITING FOR USER VERIFICATION; native Compound/Slit,112AUTO PASS/1NOT_RUN, human003 pending. NextCR088.
+- [CR-088](CR-088.md) — In Progress: invisible SVG auxiliary text. NextCR089.
+- [CR-088](CR-088.md) — Implemented / WAITING FOR USER VERIFICATION: invisible auxiliary text and bounded fill topology. Full113PASS/1historicalNOT_RUN; human002 pending; nextCR089.
+
+- [CR-089](CR-089.md) — Implemented / WAITING FOR USER VERIFICATION: H/W Section Fit/Reset. Next CR-090.
+- [CR-090](CR-090.md) — In Progress: include CosmicConvert in package; user-approved RC1 Freeze. NextCR091.
+- [CR-090](CR-090.md) — Implemented / WAITING FOR USER VERIFICATION; package6programs, source tests PASS, human installation pending. NextCR091.

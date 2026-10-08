@@ -5,7 +5,7 @@ Purpose: 4분원 생성/편집/통합과 기존 저장 경로 확인.
 Preconditions: Windows .NET 10 Release.
 Procedure: --tests TC-052-001. QuarterCircleOperations assertions execute all four quadrants; both individual radii and corner merges, invalid/interior/tangent rejection, preview equality, mask/mesh, DXF, units and Undo/Redo.
 Expected: all assertions PASS; exit 0.
-Implementation: CosmicDesigner.Verification/Program.cs::QuarterCircleOperations.
+Implementation: VCutting.Verification/Program.cs::QuarterCircleOperations.
 ## TC-052-002
 Execution Type: MANUAL; Status: ACTIVE; Result: PENDING_MANUAL.
 Preconditions: 1.20.17 application, new 300x300 document.

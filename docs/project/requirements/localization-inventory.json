@@ -1,0 +1,5472 @@
+[{"key":"section.fitReset","english":"Fit/Reset","korean":"Fit/Reset","references":["MainWindow.xaml"],"status":"ACTIVE","surface":"Section viewport button; CR-089"},
+  {
+    "key": "ui.0000",
+    "english": "Unsupported boundary segment",
+    "korean": "지원하지 않는 경계 구간입니다",
+    "references": [
+      "CurvedBoundaryCutEngine.cs:80"
+    ],
+    "originalExtraction": {
+      "key": "ui.0000",
+      "file": "CurvedBoundaryCutEngine.cs",
+      "line": 80,
+      "english": "Unsupported boundary segment"
+    },
+    "status": "ACTIVE",
+    "surface": "presentation-only; internal identifiers preserved"
+  },
+  {
+    "key": "ui.0001",
+    "english": "H Section",
+    "korean": "H 단면",
+    "references": [
+      "DesignViews.cs:65"
+    ],
+    "originalExtraction": {
+      "key": "ui.0001",
+      "file": "DesignViews.cs",
+      "line": 65,
+      "english": "H Section"
+    },
+    "status": "ACTIVE",
+    "surface": "presentation-only; internal identifiers preserved"
+  },
+  {
+    "key": "ui.0002",
+    "english": "W Section",
+    "korean": "W 단면",
+    "references": [
+      "DesignViews.cs:65"
+    ],
+    "originalExtraction": {
+      "key": "ui.0002",
+      "file": "DesignViews.cs",
+      "line": 65,
+      "english": "W Section"
+    },
+    "status": "ACTIVE",
+    "surface": "presentation-only; internal identifiers preserved"
+  },
+  {
+    "key": "ui.0003",
+    "english": "Hole tool: {0} — drag inside material",
+    "korean": "천공 도구: {0} — 재료 안에서 드래그하세요",
+    "references": [
+      "DesignViews.cs:70"
+    ],
+    "originalExtraction": {
+      "key": "ui.0003",
+      "file": "DesignViews.cs",
+      "line": 70,
+      "english": "Hole tool: {0} — drag inside material"
+    },
+    "status": "ACTIVE",
+    "surface": "presentation-only; internal identifiers preserved"
+  },
+  {
+    "key": "ui.0004",
+    "english": "Fillet R {0:0.###} — click an Outer or Hole corner",
+    "korean": "모깎기 R {0:0.###} — 외곽선 또는 천공의 모서리를 클릭하세요",
+    "references": [
+      "DesignViews.cs:70"
+    ],
+    "originalExtraction": {
+      "key": "ui.0004",
+      "file": "DesignViews.cs",
+      "line": 70,
+      "english": "Fillet R {0:0.###} — click an Outer or Hole corner"
+    },
+    "status": "ACTIVE",
+    "surface": "presentation-only; internal identifiers preserved"
+  },
+  {
+    "key": "ui.0005",
+    "english": "Merge into Outer Contour",
+    "korean": "외곽선으로 통합",
+    "references": [
+      "DesignViews.cs:95"
+    ],
+    "originalExtraction": {
+      "key": "ui.0005",
+      "file": "DesignViews.cs",
+      "line": 95,
+      "english": "Outer Contour로 통합"
+    },
+    "status": "ACTIVE",
+    "surface": "presentation-only; internal identifiers preserved"
+  },
+  {
+    "key": "ui.0006",
+    "english": "{0} Section @ {1} {2:0.###} {3}",
+    "korean": "{0} 단면 @ {1} {2:0.###} {3}",
+    "references": [
+      "DesignViews.cs:161"
+    ],
+    "originalExtraction": {
+      "key": "ui.0006",
+      "file": "DesignViews.cs",
+      "line": 161,
+      "english": "{0} Section @ {1} {2:0.###} {3}"
+    },
+    "status": "ACTIVE",
+    "surface": "presentation-only; internal identifiers preserved"
+  },
+  {
+    "key": "ui.0007",
+    "english": "{0} exterior length ({1})",
+    "korean": "{0} 외측 길이 ({1})",
+    "references": [
+      "DesignViews.cs:177"
+    ],
+    "originalExtraction": {
+      "key": "ui.0007",
+      "file": "DesignViews.cs",
+      "line": 177,
+      "english": "{0} exterior length (cm)"
+    },
+    "status": "ACTIVE",
+    "surface": "presentation-only; internal identifiers preserved"
+  },
+  {
+    "key": "ui.0008",
+    "english": "{0} center length ({1})",
+    "korean": "{0} 중심 길이 ({1})",
+    "references": [
+      "DesignViews.cs:177"
+    ],
+    "originalExtraction": {
+      "key": "ui.0008",
+      "file": "DesignViews.cs",
+      "line": 177,
+      "english": "{0} center length (cm)"
+    },
+    "status": "ACTIVE",
+    "surface": "presentation-only; internal identifiers preserved"
+  },
+  {
+    "key": "ui.0009",
+    "english": "Selected local section length ({0})",
+    "korean": "선택한 단면 구간 길이 ({0})",
+    "references": [
+      "DesignViews.cs:178"
+    ],
+    "originalExtraction": {
+      "key": "ui.0009",
+      "file": "DesignViews.cs",
+      "line": 178,
+      "english": "Selected local section length (cm)"
+    },
+    "status": "ACTIVE",
+    "surface": "presentation-only; internal identifiers preserved"
+  },
+  {
+    "key": "ui.0010",
+    "english": "This DXF has no CosmicDesigner metadata.",
+    "korean": "이 DXF에는 CosmicDesigner 설계 정보가 없습니다.",
+    "references": [
+      "Engines.cs:493"
+    ],
+    "originalExtraction": {
+      "key": "ui.0010",
+      "file": "Engines.cs",
+      "line": 493,
+      "english": "This DXF has no VCutting metadata."
+    },
+    "status": "ACTIVE",
+    "surface": "presentation-only; internal identifiers preserved"
+  },
+  {
+    "key": "ui.0011",
+    "english": "Invalid CosmicDesigner metadata.",
+    "korean": "CosmicDesigner 설계 정보가 올바르지 않습니다.",
+    "references": [
+      "Engines.cs:493"
+    ],
+    "originalExtraction": {
+      "key": "ui.0011",
+      "file": "Engines.cs",
+      "line": 493,
+      "english": "Invalid VCutting metadata."
+    },
+    "status": "ACTIVE",
+    "surface": "presentation-only; internal identifiers preserved"
+  },
+  {
+    "key": "ui.0012",
+    "english": "Unsupported metadata geometry: {0}",
+    "korean": "지원하지 않는 설계 형상: {0}",
+    "references": [
+      "Engines.cs:515"
+    ],
+    "originalExtraction": {
+      "key": "ui.0012",
+      "file": "Engines.cs",
+      "line": 515,
+      "english": "Unsupported metadata geometry: {0}"
+    },
+    "status": "ACTIVE",
+    "surface": "presentation-only; internal identifiers preserved"
+  },
+  {
+    "key": "ui.0013",
+    "english": "No cutting geometry was found on the L layer.",
+    "korean": "L 레이어에 가져올 절단 형상이 없습니다.",
+    "references": [
+      "GeneralDxfImportEngine.cs:15"
+    ],
+    "originalExtraction": {
+      "key": "ui.0013",
+      "file": "GeneralDxfImportEngine.cs",
+      "line": 15,
+      "english": "L layer에 가져올 절단 형상이 없습니다."
+    },
+    "status": "ACTIVE",
+    "surface": "presentation-only; internal identifiers preserved"
+  },
+  {
+    "key": "ui.0014",
+    "english": "Cannot determine valid 2D bounds for the L layer.",
+    "korean": "L 레이어의 유효한 2D 범위를 계산할 수 없습니다.",
+    "references": [
+      "GeneralDxfImportEngine.cs:17"
+    ],
+    "originalExtraction": {
+      "key": "ui.0014",
+      "file": "GeneralDxfImportEngine.cs",
+      "line": 17,
+      "english": "L layer의 유효한 2D 범위를 계산할 수 없습니다."
+    },
+    "status": "ACTIVE",
+    "surface": "presentation-only; internal identifiers preserved"
+  },
+  {
+    "key": "ui.0015",
+    "english": "No closed LINE contour was found; the L layer bounding rectangle was used as the outer contour.",
+    "korean": "닫힌 LINE 외곽선을 찾지 못해 L 범위의 사각형을 외곽선으로 사용했습니다.",
+    "references": [
+      "GeneralDxfImportEngine.cs:26"
+    ],
+    "originalExtraction": {
+      "key": "ui.0015",
+      "file": "GeneralDxfImportEngine.cs",
+      "line": 26,
+      "english": "닫힌 LINE 외곽선을 찾지 못해 L 범위의 사각형을 외곽선으로 사용했습니다."
+    },
+    "status": "ACTIVE",
+    "surface": "presentation-only; internal identifiers preserved"
+  },
+  {
+    "key": "ui.0016",
+    "english": "LINE #{1} on layer {0} is not horizontal or vertical and was excluded from bends.",
+    "korean": "{0} 레이어의 LINE #{1}은 수평·수직이 아니어서 절곡선에서 제외했습니다.",
+    "references": [
+      "GeneralDxfImportEngine.cs:39"
+    ],
+    "originalExtraction": {
+      "key": "ui.0016",
+      "file": "GeneralDxfImportEngine.cs",
+      "line": 39,
+      "english": "{0} layer LINE #{1}는 수평/수직이 아니어서 절곡선에서 제외했습니다."
+    },
+    "status": "ACTIVE",
+    "surface": "presentation-only; internal identifiers preserved"
+  },
+  {
+    "key": "ui.0017",
+    "english": "Unsupported entities were excluded: ",
+    "korean": "지원하지 않는 엔티티는 제외했습니다: ",
+    "references": [
+      "GeneralDxfImportEngine.cs:42"
+    ],
+    "originalExtraction": {
+      "key": "ui.0017",
+      "file": "GeneralDxfImportEngine.cs",
+      "line": 42,
+      "english": "지원하지 않는 엔티티는 제외했습니다: "
+    },
+    "status": "ACTIVE",
+    "surface": "presentation-only; internal identifiers preserved"
+  },
+  {
+    "key": "ui.0018",
+    "english": "Created {0} on {1} layer",
+    "korean": "{1} 레이어에 {0} 생성",
+    "references": [
+      "MainWindow.xaml.cs:26"
+    ],
+    "originalExtraction": {
+      "key": "ui.0018",
+      "file": "MainWindow.xaml.cs",
+      "line": 26,
+      "english": "Created {0} on {1} layer"
+    },
+    "status": "ACTIVE",
+    "surface": "presentation-only; internal identifiers preserved"
+  },
+  {
+    "key": "ui.0019",
+    "english": "Material ({0})",
+    "korean": "재료 ({0})",
+    "references": [
+      "MainWindow.xaml.cs:30"
+    ],
+    "originalExtraction": {
+      "key": "ui.0019",
+      "file": "MainWindow.xaml.cs",
+      "line": 30,
+      "english": "Material ({0})"
+    },
+    "status": "ACTIVE",
+    "surface": "presentation-only; internal identifiers preserved"
+  },
+  {
+    "key": "ui.0020",
+    "english": "Material",
+    "korean": "재료",
+    "references": [
+      "MainWindow.xaml.cs:31"
+    ],
+    "originalExtraction": {
+      "key": "ui.0020",
+      "file": "MainWindow.xaml.cs",
+      "line": 31,
+      "english": "Material"
+    },
+    "status": "ACTIVE",
+    "surface": "presentation-only; internal identifiers preserved"
+  },
+  {
+    "key": "ui.0021",
+    "english": "Outer Contour",
+    "korean": "외곽선",
+    "references": [
+      "MainWindow.xaml.cs:31",
+      "MainWindow.xaml.cs:86"
+    ],
+    "originalExtraction": {
+      "key": "ui.0021",
+      "file": "MainWindow.xaml.cs",
+      "line": 31,
+      "english": "Outer Contour"
+    },
+    "status": "ACTIVE",
+    "surface": "presentation-only; internal identifiers preserved"
+  },
+  {
+    "key": "ui.0022",
+    "english": "{0:000} L {1} {2}",
+    "korean": "{0:000} L {1} {2}",
+    "references": [
+      "MainWindow.xaml.cs:31"
+    ],
+    "originalExtraction": {
+      "key": "ui.0022",
+      "file": "MainWindow.xaml.cs",
+      "line": 31,
+      "english": "{0:000} L {1} {2}"
+    },
+    "status": "ACTIVE",
+    "surface": "presentation-only; internal identifiers preserved"
+  },
+  {
+    "key": "ui.0023",
+    "english": "V Objects ({0})",
+    "korean": "V 객체 ({0})",
+    "references": [
+      "MainWindow.xaml.cs:32"
+    ],
+    "originalExtraction": {
+      "key": "ui.0023",
+      "file": "MainWindow.xaml.cs",
+      "line": 32,
+      "english": "V Objects ({0})"
+    },
+    "status": "ACTIVE",
+    "surface": "presentation-only; internal identifiers preserved"
+  },
+  {
+    "key": "ui.0024",
+    "english": "{0:000} V {1}",
+    "korean": "{0:000} V {1}",
+    "references": [
+      "MainWindow.xaml.cs:32"
+    ],
+    "originalExtraction": {
+      "key": "ui.0024",
+      "file": "MainWindow.xaml.cs",
+      "line": 32,
+      "english": "{0:000} V {1}"
+    },
+    "status": "ACTIVE",
+    "surface": "presentation-only; internal identifiers preserved"
+  },
+  {
+    "key": "ui.0025",
+    "english": "V1 Objects ({0})",
+    "korean": "V1 객체 ({0})",
+    "references": [
+      "MainWindow.xaml.cs:33"
+    ],
+    "originalExtraction": {
+      "key": "ui.0025",
+      "file": "MainWindow.xaml.cs",
+      "line": 33,
+      "english": "V1 Objects ({0})"
+    },
+    "status": "ACTIVE",
+    "surface": "presentation-only; internal identifiers preserved"
+  },
+  {
+    "key": "ui.0026",
+    "english": "{0:000} V1 {1}",
+    "korean": "{0:000} V1 {1}",
+    "references": [
+      "MainWindow.xaml.cs:33"
+    ],
+    "originalExtraction": {
+      "key": "ui.0026",
+      "file": "MainWindow.xaml.cs",
+      "line": 33,
+      "english": "{0:000} V1 {1}"
+    },
+    "status": "ACTIVE",
+    "surface": "presentation-only; internal identifiers preserved"
+  },
+  {
+    "key": "ui.0027",
+    "english": "Section Segments",
+    "korean": "단면 구간",
+    "references": [
+      "MainWindow.xaml.cs:34"
+    ],
+    "originalExtraction": {
+      "key": "ui.0027",
+      "file": "MainWindow.xaml.cs",
+      "line": 34,
+      "english": "Section Segments"
+    },
+    "status": "ACTIVE",
+    "surface": "presentation-only; internal identifiers preserved"
+  },
+  {
+    "key": "ui.0028",
+    "english": "W Segments",
+    "korean": "W 구간",
+    "references": [
+      "MainWindow.xaml.cs:34"
+    ],
+    "originalExtraction": {
+      "key": "ui.0028",
+      "file": "MainWindow.xaml.cs",
+      "line": 34,
+      "english": "W Segments"
+    },
+    "status": "ACTIVE",
+    "surface": "presentation-only; internal identifiers preserved"
+  },
+  {
+    "key": "ui.0029",
+    "english": "{0}  {1:0.###} {2}",
+    "korean": "{0}  {1:0.###} {2}",
+    "references": [
+      "MainWindow.xaml.cs:34"
+    ],
+    "originalExtraction": {
+      "key": "ui.0029",
+      "file": "MainWindow.xaml.cs",
+      "line": 34,
+      "english": "{0}  {1:0.###} cm"
+    },
+    "status": "ACTIVE",
+    "surface": "presentation-only; internal identifiers preserved"
+  },
+  {
+    "key": "ui.0030",
+    "english": "H Segments",
+    "korean": "H 구간",
+    "references": [
+      "MainWindow.xaml.cs:34"
+    ],
+    "originalExtraction": {
+      "key": "ui.0030",
+      "file": "MainWindow.xaml.cs",
+      "line": 34,
+      "english": "H Segments"
+    },
+    "status": "ACTIVE",
+    "surface": "presentation-only; internal identifiers preserved"
+  },
+  {
+    "key": "ui.0031",
+    "english": "{0}  {1:0.###} {2}",
+    "korean": "{0}  {1:0.###} {2}",
+    "references": [
+      "MainWindow.xaml.cs:34"
+    ],
+    "originalExtraction": {
+      "key": "ui.0031",
+      "file": "MainWindow.xaml.cs",
+      "line": 34,
+      "english": "{0}  {1:0.###} cm"
+    },
+    "status": "ACTIVE",
+    "surface": "presentation-only; internal identifiers preserved"
+  },
+  {
+    "key": "ui.0032",
+    "english": "Cut Objects ({0})",
+    "korean": "절단 객체 ({0})",
+    "references": [
+      "MainWindow.xaml.cs:35"
+    ],
+    "originalExtraction": {
+      "key": "ui.0032",
+      "file": "MainWindow.xaml.cs",
+      "line": 35,
+      "english": "Cut Objects ({0})"
+    },
+    "status": "ACTIVE",
+    "surface": "presentation-only; internal identifiers preserved"
+  },
+  {
+    "key": "ui.0033",
+    "english": "{0:000} L {1} {2}",
+    "korean": "{0:000} L {1} {2}",
+    "references": [
+      "MainWindow.xaml.cs:35"
+    ],
+    "originalExtraction": {
+      "key": "ui.0033",
+      "file": "MainWindow.xaml.cs",
+      "line": 35,
+      "english": "{0:000} L {1} {2}"
+    },
+    "status": "ACTIVE",
+    "surface": "presentation-only; internal identifiers preserved"
+  },
+  {
+    "key": "ui.0034",
+    "english": "{0:000} L {1} {2}",
+    "korean": "{0:000} L {1} {2}",
+    "references": [
+      "MainWindow.xaml.cs:35"
+    ],
+    "originalExtraction": {
+      "key": "ui.0034",
+      "file": "MainWindow.xaml.cs",
+      "line": 35,
+      "english": "{0:000} L {1} {2}"
+    },
+    "status": "ACTIVE",
+    "surface": "presentation-only; internal identifiers preserved"
+  },
+  {
+    "key": "ui.0035",
+    "english": "Slit Objects ({0})",
+    "korean": "절개 객체 ({0})",
+    "references": [
+      "MainWindow.xaml.cs:36"
+    ],
+    "originalExtraction": {
+      "key": "ui.0035",
+      "file": "MainWindow.xaml.cs",
+      "line": 36,
+      "english": "Slit Objects ({0})"
+    },
+    "status": "ACTIVE",
+    "surface": "presentation-only; internal identifiers preserved"
+  },
+  {
+    "key": "ui.0036",
+    "english": "{0:000} L {1} {2}",
+    "korean": "{0:000} L {1} {2}",
+    "references": [
+      "MainWindow.xaml.cs:36"
+    ],
+    "originalExtraction": {
+      "key": "ui.0036",
+      "file": "MainWindow.xaml.cs",
+      "line": 36,
+      "english": "{0:000} L {1} {2}"
+    },
+    "status": "ACTIVE",
+    "surface": "presentation-only; internal identifiers preserved"
+  },
+  {
+    "key": "ui.0037",
+    "english": "Micro Joints ({0})",
+    "korean": "마이크로 조인트 ({0})",
+    "references": [
+      "MainWindow.xaml.cs:37"
+    ],
+    "originalExtraction": {
+      "key": "ui.0037",
+      "file": "MainWindow.xaml.cs",
+      "line": 37,
+      "english": "Micro Joints ({0})"
+    },
+    "status": "ACTIVE",
+    "surface": "presentation-only; internal identifiers preserved"
+  },
+  {
+    "key": "ui.0038",
+    "english": "New design",
+    "korean": "새 설계",
+    "references": [
+      "MainWindow.xaml.cs:40"
+    ],
+    "originalExtraction": {
+      "key": "ui.0038",
+      "file": "MainWindow.xaml.cs",
+      "line": 40,
+      "english": "New design"
+    },
+    "status": "ACTIVE",
+    "surface": "presentation-only; internal identifiers preserved"
+  },
+  {
+    "key": "ui.0039",
+    "english": "DXF files (*.dxf)|*.dxf",
+    "korean": "DXF 파일 (*.dxf)|*.dxf",
+    "references": [],
+    "originalExtraction": {
+      "key": "ui.0039",
+      "file": "MainWindow.xaml.cs",
+      "line": 41,
+      "english": "DXF files (*.dxf)|*.dxf"
+    },
+    "status": "RESERVED_UNUSED",
+    "surface": "presentation-only; internal identifiers preserved"
+  },
+  {
+    "key": "ui.0040",
+    "english": "Design restored in {0}",
+    "korean": "{0} 단위로 설계 복원",
+    "references": [
+      "MainWindow.xaml.cs:42"
+    ],
+    "originalExtraction": {
+      "key": "ui.0040",
+      "file": "MainWindow.xaml.cs",
+      "line": 42,
+      "english": "Design restored in {0}"
+    },
+    "status": "ACTIVE",
+    "surface": "presentation-only; internal identifiers preserved"
+  },
+  {
+    "key": "ui.0041",
+    "english": "This is a plain DXF without CosmicDesigner metadata.\n\nThe largest closed L-layer contour becomes the outer boundary; other L contours become holes, and V/V1 lines become bends. DXF units are converted to the new-document default unit. Initial thickness is equivalent to 0.2 cm.\n\nImport automatically?",
+    "korean": "CosmicDesigner 메타데이터가 없는 일반 DXF입니다.\n\nL 레이어의 가장 큰 닫힌 형상을 외곽선으로, 나머지 L 형상을 구멍으로 가져오고 V/V1 선을 절곡선으로 변환합니다. DXF 단위를 확인하여 새 문서 기본 단위로 환산하며 재료 두께는 0.2 cm 상당으로 시작합니다.\n\n자동으로 가져오시겠습니까?",
+    "references": [
+      "MainWindow.xaml.cs:42"
+    ],
+    "originalExtraction": {
+      "key": "ui.0041",
+      "file": "MainWindow.xaml.cs",
+      "line": 42,
+      "english": "VCutting 메타데이터가 없는 일반 DXF입니다.\n\nL 레이어의 가장 큰 닫힌 형상을 외곽선으로, 나머지 L 형상을 구멍으로 가져오고 V/V1 선을 절곡선으로 변환합니다. DXF 단위를 확인하여 새 문서 기본 단위로 환산하며 재료 두께는 0.2 cm 상당으로 시작합니다.\n\n자동으로 가져오시겠습니까?"
+    },
+    "status": "ACTIVE",
+    "surface": "presentation-only; internal identifiers preserved"
+  },
+  {
+    "key": "ui.0042",
+    "english": "Import DXF Automatically",
+    "korean": "DXF 자동 가져오기",
+    "references": [
+      "MainWindow.xaml.cs:42"
+    ],
+    "originalExtraction": {
+      "key": "ui.0042",
+      "file": "MainWindow.xaml.cs",
+      "line": 42,
+      "english": "DXF 자동 가져오기"
+    },
+    "status": "ACTIVE",
+    "surface": "presentation-only; internal identifiers preserved"
+  },
+  {
+    "key": "ui.0043",
+    "english": "DXF imported in {0}: outer {1}, cuts {2}, bends {3} — Save As required",
+    "korean": "{0} 단위로 DXF 가져옴: 외곽 {1}, 절단 {2}, 절곡 {3} — 다른 이름으로 저장 필요",
+    "references": [
+      "MainWindow.xaml.cs:42"
+    ],
+    "originalExtraction": {
+      "key": "ui.0043",
+      "file": "MainWindow.xaml.cs",
+      "line": 42,
+      "english": "DXF imported in {0}: outer {1}, cuts {2}, bends {3} — Save As required"
+    },
+    "status": "ACTIVE",
+    "surface": "presentation-only; internal identifiers preserved"
+  },
+  {
+    "key": "ui.0044",
+    "english": "DXF Import Warnings",
+    "korean": "DXF 가져오기 경고",
+    "references": [
+      "MainWindow.xaml.cs:42"
+    ],
+    "originalExtraction": {
+      "key": "ui.0044",
+      "file": "MainWindow.xaml.cs",
+      "line": 42,
+      "english": "DXF 가져오기 경고"
+    },
+    "status": "ACTIVE",
+    "surface": "presentation-only; internal identifiers preserved"
+  },
+  {
+    "key": "ui.0045",
+    "english": "Open",
+    "korean": "열기",
+    "references": [
+      "MainWindow.xaml.cs:42"
+    ],
+    "originalExtraction": {
+      "key": "ui.0045",
+      "file": "MainWindow.xaml.cs",
+      "line": 42,
+      "english": "Open"
+    },
+    "status": "ACTIVE",
+    "surface": "presentation-only; internal identifiers preserved"
+  },
+  {
+    "key": "ui.0046",
+    "english": "DXF files (*.dxf)|*.dxf",
+    "korean": "DXF 파일 (*.dxf)|*.dxf",
+    "references": [],
+    "originalExtraction": {
+      "key": "ui.0046",
+      "file": "MainWindow.xaml.cs",
+      "line": 46,
+      "english": "DXF files (*.dxf)|*.dxf"
+    },
+    "status": "RESERVED_UNUSED",
+    "surface": "presentation-only; internal identifiers preserved"
+  },
+  {
+    "key": "ui.0047",
+    "english": "Saved CAM geometry, section views and CosmicDesigner metadata",
+    "korean": "CAM 형상, 단면 보기와 CosmicDesigner 설계 정보를 저장했습니다",
+    "references": [
+      "MainWindow.xaml.cs:47"
+    ],
+    "originalExtraction": {
+      "key": "ui.0047",
+      "file": "MainWindow.xaml.cs",
+      "line": 47,
+      "english": "Saved CAM geometry, section views and VCutting metadata"
+    },
+    "status": "ACTIVE",
+    "surface": "presentation-only; internal identifiers preserved"
+  },
+  {
+    "key": "ui.0048",
+    "english": "Save",
+    "korean": "Save",
+    "references": [
+      "MainWindow.xaml.cs:47"
+    ],
+    "originalExtraction": {
+      "key": "ui.0048",
+      "file": "MainWindow.xaml.cs",
+      "line": 47,
+      "english": "Save"
+    },
+    "status": "ACTIVE",
+    "surface": "presentation-only; internal identifiers preserved"
+  },
+  {
+    "key": "ui.0049",
+    "english": "The current document has unsaved changes.\n\nWould you like to save it?",
+    "korean": "현재 파일에 저장되지 않은 변경 사항이 있습니다.\n\n현재 파일을 저장하시겠습니까?",
+    "references": [
+      "MainWindow.xaml.cs:49"
+    ],
+    "originalExtraction": {
+      "key": "ui.0049",
+      "file": "MainWindow.xaml.cs",
+      "line": 49,
+      "english": "현재 파일에 저장되지 않은 변경 사항이 있습니다.\n\n현재 파일을 저장하시겠습니까?"
+    },
+    "status": "ACTIVE",
+    "surface": "presentation-only; internal identifiers preserved"
+  },
+  {
+    "key": "ui.0050",
+    "english": "Save Changes",
+    "korean": "변경 사항 저장",
+    "references": [
+      "MainWindow.xaml.cs:49"
+    ],
+    "originalExtraction": {
+      "key": "ui.0050",
+      "file": "MainWindow.xaml.cs",
+      "line": 49,
+      "english": "변경 사항 저장"
+    },
+    "status": "ACTIVE",
+    "surface": "presentation-only; internal identifiers preserved"
+  },
+  {
+    "key": "ui.0051",
+    "english": "Material Thickness change\n\n{0:0.###} {2} → {1:0.###} {2}\n\nVCut depth, residual thickness, bend positions, flat W/H and 3D preview will be recalculated.",
+    "korean": "재료 두께 변경\n\n{0:0.###} {2} → {1:0.###} {2}\n\nV 절단 깊이, 잔여 두께, 절곡 위치, 펼친 폭·높이와 3D 미리보기를 다시 계산합니다.",
+    "references": [
+      "MainWindow.xaml.cs:54"
+    ],
+    "originalExtraction": {
+      "key": "ui.0051",
+      "file": "MainWindow.xaml.cs",
+      "line": 54,
+      "english": "Material Thickness change\n\n{0:0.###} cm → {1:0.###} cm\n\nVCut depth, residual thickness, bend positions, flat W/H and 3D preview will be recalculated."
+    },
+    "status": "ACTIVE",
+    "surface": "presentation-only; internal identifiers preserved"
+  },
+  {
+    "key": "ui.0052",
+    "english": "Apply thickness change",
+    "korean": "두께 변경 적용",
+    "references": [
+      "MainWindow.xaml.cs:55"
+    ],
+    "originalExtraction": {
+      "key": "ui.0052",
+      "file": "MainWindow.xaml.cs",
+      "line": 55,
+      "english": "Apply thickness change"
+    },
+    "status": "ACTIVE",
+    "surface": "presentation-only; internal identifiers preserved"
+  },
+  {
+    "key": "ui.0053",
+    "english": "Thickness-dependent values recalculated",
+    "korean": "두께에 따른 값을 다시 계산했습니다",
+    "references": [
+      "MainWindow.xaml.cs:55"
+    ],
+    "originalExtraction": {
+      "key": "ui.0053",
+      "file": "MainWindow.xaml.cs",
+      "line": 55,
+      "english": "Thickness-dependent values recalculated"
+    },
+    "status": "ACTIVE",
+    "surface": "presentation-only; internal identifiers preserved"
+  },
+  {
+    "key": "ui.0054",
+    "english": "Section view rotated 90° clockwise",
+    "korean": "단면 보기를 시계 방향으로 90° 회전했습니다",
+    "references": [
+      "MainWindow.xaml.cs:58"
+    ],
+    "originalExtraction": {
+      "key": "ui.0054",
+      "file": "MainWindow.xaml.cs",
+      "line": 58,
+      "english": "Section view rotated 90° clockwise"
+    },
+    "status": "ACTIVE",
+    "surface": "presentation-only; internal identifiers preserved"
+  },
+  {
+    "key": "ui.0055",
+    "english": "{0} hole: drag from one corner to the opposite corner",
+    "korean": "{0} 천공: 한 모서리에서 반대 모서리로 드래그하세요",
+    "references": [
+      "MainWindow.xaml.cs:59"
+    ],
+    "originalExtraction": {
+      "key": "ui.0055",
+      "file": "MainWindow.xaml.cs",
+      "line": 59,
+      "english": "{0} hole: drag from one corner to the opposite corner"
+    },
+    "status": "ACTIVE",
+    "surface": "presentation-only; internal identifiers preserved"
+  },
+  {
+    "key": "ui.0056",
+    "english": "{0} hole: click inside material",
+    "korean": "{0} 천공: 재료 안을 클릭하세요",
+    "references": [
+      "MainWindow.xaml.cs:59"
+    ],
+    "originalExtraction": {
+      "key": "ui.0056",
+      "file": "MainWindow.xaml.cs",
+      "line": 59,
+      "english": "{0} hole: click inside material"
+    },
+    "status": "ACTIVE",
+    "surface": "presentation-only; internal identifiers preserved"
+  },
+  {
+    "key": "ui.0057",
+    "english": "Fillet radius must be greater than zero.",
+    "korean": "모깎기 반지름은 0보다 커야 합니다.",
+    "references": [
+      "MainWindow.xaml.cs:60"
+    ],
+    "originalExtraction": {
+      "key": "ui.0057",
+      "file": "MainWindow.xaml.cs",
+      "line": 60,
+      "english": "Fillet 반지름은 0보다 큰 값이어야 합니다."
+    },
+    "status": "ACTIVE",
+    "surface": "presentation-only; internal identifiers preserved"
+  },
+  {
+    "key": "ui.0058",
+    "english": "Fillet",
+    "korean": "모깎기",
+    "references": [
+      "MainWindow.xaml.cs:60"
+    ],
+    "originalExtraction": {
+      "key": "ui.0058",
+      "file": "MainWindow.xaml.cs",
+      "line": 60,
+      "english": "Fillet"
+    },
+    "status": "ACTIVE",
+    "surface": "presentation-only; internal identifiers preserved"
+  },
+  {
+    "key": "ui.0059",
+    "english": "Fillet R {0:0.###}: select a convex corner of the Outer Contour or a Hole",
+    "korean": "모깎기 R {0:0.###}: 외곽선 또는 천공의 볼록한 모서리를 선택하세요",
+    "references": [
+      "MainWindow.xaml.cs:60"
+    ],
+    "originalExtraction": {
+      "key": "ui.0059",
+      "file": "MainWindow.xaml.cs",
+      "line": 60,
+      "english": "Fillet R {0:0.###}: Outer Contour 또는 Hole의 볼록 모서리를 선택하세요"
+    },
+    "status": "ACTIVE",
+    "surface": "presentation-only; internal identifiers preserved"
+  },
+  {
+    "key": "ui.0060",
+    "english": ": drag right for a horizontal bend / down for a vertical bend · Esc cancels",
+    "korean": ": 오른쪽 드래그로 수평 절곡 / 아래쪽 드래그로 수직 절곡 · Esc 취소",
+    "references": [
+      "MainWindow.xaml.cs:65"
+    ],
+    "originalExtraction": {
+      "key": "ui.0060",
+      "file": "MainWindow.xaml.cs",
+      "line": 65,
+      "english": ": 오른쪽 드래그 수평 절곡 / 아래쪽 드래그 수직 절곡 · Esc 취소"
+    },
+    "status": "ACTIVE",
+    "surface": "presentation-only; internal identifiers preserved"
+  },
+  {
+    "key": "ui.0061",
+    "english": "Arc",
+    "korean": "Arc",
+    "references": [],
+    "originalExtraction": {
+      "key": "ui.0061",
+      "file": "MainWindow.xaml.cs",
+      "line": 72,
+      "english": "Arc"
+    },
+    "status": "RESERVED_UNUSED",
+    "surface": "presentation-only; internal identifiers preserved"
+  },
+  {
+    "key": "ui.0062",
+    "english": "Arc slit: start → through point → end · Esc cancels",
+    "korean": "원호 절개: 시작점 → 통과점 → 끝점 클릭 · Esc 취소",
+    "references": [
+      "MainWindow.xaml.cs:72"
+    ],
+    "originalExtraction": {
+      "key": "ui.0062",
+      "file": "MainWindow.xaml.cs",
+      "line": 72,
+      "english": "원호 절개: 시작점 → 통과점 → 끝점 클릭 · Esc 취소"
+    },
+    "status": "ACTIVE",
+    "surface": "presentation-only; internal identifiers preserved"
+  },
+  {
+    "key": "ui.0063",
+    "english": "Polyline",
+    "korean": "Polyline",
+    "references": [],
+    "originalExtraction": {
+      "key": "ui.0063",
+      "file": "MainWindow.xaml.cs",
+      "line": 72,
+      "english": "Polyline"
+    },
+    "status": "RESERVED_UNUSED",
+    "surface": "presentation-only; internal identifiers preserved"
+  },
+  {
+    "key": "ui.0064",
+    "english": "Polyline slit: click points · Enter finishes · Esc cancels",
+    "korean": "연결선 절개: 연속 클릭 · Enter 완료 · Esc 취소",
+    "references": [
+      "MainWindow.xaml.cs:72"
+    ],
+    "originalExtraction": {
+      "key": "ui.0064",
+      "file": "MainWindow.xaml.cs",
+      "line": 72,
+      "english": "연결선 절개: 연속 클릭 · Enter 완료 · Esc 취소"
+    },
+    "status": "ACTIVE",
+    "surface": "presentation-only; internal identifiers preserved"
+  },
+  {
+    "key": "ui.0065",
+    "english": "Line slit: start → end · Esc cancels",
+    "korean": "직선 절개: 시작점 → 끝점 클릭 · Esc 취소",
+    "references": [
+      "MainWindow.xaml.cs:72"
+    ],
+    "originalExtraction": {
+      "key": "ui.0065",
+      "file": "MainWindow.xaml.cs",
+      "line": 72,
+      "english": "직선 절개: 시작점 → 끝점 클릭 · Esc 취소"
+    },
+    "status": "ACTIVE",
+    "surface": "presentation-only; internal identifiers preserved"
+  },
+  {
+    "key": "ui.0066",
+    "english": "Can merge into Outer Contour — right-click to merge",
+    "korean": "외곽선과 통합 가능 — 오른쪽 클릭하여 통합",
+    "references": [
+      "MainWindow.xaml.cs:84"
+    ],
+    "originalExtraction": {
+      "key": "ui.0066",
+      "file": "MainWindow.xaml.cs",
+      "line": 84,
+      "english": "Outer Contour와 통합 가능 — 우클릭하여 통합"
+    },
+    "status": "ACTIVE",
+    "surface": "presentation-only; internal identifiers preserved"
+  },
+  {
+    "key": "ui.0067",
+    "english": "Created L layer ",
+    "korean": "L 레이어에 생성: ",
+    "references": [],
+    "originalExtraction": {
+      "key": "ui.0067",
+      "file": "MainWindow.xaml.cs",
+      "line": 84,
+      "english": "Created L layer "
+    },
+    "status": "RESERVED_UNUSED",
+    "surface": "presentation-only; internal identifiers preserved"
+  },
+  {
+    "key": "ui.0068",
+    "english": " hole ",
+    "korean": " 천공 ",
+    "references": [],
+    "originalExtraction": {
+      "key": "ui.0068",
+      "file": "MainWindow.xaml.cs",
+      "line": 84,
+      "english": " hole "
+    },
+    "status": "RESERVED_UNUSED",
+    "surface": "presentation-only; internal identifiers preserved"
+  },
+  {
+    "key": "ui.0069",
+    "english": "{0} Cut merged into Outer Contour — Undo available",
+    "korean": "{0} 절단을 외곽선으로 통합했습니다 — 실행 취소 가능",
+    "references": [
+      "MainWindow.xaml.cs:85"
+    ],
+    "originalExtraction": {
+      "key": "ui.0069",
+      "file": "MainWindow.xaml.cs",
+      "line": 85,
+      "english": "{0} Cut merged into Outer Contour — Undo available"
+    },
+    "status": "ACTIVE",
+    "surface": "presentation-only; internal identifiers preserved"
+  },
+  {
+    "key": "ui.0070",
+    "english": "Cannot apply the specified Fillet to this corner",
+    "korean": "이 모서리에는 지정한 모깎기를 적용할 수 없습니다",
+    "references": [
+      "MainWindow.xaml.cs:86"
+    ],
+    "originalExtraction": {
+      "key": "ui.0070",
+      "file": "MainWindow.xaml.cs",
+      "line": 86,
+      "english": "이 모서리에는 지정한 Fillet을 적용할 수 없습니다"
+    },
+    "status": "ACTIVE",
+    "surface": "presentation-only; internal identifiers preserved"
+  },
+  {
+    "key": "ui.0071",
+    "english": "X {0:0.###}  Y {1:0.###} {2}",
+    "korean": "X {0:0.###}  Y {1:0.###} {2}",
+    "references": [
+      "MainWindow.xaml.cs:87"
+    ],
+    "originalExtraction": {
+      "key": "ui.0071",
+      "file": "MainWindow.xaml.cs",
+      "line": 87,
+      "english": "X {0:0.###}  Y {1:0.###} {2}"
+    },
+    "status": "ACTIVE",
+    "surface": "presentation-only; internal identifiers preserved"
+  },
+  {
+    "key": "ui.0072",
+    "english": "X —  Y — {0}",
+    "korean": "X —  Y — {0}",
+    "references": [
+      "MainWindow.xaml.cs:87"
+    ],
+    "originalExtraction": {
+      "key": "ui.0072",
+      "file": "MainWindow.xaml.cs",
+      "line": 87,
+      "english": "X —  Y — {0}"
+    },
+    "status": "ACTIVE",
+    "surface": "presentation-only; internal identifiers preserved"
+  },
+  {
+    "key": "ui.0073",
+    "english": "{0} Section moved to {1} {2:0.###} {3}",
+    "korean": "{0} 단면 이동: {1} {2:0.###} {3}",
+    "references": [
+      "MainWindow.xaml.cs:88"
+    ],
+    "originalExtraction": {
+      "key": "ui.0073",
+      "file": "MainWindow.xaml.cs",
+      "line": 88,
+      "english": "{0} Section moved to {1} {2:0.###} cm"
+    },
+    "status": "ACTIVE",
+    "surface": "presentation-only; internal identifiers preserved"
+  },
+  {
+    "key": "ui.0074",
+    "english": "Can merge into Outer Contour — right-click to merge",
+    "korean": "외곽선과 통합 가능 — 오른쪽 클릭하여 통합",
+    "references": [
+      "MainWindow.xaml.cs:89"
+    ],
+    "originalExtraction": {
+      "key": "ui.0074",
+      "file": "MainWindow.xaml.cs",
+      "line": 89,
+      "english": "Outer Contour와 통합 가능 — 우클릭하여 통합"
+    },
+    "status": "ACTIVE",
+    "surface": "presentation-only; internal identifiers preserved"
+  },
+  {
+    "key": "ui.0075",
+    "english": "Selected {0}",
+    "korean": "{0} 선택",
+    "references": [
+      "MainWindow.xaml.cs:89"
+    ],
+    "originalExtraction": {
+      "key": "ui.0075",
+      "file": "MainWindow.xaml.cs",
+      "line": 89,
+      "english": "Selected {0}"
+    },
+    "status": "ACTIVE",
+    "surface": "presentation-only; internal identifiers preserved"
+  },
+  {
+    "key": "ui.0076",
+    "english": "Selected {0}",
+    "korean": "{0} 선택",
+    "references": [
+      "MainWindow.xaml.cs:90"
+    ],
+    "originalExtraction": {
+      "key": "ui.0076",
+      "file": "MainWindow.xaml.cs",
+      "line": 90,
+      "english": "Selected {0}"
+    },
+    "status": "ACTIVE",
+    "surface": "presentation-only; internal identifiers preserved"
+  },
+  {
+    "key": "ui.0077",
+    "english": "ID",
+    "korean": "ID",
+    "references": [
+      "MainWindow.xaml.cs:93"
+    ],
+    "originalExtraction": {
+      "key": "ui.0077",
+      "file": "MainWindow.xaml.cs",
+      "line": 93,
+      "english": "ID"
+    },
+    "status": "ACTIVE",
+    "surface": "presentation-only; internal identifiers preserved"
+  },
+  {
+    "key": "ui.0078",
+    "english": "Flat W ({0})",
+    "korean": "펼친 폭 W ({0})",
+    "references": [
+      "MainWindow.xaml.cs:94"
+    ],
+    "originalExtraction": {
+      "key": "ui.0078",
+      "file": "MainWindow.xaml.cs",
+      "line": 94,
+      "english": "Flat W ({0})"
+    },
+    "status": "ACTIVE",
+    "surface": "presentation-only; internal identifiers preserved"
+  },
+  {
+    "key": "ui.0079",
+    "english": "Flat H ({0})",
+    "korean": "펼친 높이 H ({0})",
+    "references": [
+      "MainWindow.xaml.cs:94"
+    ],
+    "originalExtraction": {
+      "key": "ui.0079",
+      "file": "MainWindow.xaml.cs",
+      "line": 94,
+      "english": "Flat H ({0})"
+    },
+    "status": "ACTIVE",
+    "surface": "presentation-only; internal identifiers preserved"
+  },
+  {
+    "key": "ui.0080",
+    "english": "Thickness D ({0})",
+    "korean": "두께 D ({0})",
+    "references": [
+      "MainWindow.xaml.cs:94"
+    ],
+    "originalExtraction": {
+      "key": "ui.0080",
+      "file": "MainWindow.xaml.cs",
+      "line": 94,
+      "english": "Thickness D ({0})"
+    },
+    "status": "ACTIVE",
+    "surface": "presentation-only; internal identifiers preserved"
+  },
+  {
+    "key": "ui.0081",
+    "english": "Material Thickness change\n\n{0:0.###} {1} → {2:0.###} {3}\n\nV-Cut depth, residual thickness, bend positions, Flat W/H and 3D preview will be recalculated.",
+    "korean": "재료 두께 변경\n\n{0:0.###} {1} → {2:0.###} {3}\n\nV 절단 깊이, 잔여 두께, 절곡 위치, 펼친 폭·높이와 3D 미리보기를 다시 계산합니다.",
+    "references": [
+      "MainWindow.xaml.cs:94"
+    ],
+    "originalExtraction": {
+      "key": "ui.0081",
+      "file": "MainWindow.xaml.cs",
+      "line": 94,
+      "english": "Material Thickness change\n\n{0:0.###} {1} → {2:0.###} {3}\n\nV-Cut depth, residual thickness, bend positions, Flat W/H and 3D preview will be recalculated."
+    },
+    "status": "ACTIVE",
+    "surface": "presentation-only; internal identifiers preserved"
+  },
+  {
+    "key": "ui.0082",
+    "english": "Apply thickness change",
+    "korean": "두께 변경 적용",
+    "references": [
+      "MainWindow.xaml.cs:94"
+    ],
+    "originalExtraction": {
+      "key": "ui.0082",
+      "file": "MainWindow.xaml.cs",
+      "line": 94,
+      "english": "Apply thickness change"
+    },
+    "status": "ACTIVE",
+    "surface": "presentation-only; internal identifiers preserved"
+  },
+  {
+    "key": "ui.0083",
+    "english": "Axis",
+    "korean": "축",
+    "references": [
+      "MainWindow.xaml.cs:95"
+    ],
+    "originalExtraction": {
+      "key": "ui.0083",
+      "file": "MainWindow.xaml.cs",
+      "line": 95,
+      "english": "Axis"
+    },
+    "status": "ACTIVE",
+    "surface": "presentation-only; internal identifiers preserved"
+  },
+  {
+    "key": "ui.0084",
+    "english": "X Position ({0})",
+    "korean": "X 위치 ({0})",
+    "references": [
+      "MainWindow.xaml.cs:95"
+    ],
+    "originalExtraction": {
+      "key": "ui.0084",
+      "file": "MainWindow.xaml.cs",
+      "line": 95,
+      "english": "X Position (cm)"
+    },
+    "status": "ACTIVE",
+    "surface": "presentation-only; internal identifiers preserved"
+  },
+  {
+    "key": "ui.0085",
+    "english": "Y Position ({0})",
+    "korean": "Y 위치 ({0})",
+    "references": [
+      "MainWindow.xaml.cs:95"
+    ],
+    "originalExtraction": {
+      "key": "ui.0085",
+      "file": "MainWindow.xaml.cs",
+      "line": 95,
+      "english": "Y Position (cm)"
+    },
+    "status": "ACTIVE",
+    "surface": "presentation-only; internal identifiers preserved"
+  },
+  {
+    "key": "ui.0086",
+    "english": "Bend Angle",
+    "korean": "절곡 각도",
+    "references": [
+      "MainWindow.xaml.cs:95"
+    ],
+    "originalExtraction": {
+      "key": "ui.0086",
+      "file": "MainWindow.xaml.cs",
+      "line": 95,
+      "english": "Bend Angle"
+    },
+    "status": "ACTIVE",
+    "surface": "presentation-only; internal identifiers preserved"
+  },
+  {
+    "key": "ui.0087",
+    "english": "V-Cut Angle",
+    "korean": "V 절단 각도",
+    "references": [
+      "MainWindow.xaml.cs:95"
+    ],
+    "originalExtraction": {
+      "key": "ui.0087",
+      "file": "MainWindow.xaml.cs",
+      "line": 95,
+      "english": "V-Cut Angle"
+    },
+    "status": "ACTIVE",
+    "surface": "presentation-only; internal identifiers preserved"
+  },
+  {
+    "key": "ui.0088",
+    "english": "V-Cut Depth ({0})",
+    "korean": "V 절단 깊이 ({0})",
+    "references": [
+      "MainWindow.xaml.cs:95"
+    ],
+    "originalExtraction": {
+      "key": "ui.0088",
+      "file": "MainWindow.xaml.cs",
+      "line": 95,
+      "english": "V-Cut Depth (cm)"
+    },
+    "status": "ACTIVE",
+    "surface": "presentation-only; internal identifiers preserved"
+  },
+  {
+    "key": "ui.0089",
+    "english": "Residual ({0})",
+    "korean": "잔여 두께 ({0})",
+    "references": [
+      "MainWindow.xaml.cs:95"
+    ],
+    "originalExtraction": {
+      "key": "ui.0089",
+      "file": "MainWindow.xaml.cs",
+      "line": 95,
+      "english": "Residual (cm)"
+    },
+    "status": "ACTIVE",
+    "surface": "presentation-only; internal identifiers preserved"
+  },
+  {
+    "key": "ui.0090",
+    "english": "Sequence",
+    "korean": "순서",
+    "references": [
+      "MainWindow.xaml.cs:95"
+    ],
+    "originalExtraction": {
+      "key": "ui.0090",
+      "file": "MainWindow.xaml.cs",
+      "line": 95,
+      "english": "Sequence"
+    },
+    "status": "ACTIVE",
+    "surface": "presentation-only; internal identifiers preserved"
+  },
+  {
+    "key": "ui.0091",
+    "english": "Axis",
+    "korean": "축",
+    "references": [
+      "MainWindow.xaml.cs:96"
+    ],
+    "originalExtraction": {
+      "key": "ui.0091",
+      "file": "MainWindow.xaml.cs",
+      "line": 96,
+      "english": "Axis"
+    },
+    "status": "ACTIVE",
+    "surface": "presentation-only; internal identifiers preserved"
+  },
+  {
+    "key": "ui.0092",
+    "english": "Length ({0})",
+    "korean": "길이 ({0})",
+    "references": [
+      "MainWindow.xaml.cs:96"
+    ],
+    "originalExtraction": {
+      "key": "ui.0092",
+      "file": "MainWindow.xaml.cs",
+      "line": 96,
+      "english": "Length (cm)"
+    },
+    "status": "ACTIVE",
+    "surface": "presentation-only; internal identifiers preserved"
+  },
+  {
+    "key": "ui.0093",
+    "english": "Layer",
+    "korean": "레이어",
+    "references": [
+      "MainWindow.xaml.cs:97"
+    ],
+    "originalExtraction": {
+      "key": "ui.0093",
+      "file": "MainWindow.xaml.cs",
+      "line": 97,
+      "english": "Layer"
+    },
+    "status": "ACTIVE",
+    "surface": "presentation-only; internal identifiers preserved"
+  },
+  {
+    "key": "ui.0094",
+    "english": "Entity",
+    "korean": "엔티티",
+    "references": [
+      "MainWindow.xaml.cs:97"
+    ],
+    "originalExtraction": {
+      "key": "ui.0094",
+      "file": "MainWindow.xaml.cs",
+      "line": 97,
+      "english": "Entity"
+    },
+    "status": "ACTIVE",
+    "surface": "presentation-only; internal identifiers preserved"
+  },
+  {
+    "key": "ui.0095",
+    "english": "Parent",
+    "korean": "상위 객체",
+    "references": [
+      "MainWindow.xaml.cs:97"
+    ],
+    "originalExtraction": {
+      "key": "ui.0095",
+      "file": "MainWindow.xaml.cs",
+      "line": 97,
+      "english": "Parent"
+    },
+    "status": "ACTIVE",
+    "surface": "presentation-only; internal identifiers preserved"
+  },
+  {
+    "key": "ui.0096",
+    "english": "X1",
+    "korean": "X1",
+    "references": [
+      "MainWindow.xaml.cs:97"
+    ],
+    "originalExtraction": {
+      "key": "ui.0096",
+      "file": "MainWindow.xaml.cs",
+      "line": 97,
+      "english": "X1"
+    },
+    "status": "ACTIVE",
+    "surface": "presentation-only; internal identifiers preserved"
+  },
+  {
+    "key": "ui.0097",
+    "english": "Y1",
+    "korean": "Y1",
+    "references": [
+      "MainWindow.xaml.cs:97"
+    ],
+    "originalExtraction": {
+      "key": "ui.0097",
+      "file": "MainWindow.xaml.cs",
+      "line": 97,
+      "english": "Y1"
+    },
+    "status": "ACTIVE",
+    "surface": "presentation-only; internal identifiers preserved"
+  },
+  {
+    "key": "ui.0098",
+    "english": "X2",
+    "korean": "X2",
+    "references": [
+      "MainWindow.xaml.cs:97"
+    ],
+    "originalExtraction": {
+      "key": "ui.0098",
+      "file": "MainWindow.xaml.cs",
+      "line": 97,
+      "english": "X2"
+    },
+    "status": "ACTIVE",
+    "surface": "presentation-only; internal identifiers preserved"
+  },
+  {
+    "key": "ui.0099",
+    "english": "Y2",
+    "korean": "Y2",
+    "references": [
+      "MainWindow.xaml.cs:97"
+    ],
+    "originalExtraction": {
+      "key": "ui.0099",
+      "file": "MainWindow.xaml.cs",
+      "line": 97,
+      "english": "Y2"
+    },
+    "status": "ACTIVE",
+    "surface": "presentation-only; internal identifiers preserved"
+  },
+  {
+    "key": "ui.0100",
+    "english": "Radius R ({0})",
+    "korean": "반지름 R ({0})",
+    "references": [
+      "MainWindow.xaml.cs:97"
+    ],
+    "originalExtraction": {
+      "key": "ui.0100",
+      "file": "MainWindow.xaml.cs",
+      "line": 97,
+      "english": "Radius R ({0})"
+    },
+    "status": "ACTIVE",
+    "surface": "presentation-only; internal identifiers preserved"
+  },
+  {
+    "key": "ui.0101",
+    "english": "Cannot change Fillet to this radius",
+    "korean": "이 반지름으로 모깎기를 변경할 수 없습니다",
+    "references": [
+      "MainWindow.xaml.cs:97"
+    ],
+    "originalExtraction": {
+      "key": "ui.0101",
+      "file": "MainWindow.xaml.cs",
+      "line": 97,
+      "english": "이 반지름으로 Fillet을 변경할 수 없습니다"
+    },
+    "status": "ACTIVE",
+    "surface": "presentation-only; internal identifiers preserved"
+  },
+  {
+    "key": "ui.0102",
+    "english": "Center X",
+    "korean": "중심 X",
+    "references": [
+      "MainWindow.xaml.cs:97"
+    ],
+    "originalExtraction": {
+      "key": "ui.0102",
+      "file": "MainWindow.xaml.cs",
+      "line": 97,
+      "english": "Center X"
+    },
+    "status": "ACTIVE",
+    "surface": "presentation-only; internal identifiers preserved"
+  },
+  {
+    "key": "ui.0103",
+    "english": "Center Y",
+    "korean": "중심 Y",
+    "references": [
+      "MainWindow.xaml.cs:97"
+    ],
+    "originalExtraction": {
+      "key": "ui.0103",
+      "file": "MainWindow.xaml.cs",
+      "line": 97,
+      "english": "Center Y"
+    },
+    "status": "ACTIVE",
+    "surface": "presentation-only; internal identifiers preserved"
+  },
+  {
+    "key": "ui.0104",
+    "english": "Layer",
+    "korean": "레이어",
+    "references": [
+      "MainWindow.xaml.cs:98"
+    ],
+    "originalExtraction": {
+      "key": "ui.0104",
+      "file": "MainWindow.xaml.cs",
+      "line": 98,
+      "english": "Layer"
+    },
+    "status": "ACTIVE",
+    "surface": "presentation-only; internal identifiers preserved"
+  },
+  {
+    "key": "ui.0105",
+    "english": "Shape",
+    "korean": "형상",
+    "references": [
+      "MainWindow.xaml.cs:98"
+    ],
+    "originalExtraction": {
+      "key": "ui.0105",
+      "file": "MainWindow.xaml.cs",
+      "line": 98,
+      "english": "Shape"
+    },
+    "status": "ACTIVE",
+    "surface": "presentation-only; internal identifiers preserved"
+  },
+  {
+    "key": "ui.0106",
+    "english": "Segments",
+    "korean": "구간 수",
+    "references": [
+      "MainWindow.xaml.cs:98"
+    ],
+    "originalExtraction": {
+      "key": "ui.0106",
+      "file": "MainWindow.xaml.cs",
+      "line": 98,
+      "english": "Segments"
+    },
+    "status": "ACTIVE",
+    "surface": "presentation-only; internal identifiers preserved"
+  },
+  {
+    "key": "ui.0107",
+    "english": "Start ({0})",
+    "korean": "시작점 ({0})",
+    "references": [
+      "MainWindow.xaml.cs:98"
+    ],
+    "originalExtraction": {
+      "key": "ui.0107",
+      "file": "MainWindow.xaml.cs",
+      "line": 98,
+      "english": "Start ({0})"
+    },
+    "status": "ACTIVE",
+    "surface": "presentation-only; internal identifiers preserved"
+  },
+  {
+    "key": "ui.0108",
+    "english": "End ({0})",
+    "korean": "끝점 ({0})",
+    "references": [
+      "MainWindow.xaml.cs:98"
+    ],
+    "originalExtraction": {
+      "key": "ui.0108",
+      "file": "MainWindow.xaml.cs",
+      "line": 98,
+      "english": "End ({0})"
+    },
+    "status": "ACTIVE",
+    "surface": "presentation-only; internal identifiers preserved"
+  },
+  {
+    "key": "ui.0109",
+    "english": "Center ({0})",
+    "korean": "중심 ({0})",
+    "references": [
+      "MainWindow.xaml.cs:98"
+    ],
+    "originalExtraction": {
+      "key": "ui.0109",
+      "file": "MainWindow.xaml.cs",
+      "line": 98,
+      "english": "Center ({0})"
+    },
+    "status": "ACTIVE",
+    "surface": "presentation-only; internal identifiers preserved"
+  },
+  {
+    "key": "ui.0110",
+    "english": "Radius R ({0})",
+    "korean": "반지름 R ({0})",
+    "references": [
+      "MainWindow.xaml.cs:98"
+    ],
+    "originalExtraction": {
+      "key": "ui.0110",
+      "file": "MainWindow.xaml.cs",
+      "line": 98,
+      "english": "Radius R ({0})"
+    },
+    "status": "ACTIVE",
+    "surface": "presentation-only; internal identifiers preserved"
+  },
+  {
+    "key": "ui.0111",
+    "english": "Start / End (°)",
+    "korean": "시작 / 끝 각도 (°)",
+    "references": [
+      "MainWindow.xaml.cs:98"
+    ],
+    "originalExtraction": {
+      "key": "ui.0111",
+      "file": "MainWindow.xaml.cs",
+      "line": 98,
+      "english": "Start / End (°)"
+    },
+    "status": "ACTIVE",
+    "surface": "presentation-only; internal identifiers preserved"
+  },
+  {
+    "key": "ui.0112",
+    "english": "Layer",
+    "korean": "레이어",
+    "references": [
+      "MainWindow.xaml.cs:99"
+    ],
+    "originalExtraction": {
+      "key": "ui.0112",
+      "file": "MainWindow.xaml.cs",
+      "line": 99,
+      "english": "Layer"
+    },
+    "status": "ACTIVE",
+    "surface": "presentation-only; internal identifiers preserved"
+  },
+  {
+    "key": "ui.0113",
+    "english": "Shape",
+    "korean": "형상",
+    "references": [
+      "MainWindow.xaml.cs:99"
+    ],
+    "originalExtraction": {
+      "key": "ui.0113",
+      "file": "MainWindow.xaml.cs",
+      "line": 99,
+      "english": "Shape"
+    },
+    "status": "ACTIVE",
+    "surface": "presentation-only; internal identifiers preserved"
+  },
+  {
+    "key": "ui.0114",
+    "english": "Center X ({0})",
+    "korean": "중심 X ({0})",
+    "references": [
+      "MainWindow.xaml.cs:99"
+    ],
+    "originalExtraction": {
+      "key": "ui.0114",
+      "file": "MainWindow.xaml.cs",
+      "line": 99,
+      "english": "Center X ({0})"
+    },
+    "status": "ACTIVE",
+    "surface": "presentation-only; internal identifiers preserved"
+  },
+  {
+    "key": "ui.0115",
+    "english": "Center Y ({0})",
+    "korean": "중심 Y ({0})",
+    "references": [
+      "MainWindow.xaml.cs:99"
+    ],
+    "originalExtraction": {
+      "key": "ui.0115",
+      "file": "MainWindow.xaml.cs",
+      "line": 99,
+      "english": "Center Y ({0})"
+    },
+    "status": "ACTIVE",
+    "surface": "presentation-only; internal identifiers preserved"
+  },
+  {
+    "key": "ui.0116",
+    "english": "Radius R ({0})",
+    "korean": "반지름 R ({0})",
+    "references": [
+      "MainWindow.xaml.cs:99"
+    ],
+    "originalExtraction": {
+      "key": "ui.0116",
+      "file": "MainWindow.xaml.cs",
+      "line": 99,
+      "english": "Radius R ({0})"
+    },
+    "status": "ACTIVE",
+    "surface": "presentation-only; internal identifiers preserved"
+  },
+  {
+    "key": "ui.0117",
+    "english": "Center X ({0})",
+    "korean": "중심 X ({0})",
+    "references": [
+      "MainWindow.xaml.cs:99"
+    ],
+    "originalExtraction": {
+      "key": "ui.0117",
+      "file": "MainWindow.xaml.cs",
+      "line": 99,
+      "english": "Center X ({0})"
+    },
+    "status": "ACTIVE",
+    "surface": "presentation-only; internal identifiers preserved"
+  },
+  {
+    "key": "ui.0118",
+    "english": "Center Y ({0})",
+    "korean": "중심 Y ({0})",
+    "references": [
+      "MainWindow.xaml.cs:99"
+    ],
+    "originalExtraction": {
+      "key": "ui.0118",
+      "file": "MainWindow.xaml.cs",
+      "line": 99,
+      "english": "Center Y ({0})"
+    },
+    "status": "ACTIVE",
+    "surface": "presentation-only; internal identifiers preserved"
+  },
+  {
+    "key": "ui.0119",
+    "english": "Radius R ({0})",
+    "korean": "반지름 R ({0})",
+    "references": [
+      "MainWindow.xaml.cs:99"
+    ],
+    "originalExtraction": {
+      "key": "ui.0119",
+      "file": "MainWindow.xaml.cs",
+      "line": 99,
+      "english": "Radius R ({0})"
+    },
+    "status": "ACTIVE",
+    "surface": "presentation-only; internal identifiers preserved"
+  },
+  {
+    "key": "ui.0120",
+    "english": "Lower-left X ({0})",
+    "korean": "왼쪽 아래 X ({0})",
+    "references": [
+      "MainWindow.xaml.cs:99"
+    ],
+    "originalExtraction": {
+      "key": "ui.0120",
+      "file": "MainWindow.xaml.cs",
+      "line": 99,
+      "english": "Lower-left X ({0})"
+    },
+    "status": "ACTIVE",
+    "surface": "presentation-only; internal identifiers preserved"
+  },
+  {
+    "key": "ui.0121",
+    "english": "Lower-left Y ({0})",
+    "korean": "왼쪽 아래 Y ({0})",
+    "references": [
+      "MainWindow.xaml.cs:99"
+    ],
+    "originalExtraction": {
+      "key": "ui.0121",
+      "file": "MainWindow.xaml.cs",
+      "line": 99,
+      "english": "Lower-left Y ({0})"
+    },
+    "status": "ACTIVE",
+    "surface": "presentation-only; internal identifiers preserved"
+  },
+  {
+    "key": "ui.0122",
+    "english": "Center X ({0})",
+    "korean": "중심 X ({0})",
+    "references": [
+      "MainWindow.xaml.cs:99"
+    ],
+    "originalExtraction": {
+      "key": "ui.0122",
+      "file": "MainWindow.xaml.cs",
+      "line": 99,
+      "english": "Center X (cm)"
+    },
+    "status": "ACTIVE",
+    "surface": "presentation-only; internal identifiers preserved"
+  },
+  {
+    "key": "ui.0123",
+    "english": "Center Y ({0})",
+    "korean": "중심 Y ({0})",
+    "references": [
+      "MainWindow.xaml.cs:99"
+    ],
+    "originalExtraction": {
+      "key": "ui.0123",
+      "file": "MainWindow.xaml.cs",
+      "line": 99,
+      "english": "Center Y (cm)"
+    },
+    "status": "ACTIVE",
+    "surface": "presentation-only; internal identifiers preserved"
+  },
+  {
+    "key": "ui.0124",
+    "english": "Radius R ({0})",
+    "korean": "반지름 R ({0})",
+    "references": [
+      "MainWindow.xaml.cs:99"
+    ],
+    "originalExtraction": {
+      "key": "ui.0124",
+      "file": "MainWindow.xaml.cs",
+      "line": 99,
+      "english": "Radius R ({0})"
+    },
+    "status": "ACTIVE",
+    "surface": "presentation-only; internal identifiers preserved"
+  },
+  {
+    "key": "ui.0125",
+    "english": "Cannot change radius: check material bounds and a positive value",
+    "korean": "반지름을 변경할 수 없습니다: 재료 범위와 양수 값을 확인하세요",
+    "references": [
+      "MainWindow.xaml.cs:99"
+    ],
+    "originalExtraction": {
+      "key": "ui.0125",
+      "file": "MainWindow.xaml.cs",
+      "line": 99,
+      "english": "반지름을 변경할 수 없습니다: 재료 범위와 양수 값을 확인하세요"
+    },
+    "status": "ACTIVE",
+    "surface": "presentation-only; internal identifiers preserved"
+  },
+  {
+    "key": "ui.0126",
+    "english": "Width ({0})",
+    "korean": "폭 ({0})",
+    "references": [
+      "MainWindow.xaml.cs:99"
+    ],
+    "originalExtraction": {
+      "key": "ui.0126",
+      "file": "MainWindow.xaml.cs",
+      "line": 99,
+      "english": "Width ({0})"
+    },
+    "status": "ACTIVE",
+    "surface": "presentation-only; internal identifiers preserved"
+  },
+  {
+    "key": "ui.0127",
+    "english": "Height ({0})",
+    "korean": "높이 ({0})",
+    "references": [
+      "MainWindow.xaml.cs:99"
+    ],
+    "originalExtraction": {
+      "key": "ui.0127",
+      "file": "MainWindow.xaml.cs",
+      "line": 99,
+      "english": "Height ({0})"
+    },
+    "status": "ACTIVE",
+    "surface": "presentation-only; internal identifiers preserved"
+  },
+  {
+    "key": "ui.0128",
+    "english": "Sides",
+    "korean": "변의 수",
+    "references": [
+      "MainWindow.xaml.cs:99"
+    ],
+    "originalExtraction": {
+      "key": "ui.0128",
+      "file": "MainWindow.xaml.cs",
+      "line": 99,
+      "english": "Sides"
+    },
+    "status": "ACTIVE",
+    "surface": "presentation-only; internal identifiers preserved"
+  },
+  {
+    "key": "ui.0129",
+    "english": "Parent",
+    "korean": "상위 객체",
+    "references": [
+      "MainWindow.xaml.cs:100"
+    ],
+    "originalExtraction": {
+      "key": "ui.0129",
+      "file": "MainWindow.xaml.cs",
+      "line": 100,
+      "english": "Parent"
+    },
+    "status": "ACTIVE",
+    "surface": "presentation-only; internal identifiers preserved"
+  },
+  {
+    "key": "ui.0130",
+    "english": "Position ({0})",
+    "korean": "위치 ({0})",
+    "references": [
+      "MainWindow.xaml.cs:100"
+    ],
+    "originalExtraction": {
+      "key": "ui.0130",
+      "file": "MainWindow.xaml.cs",
+      "line": 100,
+      "english": "Position (cm)"
+    },
+    "status": "ACTIVE",
+    "surface": "presentation-only; internal identifiers preserved"
+  },
+  {
+    "key": "ui.0131",
+    "english": "Width ({0})",
+    "korean": "폭 ({0})",
+    "references": [
+      "MainWindow.xaml.cs:100"
+    ],
+    "originalExtraction": {
+      "key": "ui.0131",
+      "file": "MainWindow.xaml.cs",
+      "line": 100,
+      "english": "Width (cm)"
+    },
+    "status": "ACTIVE",
+    "surface": "presentation-only; internal identifiers preserved"
+  },
+  {
+    "key": "ui.0132",
+    "english": "Cannot change quarter circle: check center, radius and material bounds",
+    "korean": "4분원을 변경할 수 없습니다: 중심, 반지름 및 재료 범위를 확인하세요",
+    "references": [
+      "MainWindow.xaml.cs:106"
+    ],
+    "originalExtraction": {
+      "key": "ui.0132",
+      "file": "MainWindow.xaml.cs",
+      "line": 106,
+      "english": "4분원을 변경할 수 없습니다: 중심, 반지름 및 재료 범위를 확인하세요"
+    },
+    "status": "ACTIVE",
+    "surface": "presentation-only; internal identifiers preserved"
+  },
+  {
+    "key": "ui.0133",
+    "english": "Cannot change semicircle: check center, radius and material bounds",
+    "korean": "반원을 변경할 수 없습니다: 중심, 반지름 및 재료 범위를 확인하세요",
+    "references": [
+      "MainWindow.xaml.cs:113"
+    ],
+    "originalExtraction": {
+      "key": "ui.0133",
+      "file": "MainWindow.xaml.cs",
+      "line": 113,
+      "english": "반원을 변경할 수 없습니다: 중심, 반지름 및 재료 범위를 확인하세요"
+    },
+    "status": "ACTIVE",
+    "surface": "presentation-only; internal identifiers preserved"
+  },
+  {
+    "key": "ui.0134",
+    "english": "Cannot resize: check material bounds and the triangle LINE contour",
+    "korean": "크기를 변경할 수 없습니다: 재료 범위와 삼각형 LINE 윤곽을 확인하세요",
+    "references": [
+      "MainWindow.xaml.cs:122"
+    ],
+    "originalExtraction": {
+      "key": "ui.0134",
+      "file": "MainWindow.xaml.cs",
+      "line": 122,
+      "english": "크기를 변경할 수 없습니다: 재료 범위와 삼각형 LINE 윤곽을 확인하세요"
+    },
+    "status": "ACTIVE",
+    "surface": "presentation-only; internal identifiers preserved"
+  },
+  {
+    "key": "ui.0135",
+    "english": "{0} updated",
+    "korean": "{0} 변경 완료",
+    "references": [
+      "MainWindow.xaml.cs:130"
+    ],
+    "originalExtraction": {
+      "key": "ui.0135",
+      "file": "MainWindow.xaml.cs",
+      "line": 130,
+      "english": "{0} updated"
+    },
+    "status": "ACTIVE",
+    "surface": "presentation-only; internal identifiers preserved"
+  },
+  {
+    "key": "ui.0136",
+    "english": "Invalid {0}",
+    "korean": "{0} 값이 올바르지 않습니다",
+    "references": [
+      "MainWindow.xaml.cs:130"
+    ],
+    "originalExtraction": {
+      "key": "ui.0136",
+      "file": "MainWindow.xaml.cs",
+      "line": 130,
+      "english": "Invalid {0}"
+    },
+    "status": "ACTIVE",
+    "surface": "presentation-only; internal identifiers preserved"
+  },
+  {
+    "key": "ui.0137",
+    "english": "Undo completed",
+    "korean": "실행 취소 완료",
+    "references": [
+      "MainWindow.xaml.cs:133"
+    ],
+    "originalExtraction": {
+      "key": "ui.0137",
+      "file": "MainWindow.xaml.cs",
+      "line": 133,
+      "english": "Undo completed"
+    },
+    "status": "ACTIVE",
+    "surface": "presentation-only; internal identifiers preserved"
+  },
+  {
+    "key": "ui.0138",
+    "english": "Redo completed",
+    "korean": "다시 실행 완료",
+    "references": [
+      "MainWindow.xaml.cs:134"
+    ],
+    "originalExtraction": {
+      "key": "ui.0138",
+      "file": "MainWindow.xaml.cs",
+      "line": 134,
+      "english": "Redo completed"
+    },
+    "status": "ACTIVE",
+    "surface": "presentation-only; internal identifiers preserved"
+  },
+  {
+    "key": "ui.0139",
+    "english": "This structural item cannot be deleted",
+    "korean": "이 구조 항목은 삭제할 수 없습니다",
+    "references": [
+      "MainWindow.xaml.cs:136"
+    ],
+    "originalExtraction": {
+      "key": "ui.0139",
+      "file": "MainWindow.xaml.cs",
+      "line": 136,
+      "english": "This structural item cannot be deleted"
+    },
+    "status": "ACTIVE",
+    "surface": "presentation-only; internal identifiers preserved"
+  },
+  {
+    "key": "ui.0140",
+    "english": "Selected item cannot be deleted",
+    "korean": "선택한 항목은 삭제할 수 없습니다",
+    "references": [
+      "MainWindow.xaml.cs:136"
+    ],
+    "originalExtraction": {
+      "key": "ui.0140",
+      "file": "MainWindow.xaml.cs",
+      "line": 136,
+      "english": "Selected item cannot be deleted"
+    },
+    "status": "ACTIVE",
+    "surface": "presentation-only; internal identifiers preserved"
+  },
+  {
+    "key": "ui.0141",
+    "english": "Deleted {0} — Undo is available",
+    "korean": "{0} 삭제 — 실행 취소 가능",
+    "references": [
+      "MainWindow.xaml.cs:136"
+    ],
+    "originalExtraction": {
+      "key": "ui.0141",
+      "file": "MainWindow.xaml.cs",
+      "line": 136,
+      "english": "Deleted {0} — Undo is available"
+    },
+    "status": "ACTIVE",
+    "surface": "presentation-only; internal identifiers preserved"
+  },
+  {
+    "key": "ui.0142",
+    "english": "CosmicDesigner",
+    "korean": "CosmicDesigner",
+    "references": [],
+    "originalExtraction": {
+      "key": "ui.0142",
+      "file": "MainWindow.xaml.cs",
+      "line": 138,
+      "english": "VCutting"
+    },
+    "status": "RESERVED_UNUSED",
+    "surface": "presentation-only; internal identifiers preserved"
+  },
+  {
+    "key": "ui.0143",
+    "english": "About",
+    "korean": "프로그램 정보",
+    "references": [
+      "MainWindow.xaml.cs:138"
+    ],
+    "originalExtraction": {
+      "key": "ui.0143",
+      "file": "MainWindow.xaml.cs",
+      "line": 138,
+      "english": "About"
+    },
+    "status": "ACTIVE",
+    "surface": "presentation-only; internal identifiers preserved"
+  },
+  {
+    "key": "ui.0144",
+    "english": "Settings applied",
+    "korean": "설정 적용 완료",
+    "references": [
+      "MainWindow.xaml.cs:145"
+    ],
+    "originalExtraction": {
+      "key": "ui.0144",
+      "file": "MainWindow.xaml.cs",
+      "line": 145,
+      "english": "Settings applied"
+    },
+    "status": "ACTIVE",
+    "surface": "presentation-only; internal identifiers preserved"
+  },
+  {
+    "key": "ui.0145",
+    "english": "Document unit changed to {0}",
+    "korean": "문서 단위를 {0}(으)로 변경했습니다",
+    "references": [
+      "MainWindow.xaml.cs:146"
+    ],
+    "originalExtraction": {
+      "key": "ui.0145",
+      "file": "MainWindow.xaml.cs",
+      "line": 146,
+      "english": "Document unit changed to {0}"
+    },
+    "status": "ACTIVE",
+    "surface": "presentation-only; internal identifiers preserved"
+  },
+  {
+    "key": "ui.0146",
+    "english": "The recent file cannot be found and will be removed from the list.",
+    "korean": "최근 파일을 찾을 수 없어 목록에서 제거합니다.",
+    "references": [
+      "MainWindow.xaml.cs:149"
+    ],
+    "originalExtraction": {
+      "key": "ui.0146",
+      "file": "MainWindow.xaml.cs",
+      "line": 149,
+      "english": "최근 파일을 찾을 수 없어 목록에서 제거합니다."
+    },
+    "status": "ACTIVE",
+    "surface": "presentation-only; internal identifiers preserved"
+  },
+  {
+    "key": "ui.0147",
+    "english": "Recent",
+    "korean": "최근 파일",
+    "references": [
+      "MainWindow.xaml.cs:149"
+    ],
+    "originalExtraction": {
+      "key": "ui.0147",
+      "file": "MainWindow.xaml.cs",
+      "line": 149,
+      "english": "Recent"
+    },
+    "status": "ACTIVE",
+    "surface": "presentation-only; internal identifiers preserved"
+  },
+  {
+    "key": "ui.0148",
+    "english": "Use Semi Transparent 3D for new documents",
+    "korean": "새 문서에서 반투명 3D 사용",
+    "references": [
+      "SettingsWindows.cs:9"
+    ],
+    "originalExtraction": {
+      "key": "ui.0148",
+      "file": "SettingsWindows.cs",
+      "line": 9,
+      "english": "새 문서에서 Semi Transparent 3D 사용"
+    },
+    "status": "ACTIVE",
+    "surface": "presentation-only; internal identifiers preserved"
+  },
+  {
+    "key": "ui.0149",
+    "english": "Settings",
+    "korean": "설정",
+    "references": [
+      "SettingsWindows.cs:10"
+    ],
+    "originalExtraction": {
+      "key": "ui.0149",
+      "file": "SettingsWindows.cs",
+      "line": 10,
+      "english": "Settings"
+    },
+    "status": "ACTIVE",
+    "surface": "presentation-only; internal identifiers preserved"
+  },
+  {
+    "key": "ui.0150",
+    "english": "General",
+    "korean": "일반",
+    "references": [
+      "SettingsWindows.cs:10"
+    ],
+    "originalExtraction": {
+      "key": "ui.0150",
+      "file": "SettingsWindows.cs",
+      "line": 10,
+      "english": "General"
+    },
+    "status": "ACTIVE",
+    "surface": "presentation-only; internal identifiers preserved"
+  },
+  {
+    "key": "ui.0151",
+    "english": "Default open folder",
+    "korean": "기본 열기 폴더",
+    "references": [
+      "SettingsWindows.cs:10"
+    ],
+    "originalExtraction": {
+      "key": "ui.0151",
+      "file": "SettingsWindows.cs",
+      "line": 10,
+      "english": "기본 열기 폴더"
+    },
+    "status": "ACTIVE",
+    "surface": "presentation-only; internal identifiers preserved"
+  },
+  {
+    "key": "ui.0152",
+    "english": "Default save folder",
+    "korean": "기본 저장 폴더",
+    "references": [
+      "SettingsWindows.cs:10"
+    ],
+    "originalExtraction": {
+      "key": "ui.0152",
+      "file": "SettingsWindows.cs",
+      "line": 10,
+      "english": "기본 저장 폴더"
+    },
+    "status": "ACTIVE",
+    "surface": "presentation-only; internal identifiers preserved"
+  },
+  {
+    "key": "ui.0153",
+    "english": "Recent file count",
+    "korean": "최근 파일 개수",
+    "references": [
+      "SettingsWindows.cs:10"
+    ],
+    "originalExtraction": {
+      "key": "ui.0153",
+      "file": "SettingsWindows.cs",
+      "line": 10,
+      "english": "Recent 파일 개수"
+    },
+    "status": "ACTIVE",
+    "surface": "presentation-only; internal identifiers preserved"
+  },
+  {
+    "key": "ui.0154",
+    "english": "Editing",
+    "korean": "편집",
+    "references": [
+      "SettingsWindows.cs:10"
+    ],
+    "originalExtraction": {
+      "key": "ui.0154",
+      "file": "SettingsWindows.cs",
+      "line": 10,
+      "english": "Editing"
+    },
+    "status": "ACTIVE",
+    "surface": "presentation-only; internal identifiers preserved"
+  },
+  {
+    "key": "ui.0155",
+    "english": "Zoom step (%)",
+    "korean": "확대·축소 단계 (%)",
+    "references": [
+      "SettingsWindows.cs:10"
+    ],
+    "originalExtraction": {
+      "key": "ui.0155",
+      "file": "SettingsWindows.cs",
+      "line": 10,
+      "english": "Zoom 단계 (%)"
+    },
+    "status": "ACTIVE",
+    "surface": "presentation-only; internal identifiers preserved"
+  },
+  {
+    "key": "ui.0156",
+    "english": "Selection tolerance (px)",
+    "korean": "선택 허용 거리 (px)",
+    "references": [
+      "SettingsWindows.cs:10"
+    ],
+    "originalExtraction": {
+      "key": "ui.0156",
+      "file": "SettingsWindows.cs",
+      "line": 10,
+      "english": "선택 허용 거리 (px)"
+    },
+    "status": "ACTIVE",
+    "surface": "presentation-only; internal identifiers preserved"
+  },
+  {
+    "key": "ui.0157",
+    "english": "Handle radius (px)",
+    "korean": "핸들 반지름 (px)",
+    "references": [
+      "SettingsWindows.cs:10"
+    ],
+    "originalExtraction": {
+      "key": "ui.0157",
+      "file": "SettingsWindows.cs",
+      "line": 10,
+      "english": "핸들 반지름 (px)"
+    },
+    "status": "ACTIVE",
+    "surface": "presentation-only; internal identifiers preserved"
+  },
+  {
+    "key": "ui.0158",
+    "english": "Ruler & Grid",
+    "korean": "눈금자 및 격자",
+    "references": [
+      "SettingsWindows.cs:10"
+    ],
+    "originalExtraction": {
+      "key": "ui.0158",
+      "file": "SettingsWindows.cs",
+      "line": 10,
+      "english": "Ruler & Grid"
+    },
+    "status": "ACTIVE",
+    "surface": "presentation-only; internal identifiers preserved"
+  },
+  {
+    "key": "ui.0159",
+    "english": "Horizontal ruler interval ({0})",
+    "korean": "가로 눈금자 기본 간격 ({0})",
+    "references": [
+      "SettingsWindows.cs:10"
+    ],
+    "originalExtraction": {
+      "key": "ui.0159",
+      "file": "SettingsWindows.cs",
+      "line": 10,
+      "english": "가로 Ruler 기본 간격 ({0})"
+    },
+    "status": "ACTIVE",
+    "surface": "presentation-only; internal identifiers preserved"
+  },
+  {
+    "key": "ui.0160",
+    "english": "Vertical ruler interval ({0})",
+    "korean": "세로 눈금자 기본 간격 ({0})",
+    "references": [
+      "SettingsWindows.cs:10"
+    ],
+    "originalExtraction": {
+      "key": "ui.0160",
+      "file": "SettingsWindows.cs",
+      "line": 10,
+      "english": "세로 Ruler 기본 간격 ({0})"
+    },
+    "status": "ACTIVE",
+    "surface": "presentation-only; internal identifiers preserved"
+  },
+  {
+    "key": "ui.0161",
+    "english": "Grid interval ({0})",
+    "korean": "격자 기본 간격 ({0})",
+    "references": [
+      "SettingsWindows.cs:10"
+    ],
+    "originalExtraction": {
+      "key": "ui.0161",
+      "file": "SettingsWindows.cs",
+      "line": 10,
+      "english": "Grid 기본 간격 ({0})"
+    },
+    "status": "ACTIVE",
+    "surface": "presentation-only; internal identifiers preserved"
+  },
+  {
+    "key": "ui.0162",
+    "english": "3D Preview",
+    "korean": "3D 미리보기",
+    "references": [
+      "SettingsWindows.cs:10"
+    ],
+    "originalExtraction": {
+      "key": "ui.0162",
+      "file": "SettingsWindows.cs",
+      "line": 10,
+      "english": "3D Preview"
+    },
+    "status": "ACTIVE",
+    "surface": "presentation-only; internal identifiers preserved"
+  },
+  {
+    "key": "ui.0163",
+    "english": "Transparent opacity (20-240)",
+    "korean": "반투명 불투명도 (20-240)",
+    "references": [
+      "SettingsWindows.cs:10"
+    ],
+    "originalExtraction": {
+      "key": "ui.0163",
+      "file": "SettingsWindows.cs",
+      "line": 10,
+      "english": "반투명 Opacity (20-240)"
+    },
+    "status": "ACTIVE",
+    "surface": "presentation-only; internal identifiers preserved"
+  },
+  {
+    "key": "ui.0164",
+    "english": "Solid opacity (20-255)",
+    "korean": "불투명 불투명도 (20-255)",
+    "references": [
+      "SettingsWindows.cs:10"
+    ],
+    "originalExtraction": {
+      "key": "ui.0164",
+      "file": "SettingsWindows.cs",
+      "line": 10,
+      "english": "불투명 Opacity (20-255)"
+    },
+    "status": "ACTIVE",
+    "surface": "presentation-only; internal identifiers preserved"
+  },
+  {
+    "key": "ui.0165",
+    "english": "Edge thickness scale",
+    "korean": "외곽선 굵기 배율",
+    "references": [
+      "SettingsWindows.cs:10"
+    ],
+    "originalExtraction": {
+      "key": "ui.0165",
+      "file": "SettingsWindows.cs",
+      "line": 10,
+      "english": "외곽선 굵기 배율"
+    },
+    "status": "ACTIVE",
+    "surface": "presentation-only; internal identifiers preserved"
+  },
+  {
+    "key": "ui.0166",
+    "english": "New Document",
+    "korean": "새 문서",
+    "references": [
+      "SettingsWindows.cs:10"
+    ],
+    "originalExtraction": {
+      "key": "ui.0166",
+      "file": "SettingsWindows.cs",
+      "line": 10,
+      "english": "New Document"
+    },
+    "status": "ACTIVE",
+    "surface": "presentation-only; internal identifiers preserved"
+  },
+  {
+    "key": "ui.0167",
+    "english": "Default unit",
+    "korean": "기본 단위",
+    "references": [
+      "SettingsWindows.cs:10"
+    ],
+    "originalExtraction": {
+      "key": "ui.0167",
+      "file": "SettingsWindows.cs",
+      "line": 10,
+      "english": "기본 단위"
+    },
+    "status": "ACTIVE",
+    "surface": "presentation-only; internal identifiers preserved"
+  },
+  {
+    "key": "ui.0168",
+    "english": "Default width",
+    "korean": "기본 폭",
+    "references": [
+      "SettingsWindows.cs:10"
+    ],
+    "originalExtraction": {
+      "key": "ui.0168",
+      "file": "SettingsWindows.cs",
+      "line": 10,
+      "english": "기본 폭"
+    },
+    "status": "ACTIVE",
+    "surface": "presentation-only; internal identifiers preserved"
+  },
+  {
+    "key": "ui.0169",
+    "english": "Default height",
+    "korean": "기본 높이",
+    "references": [
+      "SettingsWindows.cs:10"
+    ],
+    "originalExtraction": {
+      "key": "ui.0169",
+      "file": "SettingsWindows.cs",
+      "line": 10,
+      "english": "기본 높이"
+    },
+    "status": "ACTIVE",
+    "surface": "presentation-only; internal identifiers preserved"
+  },
+  {
+    "key": "ui.0170",
+    "english": "Default thickness",
+    "korean": "기본 두께",
+    "references": [
+      "SettingsWindows.cs:10"
+    ],
+    "originalExtraction": {
+      "key": "ui.0170",
+      "file": "SettingsWindows.cs",
+      "line": 10,
+      "english": "기본 두께"
+    },
+    "status": "ACTIVE",
+    "surface": "presentation-only; internal identifiers preserved"
+  },
+  {
+    "key": "ui.0171",
+    "english": "Restore Defaults",
+    "korean": "기본값 복원",
+    "references": [
+      "SettingsWindows.cs:10"
+    ],
+    "originalExtraction": {
+      "key": "ui.0171",
+      "file": "SettingsWindows.cs",
+      "line": 10,
+      "english": "Restore Defaults"
+    },
+    "status": "ACTIVE",
+    "surface": "presentation-only; internal identifiers preserved"
+  },
+  {
+    "key": "ui.0172",
+    "english": "OK",
+    "korean": "확인",
+    "references": [
+      "SettingsWindows.cs:10"
+    ],
+    "originalExtraction": {
+      "key": "ui.0172",
+      "file": "SettingsWindows.cs",
+      "line": 10,
+      "english": "OK"
+    },
+    "status": "ACTIVE",
+    "surface": "presentation-only; internal identifiers preserved"
+  },
+  {
+    "key": "ui.0173",
+    "english": "Cancel",
+    "korean": "취소",
+    "references": [
+      "SettingsWindows.cs:10"
+    ],
+    "originalExtraction": {
+      "key": "ui.0173",
+      "file": "SettingsWindows.cs",
+      "line": 10,
+      "english": "Cancel"
+    },
+    "status": "ACTIVE",
+    "surface": "presentation-only; internal identifiers preserved"
+  },
+  {
+    "key": "ui.0174",
+    "english": "Check the settings ranges. Ruler/Grid intervals must be Auto or a positive number.",
+    "korean": "설정 값의 범위를 확인하세요. 눈금자·격자 간격은 Auto 또는 양수여야 합니다.",
+    "references": [
+      "SettingsWindows.cs:14"
+    ],
+    "originalExtraction": {
+      "key": "ui.0174",
+      "file": "SettingsWindows.cs",
+      "line": 14,
+      "english": "설정 값의 범위를 확인하세요. Ruler/Grid 간격은 Auto 또는 양수여야 합니다."
+    },
+    "status": "ACTIVE",
+    "surface": "presentation-only; internal identifiers preserved"
+  },
+  {
+    "key": "ui.0175",
+    "english": "Settings",
+    "korean": "설정",
+    "references": [
+      "SettingsWindows.cs:14"
+    ],
+    "originalExtraction": {
+      "key": "ui.0175",
+      "file": "SettingsWindows.cs",
+      "line": 14,
+      "english": "Settings"
+    },
+    "status": "ACTIVE",
+    "surface": "presentation-only; internal identifiers preserved"
+  },
+  {
+    "key": "ui.0176",
+    "english": "Preserve physical size and convert all numbers",
+    "korean": "실제 크기를 유지하고 모든 숫자 환산",
+    "references": [
+      "SettingsWindows.cs:22"
+    ],
+    "originalExtraction": {
+      "key": "ui.0176",
+      "file": "SettingsWindows.cs",
+      "line": 22,
+      "english": "실제 크기를 유지하고 모든 숫자 환산"
+    },
+    "status": "ACTIVE",
+    "surface": "presentation-only; internal identifiers preserved"
+  },
+  {
+    "key": "ui.0177",
+    "english": "Preserve numbers and change physical size",
+    "korean": "숫자 값을 유지하고 도형 크기 변경",
+    "references": [
+      "SettingsWindows.cs:22"
+    ],
+    "originalExtraction": {
+      "key": "ui.0177",
+      "file": "SettingsWindows.cs",
+      "line": 22,
+      "english": "숫자 값을 유지하고 도형 크기 변경"
+    },
+    "status": "ACTIVE",
+    "surface": "presentation-only; internal identifiers preserved"
+  },
+  {
+    "key": "ui.0178",
+    "english": "Document Units",
+    "korean": "문서 단위",
+    "references": [
+      "SettingsWindows.cs:23"
+    ],
+    "originalExtraction": {
+      "key": "ui.0178",
+      "file": "SettingsWindows.cs",
+      "line": 23,
+      "english": "Document Units"
+    },
+    "status": "ACTIVE",
+    "surface": "presentation-only; internal identifiers preserved"
+  },
+  {
+    "key": "ui.0179",
+    "english": "Current unit: {0}",
+    "korean": "현재 단위: {0}",
+    "references": [
+      "SettingsWindows.cs:23"
+    ],
+    "originalExtraction": {
+      "key": "ui.0179",
+      "file": "SettingsWindows.cs",
+      "line": 23,
+      "english": "현재 단위: {0}"
+    },
+    "status": "ACTIVE",
+    "surface": "presentation-only; internal identifiers preserved"
+  },
+  {
+    "key": "ui.0180",
+    "english": "New unit:",
+    "korean": "새 단위:",
+    "references": [
+      "SettingsWindows.cs:23"
+    ],
+    "originalExtraction": {
+      "key": "ui.0180",
+      "file": "SettingsWindows.cs",
+      "line": 23,
+      "english": "새 단위:"
+    },
+    "status": "ACTIVE",
+    "surface": "presentation-only; internal identifiers preserved"
+  },
+  {
+    "key": "ui.0181",
+    "english": "Apply",
+    "korean": "변경",
+    "references": [
+      "SettingsWindows.cs:23"
+    ],
+    "originalExtraction": {
+      "key": "ui.0181",
+      "file": "SettingsWindows.cs",
+      "line": 23,
+      "english": "변경"
+    },
+    "status": "ACTIVE",
+    "surface": "presentation-only; internal identifiers preserved"
+  },
+  {
+    "key": "ui.0182",
+    "english": "Cancel",
+    "korean": "취소",
+    "references": [
+      "SettingsWindows.cs:23"
+    ],
+    "originalExtraction": {
+      "key": "ui.0182",
+      "file": "SettingsWindows.cs",
+      "line": 23,
+      "english": "취소"
+    },
+    "status": "ACTIVE",
+    "surface": "presentation-only; internal identifiers preserved"
+  },
+  {
+    "key": "ui.0183",
+    "english": "Example: {0:0.###} {1} → {2:0.###} {3}\nPhysical manufacturing size is preserved.",
+    "korean": "예: {0:0.###} {1} → {2:0.###} {3}\n실제 제작 크기는 유지됩니다.",
+    "references": [
+      "SettingsWindows.cs:24"
+    ],
+    "originalExtraction": {
+      "key": "ui.0183",
+      "file": "SettingsWindows.cs",
+      "line": 24,
+      "english": "예: {0:0.###} {1} → {2:0.###} {3}\n실제 제작 크기는 유지됩니다."
+    },
+    "status": "ACTIVE",
+    "surface": "presentation-only; internal identifiers preserved"
+  },
+  {
+    "key": "ui.0184",
+    "english": "Example: {0:0.###} {1} → {2:0.###} {3}\nNumbers are preserved; physical manufacturing size changes.",
+    "korean": "예: {0:0.###} {1} → {2:0.###} {3}\n숫자는 유지되며 실제 제작 크기가 변경됩니다.",
+    "references": [
+      "SettingsWindows.cs:24"
+    ],
+    "originalExtraction": {
+      "key": "ui.0184",
+      "file": "SettingsWindows.cs",
+      "line": 24,
+      "english": "예: {0:0.###} {1} → {2:0.###} {3}\n숫자는 유지되며 실제 제작 크기가 변경됩니다."
+    },
+    "status": "ACTIVE",
+    "surface": "presentation-only; internal identifiers preserved"
+  },
+  {
+    "key": "ui.0185",
+    "english": "Arc",
+    "korean": "원호",
+    "references": [],
+    "originalExtraction": {
+      "key": "ui.0185",
+      "file": "SlitDesignerView.cs",
+      "line": 76,
+      "english": "Arc"
+    },
+    "status": "RESERVED_UNUSED",
+    "surface": "presentation-only; internal identifiers preserved"
+  },
+  {
+    "key": "ui.0186",
+    "english": "Arc slit: start → through point → end · Esc cancels",
+    "korean": "원호 절개: 시작점 → 통과점 → 끝점 · Esc 취소",
+    "references": [
+      "SlitDesignerView.cs:76"
+    ],
+    "originalExtraction": {
+      "key": "ui.0186",
+      "file": "SlitDesignerView.cs",
+      "line": 76,
+      "english": "원호 절개: 시작점 → 통과점 → 끝점 · Esc 취소"
+    },
+    "status": "ACTIVE",
+    "surface": "presentation-only; internal identifiers preserved"
+  },
+  {
+    "key": "ui.0187",
+    "english": "Polyline",
+    "korean": "연결선",
+    "references": [],
+    "originalExtraction": {
+      "key": "ui.0187",
+      "file": "SlitDesignerView.cs",
+      "line": 76,
+      "english": "Polyline"
+    },
+    "status": "RESERVED_UNUSED",
+    "surface": "presentation-only; internal identifiers preserved"
+  },
+  {
+    "key": "ui.0188",
+    "english": "Polyline slit: click points · Enter finishes · Esc cancels",
+    "korean": "연결선 절개: 연속 클릭 · Enter 완료 · Esc 취소",
+    "references": [
+      "SlitDesignerView.cs:76"
+    ],
+    "originalExtraction": {
+      "key": "ui.0188",
+      "file": "SlitDesignerView.cs",
+      "line": 76,
+      "english": "연결선 절개: 연속 클릭 · Enter 완료 · Esc 취소"
+    },
+    "status": "ACTIVE",
+    "surface": "presentation-only; internal identifiers preserved"
+  },
+  {
+    "key": "ui.0189",
+    "english": "Line slit: start → end · Esc cancels",
+    "korean": "직선 절개: 시작점 → 끝점 · Esc 취소",
+    "references": [
+      "SlitDesignerView.cs:76"
+    ],
+    "originalExtraction": {
+      "key": "ui.0189",
+      "file": "SlitDesignerView.cs",
+      "line": 76,
+      "english": "직선 절개: 시작점 → 끝점 · Esc 취소"
+    },
+    "status": "ACTIVE",
+    "surface": "presentation-only; internal identifiers preserved"
+  },
+  {
+    "key": "ui.0190",
+    "english": "Unknown help page",
+    "korean": "알 수 없는 도움말 페이지입니다",
+    "references": [
+      "UserHelp.cs:13"
+    ],
+    "originalExtraction": {
+      "key": "ui.0190",
+      "file": "UserHelp.cs",
+      "line": 13,
+      "english": "Unknown help page"
+    },
+    "status": "ACTIVE",
+    "surface": "presentation-only; internal identifiers preserved"
+  },
+  {
+    "key": "ui.0191",
+    "english": "The Help file is missing. Check the help directory in the application folder or reinstall the program.",
+    "korean": "도움말 파일을 찾을 수 없습니다. 프로그램 배포 폴더의 help 디렉터리를 확인하거나 다시 설치하세요.",
+    "references": [
+      "UserHelp.cs:22"
+    ],
+    "originalExtraction": {
+      "key": "ui.0191",
+      "file": "UserHelp.cs",
+      "line": 22,
+      "english": "도움말 파일을 찾을 수 없습니다. 프로그램 배포 폴더의 help 디렉터리를 확인하거나 다시 설치하세요."
+    },
+    "status": "ACTIVE",
+    "surface": "presentation-only; internal identifiers preserved"
+  },
+  {
+    "key": "ui.0192",
+    "english": "Help",
+    "korean": "도움말",
+    "references": [
+      "UserHelp.cs:22"
+    ],
+    "originalExtraction": {
+      "key": "ui.0192",
+      "file": "UserHelp.cs",
+      "line": 22,
+      "english": "도움말"
+    },
+    "status": "ACTIVE",
+    "surface": "presentation-only; internal identifiers preserved"
+  },
+  {
+    "key": "ui.0193",
+    "english": "Cannot open Help. Check the default browser association for HTML files or open the document directly in the help folder.",
+    "korean": "도움말을 열 수 없습니다. HTML 파일의 기본 브라우저 연결을 확인하고 help 폴더에서 문서를 직접 열어 보세요.",
+    "references": [
+      "UserHelp.cs:28"
+    ],
+    "originalExtraction": {
+      "key": "ui.0193",
+      "file": "UserHelp.cs",
+      "line": 28,
+      "english": "도움말을 열 수 없습니다. HTML 파일의 기본 브라우저 연결을 확인하고 help 폴더에서 문서를 직접 열어 보세요."
+    },
+    "status": "ACTIVE",
+    "surface": "presentation-only; internal identifiers preserved"
+  },
+  {
+    "key": "ui.0194",
+    "english": "Help",
+    "korean": "도움말",
+    "references": [
+      "UserHelp.cs:28"
+    ],
+    "originalExtraction": {
+      "key": "ui.0194",
+      "file": "UserHelp.cs",
+      "line": 28,
+      "english": "도움말"
+    },
+    "status": "ACTIVE",
+    "surface": "presentation-only; internal identifiers preserved"
+  },
+  {
+    "key": "ui.0195",
+    "english": "A valid file path is required.",
+    "korean": "유효한 파일 경로가 필요합니다.",
+    "references": [
+      "UserSettings.cs:76"
+    ],
+    "originalExtraction": {
+      "key": "ui.0195",
+      "file": "UserSettings.cs",
+      "line": 68,
+      "english": "A valid file path is required."
+    },
+    "status": "ACTIVE",
+    "surface": "presentation-only; internal identifiers preserved"
+  },
+  {
+    "key": "ui.0196",
+    "english": "Untitled - CosmicDesigner",
+    "korean": "제목 없음 - CosmicDesigner",
+    "references": [
+      "MainWindow.xaml:1"
+    ],
+    "originalExtraction": {
+      "key": "ui.0196",
+      "file": "MainWindow.xaml",
+      "line": 0,
+      "english": "Untitled - VCutting"
+    },
+    "status": "ACTIVE",
+    "surface": "presentation-only; internal identifiers preserved"
+  },
+  {
+    "key": "ui.0197",
+    "english": "_File",
+    "korean": "파일(_F)",
+    "references": [
+      "MainWindow.xaml:4"
+    ],
+    "originalExtraction": {
+      "key": "ui.0197",
+      "file": "MainWindow.xaml",
+      "line": 0,
+      "english": "_File"
+    },
+    "status": "ACTIVE",
+    "surface": "presentation-only; internal identifiers preserved"
+  },
+  {
+    "key": "ui.0198",
+    "english": "_New",
+    "korean": "새로 만들기(_N)",
+    "references": [
+      "MainWindow.xaml:4"
+    ],
+    "originalExtraction": {
+      "key": "ui.0198",
+      "file": "MainWindow.xaml",
+      "line": 0,
+      "english": "_New"
+    },
+    "status": "ACTIVE",
+    "surface": "presentation-only; internal identifiers preserved"
+  },
+  {
+    "key": "ui.0199",
+    "english": "Ctrl+N",
+    "korean": "Ctrl+N",
+    "references": [],
+    "originalExtraction": {
+      "key": "ui.0199",
+      "file": "MainWindow.xaml",
+      "line": 0,
+      "english": "Ctrl+N"
+    },
+    "status": "RESERVED_UNUSED",
+    "surface": "presentation-only; internal identifiers preserved"
+  },
+  {
+    "key": "ui.0200",
+    "english": "_Open...",
+    "korean": "열기(_O)...",
+    "references": [
+      "MainWindow.xaml:4"
+    ],
+    "originalExtraction": {
+      "key": "ui.0200",
+      "file": "MainWindow.xaml",
+      "line": 0,
+      "english": "_Open..."
+    },
+    "status": "ACTIVE",
+    "surface": "presentation-only; internal identifiers preserved"
+  },
+  {
+    "key": "ui.0201",
+    "english": "Ctrl+O",
+    "korean": "Ctrl+O",
+    "references": [],
+    "originalExtraction": {
+      "key": "ui.0201",
+      "file": "MainWindow.xaml",
+      "line": 0,
+      "english": "Ctrl+O"
+    },
+    "status": "RESERVED_UNUSED",
+    "surface": "presentation-only; internal identifiers preserved"
+  },
+  {
+    "key": "ui.0202",
+    "english": "_Recent",
+    "korean": "최근 파일(_R)",
+    "references": [
+      "MainWindow.xaml:4"
+    ],
+    "originalExtraction": {
+      "key": "ui.0202",
+      "file": "MainWindow.xaml",
+      "line": 0,
+      "english": "_Recent"
+    },
+    "status": "ACTIVE",
+    "surface": "presentation-only; internal identifiers preserved"
+  },
+  {
+    "key": "ui.0203",
+    "english": "_Save",
+    "korean": "저장(_S)",
+    "references": [
+      "MainWindow.xaml:4"
+    ],
+    "originalExtraction": {
+      "key": "ui.0203",
+      "file": "MainWindow.xaml",
+      "line": 0,
+      "english": "_Save"
+    },
+    "status": "ACTIVE",
+    "surface": "presentation-only; internal identifiers preserved"
+  },
+  {
+    "key": "ui.0204",
+    "english": "Ctrl+S",
+    "korean": "Ctrl+S",
+    "references": [],
+    "originalExtraction": {
+      "key": "ui.0204",
+      "file": "MainWindow.xaml",
+      "line": 0,
+      "english": "Ctrl+S"
+    },
+    "status": "RESERVED_UNUSED",
+    "surface": "presentation-only; internal identifiers preserved"
+  },
+  {
+    "key": "ui.0205",
+    "english": "Save _As...",
+    "korean": "다른 이름으로 저장(_A)...",
+    "references": [
+      "MainWindow.xaml:4"
+    ],
+    "originalExtraction": {
+      "key": "ui.0205",
+      "file": "MainWindow.xaml",
+      "line": 0,
+      "english": "Save _As..."
+    },
+    "status": "ACTIVE",
+    "surface": "presentation-only; internal identifiers preserved"
+  },
+  {
+    "key": "ui.0206",
+    "english": "E_xit",
+    "korean": "종료(_X)",
+    "references": [
+      "MainWindow.xaml:4"
+    ],
+    "originalExtraction": {
+      "key": "ui.0206",
+      "file": "MainWindow.xaml",
+      "line": 0,
+      "english": "E_xit"
+    },
+    "status": "ACTIVE",
+    "surface": "presentation-only; internal identifiers preserved"
+  },
+  {
+    "key": "ui.0207",
+    "english": "_Edit",
+    "korean": "편집(_E)",
+    "references": [
+      "MainWindow.xaml:5"
+    ],
+    "originalExtraction": {
+      "key": "ui.0207",
+      "file": "MainWindow.xaml",
+      "line": 0,
+      "english": "_Edit"
+    },
+    "status": "ACTIVE",
+    "surface": "presentation-only; internal identifiers preserved"
+  },
+  {
+    "key": "ui.0208",
+    "english": "Undo",
+    "korean": "실행 취소",
+    "references": [
+      "MainWindow.xaml:5"
+    ],
+    "originalExtraction": {
+      "key": "ui.0208",
+      "file": "MainWindow.xaml",
+      "line": 0,
+      "english": "Undo"
+    },
+    "status": "ACTIVE",
+    "surface": "presentation-only; internal identifiers preserved"
+  },
+  {
+    "key": "ui.0209",
+    "english": "Ctrl+Z",
+    "korean": "Ctrl+Z",
+    "references": [],
+    "originalExtraction": {
+      "key": "ui.0209",
+      "file": "MainWindow.xaml",
+      "line": 0,
+      "english": "Ctrl+Z"
+    },
+    "status": "RESERVED_UNUSED",
+    "surface": "presentation-only; internal identifiers preserved"
+  },
+  {
+    "key": "ui.0210",
+    "english": "Redo",
+    "korean": "다시 실행",
+    "references": [
+      "MainWindow.xaml:5"
+    ],
+    "originalExtraction": {
+      "key": "ui.0210",
+      "file": "MainWindow.xaml",
+      "line": 0,
+      "english": "Redo"
+    },
+    "status": "ACTIVE",
+    "surface": "presentation-only; internal identifiers preserved"
+  },
+  {
+    "key": "ui.0211",
+    "english": "Ctrl+Y",
+    "korean": "Ctrl+Y",
+    "references": [],
+    "originalExtraction": {
+      "key": "ui.0211",
+      "file": "MainWindow.xaml",
+      "line": 0,
+      "english": "Ctrl+Y"
+    },
+    "status": "RESERVED_UNUSED",
+    "surface": "presentation-only; internal identifiers preserved"
+  },
+  {
+    "key": "ui.0212",
+    "english": "Document _Units...",
+    "korean": "문서 단위(_U)...",
+    "references": [
+      "MainWindow.xaml:5"
+    ],
+    "originalExtraction": {
+      "key": "ui.0212",
+      "file": "MainWindow.xaml",
+      "line": 0,
+      "english": "Document _Units..."
+    },
+    "status": "ACTIVE",
+    "surface": "presentation-only; internal identifiers preserved"
+  },
+  {
+    "key": "ui.0213",
+    "english": "_Settings...",
+    "korean": "설정(_S)...",
+    "references": [
+      "MainWindow.xaml:5"
+    ],
+    "originalExtraction": {
+      "key": "ui.0213",
+      "file": "MainWindow.xaml",
+      "line": 0,
+      "english": "_Settings..."
+    },
+    "status": "ACTIVE",
+    "surface": "presentation-only; internal identifiers preserved"
+  },
+  {
+    "key": "ui.0214",
+    "english": "Ctrl+,",
+    "korean": "Ctrl+,",
+    "references": [],
+    "originalExtraction": {
+      "key": "ui.0214",
+      "file": "MainWindow.xaml",
+      "line": 0,
+      "english": "Ctrl+,"
+    },
+    "status": "RESERVED_UNUSED",
+    "surface": "presentation-only; internal identifiers preserved"
+  },
+  {
+    "key": "ui.0215",
+    "english": "_View",
+    "korean": "보기(_V)",
+    "references": [
+      "MainWindow.xaml:6"
+    ],
+    "originalExtraction": {
+      "key": "ui.0215",
+      "file": "MainWindow.xaml",
+      "line": 0,
+      "english": "_View"
+    },
+    "status": "ACTIVE",
+    "surface": "presentation-only; internal identifiers preserved"
+  },
+  {
+    "key": "ui.0216",
+    "english": "_Zoom",
+    "korean": "확대·축소(_Z)",
+    "references": [
+      "MainWindow.xaml:6"
+    ],
+    "originalExtraction": {
+      "key": "ui.0216",
+      "file": "MainWindow.xaml",
+      "line": 0,
+      "english": "_Zoom"
+    },
+    "status": "ACTIVE",
+    "surface": "presentation-only; internal identifiers preserved"
+  },
+  {
+    "key": "ui.0217",
+    "english": "Zoom _In",
+    "korean": "확대(_I)",
+    "references": [
+      "MainWindow.xaml:6"
+    ],
+    "originalExtraction": {
+      "key": "ui.0217",
+      "file": "MainWindow.xaml",
+      "line": 0,
+      "english": "Zoom _In"
+    },
+    "status": "ACTIVE",
+    "surface": "presentation-only; internal identifiers preserved"
+  },
+  {
+    "key": "ui.0218",
+    "english": "Zoom _Out",
+    "korean": "축소(_O)",
+    "references": [
+      "MainWindow.xaml:6"
+    ],
+    "originalExtraction": {
+      "key": "ui.0218",
+      "file": "MainWindow.xaml",
+      "line": 0,
+      "english": "Zoom _Out"
+    },
+    "status": "ACTIVE",
+    "surface": "presentation-only; internal identifiers preserved"
+  },
+  {
+    "key": "ui.0219",
+    "english": "_Fit to Window",
+    "korean": "창에 맞추기(_F)",
+    "references": [
+      "MainWindow.xaml:6"
+    ],
+    "originalExtraction": {
+      "key": "ui.0219",
+      "file": "MainWindow.xaml",
+      "line": 0,
+      "english": "_Fit to Window"
+    },
+    "status": "ACTIVE",
+    "surface": "presentation-only; internal identifiers preserved"
+  },
+  {
+    "key": "ui.0220",
+    "english": "_Ruler",
+    "korean": "눈금자(_R)",
+    "references": [
+      "MainWindow.xaml:6"
+    ],
+    "originalExtraction": {
+      "key": "ui.0220",
+      "file": "MainWindow.xaml",
+      "line": 0,
+      "english": "_Ruler"
+    },
+    "status": "ACTIVE",
+    "surface": "presentation-only; internal identifiers preserved"
+  },
+  {
+    "key": "ui.0221",
+    "english": "_Grid",
+    "korean": "격자(_G)",
+    "references": [
+      "MainWindow.xaml:6"
+    ],
+    "originalExtraction": {
+      "key": "ui.0221",
+      "file": "MainWindow.xaml",
+      "line": 0,
+      "english": "_Grid"
+    },
+    "status": "ACTIVE",
+    "surface": "presentation-only; internal identifiers preserved"
+  },
+  {
+    "key": "ui.0222",
+    "english": "_Status Bar",
+    "korean": "상태 표시줄(_S)",
+    "references": [
+      "MainWindow.xaml:6"
+    ],
+    "originalExtraction": {
+      "key": "ui.0222",
+      "file": "MainWindow.xaml",
+      "line": 0,
+      "english": "_Status Bar"
+    },
+    "status": "ACTIVE",
+    "surface": "presentation-only; internal identifiers preserved"
+  },
+  {
+    "key": "ui.0223",
+    "english": "_H Section",
+    "korean": "H 단면(_H)",
+    "references": [
+      "MainWindow.xaml:6"
+    ],
+    "originalExtraction": {
+      "key": "ui.0223",
+      "file": "MainWindow.xaml",
+      "line": 0,
+      "english": "_H Section"
+    },
+    "status": "ACTIVE",
+    "surface": "presentation-only; internal identifiers preserved"
+  },
+  {
+    "key": "ui.0224",
+    "english": "Dimensions",
+    "korean": "치수",
+    "references": [
+      "MainWindow.xaml:6"
+    ],
+    "originalExtraction": {
+      "key": "ui.0224",
+      "file": "MainWindow.xaml",
+      "line": 0,
+      "english": "Dimensions"
+    },
+    "status": "ACTIVE",
+    "surface": "presentation-only; internal identifiers preserved"
+  },
+  {
+    "key": "ui.0225",
+    "english": "Bent",
+    "korean": "절곡",
+    "references": [
+      "MainWindow.xaml:6"
+    ],
+    "originalExtraction": {
+      "key": "ui.0225",
+      "file": "MainWindow.xaml",
+      "line": 0,
+      "english": "Bent"
+    },
+    "status": "ACTIVE",
+    "surface": "presentation-only; internal identifiers preserved"
+  },
+  {
+    "key": "ui.0226",
+    "english": "Rotation",
+    "korean": "회전",
+    "references": [
+      "MainWindow.xaml:6"
+    ],
+    "originalExtraction": {
+      "key": "ui.0226",
+      "file": "MainWindow.xaml",
+      "line": 0,
+      "english": "Rotation"
+    },
+    "status": "ACTIVE",
+    "surface": "presentation-only; internal identifiers preserved"
+  },
+  {
+    "key": "ui.0227",
+    "english": "_W Section",
+    "korean": "W 단면(_W)",
+    "references": [
+      "MainWindow.xaml:6"
+    ],
+    "originalExtraction": {
+      "key": "ui.0227",
+      "file": "MainWindow.xaml",
+      "line": 0,
+      "english": "_W Section"
+    },
+    "status": "ACTIVE",
+    "surface": "presentation-only; internal identifiers preserved"
+  },
+  {
+    "key": "ui.0228",
+    "english": "Dimensions",
+    "korean": "치수",
+    "references": [
+      "MainWindow.xaml:6"
+    ],
+    "originalExtraction": {
+      "key": "ui.0228",
+      "file": "MainWindow.xaml",
+      "line": 0,
+      "english": "Dimensions"
+    },
+    "status": "ACTIVE",
+    "surface": "presentation-only; internal identifiers preserved"
+  },
+  {
+    "key": "ui.0229",
+    "english": "Bent",
+    "korean": "절곡",
+    "references": [
+      "MainWindow.xaml:6"
+    ],
+    "originalExtraction": {
+      "key": "ui.0229",
+      "file": "MainWindow.xaml",
+      "line": 0,
+      "english": "Bent"
+    },
+    "status": "ACTIVE",
+    "surface": "presentation-only; internal identifiers preserved"
+  },
+  {
+    "key": "ui.0230",
+    "english": "Rotation",
+    "korean": "회전",
+    "references": [
+      "MainWindow.xaml:6"
+    ],
+    "originalExtraction": {
+      "key": "ui.0230",
+      "file": "MainWindow.xaml",
+      "line": 0,
+      "english": "Rotation"
+    },
+    "status": "ACTIVE",
+    "surface": "presentation-only; internal identifiers preserved"
+  },
+  {
+    "key": "ui.0231",
+    "english": "_Help",
+    "korean": "도움말(_H)",
+    "references": [
+      "MainWindow.xaml:7"
+    ],
+    "originalExtraction": {
+      "key": "ui.0231",
+      "file": "MainWindow.xaml",
+      "line": 0,
+      "english": "_Help"
+    },
+    "status": "ACTIVE",
+    "surface": "presentation-only; internal identifiers preserved"
+  },
+  {
+    "key": "ui.0232",
+    "english": "User Manual",
+    "korean": "사용자 매뉴얼",
+    "references": [
+      "MainWindow.xaml:7"
+    ],
+    "originalExtraction": {
+      "key": "ui.0232",
+      "file": "MainWindow.xaml",
+      "line": 0,
+      "english": "User Manual"
+    },
+    "status": "ACTIVE",
+    "surface": "presentation-only; internal identifiers preserved"
+  },
+  {
+    "key": "ui.0233",
+    "english": "Getting Started",
+    "korean": "설치 및 시작",
+    "references": [
+      "MainWindow.xaml:7"
+    ],
+    "originalExtraction": {
+      "key": "ui.0233",
+      "file": "MainWindow.xaml",
+      "line": 0,
+      "english": "Getting Started"
+    },
+    "status": "ACTIVE",
+    "surface": "presentation-only; internal identifiers preserved"
+  },
+  {
+    "key": "ui.0234",
+    "english": "Keyboard Shortcuts",
+    "korean": "키보드 단축키",
+    "references": [
+      "MainWindow.xaml:7"
+    ],
+    "originalExtraction": {
+      "key": "ui.0234",
+      "file": "MainWindow.xaml",
+      "line": 0,
+      "english": "Keyboard Shortcuts"
+    },
+    "status": "ACTIVE",
+    "surface": "presentation-only; internal identifiers preserved"
+  },
+  {
+    "key": "ui.0235",
+    "english": "Troubleshooting",
+    "korean": "문제 해결",
+    "references": [
+      "MainWindow.xaml:7"
+    ],
+    "originalExtraction": {
+      "key": "ui.0235",
+      "file": "MainWindow.xaml",
+      "line": 0,
+      "english": "Troubleshooting"
+    },
+    "status": "ACTIVE",
+    "surface": "presentation-only; internal identifiers preserved"
+  },
+  {
+    "key": "ui.0236",
+    "english": "About",
+    "korean": "프로그램 정보",
+    "references": [
+      "MainWindow.xaml:7"
+    ],
+    "originalExtraction": {
+      "key": "ui.0236",
+      "file": "MainWindow.xaml",
+      "line": 0,
+      "english": "About"
+    },
+    "status": "ACTIVE",
+    "surface": "presentation-only; internal identifiers preserved"
+  },
+  {
+    "key": "ui.0237",
+    "english": "Ready",
+    "korean": "준비",
+    "references": [
+      "MainWindow.xaml:9"
+    ],
+    "originalExtraction": {
+      "key": "ui.0237",
+      "file": "MainWindow.xaml",
+      "line": 0,
+      "english": "Ready"
+    },
+    "status": "ACTIVE",
+    "surface": "presentation-only; internal identifiers preserved"
+  },
+  {
+    "key": "ui.0238",
+    "english": "X —  Y — cm",
+    "korean": "X —  Y — cm",
+    "references": [
+      "MainWindow.xaml:9"
+    ],
+    "originalExtraction": {
+      "key": "ui.0238",
+      "file": "MainWindow.xaml",
+      "line": 0,
+      "english": "X —  Y — cm"
+    },
+    "status": "ACTIVE",
+    "surface": "presentation-only; internal identifiers preserved"
+  },
+  {
+    "key": "ui.0239",
+    "english": "OBJECTS",
+    "korean": "객체",
+    "references": [
+      "MainWindow.xaml:12"
+    ],
+    "originalExtraction": {
+      "key": "ui.0239",
+      "file": "MainWindow.xaml",
+      "line": 0,
+      "english": "OBJECTS"
+    },
+    "status": "ACTIVE",
+    "surface": "presentation-only; internal identifiers preserved"
+  },
+  {
+    "key": "ui.0240",
+    "english": "PROPERTIES",
+    "korean": "속성",
+    "references": [
+      "MainWindow.xaml:13"
+    ],
+    "originalExtraction": {
+      "key": "ui.0240",
+      "file": "MainWindow.xaml",
+      "line": 0,
+      "english": "PROPERTIES"
+    },
+    "status": "ACTIVE",
+    "surface": "presentation-only; internal identifiers preserved"
+  },
+  {
+    "key": "ui.0241",
+    "english": "Material (cm)",
+    "korean": "재료 (cm)",
+    "references": [
+      "MainWindow.xaml:14"
+    ],
+    "originalExtraction": {
+      "key": "ui.0241",
+      "file": "MainWindow.xaml",
+      "line": 0,
+      "english": "Material (cm)"
+    },
+    "status": "ACTIVE",
+    "surface": "presentation-only; internal identifiers preserved"
+  },
+  {
+    "key": "ui.0242",
+    "english": "Flat W",
+    "korean": "펼친 폭 W",
+    "references": [
+      "MainWindow.xaml:14"
+    ],
+    "originalExtraction": {
+      "key": "ui.0242",
+      "file": "MainWindow.xaml",
+      "line": 0,
+      "english": "Flat W"
+    },
+    "status": "ACTIVE",
+    "surface": "presentation-only; internal identifiers preserved"
+  },
+  {
+    "key": "ui.0243",
+    "english": "Flat H",
+    "korean": "펼친 높이 H",
+    "references": [
+      "MainWindow.xaml:14"
+    ],
+    "originalExtraction": {
+      "key": "ui.0243",
+      "file": "MainWindow.xaml",
+      "line": 0,
+      "english": "Flat H"
+    },
+    "status": "ACTIVE",
+    "surface": "presentation-only; internal identifiers preserved"
+  },
+  {
+    "key": "ui.0244",
+    "english": "Thickness D",
+    "korean": "두께 D",
+    "references": [
+      "MainWindow.xaml:14"
+    ],
+    "originalExtraction": {
+      "key": "ui.0244",
+      "file": "MainWindow.xaml",
+      "line": 0,
+      "english": "Thickness D"
+    },
+    "status": "ACTIVE",
+    "surface": "presentation-only; internal identifiers preserved"
+  },
+  {
+    "key": "ui.0245",
+    "english": "Selected object",
+    "korean": "선택한 객체",
+    "references": [
+      "MainWindow.xaml:15"
+    ],
+    "originalExtraction": {
+      "key": "ui.0245",
+      "file": "MainWindow.xaml",
+      "line": 0,
+      "english": "Selected object"
+    },
+    "status": "ACTIVE",
+    "surface": "presentation-only; internal identifiers preserved"
+  },
+  {
+    "key": "ui.0246",
+    "english": "Flat Designer  ·  L Black  |  V Red  |  V1 Blue",
+    "korean": "평면 설계 · L 검정 | V 빨강 | V1 파랑",
+    "references": [
+      "MainWindow.xaml:18"
+    ],
+    "originalExtraction": {
+      "key": "ui.0246",
+      "file": "MainWindow.xaml",
+      "line": 0,
+      "english": "Flat Designer  ·  L Black  |  V Red  |  V1 Blue"
+    },
+    "status": "ACTIVE",
+    "surface": "presentation-only; internal identifiers preserved"
+  },
+  {
+    "key": "ui.0247",
+    "english": "Ruler",
+    "korean": "눈금자",
+    "references": [
+      "MainWindow.xaml:18"
+    ],
+    "originalExtraction": {
+      "key": "ui.0247",
+      "file": "MainWindow.xaml",
+      "line": 0,
+      "english": "Ruler"
+    },
+    "status": "ACTIVE",
+    "surface": "presentation-only; internal identifiers preserved"
+  },
+  {
+    "key": "ui.0248",
+    "english": "Grid",
+    "korean": "격자",
+    "references": [
+      "MainWindow.xaml:18"
+    ],
+    "originalExtraction": {
+      "key": "ui.0248",
+      "file": "MainWindow.xaml",
+      "line": 0,
+      "english": "Grid"
+    },
+    "status": "ACTIVE",
+    "surface": "presentation-only; internal identifiers preserved"
+  },
+  {
+    "key": "ui.0249",
+    "english": "Zoom Out",
+    "korean": "축소",
+    "references": [
+      "MainWindow.xaml:18"
+    ],
+    "originalExtraction": {
+      "key": "ui.0249",
+      "file": "MainWindow.xaml",
+      "line": 0,
+      "english": "Zoom Out"
+    },
+    "status": "ACTIVE",
+    "surface": "presentation-only; internal identifiers preserved"
+  },
+  {
+    "key": "ui.0250",
+    "english": "Zoom In",
+    "korean": "확대",
+    "references": [
+      "MainWindow.xaml:18"
+    ],
+    "originalExtraction": {
+      "key": "ui.0250",
+      "file": "MainWindow.xaml",
+      "line": 0,
+      "english": "Zoom In"
+    },
+    "status": "ACTIVE",
+    "surface": "presentation-only; internal identifiers preserved"
+  },
+  {
+    "key": "ui.0251",
+    "english": "Fit",
+    "korean": "창에 맞추기",
+    "references": [
+      "MainWindow.xaml:18"
+    ],
+    "originalExtraction": {
+      "key": "ui.0251",
+      "file": "MainWindow.xaml",
+      "line": 0,
+      "english": "Fit"
+    },
+    "status": "ACTIVE",
+    "surface": "presentation-only; internal identifiers preserved"
+  },
+  {
+    "key": "ui.0252",
+    "english": "Select",
+    "korean": "선택",
+    "references": [
+      "MainWindow.xaml:18"
+    ],
+    "originalExtraction": {
+      "key": "ui.0252",
+      "file": "MainWindow.xaml",
+      "line": 0,
+      "english": "Select"
+    },
+    "status": "ACTIVE",
+    "surface": "presentation-only; internal identifiers preserved"
+  },
+  {
+    "key": "ui.0253",
+    "english": "Hole:",
+    "korean": "천공:",
+    "references": [
+      "MainWindow.xaml:18"
+    ],
+    "originalExtraction": {
+      "key": "ui.0253",
+      "file": "MainWindow.xaml",
+      "line": 0,
+      "english": "Hole:"
+    },
+    "status": "ACTIVE",
+    "surface": "presentation-only; internal identifiers preserved"
+  },
+  {
+    "key": "ui.0254",
+    "english": "Circle",
+    "korean": "원",
+    "references": [
+      "MainWindow.xaml:18"
+    ],
+    "originalExtraction": {
+      "key": "ui.0254",
+      "file": "MainWindow.xaml",
+      "line": 0,
+      "english": "Circle"
+    },
+    "status": "ACTIVE",
+    "surface": "presentation-only; internal identifiers preserved"
+  },
+  {
+    "key": "ui.0255",
+    "english": "Semicircle",
+    "korean": "반원 천공",
+    "references": [
+      "MainWindow.xaml:18"
+    ],
+    "originalExtraction": {
+      "key": "ui.0255",
+      "file": "MainWindow.xaml",
+      "line": 0,
+      "english": "Semicircle · 반원 천공"
+    },
+    "status": "ACTIVE",
+    "surface": "presentation-only; internal identifiers preserved"
+  },
+  {
+    "key": "ui.0256",
+    "english": "Quarter Circle",
+    "korean": "4분원 천공",
+    "references": [
+      "MainWindow.xaml:18"
+    ],
+    "originalExtraction": {
+      "key": "ui.0256",
+      "file": "MainWindow.xaml",
+      "line": 0,
+      "english": "Quarter Circle · 4분원 천공"
+    },
+    "status": "ACTIVE",
+    "surface": "presentation-only; internal identifiers preserved"
+  },
+  {
+    "key": "ui.0257",
+    "english": "Triangle",
+    "korean": "삼각형",
+    "references": [
+      "MainWindow.xaml:18"
+    ],
+    "originalExtraction": {
+      "key": "ui.0257",
+      "file": "MainWindow.xaml",
+      "line": 0,
+      "english": "Triangle"
+    },
+    "status": "ACTIVE",
+    "surface": "presentation-only; internal identifiers preserved"
+  },
+  {
+    "key": "ui.0258",
+    "english": "Rectangle",
+    "korean": "사각형",
+    "references": [
+      "MainWindow.xaml:18"
+    ],
+    "originalExtraction": {
+      "key": "ui.0258",
+      "file": "MainWindow.xaml",
+      "line": 0,
+      "english": "Rectangle"
+    },
+    "status": "ACTIVE",
+    "surface": "presentation-only; internal identifiers preserved"
+  },
+  {
+    "key": "ui.0259",
+    "english": "Diamond",
+    "korean": "마름모",
+    "references": [
+      "MainWindow.xaml:18"
+    ],
+    "originalExtraction": {
+      "key": "ui.0259",
+      "file": "MainWindow.xaml",
+      "line": 0,
+      "english": "Diamond"
+    },
+    "status": "ACTIVE",
+    "surface": "presentation-only; internal identifiers preserved"
+  },
+  {
+    "key": "ui.0260",
+    "english": "Parallelogram",
+    "korean": "평행사변형",
+    "references": [
+      "MainWindow.xaml:18"
+    ],
+    "originalExtraction": {
+      "key": "ui.0260",
+      "file": "MainWindow.xaml",
+      "line": 0,
+      "english": "Parallelogram"
+    },
+    "status": "ACTIVE",
+    "surface": "presentation-only; internal identifiers preserved"
+  },
+  {
+    "key": "ui.0261",
+    "english": "Slit:",
+    "korean": "절개:",
+    "references": [
+      "MainWindow.xaml:18"
+    ],
+    "originalExtraction": {
+      "key": "ui.0261",
+      "file": "MainWindow.xaml",
+      "line": 0,
+      "english": "Slit:"
+    },
+    "status": "ACTIVE",
+    "surface": "presentation-only; internal identifiers preserved"
+  },
+  {
+    "key": "ui.0262",
+    "english": "Line slit",
+    "korean": "직선 절개",
+    "references": [
+      "MainWindow.xaml:18"
+    ],
+    "originalExtraction": {
+      "key": "ui.0262",
+      "file": "MainWindow.xaml",
+      "line": 0,
+      "english": "직선 절개"
+    },
+    "status": "ACTIVE",
+    "surface": "presentation-only; internal identifiers preserved"
+  },
+  {
+    "key": "ui.0263",
+    "english": "Arc slit",
+    "korean": "원호 절개",
+    "references": [
+      "MainWindow.xaml:18"
+    ],
+    "originalExtraction": {
+      "key": "ui.0263",
+      "file": "MainWindow.xaml",
+      "line": 0,
+      "english": "원호 절개"
+    },
+    "status": "ACTIVE",
+    "surface": "presentation-only; internal identifiers preserved"
+  },
+  {
+    "key": "ui.0264",
+    "english": "Polyline slit",
+    "korean": "연결선 절개",
+    "references": [
+      "MainWindow.xaml:18"
+    ],
+    "originalExtraction": {
+      "key": "ui.0264",
+      "file": "MainWindow.xaml",
+      "line": 0,
+      "english": "연결선 절개"
+    },
+    "status": "ACTIVE",
+    "surface": "presentation-only; internal identifiers preserved"
+  },
+  {
+    "key": "ui.0265",
+    "english": "V",
+    "korean": "V",
+    "references": [
+      "MainWindow.xaml:18"
+    ],
+    "originalExtraction": {
+      "key": "ui.0265",
+      "file": "MainWindow.xaml",
+      "line": 0,
+      "english": "V"
+    },
+    "status": "ACTIVE",
+    "surface": "presentation-only; internal identifiers preserved"
+  },
+  {
+    "key": "ui.0266",
+    "english": "V bend · drag right/down",
+    "korean": "V 절곡선 · 오른쪽/아래쪽 드래그",
+    "references": [
+      "MainWindow.xaml:18"
+    ],
+    "originalExtraction": {
+      "key": "ui.0266",
+      "file": "MainWindow.xaml",
+      "line": 0,
+      "english": "V 절곡선 · 오른쪽/아래쪽 드래그"
+    },
+    "status": "ACTIVE",
+    "surface": "presentation-only; internal identifiers preserved"
+  },
+  {
+    "key": "ui.0267",
+    "english": "V1",
+    "korean": "V1",
+    "references": [
+      "MainWindow.xaml:18"
+    ],
+    "originalExtraction": {
+      "key": "ui.0267",
+      "file": "MainWindow.xaml",
+      "line": 0,
+      "english": "V1"
+    },
+    "status": "ACTIVE",
+    "surface": "presentation-only; internal identifiers preserved"
+  },
+  {
+    "key": "ui.0268",
+    "english": "V1 bend · drag right/down",
+    "korean": "V1 절곡선 · 오른쪽/아래쪽 드래그",
+    "references": [
+      "MainWindow.xaml:18"
+    ],
+    "originalExtraction": {
+      "key": "ui.0268",
+      "file": "MainWindow.xaml",
+      "line": 0,
+      "english": "V1 절곡선 · 오른쪽/아래쪽 드래그"
+    },
+    "status": "ACTIVE",
+    "surface": "presentation-only; internal identifiers preserved"
+  },
+  {
+    "key": "ui.0269",
+    "english": "Fillet R:",
+    "korean": "모깎기 R:",
+    "references": [
+      "MainWindow.xaml:18"
+    ],
+    "originalExtraction": {
+      "key": "ui.0269",
+      "file": "MainWindow.xaml",
+      "line": 0,
+      "english": "Fillet R:"
+    },
+    "status": "ACTIVE",
+    "surface": "presentation-only; internal identifiers preserved"
+  },
+  {
+    "key": "ui.0270",
+    "english": "Fillet",
+    "korean": "모깎기",
+    "references": [
+      "MainWindow.xaml:18"
+    ],
+    "originalExtraction": {
+      "key": "ui.0270",
+      "file": "MainWindow.xaml",
+      "line": 0,
+      "english": "Fillet"
+    },
+    "status": "ACTIVE",
+    "surface": "presentation-only; internal identifiers preserved"
+  },
+  {
+    "key": "ui.0271",
+    "english": "H Section Designer",
+    "korean": "H 단면 설계",
+    "references": [
+      "MainWindow.xaml:21"
+    ],
+    "originalExtraction": {
+      "key": "ui.0271",
+      "file": "MainWindow.xaml",
+      "line": 0,
+      "english": "H Section Designer"
+    },
+    "status": "ACTIVE",
+    "surface": "presentation-only; internal identifiers preserved"
+  },
+  {
+    "key": "ui.0272",
+    "english": "Dimensions",
+    "korean": "치수",
+    "references": [
+      "MainWindow.xaml:21"
+    ],
+    "originalExtraction": {
+      "key": "ui.0272",
+      "file": "MainWindow.xaml",
+      "line": 0,
+      "english": "Dimensions"
+    },
+    "status": "ACTIVE",
+    "surface": "presentation-only; internal identifiers preserved"
+  },
+  {
+    "key": "ui.0273",
+    "english": "Bent Mode",
+    "korean": "절곡 보기",
+    "references": [
+      "MainWindow.xaml:21"
+    ],
+    "originalExtraction": {
+      "key": "ui.0273",
+      "file": "MainWindow.xaml",
+      "line": 0,
+      "english": "Bent Mode"
+    },
+    "status": "ACTIVE",
+    "surface": "presentation-only; internal identifiers preserved"
+  },
+  {
+    "key": "ui.0274",
+    "english": "Rotate 90° clockwise",
+    "korean": "시계 방향 90° 회전",
+    "references": [
+      "MainWindow.xaml:21"
+    ],
+    "originalExtraction": {
+      "key": "ui.0274",
+      "file": "MainWindow.xaml",
+      "line": 0,
+      "english": "Rotate 90° clockwise"
+    },
+    "status": "ACTIVE",
+    "surface": "presentation-only; internal identifiers preserved"
+  },
+  {
+    "key": "ui.0275",
+    "english": "3D Preview",
+    "korean": "3D 미리보기",
+    "references": [
+      "MainWindow.xaml:22"
+    ],
+    "originalExtraction": {
+      "key": "ui.0275",
+      "file": "MainWindow.xaml",
+      "line": 0,
+      "english": "3D Preview"
+    },
+    "status": "ACTIVE",
+    "surface": "presentation-only; internal identifiers preserved"
+  },
+  {
+    "key": "ui.0276",
+    "english": "Semi Transparent",
+    "korean": "반투명",
+    "references": [
+      "MainWindow.xaml:22"
+    ],
+    "originalExtraction": {
+      "key": "ui.0276",
+      "file": "MainWindow.xaml",
+      "line": 0,
+      "english": "Semi Transparent"
+    },
+    "status": "ACTIVE",
+    "surface": "presentation-only; internal identifiers preserved"
+  },
+  {
+    "key": "ui.0277",
+    "english": "Fit / Reset",
+    "korean": "맞추기 / 초기화",
+    "references": [
+      "MainWindow.xaml:22"
+    ],
+    "originalExtraction": {
+      "key": "ui.0277",
+      "file": "MainWindow.xaml",
+      "line": 0,
+      "english": "Fit / Reset"
+    },
+    "status": "ACTIVE",
+    "surface": "presentation-only; internal identifiers preserved"
+  },
+  {
+    "key": "ui.0278",
+    "english": "W Section Designer",
+    "korean": "W 단면 설계",
+    "references": [
+      "MainWindow.xaml:25"
+    ],
+    "originalExtraction": {
+      "key": "ui.0278",
+      "file": "MainWindow.xaml",
+      "line": 0,
+      "english": "W Section Designer"
+    },
+    "status": "ACTIVE",
+    "surface": "presentation-only; internal identifiers preserved"
+  },
+  {
+    "key": "ui.0279",
+    "english": "Dimensions",
+    "korean": "치수",
+    "references": [
+      "MainWindow.xaml:25"
+    ],
+    "originalExtraction": {
+      "key": "ui.0279",
+      "file": "MainWindow.xaml",
+      "line": 0,
+      "english": "Dimensions"
+    },
+    "status": "ACTIVE",
+    "surface": "presentation-only; internal identifiers preserved"
+  },
+  {
+    "key": "ui.0280",
+    "english": "Bent Mode",
+    "korean": "절곡 보기",
+    "references": [
+      "MainWindow.xaml:25"
+    ],
+    "originalExtraction": {
+      "key": "ui.0280",
+      "file": "MainWindow.xaml",
+      "line": 0,
+      "english": "Bent Mode"
+    },
+    "status": "ACTIVE",
+    "surface": "presentation-only; internal identifiers preserved"
+  },
+  {
+    "key": "ui.0281",
+    "english": "Rotate 90° clockwise",
+    "korean": "시계 방향 90° 회전",
+    "references": [
+      "MainWindow.xaml:25"
+    ],
+    "originalExtraction": {
+      "key": "ui.0281",
+      "file": "MainWindow.xaml",
+      "line": 0,
+      "english": "Rotate 90° clockwise"
+    },
+    "status": "ACTIVE",
+    "surface": "presentation-only; internal identifiers preserved"
+  },
+  {
+    "key": "settings.language",
+    "english": "Display language",
+    "korean": "표시 언어",
+    "references": [
+      "SettingsWindows.cs:10"
+    ],
+    "originalExtraction": null,
+    "status": "ACTIVE",
+    "surface": "presentation-only; internal identifiers preserved"
+  },
+  {
+    "key": "settings.diagnostics",
+    "english": "Language resource diagnostics",
+    "korean": "언어 리소스 진단",
+    "references": [
+      "SettingsWindows.cs:10"
+    ],
+    "originalExtraction": null,
+    "status": "ACTIVE",
+    "surface": "presentation-only; internal identifiers preserved"
+  },
+  {
+    "key": "settings.noDiagnostics",
+    "english": "No resource errors",
+    "korean": "리소스 오류 없음",
+    "references": [
+      "SettingsWindows.cs:10"
+    ],
+    "originalExtraction": null,
+    "status": "ACTIVE",
+    "surface": "presentation-only; internal identifiers preserved"
+  },
+  {
+    "key": "unit.Millimeter",
+    "english": "Millimeter (mm)",
+    "korean": "밀리미터 (mm)",
+    "references": [],
+    "originalExtraction": null,
+    "status": "ACTIVE",
+    "surface": "presentation-only; internal identifiers preserved"
+  },
+  {
+    "key": "unit.Centimeter",
+    "english": "Centimeter (cm)",
+    "korean": "센티미터 (cm)",
+    "references": [],
+    "originalExtraction": null,
+    "status": "ACTIVE",
+    "surface": "presentation-only; internal identifiers preserved"
+  },
+  {
+    "key": "unit.Meter",
+    "english": "Meter (m)",
+    "korean": "미터 (m)",
+    "references": [],
+    "originalExtraction": null,
+    "status": "ACTIVE",
+    "surface": "presentation-only; internal identifiers preserved"
+  },
+  {
+    "key": "about.development",
+    "english": "Internal development version",
+    "korean": "내부 개발 버전",
+    "references": [
+      "Localization.cs:60"
+    ],
+    "originalExtraction": null,
+    "status": "ACTIVE",
+    "surface": "presentation-only; internal identifiers preserved"
+  },
+  {
+    "key": "about.build",
+    "english": "Build identifier",
+    "korean": "빌드 식별자",
+    "references": [
+      "Localization.cs:60"
+    ],
+    "originalExtraction": null,
+    "status": "ACTIVE",
+    "surface": "presentation-only; internal identifiers preserved"
+  },
+  {
+    "key": "window.untitled",
+    "english": "Untitled",
+    "korean": "제목 없음",
+    "references": [
+      "MainWindow.xaml.cs:25"
+    ],
+    "originalExtraction": null,
+    "status": "ACTIVE",
+    "surface": "presentation-only; internal identifiers preserved"
+  },
+  {
+    "key": "window.title",
+    "english": "{0}{1} - CosmicDesigner",
+    "korean": "{0}{1} - CosmicDesigner",
+    "references": [
+      "MainWindow.xaml.cs:25"
+    ],
+    "originalExtraction": null,
+    "status": "ACTIVE",
+    "surface": "presentation-only; internal identifiers preserved"
+  },
+  {
+    "key": "kind.Circle",
+    "english": "Circle",
+    "korean": "원",
+    "references": [],
+    "originalExtraction": null,
+    "status": "ACTIVE",
+    "surface": "presentation-only; internal identifiers preserved"
+  },
+  {
+    "key": "kind.Semicircle",
+    "english": "Semicircle",
+    "korean": "반원",
+    "references": [],
+    "originalExtraction": null,
+    "status": "ACTIVE",
+    "surface": "presentation-only; internal identifiers preserved"
+  },
+  {
+    "key": "kind.QuarterCircle",
+    "english": "QuarterCircle",
+    "korean": "4분원",
+    "references": [],
+    "originalExtraction": null,
+    "status": "ACTIVE",
+    "surface": "presentation-only; internal identifiers preserved"
+  },
+  {
+    "key": "kind.Triangle",
+    "english": "Triangle",
+    "korean": "삼각형",
+    "references": [],
+    "originalExtraction": null,
+    "status": "ACTIVE",
+    "surface": "presentation-only; internal identifiers preserved"
+  },
+  {
+    "key": "kind.Rectangle",
+    "english": "Rectangle",
+    "korean": "사각형",
+    "references": [],
+    "originalExtraction": null,
+    "status": "ACTIVE",
+    "surface": "presentation-only; internal identifiers preserved"
+  },
+  {
+    "key": "kind.Diamond",
+    "english": "Diamond",
+    "korean": "마름모",
+    "references": [],
+    "originalExtraction": null,
+    "status": "ACTIVE",
+    "surface": "presentation-only; internal identifiers preserved"
+  },
+  {
+    "key": "kind.Parallelogram",
+    "english": "Parallelogram",
+    "korean": "평행사변형",
+    "references": [],
+    "originalExtraction": null,
+    "status": "ACTIVE",
+    "surface": "presentation-only; internal identifiers preserved"
+  },
+  {
+    "key": "kind.Line",
+    "english": "Line",
+    "korean": "직선",
+    "references": [],
+    "originalExtraction": null,
+    "status": "ACTIVE",
+    "surface": "presentation-only; internal identifiers preserved"
+  },
+  {
+    "key": "kind.Arc",
+    "english": "Arc",
+    "korean": "원호",
+    "references": [],
+    "originalExtraction": null,
+    "status": "ACTIVE",
+    "surface": "presentation-only; internal identifiers preserved"
+  },
+  {
+    "key": "kind.Polyline",
+    "english": "Polyline",
+    "korean": "연결선",
+    "references": [],
+    "originalExtraction": null,
+    "status": "ACTIVE",
+    "surface": "presentation-only; internal identifiers preserved"
+  },
+  {
+    "key": "pointer.empty",
+    "english": "X —  Y — {0}",
+    "korean": "X —  Y — {0}",
+    "references": [
+      "MainWindow.xaml.cs:19"
+    ],
+    "originalExtraction": null,
+    "status": "ACTIVE",
+    "surface": "presentation-only; internal identifiers preserved"
+  },
+  {
+    "key": "status.holeCreated",
+    "english": "Created L layer {0} hole {1}",
+    "korean": "L 레이어에 {0} 천공 {1} 생성",
+    "references": [
+      "MainWindow.xaml.cs:84"
+    ],
+    "originalExtraction": null,
+    "status": "ACTIVE",
+    "surface": "presentation-only; internal identifiers preserved"
+  },
+  {
+    "key": "status.selection",
+    "english": "Selection mode",
+    "korean": "선택 모드",
+    "references": [
+      "MainWindow.xaml.cs:81"
+    ],
+    "originalExtraction": null,
+    "status": "ACTIVE",
+    "surface": "presentation-only; internal identifiers preserved"
+  },
+  {
+    "key": "status.holeCancelled",
+    "english": "Hole tool cancelled",
+    "korean": "천공 도구 취소",
+    "references": [
+      "MainWindow.xaml.cs:83"
+    ],
+    "originalExtraction": null,
+    "status": "ACTIVE",
+    "surface": "presentation-only; internal identifiers preserved"
+  },
+  {
+    "key": "status.slitCreated",
+    "english": "Created L layer {0} slit {1}",
+    "korean": "L 레이어에 {0} 절개 {1} 생성",
+    "references": [
+      "MainWindow.xaml.cs:78"
+    ],
+    "originalExtraction": null,
+    "status": "ACTIVE",
+    "surface": "presentation-only; internal identifiers preserved"
+  },
+  {
+    "key": "status.filletApplied",
+    "english": "{0} Fillet R {1:0.###} applied — Undo available",
+    "korean": "{0} 모깎기 R {1:0.###} 적용 — 실행 취소 가능",
+    "references": [
+      "MainWindow.xaml.cs:86"
+    ],
+    "originalExtraction": null,
+    "status": "ACTIVE",
+    "surface": "presentation-only; internal identifiers preserved"
+  },
+  {
+    "key": "validation.thickness",
+    "english": "Thickness must be greater than zero.",
+    "korean": "두께는 0보다 커야 합니다.",
+    "references": [
+      "Engines.cs:470"
+    ],
+    "originalExtraction": null,
+    "status": "ACTIVE",
+    "surface": "presentation-only; internal identifiers preserved"
+  },
+  {
+    "key": "validation.outer",
+    "english": "Exactly one outer contour is required.",
+    "korean": "외곽선은 정확히 하나가 필요합니다.",
+    "references": [
+      "Engines.cs:471"
+    ],
+    "originalExtraction": null,
+    "status": "ACTIVE",
+    "surface": "presentation-only; internal identifiers preserved"
+  },
+  {
+    "key": "validation.cutDepth",
+    "english": "{0}: VCutDepth must be less than thickness.",
+    "korean": "{0}: V 절단 깊이는 두께보다 작아야 합니다.",
+    "references": [
+      "Engines.cs:472"
+    ],
+    "originalExtraction": null,
+    "status": "ACTIVE",
+    "surface": "presentation-only; internal identifiers preserved"
+  },
+  {
+    "key": "validation.joint",
+    "english": "{0}: Micro joint width must be greater than zero.",
+    "korean": "{0}: 마이크로 조인트 폭은 0보다 커야 합니다.",
+    "references": [
+      "Engines.cs:473"
+    ],
+    "originalExtraction": null,
+    "status": "ACTIVE",
+    "surface": "presentation-only; internal identifiers preserved"
+  },
+  {
+    "key": "settings.auto",
+    "english": "Auto",
+    "korean": "자동",
+    "references": [
+      "SettingsWindows.cs:10",
+      "SettingsWindows.cs:16",
+      "SettingsWindows.cs:17"
+    ],
+    "originalExtraction": null,
+    "status": "ACTIVE",
+    "surface": "presentation-only; internal identifiers preserved"
+  },
+  {
+    "key": "file.dxf",
+    "english": "DXF files",
+    "korean": "DXF 파일",
+    "references": [
+      "Localization.cs:59"
+    ],
+    "originalExtraction": null,
+    "status": "ACTIVE",
+    "surface": "presentation-only; internal identifiers preserved"
+  },
+  {
+    "key": "kind.Polygon",
+    "english": "Polygon",
+    "korean": "다각형",
+    "references": [],
+    "originalExtraction": null,
+    "status": "ACTIVE",
+    "surface": "presentation-only; internal identifiers preserved"
+  },
+  {
+    "key": "kind.Pentagon",
+    "english": "Pentagon",
+    "korean": "오각형",
+    "references": [],
+    "originalExtraction": null,
+    "status": "ACTIVE",
+    "surface": "presentation-only; internal identifiers preserved"
+  },
+  {
+    "key": "kind.Hexagon",
+    "english": "Hexagon",
+    "korean": "육각형",
+    "references": [],
+    "originalExtraction": null,
+    "status": "ACTIVE",
+    "surface": "presentation-only; internal identifiers preserved"
+  },
+  {
+    "key": "kind.Ellipse",
+    "english": "Ellipse",
+    "korean": "타원",
+    "references": [],
+    "originalExtraction": null,
+    "status": "ACTIVE",
+    "surface": "presentation-only; internal identifiers preserved"
+  },
+  {
+    "key": "kind.Sector",
+    "english": "Sector",
+    "korean": "부채꼴",
+    "references": [],
+    "originalExtraction": null,
+    "status": "ACTIVE",
+    "surface": "presentation-only; internal identifiers preserved"
+  },
+  {
+    "key": "hole.ellipse",
+    "english": "Ellipse",
+    "korean": "타원",
+    "references": [
+      "MainWindow.xaml:18"
+    ],
+    "status": "ACTIVE",
+    "surface": "presentation-only; CR-074 tooltip/accessibility"
+  },
+  {
+    "key": "ellipse.centerX",
+    "english": "Center X ({0})",
+    "korean": "중심 X ({0})",
+    "references": [
+      "MainWindow.xaml.cs::ShowEllipseProperties/EditEllipseProperty"
+    ],
+    "status": "ACTIVE",
+    "surface": "presentation-only; CR-075"
+  },
+  {
+    "key": "ellipse.centerY",
+    "english": "Center Y ({0})",
+    "korean": "중심 Y ({0})",
+    "references": [
+      "MainWindow.xaml.cs::ShowEllipseProperties/EditEllipseProperty"
+    ],
+    "status": "ACTIVE",
+    "surface": "presentation-only; CR-075"
+  },
+  {
+    "key": "ellipse.major",
+    "english": "Major axis length ({0})",
+    "korean": "장축 길이 ({0})",
+    "references": [
+      "MainWindow.xaml.cs::ShowEllipseProperties/EditEllipseProperty"
+    ],
+    "status": "ACTIVE",
+    "surface": "presentation-only; CR-075"
+  },
+  {
+    "key": "ellipse.minor",
+    "english": "Minor axis length ({0})",
+    "korean": "단축 길이 ({0})",
+    "references": [
+      "MainWindow.xaml.cs::ShowEllipseProperties/EditEllipseProperty"
+    ],
+    "status": "ACTIVE",
+    "surface": "presentation-only; CR-075"
+  },
+  {
+    "key": "ellipse.angle",
+    "english": "Rotation angle (°)",
+    "korean": "회전각 (°)",
+    "references": [
+      "MainWindow.xaml.cs::ShowEllipseProperties/EditEllipseProperty"
+    ],
+    "status": "ACTIVE",
+    "surface": "presentation-only; CR-075"
+  },
+  {
+    "key": "ellipse.ratio",
+    "english": "Minor / major ratio",
+    "korean": "단축 / 장축 비율",
+    "references": [
+      "MainWindow.xaml.cs::ShowEllipseProperties/EditEllipseProperty"
+    ],
+    "status": "ACTIVE",
+    "surface": "presentation-only; CR-075"
+  },
+  {
+    "key": "ellipse.invalid",
+    "english": "Invalid ellipse: use finite values, major ≥ minor ≥ 0.1, within the material.",
+    "korean": "유효하지 않은 타원: 유한 값, 장축 ≥ 단축 ≥ 0.1 및 재료 범위를 확인하세요.",
+    "references": [
+      "MainWindow.xaml.cs::ShowEllipseProperties/EditEllipseProperty"
+    ],
+    "status": "ACTIVE",
+    "surface": "presentation-only; CR-075"
+  },
+  {
+    "key": "merge.internal",
+    "english": "Merge overlapping cuts",
+    "korean": "겹친 천공 통합",
+    "references": [
+      "MainWindow.xaml.cs",
+      "DesignViews.cs"
+    ],
+    "introducedBy": "CR-077"
+  },
+  {
+    "key": "merge.completed",
+    "english": "Overlapping cuts merged into one Inner Contour.",
+    "korean": "겹친 천공을 하나의 내부 윤곽으로 통합했습니다.",
+    "references": [
+      "MainWindow.xaml.cs",
+      "DesignViews.cs"
+    ],
+    "introducedBy": "CR-077"
+  },
+  {
+    "key": "merge.candidate",
+    "english": "Overlapping cuts: right-click to merge the connected group.",
+    "korean": "겹친 천공: 마우스 오른쪽 버튼으로 연결된 천공 전체를 통합할 수 있습니다.",
+    "references": [
+      "MainWindow.xaml.cs",
+      "DesignViews.cs"
+    ],
+    "introducedBy": "CR-077"
+  },
+  {
+    "key": "merge.scale",
+    "english": "Uniform scale (%)",
+    "korean": "동일 비율 크기 조정 (%)",
+    "references": [
+      "MainWindow.xaml.cs",
+      "DesignViews.cs"
+    ],
+    "introducedBy": "CR-077"
+  },
+  {
+    "key": "merge.loops",
+    "english": "Closed contours",
+    "korean": "닫힌 윤곽 수",
+    "references": [
+      "MainWindow.xaml.cs",
+      "DesignViews.cs"
+    ],
+    "introducedBy": "CR-077"
+  },
+  {
+    "key": "merge.invalid",
+    "english": "The merged cut cannot use these dimensions or position.",
+    "korean": "통합 천공에 이 크기 또는 위치를 적용할 수 없습니다.",
+    "references": [
+      "MainWindow.xaml.cs",
+      "DesignViews.cs"
+    ],
+    "introducedBy": "CR-077"
+  },
+  {
+    "key": "kind.Compound",
+    "english": "Merged Cut",
+    "korean": "통합 천공",
+    "references": [
+      "MainWindow.xaml.cs",
+      "DesignViews.cs"
+    ],
+    "introducedBy": "CR-077"
+  },
+  {
+    "key": "kind.RegularPolygon",
+    "english": "Regular Polygon",
+    "korean": "정다각형",
+    "references": [
+      "MainWindow.RegularPolygon.cs",
+      "RegularPolygonDrawing.cs",
+      "MainWindow.xaml"
+    ],
+    "introducedBy": "CR-078"
+  },
+  {
+    "key": "polygon.draw",
+    "english": "Draw Regular Polygon",
+    "korean": "정다각형 그리기",
+    "references": [
+      "MainWindow.RegularPolygon.cs",
+      "RegularPolygonDrawing.cs",
+      "MainWindow.xaml"
+    ],
+    "introducedBy": "CR-078"
+  },
+  {
+    "key": "polygon.sides",
+    "english": "Sides",
+    "korean": "변 개수",
+    "references": [
+      "MainWindow.RegularPolygon.cs",
+      "RegularPolygonDrawing.cs",
+      "MainWindow.xaml"
+    ],
+    "introducedBy": "CR-078"
+  },
+  {
+    "key": "polygon.radius",
+    "english": "Radius ({0})",
+    "korean": "외접원 반지름 ({0})",
+    "references": [
+      "MainWindow.RegularPolygon.cs",
+      "RegularPolygonDrawing.cs",
+      "MainWindow.xaml"
+    ],
+    "introducedBy": "CR-078"
+  },
+  {
+    "key": "polygon.rotation",
+    "english": "Rotation (°)",
+    "korean": "회전각 (°)",
+    "references": [
+      "MainWindow.RegularPolygon.cs",
+      "RegularPolygonDrawing.cs",
+      "MainWindow.xaml"
+    ],
+    "introducedBy": "CR-078"
+  },
+  {
+    "key": "polygon.instructions",
+    "english": "Regular Polygon: click center, then first vertex. Esc/right-click cancels.",
+    "korean": "정다각형: 중심을 클릭한 뒤 첫 꼭짓점을 클릭하세요. Esc 또는 우클릭으로 취소합니다.",
+    "references": [
+      "MainWindow.RegularPolygon.cs",
+      "RegularPolygonDrawing.cs",
+      "MainWindow.xaml"
+    ],
+    "introducedBy": "CR-078"
+  },
+  {
+    "key": "polygon.invalid",
+    "english": "Enter an integer Sides from 3 to 512 and a positive finite Radius. The polygon must fit inside the material.",
+    "korean": "변 개수는 3~512의 정수, 반지름은 유한한 양수여야 합니다. 정다각형은 재료 범위 안에 있어야 합니다.",
+    "references": [
+      "MainWindow.RegularPolygon.cs",
+      "RegularPolygonDrawing.cs",
+      "MainWindow.xaml"
+    ],
+    "introducedBy": "CR-078"
+  },
+  {
+    "key": "star.draw",
+    "english": "Draw a regular star (center, first vertex)",
+    "korean": "정다각별 그리기 (중심, 첫 꼭짓점)",
+    "references": [
+      "MainWindow.xaml",
+      "MainWindow.RegularStar.cs",
+      "RegularPolygonDrawing.cs",
+      "RegularStar.cs"
+    ],
+    "status": "ACTIVE",
+    "surface": "presentation-only; internal identifiers preserved",
+    "introducedBy": "CR-079"
+  },
+  {
+    "key": "star.invalid",
+    "english": "Star requires integer Sides 5–512, Step 2..floor((Sides−1)/2), positive radius and all vertices inside material.",
+    "korean": "꼭짓점 수는 5~512의 정수, 연결 간격은 2~(꼭짓점 수−1)/2 이하의 정수여야 하며 반지름이 양수이고 모든 꼭짓점이 재료 안에 있어야 합니다.",
+    "references": [
+      "MainWindow.xaml",
+      "MainWindow.RegularStar.cs",
+      "RegularPolygonDrawing.cs",
+      "RegularStar.cs"
+    ],
+    "status": "ACTIVE",
+    "surface": "presentation-only; internal identifiers preserved",
+    "introducedBy": "CR-079"
+  },
+  {
+    "key": "kind.RegularStar",
+    "english": "Regular Star",
+    "korean": "정다각별",
+    "references": [
+      "MainWindow.xaml",
+      "MainWindow.RegularStar.cs",
+      "RegularPolygonDrawing.cs",
+      "RegularStar.cs"
+    ],
+    "status": "ACTIVE",
+    "surface": "presentation-only; internal identifiers preserved",
+    "introducedBy": "CR-079"
+  },
+  {
+    "key": "star.step",
+    "english": "Step",
+    "korean": "연결 간격",
+    "references": [
+      "MainWindow.xaml",
+      "MainWindow.RegularStar.cs",
+      "RegularPolygonDrawing.cs",
+      "RegularStar.cs"
+    ],
+    "status": "ACTIVE",
+    "surface": "presentation-only; internal identifiers preserved",
+    "introducedBy": "CR-079"
+  },
+  {
+    "key": "star.instructions",
+    "english": "Regular star — set Sides and Step; click center, then first vertex. Esc/right-click cancels.",
+    "korean": "정다각별 — 꼭짓점 수와 연결 간격을 설정하고 중심, 첫 꼭짓점을 클릭하세요. Esc/오른쪽 클릭으로 취소합니다.",
+    "references": [
+      "MainWindow.xaml",
+      "MainWindow.RegularStar.cs",
+      "RegularPolygonDrawing.cs",
+      "RegularStar.cs"
+    ],
+    "status": "ACTIVE",
+    "surface": "presentation-only; internal identifiers preserved",
+    "introducedBy": "CR-079"
+  },
+  {
+    "key": "rectangle.invalid",
+    "english": "Rectangle requires finite values, width/height at least 0.1 and all rotated corners inside the material.",
+    "korean": "직사각형은 유한한 값, 0.1 이상의 폭·높이와 재료 안의 모든 회전 꼭짓점이 필요합니다.",
+    "references": [
+      "MainWindow.AngleProperties.cs",
+      "ArcEditing.cs",
+      "RectangleGeometry.cs"
+    ],
+    "status": "ACTIVE",
+    "introducedBy": "CR-081/082"
+  },
+  {
+    "key": "rectangle.height",
+    "english": "Local height ({0})",
+    "korean": "도형 기준 높이 ({0})",
+    "references": [
+      "MainWindow.AngleProperties.cs",
+      "ArcEditing.cs",
+      "RectangleGeometry.cs"
+    ],
+    "status": "ACTIVE",
+    "introducedBy": "CR-081/082"
+  },
+  {
+    "key": "arc.invalid",
+    "english": "Arc angle change is invalid: use finite angles with 0 < |sweep| < 360°, inside the material, without broken or crossing boundaries.",
+    "korean": "원호 각도를 적용할 수 없습니다. 유한한 각도, 0 < |각도 범위| < 360°, 재료 범위와 경계의 폐합·교차 여부를 확인하세요.",
+    "references": [
+      "MainWindow.AngleProperties.cs",
+      "ArcEditing.cs",
+      "RectangleGeometry.cs"
+    ],
+    "status": "ACTIVE",
+    "introducedBy": "CR-081/082"
+  },
+  {
+    "key": "arc.end",
+    "english": "End angle (°)",
+    "korean": "끝각 (°)",
+    "references": [
+      "MainWindow.AngleProperties.cs",
+      "ArcEditing.cs",
+      "RectangleGeometry.cs"
+    ],
+    "status": "ACTIVE",
+    "introducedBy": "CR-081/082"
+  },
+  {
+    "key": "arc.start",
+    "english": "Start angle (°)",
+    "korean": "시작각 (°)",
+    "references": [
+      "MainWindow.AngleProperties.cs",
+      "ArcEditing.cs",
+      "RectangleGeometry.cs"
+    ],
+    "status": "ACTIVE",
+    "introducedBy": "CR-081/082"
+  },
+  {
+    "key": "arc.sweep",
+    "english": "Signed sweep (°)",
+    "korean": "방향을 포함한 각도 범위 (°)",
+    "references": [
+      "MainWindow.AngleProperties.cs",
+      "ArcEditing.cs",
+      "RectangleGeometry.cs"
+    ],
+    "status": "ACTIVE",
+    "introducedBy": "CR-081/082"
+  },
+  {
+    "key": "rectangle.rotation",
+    "english": "Rotation (°)",
+    "korean": "회전각 (°)",
+    "references": [
+      "MainWindow.AngleProperties.cs",
+      "ArcEditing.cs",
+      "RectangleGeometry.cs"
+    ],
+    "status": "ACTIVE",
+    "introducedBy": "CR-081/082"
+  },
+  {
+    "key": "rectangle.width",
+    "english": "Local width ({0})",
+    "korean": "도형 기준 폭 ({0})",
+    "references": [
+      "MainWindow.AngleProperties.cs",
+      "ArcEditing.cs",
+      "RectangleGeometry.cs"
+    ],
+    "status": "ACTIVE",
+    "introducedBy": "CR-081/082"
+  },
+  {
+    "key": "clipboard.copy",
+    "english": "Copy",
+    "korean": "복사",
+    "references": [
+      "MainWindow.Clipboard.cs",
+      "MainWindow.xaml"
+    ],
+    "status": "ACTIVE",
+    "surface": "presentation-only; internal identifiers preserved"
+  },
+  {
+    "key": "clipboard.paste",
+    "english": "Paste",
+    "korean": "붙여넣기",
+    "references": [
+      "MainWindow.Clipboard.cs",
+      "MainWindow.xaml"
+    ],
+    "status": "ACTIVE",
+    "surface": "presentation-only; internal identifiers preserved"
+  },
+  {
+    "key": "clipboard.copied",
+    "english": "Shape copied. Ctrl+V to paste.",
+    "korean": "도형을 복사했습니다. Ctrl+V로 붙여넣으세요.",
+    "references": [
+      "MainWindow.Clipboard.cs",
+      "MainWindow.xaml"
+    ],
+    "status": "ACTIVE",
+    "surface": "presentation-only; internal identifiers preserved"
+  },
+  {
+    "key": "clipboard.pasted",
+    "english": "Shape pasted. Drag to reposition.",
+    "korean": "도형을 붙여넣었습니다. 드래그하여 위치를 옮기세요.",
+    "references": [
+      "MainWindow.Clipboard.cs",
+      "MainWindow.xaml"
+    ],
+    "status": "ACTIVE",
+    "surface": "presentation-only; internal identifiers preserved"
+  },
+  {
+    "key": "clipboard.unsupported",
+    "english": "Select a hole, slit or contour segment to copy.",
+    "korean": "복사할 천공, 절개 또는 윤곽 구간을 선택하세요.",
+    "references": [
+      "MainWindow.Clipboard.cs",
+      "MainWindow.xaml"
+    ],
+    "status": "ACTIVE",
+    "surface": "presentation-only; internal identifiers preserved"
+  },
+  {
+    "key": "clipboard.invalid",
+    "english": "No compatible shape to paste, or the shape is larger than this material.",
+    "korean": "붙여넣을 수 있는 도형이 없거나 도형이 재료보다 큽니다.",
+    "references": [
+      "MainWindow.Clipboard.cs",
+      "MainWindow.xaml"
+    ],
+    "status": "ACTIVE",
+    "surface": "presentation-only; internal identifiers preserved"
+  },
+  {
+    "key": "clipboard.busy",
+    "english": "Clipboard is busy. Try again.",
+    "korean": "클립보드를 사용할 수 없습니다. 다시 시도하세요.",
+    "references": [
+      "MainWindow.Clipboard.cs",
+      "MainWindow.xaml"
+    ],
+    "status": "ACTIVE",
+    "surface": "presentation-only; internal identifiers preserved"
+  },
+  {
+    "key": "svg.menu",
+    "english": "Import SVG...",
+    "korean": "SVG 가져오기...",
+    "references": [
+      "SvgImportEngine.cs",
+      "MainWindow.SvgImport.cs",
+      "MainWindow.xaml"
+    ],
+    "status": "ACTIVE",
+    "surface": "presentation-only; internal identifiers preserved"
+  },
+  {
+    "key": "svg.file",
+    "english": "SVG files (*.svg)",
+    "korean": "SVG 파일 (*.svg)",
+    "references": [
+      "SvgImportEngine.cs",
+      "MainWindow.SvgImport.cs",
+      "MainWindow.xaml"
+    ],
+    "status": "ACTIVE",
+    "surface": "presentation-only; internal identifiers preserved"
+  },
+  {
+    "key": "svg.title",
+    "english": "Import SVG",
+    "korean": "SVG 가져오기",
+    "references": [
+      "SvgImportEngine.cs",
+      "MainWindow.SvgImport.cs",
+      "MainWindow.xaml"
+    ],
+    "status": "ACTIVE",
+    "surface": "presentation-only; internal identifiers preserved"
+  },
+  {
+    "key": "svg.confirm",
+    "english": "Import as a new document: {0:0.###} × {1:0.###} {2}, {3} closed shapes and {4} open paths. Closed profiles become holes; open paths become slits. Save As DXF to keep the source SVG unchanged. Continue?",
+    "korean": "새 문서로 가져옵니다: {0:0.###} × {1:0.###} {2}, 닫힌 도형 {3}개, 열린 경로 {4}개. 닫힌 윤곽은 천공, 열린 경로는 절개가 됩니다. 다른 이름으로 DXF를 저장하면 원본 SVG를 유지합니다. 계속하시겠습니까?",
+    "references": [
+      "SvgImportEngine.cs",
+      "MainWindow.SvgImport.cs",
+      "MainWindow.xaml"
+    ],
+    "status": "ACTIVE",
+    "surface": "presentation-only; internal identifiers preserved"
+  },
+  {
+    "key": "svg.imported",
+    "english": "SVG imported. Save As DXF to save this design.",
+    "korean": "SVG를 가져왔습니다. 다른 이름으로 DXF를 저장하세요.",
+    "references": [
+      "SvgImportEngine.cs",
+      "MainWindow.SvgImport.cs",
+      "MainWindow.xaml"
+    ],
+    "status": "ACTIVE",
+    "surface": "presentation-only; internal identifiers preserved"
+  },
+  {
+    "key": "svg.invalid",
+    "english": "Cannot import SVG: {0}",
+    "korean": "SVG를 가져올 수 없습니다: {0}",
+    "references": [
+      "SvgImportEngine.cs",
+      "MainWindow.SvgImport.cs",
+      "MainWindow.xaml"
+    ],
+    "status": "ACTIVE",
+    "surface": "presentation-only; internal identifiers preserved"
+  },
+  {
+    "key": "svg.xml",
+    "english": "Invalid SVG XML or prohibited DTD.",
+    "korean": "SVG XML이 잘못되었거나 허용되지 않는 DTD가 있습니다.",
+    "references": [
+      "SvgImportEngine.cs",
+      "MainWindow.SvgImport.cs",
+      "MainWindow.xaml"
+    ],
+    "status": "ACTIVE",
+    "surface": "presentation-only; internal identifiers preserved"
+  },
+  {
+    "key": "svg.limit",
+    "english": "SVG size, geometry complexity or numeric range exceeds the import limit.",
+    "korean": "SVG 크기, 도형 복잡도 또는 수치 범위가 가져오기 제한을 초과했습니다.",
+    "references": [
+      "SvgImportEngine.cs",
+      "MainWindow.SvgImport.cs",
+      "MainWindow.xaml"
+    ],
+    "status": "ACTIVE",
+    "surface": "presentation-only; internal identifiers preserved"
+  },
+  {
+    "key": "svg.empty",
+    "english": "No supported visible geometry.",
+    "korean": "가져올 수 있는 표시 도형이 없습니다.",
+    "references": [
+      "SvgImportEngine.cs",
+      "MainWindow.SvgImport.cs",
+      "MainWindow.xaml"
+    ],
+    "status": "ACTIVE",
+    "surface": "presentation-only; internal identifiers preserved"
+  },
+  {
+    "key": "svg.bounds",
+    "english": "Geometry extends outside the SVG canvas. Expand width/height or viewBox in the source.",
+    "korean": "도형이 SVG 캔버스를 벗어납니다. 원본의 width/height 또는 viewBox를 확장하세요.",
+    "references": [
+      "SvgImportEngine.cs",
+      "MainWindow.SvgImport.cs",
+      "MainWindow.xaml"
+    ],
+    "status": "ACTIVE",
+    "surface": "presentation-only; internal identifiers preserved"
+  },
+  {
+    "key": "svg.skipped",
+    "english": "Unsupported SVG content skipped: {0}",
+    "korean": "지원하지 않는 SVG 요소를 건너뛰었습니다: {0}",
+    "references": [
+      "SvgImportEngine.cs",
+      "MainWindow.SvgImport.cs",
+      "MainWindow.xaml"
+    ],
+    "status": "ACTIVE",
+    "surface": "presentation-only; internal identifiers preserved"
+  },
+  {
+    "key": "svg.approx",
+    "english": "Curves converted to LINE profiles with nominal 0.01 mm flattening tolerance; verify the result before cutting.",
+    "korean": "곡선을 명목 0.01mm 근사 허용값의 LINE 윤곽으로 변환했습니다. 절삭 전에 결과를 확인하세요.",
+    "references": [
+      "SvgImportEngine.cs",
+      "MainWindow.SvgImport.cs",
+      "MainWindow.xaml"
+    ],
+    "status": "ACTIVE",
+    "surface": "presentation-only; internal identifiers preserved"
+  }
+]

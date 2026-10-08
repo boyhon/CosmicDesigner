@@ -6,7 +6,7 @@ Preconditions: Windows/.NET 10. Inputs: cardinal edge centers, radius 41.582 →
 Expected: actual center remains on edge after radius edit, shape direction unchanged, no clamping for invalid property edits. Implementation: Program.cs::SemicircleProperties.
 ## TC-051-002
 Execution Type: MANUAL; Status: ACTIVE; Result: PENDING_MANUAL
-Preconditions: artifacts/CosmicDesigner-1.20.16/CosmicDesigner.exe.
+Preconditions: artifacts/CosmicDesigner-1.20.16/VCutting.exe.
 1. Select right-edge left-facing semicircle. Verify Center X=300, Center Y=diameter midpoint, Radius R=41.582 for attached example; Width/Height absent.
 2. Edit radius; diameter stays at X=300, direction and orange merge candidate remain. Undo/Redo.
 3. Edit actual center X/Y; shape translates. Invalid/out-of-bounds values reject without move/shrink.

@@ -1,7 +1,7 @@
 [CmdletBinding()]
-param([Parameter(Mandatory)][string]$Path)
+param([Parameter(Mandatory)][string]$Path, [Parameter(Mandatory)][string]$Definitions)
 $ErrorActionPreference = "Stop"
-$definitions = Get-Content -LiteralPath (Join-Path $PSScriptRoot "ReleaseVersion.iss") -Raw
+$definitions = Get-Content -LiteralPath $Definitions -Raw
 function Read-Define([string]$Name) {
     $match = [regex]::Match($definitions, ('(?m)^#define ' + [regex]::Escape($Name) + ' "([^"]+)"'))
     if (-not $match.Success) { throw "Missing release definition: $Name" }

@@ -16,4 +16,8 @@ Procedure: 설치 파일을 열고 설치 버전과 Windows 설치 목록 버전
 Expected: 표시 버전 1.20.29-rc1, 설치 정상 및 사용자 설정 보존.
 Result: PENDING_MANUAL. 확인자/일시/근거가 있어야 PASS 가능.
 
-AUTO runner: CosmicDesigner.Verification/Program.cs::InstallerRelease; --tests TC-065-001. COSMIC_INSTALLER_PATH overrides the default compiled artifact path. Windows numeric version parts and displayed strings are checked separately.
+AUTO runner: VCutting.Verification/Program.cs::InstallerRelease; --tests TC-065-001. COSMIC_INSTALLER_PATH overrides the default compiled artifact path. Windows numeric version parts and displayed strings are checked separately.
+
+CR-069 supersedes prior product/output branding expectations; CR-068 supersedes the installer default folder. TC IDs/purpose and other assertions remain unchanged. Historical reports preserve their original results.
+
+CR-070 approval supersedes hardcoded historical version expectations. AUTO checks immutable Freeze gates in development; selected approved installer uses generated build.json for numeric/text metadata comparison. No selected Freeze means actual new installer compile NOT_RUN. Historical results preserved.

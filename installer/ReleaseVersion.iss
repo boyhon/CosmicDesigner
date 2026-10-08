@@ -1,4 +1,3 @@
-; Current Freeze installer version. Update together when a new Freeze is approved.
-#define AppVersion "1.20.29-rc1"
-#define AppNumericVersion "1.20.29.0"
-#define SetupBaseFilename "CosmicDesignerSetup"
+; CR-070: historical Freeze values live in historical records/artifacts.
+; Build-Installer.ps1 supplies generated ReleaseVersion.iss from an approved Freeze.
+#error No active customer release; select an approved Freeze record.

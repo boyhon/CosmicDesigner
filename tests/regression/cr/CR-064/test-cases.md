@@ -4,9 +4,9 @@
 Execution Type: AUTO. Status: ACTIVE.
 Purpose: local manual integrity, deployment equivalence, all-page navigation and Help route/package configuration regression.
 Preconditions: Windows/.NET 10; repository Release verification build in isolated output; HTML baseline and manual-sections.json present.
-Procedure: dotnet <output>/CosmicDesigner.Verification.dll --tests TC-064-001.
+Procedure: dotnet <output>/VCutting.Verification.dll --tests TC-064-001.
 Expected: valid UTF-8 declaration/bytes; every HTML href/src and fragment resolves inside deployed root; no external dependencies; source HTML/CSS/JS/images byte-identical to output; all 22 sections linked from every manual page; Korean language/mobile metadata, Home/previous/next/related links; allowed menu routes resolve from arbitrary install location; route traversal rejected; installer includes CosmicDesigner and recursive help; internal Markdown/JSON excluded.
-Implementation: CosmicDesigner.Verification/Program.cs::UserDocumentation.
+Implementation: VCutting.Verification/Program.cs::UserDocumentation.
 Coverage: automated asset and integration contract only; does not launch browser or install an application.
 
 ## TC-064-002
@@ -26,6 +26,8 @@ Evidence required: reviewer, date/time, app/output path/version, browser, observ
 Execution Type: MANUAL. Status: ACTIVE. Result: PENDING_MANUAL.
 Purpose: actual installer lifecycle coverage.
 Preconditions: freshly built installer including CR-064, disposable Windows environment and existing install backup.
-Procedure: install fresh to default and custom path with spaces; verify CosmicDesigner.exe and all help HTML/assets, launch via Start menu, open four Help routes; upgrade previous package after saving work; confirm help/current assets remain correct; uninstall and confirm installed Help/app removed while externally saved DXF remains.
+Procedure: install fresh to default and custom path with spaces; verify VCutting.exe and all help HTML/assets, launch via Start menu, open four Help routes; upgrade previous package after saving work; confirm help/current assets remain correct; uninstall and confirm installed Help/app removed while externally saved DXF remains.
 Expected: installation paths independent, current HTML and CosmicDesigner shipped, shortcuts usable, clean upgrade/removal with user documents preserved.
 Evidence required: reviewer/time, installer hash/version, paths, observed fresh/custom/upgrade/removal results. Configuration checks do not count as actual installed PASS.
+
+CR-069 supersedes prior product/output branding expectations; CR-068 supersedes the installer default folder. TC IDs/purpose and other assertions remain unchanged. Historical reports preserve their original results.

@@ -25,3 +25,5 @@ installer/stage/
 release-output/
 dist/
 cache/
+**/__pycache__/
+*.pyc

@@ -10,7 +10,7 @@
 - 입력/절차: 검증 executable을 --tests TC-024-001 로 실행
 - 기대 결과: 함수의 모든 assertion PASS, exit code 0
 - Execution Type: AUTO
-- 구현 위치: CosmicDesigner.Verification/Program.cs::Defaults
+- 구현 위치: VCutting.Verification/Program.cs::Defaults
 - 범위: 함수에 실제 구현된 검사만 포함; CR 전체/UI 승인과 구분
 
 ## TC-024-002
@@ -28,3 +28,5 @@
 - 변경 후에는 `*Sample.dxf - CosmicDesigner`, 저장 후에는 `Sample.dxf - CosmicDesigner`가 표시된다.
 
 - 실행 결과: NOT_RUN — 이관 시점에 새 수동 실행을 주장하지 않음.
+
+CR-069 supersedes prior product/output branding expectations; CR-068 supersedes the installer default folder. TC IDs/purpose and other assertions remain unchanged. Historical reports preserve their original results.

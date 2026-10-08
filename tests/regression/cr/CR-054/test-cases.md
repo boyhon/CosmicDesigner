@@ -5,15 +5,15 @@
 - Execution Type: AUTO
 - Purpose: 열린 절개 모델 생성, ARC 양방향/큰 sweep, 퇴화 거부, 재료 범위, 면적 보존, 저장/단위/삭제/Undo/Redo/ID/3D.
 - Preconditions: Windows .NET 10 WPF Release verification build.
-- Procedure: CosmicDesigner.Verification.exe --tests TC-054-001
+- Procedure: VCutting.Verification.exe --tests TC-054-001
 - Expected: assertion 모두 통과하고 exit 0. LINE/ARC가 그대로 보존되고 기존 Outer/Cut 및 재료 면적 변경 없음.
-- Implementation: CosmicDesigner.Verification/Program.cs::SlitOperations
+- Implementation: VCutting.Verification/Program.cs::SlitOperations
 
 ## TC-054-002
 - Status: ACTIVE
 - Execution Type: MANUAL
 - Purpose: 제공한 이미지 및 실제 UI 그리기/취소/선택/저장 수용.
-- Preconditions: artifacts/CosmicDesigner-1.20.19/CosmicDesigner.exe, 새 문서.
+- Preconditions: artifacts/CosmicDesigner-1.20.19/VCutting.exe, 새 문서.
 - Procedure:
   1. Slit의 직선/원호/연결선 세 이미지가 첨부와 일치하고 tooltip이 이름을 표시하는지 확인한다.
   2. 직선 버튼, 재료 내부 두 점 클릭. 점선 미리보기와 완료된 검은 선 및 Select 복귀를 확인한다. 수평/수직/대각선을 반복한다.
@@ -30,9 +30,9 @@
 - Execution Type: AUTO
 - Purpose: 정확한 직선/원호/연결선 선택, 픽셀 tolerance/zoom/pan/정역 sweep/겹침 및 WPF 선택 이벤트/모드 검사.
 - Preconditions: Windows/.NET 10 WPF Release 1.20.26.
-- Procedure: CosmicDesigner.Verification.exe --tests TC-054-003
+- Procedure: VCutting.Verification.exe --tests TC-054-003
 - Expected: SlitClickSelection assertion 모두 통과; curve 선택 및 객체 이벤트 동기화, 그리기 모드/눈금자 입력 유지.
-- Implementation: CosmicDesigner.Verification/Program.cs::SlitClickSelection
+- Implementation: VCutting.Verification/Program.cs::SlitClickSelection
 
 ## TC-054-004
 - Status: ACTIVE

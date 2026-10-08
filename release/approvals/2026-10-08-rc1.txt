@@ -1,0 +1,5 @@
+User: repository owner, Codex conversation, 2026-10-08 Asia/Seoul.
+Original request: 지금까지 작업한 내용을 모두 Commit하고 Push하고 설치 파일을 만들어 주세요.
+Explicit reply: 1.0.0-rc.1 Freeze 승인
+Scope: all current source work through CR-089 plus CR-090 package integration of CosmicConvert; Commit/Push branch boyhon; build RC installer. No production promotion. Required human verification remains pending; historical TC-085-004 fixture unavailable.
+Automated prior evidence: CR-089 Designer107PASS plus converter7PASS,0FAIL,1NOT_RUN. New package integration checks recorded in CR-090.

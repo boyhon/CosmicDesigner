@@ -11,7 +11,9 @@ document.addEventListener("DOMContentLoaded",()=>{
   document.addEventListener("keydown",e=>{
     if(e.key==="Home"&&e.altKey){
       e.preventDefault();
-      location.href=cosmic?document.querySelector('.nav a[href$="index.html"]').href:"../DXFExplorer_help.html";
+      location.href=cosmic?document.querySelector('.nav a[href$="index.html"]').href:"../VCutting.Explorer_help.html";
     }
   });
 });
+
+document.addEventListener("DOMContentLoaded",()=>{document.querySelectorAll("[data-release-version]").forEach(node=>node.textContent=window.VCuttingVersion||"Development");});

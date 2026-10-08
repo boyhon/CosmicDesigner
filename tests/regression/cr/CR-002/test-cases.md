@@ -10,7 +10,7 @@
 - 입력/절차: 검증 executable을 --tests TC-002-001 로 실행
 - 기대 결과: 함수의 모든 assertion PASS, exit code 0
 - Execution Type: AUTO
-- 구현 위치: CosmicDesigner.Verification/Program.cs::RecentFiles
+- 구현 위치: VCutting.Verification/Program.cs::RecentFiles
 - 범위: 함수에 실제 구현된 검사만 포함; CR 전체/UI 승인과 구분
 
 ## TC-002-002
@@ -21,7 +21,7 @@
 - 입력/절차: 검증 executable을 --tests TC-002-002 로 실행
 - 기대 결과: 함수의 모든 assertion PASS, exit code 0
 - Execution Type: AUTO
-- 구현 위치: CosmicDesigner.Verification/Program.cs::SettingsPersistence
+- 구현 위치: VCutting.Verification/Program.cs::SettingsPersistence
 - 범위: 함수에 실제 구현된 검사만 포함; CR 전체/UI 승인과 구분
 
 ## TC-002-003

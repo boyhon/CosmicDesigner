@@ -1,0 +1,4 @@
+# CR-088 tests
+TC-088-001 Execution Type AUTO: explicit/inline-style zero fill-opacity or no paint leaves ignored, visible stroke/text/CSS override/nested tspan remain errors. Supplied sample converts identically to test copy without auxiliary text; native DXF reload, certified bound and original hash preservation. Do not modify supplied original.
+TC-088-002 Execution Type MANUAL: new executable Open supplied SVG shows expected outlined characters without error; Save DXF, Designer open2D/3D, select/move and CAD review. Record reviewer/date/screenshot. PENDING_MANUAL until human evidence.
+TC088001 also verifies sample full optimization/native save after X-sorted topology broad phase; existing intersecting-fill rejection TC085002 must remain unchanged. Resource limits20million sweep candidates/4million exact tests remain explicit.

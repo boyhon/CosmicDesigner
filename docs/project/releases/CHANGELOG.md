@@ -1,4 +1,4 @@
-# Cosmic Designer 개발 — Changelog
+# VCutting 개발 — Changelog
 
 Release-relevant changes after the baseline are recorded here. CR identifiers must accompany functional entries.
 
@@ -348,3 +348,53 @@ Release-relevant changes after the baseline are recorded here. CR identifiers mu
 
 ## CR-067 — 2026-10-06
 설치 EXE 아이콘을 Inno Setup 기본 클래식 아이콘으로 변경.
+
+## Unreleased — CR-068 / CR-069 (2026-10-06)
+- 프로젝트/제품 및 솔루션 이름 VCutting; 보조 앱 VCutting.Explorer/Viewer/Simulator/Drawer, 설치 VCuttingSetup.exe.
+- 새 설치 기본 폴더 C:\Program Files\VCutting. 기존 사용자 설정/DXF/설치 업데이트 식별자 유지. 기존 Freeze 산출물은 보존. 사람 UI/설치 검증 대기.
+
+## Unreleased — CR-070 (2026-10-06)
+Separate internal development and customer version authorities; explicit immutable Freeze/production approval, matching-input build gates, generated About/Help/installer metadata and monotonic Windows mapping. Current development 1.20.29; no new customer Freeze/release issued. Historical records/packages preserved; human verification pending.
+
+## CR-071 — 2026-10-06 (Development)
+설치 매뉴얼에 실제 화면 6장과 순서별 설명 추가. 원본 캡처 버전 1.20.29-rc1 보존. 새 Freeze/출시 없음; 사람 가독성 확인 대기.
+
+2026-10-06 CR-071 문서 정정: VCutting 패키지와 CosmicDesigner 프로그램을 구분. CosmicExplorer는 향후 계획. 실행/설치 구현 변경 없음.
+
+## 2026-10-07 — CR-072/073 Development
+CosmicDesigner English/한국어 display, external customizable language catalogs and per-user settings. Fresh user defaults mm/3000×3000/2; legacy units and physical sizes preserved. No Freeze/customer release assigned.
+
+## Development — 2026-10-07 / CR-074
+CosmicDesigner: 원 바로 옆 타원 Hole 아이콘, 방향 드래그 생성 및 기존 저장/편집 호환. VCutting 프로젝트 명칭 유지. 고객 버전/Freeze 발급 없음.
+
+## Development — 2026-10-07 / CR-075, CR-076
+CosmicDesigner 타원 중심·장축·단축·회전 속성과 단일 객체 트리, invalid 입력 안전 거부. 주 실행 산출물 CosmicDesigner.exe 적용; VCutting 프로젝트 유지. 새 Freeze/고객 버전 발급 없음.
+
+### CR-077 — 내부 천공 합집합 통합 (Development, 2026-10-07)
+겹친 연결 그룹 주황색 표시와 우클릭 통합, 하나의 복합 내부 윤곽 편집. 원호/재료 섬과 Undo·DXF 보존. 사람 화면 검증 대기. 고객 버전/Freeze 발급 없음.
+
+### CR-078 — 정다각형 그리기 (Development, 2026-10-07)
+정다각형 두 클릭 preview/변 개수/중심·반지름·회전각 편집 및 단일 객체 선택·이동·Undo/DXF closed LWPOLYLINE. 기존 도형과 일반 Polyline 해석 유지. 사람/AutoCAD 확인 대기, Freeze/고객 버전 발급 없음.
+
+2026-10-07 Development — CR-079: CosmicDesigner crossing Regular Star tool, editable skip interval and multi-cycle DXF/history support. No customer version allocated.
+
+Development2026-10-07 CR-079 correction: full RegularStar center/interior cut; Compound material islands preserved. No Freeze.
+
+Development2026-10-07 CR-079: eliminate star interior cutting lines, single closed exterior profile for preview/Flat/3D/DXF; retain parametric editing. No Freeze.
+
+Development2026-10-07 CR-080: Parallelogram button moved between Diamond and RegularPolygon. Build reports include actual About identifier. No customer version/Freeze.
+
+Development2026-10-07 CR081/082: all ARC start/end property edits with boundary reconnection/validation; Rectangle rotation/local sizes. No customer version/Freeze.
+
+2026-10-07 CR-083 Development: selected shape Copy/Paste, cross-document units and Windows clipboard, source-independent geometry/history; human UI verification pending. No Freeze/customer version issued.
+
+2026-10-07 CR-084 Development: SVG import editable profiles with physical units/group transforms/path curves, safe XML and warnings; manual source/UI/CAD comparison pending. No Freeze/customer version.
+
+CR-085 — Development: separate CosmicConvert SVG→DXF converter, certified .05mm curve approximation, quiet CLI and Open/Save/Exit preview GUI, help/tests. No installer change, customer version or Freeze. GUI/CAD human acceptance pending.
+
+CR-086 — Development: CosmicConvert exported frame with10mm margins, automatic rigid shape placement and frame size summary. No release/Freeze/installer.
+CR-087 Development: CosmicConvert native Compound/Slit DXF metadata restores logical objects with optimized arcs and10mm frame. Required human verification pending; no customer release.
+CR-088 Development: skip proven invisible auxiliary leaf text; bounded fill topology broad phase permits complex nonintersecting lettering. Human acceptance pending; no release.
+
+- CR-089: H/W Section Designer Fit/Reset restores the panel-centered full-section view after zoom.
+- CR-090: include CosmicConvert in VCutting installer and Start Menu.

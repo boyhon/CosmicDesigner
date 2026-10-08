@@ -212,3 +212,7 @@ Historical first-phase DXFViewer report and ARC notes were read; current parser/
 | docs/IMPLEMENTATION.md | 8889df15f205bd6ef7245cb4e6fe2e841c8cddce70a2ab377c7ccae6914cbbc0 |
 | docs/ARC_SUPPORT.md | caf751a1416bd42086519978ac1d7c34b08a7cfbca8c7eafdaf925f6e714fec4 |
 | docs/COSMIC_DESIGNER_CHANGE_REQUIREMENTS.md | 5f2c8cc6e32b4bbfeb7f853ef89c1ef61f891af98ac48119316d49b0930b04ff |
+
+CR-085: CosmicConvert/SvgReader*.cs, Geometry.cs, DxfWriter.cs, Program.cs, MainWindow.cs and CosmicConvert.Verification/Program.cs are sources for standalone cosmicconvert.html. CosmicDesigner import grouping verified automatically; GUI/CAD/screenshots pending.
+
+CR-086: CosmicConvert/ExportLayout.cs supplies actual-shape bounds/10mm frame/rigid placement for cosmicconvert.html#geometry; MainWindow.cs supplies frame summary. Historical reference availability and human CAD measurements tracked separately.

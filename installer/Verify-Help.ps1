@@ -2,7 +2,7 @@
 param([Parameter(Mandatory)][string]$Root)
 $ErrorActionPreference = "Stop"
 $rootPath = (Resolve-Path -LiteralPath $Root).Path
-$required = @("DXFExplorerSetup_help.html", "DXFExplorer_help.html", "DXFViewer_help.html", "DXFSimulator_help.html", "DXFDrawer_help.html", "CosmicDesigner_help.html", "help\index.html", "help\getting-started.html", "help\reference\shortcuts.html", "help\troubleshooting\common-errors.html", "help\css\help.css", "help\js\help.js")
+$required = @("VCuttingSetup_help.html", "VCutting.Explorer_help.html", "VCutting.Viewer_help.html", "VCutting.Simulator_help.html", "VCutting.Drawer_help.html", "VCutting_help.html", "help\index.html", "help\getting-started.html", "help\reference\shortcuts.html", "help\troubleshooting\common-errors.html", "help\css\help.css", "help\js\help.js")
 foreach ($relative in $required) {
     if (-not (Test-Path -LiteralPath (Join-Path $rootPath $relative))) { throw "Required Help file is missing: $relative" }
 }

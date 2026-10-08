@@ -4,7 +4,7 @@ Execution Type: AUTO. Status: ACTIVE.
 Precondition: Windows/.NET verification build.
 Procedure: --tests TC-056-001.
 Expected: loaded rectangle H 300→100, W→150, Undo/Redo, subsequent DXF and Flat mask match current W/H; custom contour retained.
-Implementation: CosmicDesigner.Verification/Program.cs::SectionRectangleResize.
+Implementation: VCutting.Verification/Program.cs::SectionRectangleResize.
 ## TC-056-002
 Execution Type: MANUAL. Status: ACTIVE.
 Precondition: open saved basic 300×300 material.

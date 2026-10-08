@@ -1,0 +1,49 @@
+{
+  "received": "2026-10-06",
+  "captureVersion": "1.20.29-rc1",
+  "source": "User supplied six actual installation screenshots; original bytes preserved; capture date unknown",
+  "images": [
+    {
+      "step": 1,
+      "file": "01-language.png",
+      "caption": "그림 1. 설치 중 사용할 언어를 선택",
+      "sha256": "9b623600428b4069f7a776dc48f1ad25acd7990b11c2cb7fba70a2a4a275b2b4",
+      "source": "codex-clipboard-daae9e75-c219-42b7-8595-50a5290d6590.png"
+    },
+    {
+      "step": 2,
+      "file": "02-destination.png",
+      "caption": "그림 2. 설치할 대상 위치 선택",
+      "sha256": "3820816f5f2a9b5280cfa678a929ab4e2883897dc94c130b42afaadec4a1e33c",
+      "source": "codex-clipboard-af2b54ad-b03a-4d94-aade-2ee996ad58cc.png"
+    },
+    {
+      "step": 3,
+      "file": "03-additional-tasks.png",
+      "caption": "그림 3. 추가 작업 선택",
+      "sha256": "6b1446e860046553c5def28e28a217e665410dbc9fabbe330317acab20c71ca9",
+      "source": "codex-clipboard-f5317117-3dc9-4f95-b150-cfbb43264ba3.png"
+    },
+    {
+      "step": 4,
+      "file": "04-ready.png",
+      "caption": "그림 4. 설치 준비 완료",
+      "sha256": "7a1e70a3b7a1b08e27dc89d80a233e9e20c3ed080838cb24214b3b1a4c311902",
+      "source": "codex-clipboard-32073e31-89a3-4a01-a6ac-dcce4b7b44ff.png"
+    },
+    {
+      "step": 5,
+      "file": "05-progress.png",
+      "caption": "그림 5. 설치 중 화면",
+      "sha256": "2810ef429be9e59de0e7deff2412c094537643312c99ffd95a60873ff82cdce7",
+      "source": "codex-clipboard-61790d4b-14f8-4ae9-b1ff-f5930e5c277b.png"
+    },
+    {
+      "step": 6,
+      "file": "06-complete.png",
+      "caption": "그림 6. 설치 마법사 완료",
+      "sha256": "cd30a3aca8d1c62ade0d3e48ec91423b3ee15a679da08157c0404a5f2925de5e",
+      "source": "codex-clipboard-82e391e1-abdc-4032-b33f-796c341950f4.png"
+    }
+  ]
+}

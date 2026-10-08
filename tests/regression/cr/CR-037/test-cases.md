@@ -18,3 +18,6 @@
 - Release 빌드 및 기존 자동 검증이 통과한다.
 
 - 실행 결과: NOT_RUN — 이관 시점에 새 수동 실행을 주장하지 않음.
+
+## Approved expectation updates — CR-074 / CR-078 (2026-10-07)
+Historical six-tool removal/five-button expectations above apply to the original CR-037 baseline. User explicitly requested Ellipse in CR-074 and RegularPolygon in CR-078. Current TC-037-001 expects those two additional outline buttons; all other tool exclusions, original buttons/tooltips/accessibility/selection behavior remain. Test ID and human NOT_RUN status retained; no human PASS inferred. RegularPolygon geometry/tool acceptance tracked separately as TC-078-001..012.

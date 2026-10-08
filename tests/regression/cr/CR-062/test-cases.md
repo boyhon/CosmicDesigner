@@ -6,7 +6,7 @@ Preconditions: .NET 10 Windows WPF; no source design is modified.
 Procedure: --tests TC-062-001
 Inputs: H notch intervals [0,190], [210,300]; continuous bridge X=150; W transpose; ARC notch; no scan intersections; bends at 100/200/250.
 Expected: all intervals shown, 20-unit void retained, two dimension editors, white pixels in gap/material pixels in upper piece, no gap hit, both valid bend hits; Flat/Bent render succeeds. Bend at 200 excluded. Lower fragment edit preserves upper fragment; Undo restores outline.
-Implementation: CosmicDesigner.Verification/Program.cs::DisconnectedSections.
+Implementation: VCutting.Verification/Program.cs::DisconnectedSections.
 ## TC-062-002
 Execution Type: MANUAL / ACTIVE
 Purpose: User drawing visual acceptance.

@@ -6,7 +6,7 @@ Purpose: 기존 Triangle 윤곽을 평행 이동하여 좌하 좌표 입력을 �
 Preconditions: Windows/.NET 10 Release verification build.
 Procedure: --tests TC-047-001
 Expected: 임의 삼각형 모든 endpoint의 동일 delta, width/height, Inner Contour, 경계 clamp, 유효하지 않은 입력 거부, mm 단위, Undo/Redo, DXF 왕복 및 Fillet ARC 보존.
-Implementation: CosmicDesigner.Verification/Program.cs::TriangleLowerLeft
+Implementation: VCutting.Verification/Program.cs::TriangleLowerLeft
 
 ## TC-047-002
 Execution Type: MANUAL / ACTIVE
@@ -28,7 +28,7 @@ Purpose: Width/Height 변경 시 좌하 위치와 반대 치수가 바뀌지 않
 Preconditions: Windows/.NET 10 Release.
 Procedure: --tests TC-047-003
 Expected: 임의/역삼각형의 폭/높이 독립 변경, 꼭짓점 축별 비례 유지, Inner Contour, Undo/Redo, DXF, mm 단위. 재료 범위 초과/비유한/최소 미만 및 ARC 윤곽 변경 시 무변경 거부.
-Implementation: CosmicDesigner.Verification/Program.cs::TriangleAnchoredSize
+Implementation: VCutting.Verification/Program.cs::TriangleAnchoredSize
 
 ## TC-047-004
 Execution Type: MANUAL / ACTIVE

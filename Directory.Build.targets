@@ -1,0 +1,24 @@
+<Project>
+  <Target Name="VCuttingVersionMetadata" BeforeTargets="GetAssemblyAttributes" DependsOnTargets="InitializeSourceControlInformation">
+    <PropertyGroup>
+      <VCuttingBuildIdentity Condition="'$(VCuttingBuildIdentity)' == ''">$(SourceRevisionId)-working-tree</VCuttingBuildIdentity>
+    </PropertyGroup>
+    <ItemGroup>
+      <AssemblyMetadata Include="CustomerVersion" Value="$(VCuttingDisplayVersion)" />
+      <AssemblyMetadata Include="DevelopmentVersion" Value="$(DevelopmentVersion)" />
+      <AssemblyMetadata Include="BuildIdentity" Value="$(VCuttingBuildIdentity)" />
+    </ItemGroup>
+  </Target>
+  <Target Name="VCuttingFreezeGate" BeforeTargets="PrepareForBuild" Condition="'$(VCuttingFreezeProps)' != '' Or '$(VCuttingCustomerVersion)' != '' Or '$(VCuttingDisplayVersion)' != 'Development'">
+    <Error Condition="!Exists('$(VCuttingFreezeProps)') Or '$(VCuttingFreezeRecord)' == '' Or '$(VCuttingReleasePython)' == ''" Text="Approved Freeze record/properties and release Python are required." />
+    <Error Condition="'$(Configuration)' != 'Release' Or '$(RuntimeIdentifier)' != 'win-x64' Or '$(SelfContained)' != 'true'" Text="Freeze build settings mismatch: require Release/win-x64/self-contained." />
+    <Error Condition="'$(FileVersion)' != '$(VCuttingNumericVersion)' Or '$(Version)' != '$(DevelopmentVersion)'" Text="Effective assembly version mismatch." />
+    <Exec CustomErrorRegularExpression="^BLOCKED:" Command="&quot;$(VCuttingReleasePython)&quot; &quot;$(MSBuildThisFileDirectory)release\versioning.py&quot; validate --freeze &quot;$(VCuttingFreezeRecord)&quot; --props &quot;$(VCuttingFreezeProps)&quot; --display &quot;$(VCuttingDisplayVersion)&quot; --numeric &quot;$(VCuttingNumericVersion)&quot; --customer &quot;$(VCuttingCustomerVersion)&quot;" />
+  </Target>
+  <Target Name="VCuttingHelpVersion" BeforeTargets="AssignTargetPaths" Condition="'$(OutputType)' == 'WinExe'">
+    <WriteLinesToFile File="$(IntermediateOutputPath)vcutting-version.js" Lines="window.VCuttingVersion = &quot;$(VCuttingDisplayVersion)&quot;%3B" Overwrite="true" WriteOnlyWhenDifferent="true" />
+    <ItemGroup>
+      <Content Include="$(IntermediateOutputPath)vcutting-version.js" Link="help\js\version.js" CopyToOutputDirectory="PreserveNewest" CopyToPublishDirectory="PreserveNewest" />
+    </ItemGroup>
+  </Target>
+</Project>

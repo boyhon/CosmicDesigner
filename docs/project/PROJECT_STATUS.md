@@ -1,4 +1,4 @@
-# Cosmic Designer 개발 — Project Status
+# VCutting 개발 — Project Status
 
 ## Baseline
 
@@ -9,10 +9,16 @@
 
 ## Current Version
 
-- Installer: `CosmicDesignerSetup.exe`, Freeze `1.20.29-rc1` (FileVersion `1.20.29.0`; `installer/ReleaseVersion.iss`)
-- CosmicDesigner: `1.20.29`
+- Internal development version: `1.20.29` (release/Version.props).
+- Customer version: not assigned; ordinary builds display `Development`.
+- First future approved Freeze target: `1.0.0-rc.1`; no Freeze/release allocated by CR-070.
+- Installer builds now require an approved immutable Freeze; historical 1.20.29-rc1 and CR-069 candidate artifacts remain preserved.
 
 ## Current Development Phase
+
+CR-070 implemented: internal 1.20.29 / customer Development; next target 1.0.0-rc.1, not issued. New/affected/full AUTO 1/1, 6/6, 78/78 PASS; final Release 0 warnings/errors. Mandatory human TC-070-002 pending. No new Freeze/installer/release performed. See releases/VERSIONING.md and tests/regression/results/CR-070-2026-10-06.md.
+
+CR-069: VCutting 이름 변경 구현 완료; 필수 사람 검증 대기. 공식 관리명 VCutting 개발. 아래 기존 Freeze 설명은 2026-10-06 변경 전 기록이다.
 
 2026-10-06 release-management operation: preparing 1.20.29-rc1 Freeze of all managed work through CR-064 on boyhon for draft PR to main. No new CR number consumed; next remains CR-065. Full AUTO preflight 73/73 PASS. Source/Help/resources/tests and installer definitions are frozen together; human acceptance is not promoted by this operation. See releases/RC-1.20.29-rc1.md.
 
@@ -483,7 +489,7 @@ CosmicDesigner 1.20.29 source includes CR-064 Help baseline alongside CR-001~063
 
 ## Next Change Request Number
 
-`CR-068`
+`CR-089`
 
 ## CR-049 — 2026-10-05
 Implemented: 원 다음에 반원 윤곽 버튼, 지름 중심에서 네 방향 드래그 생성. 이동/크기/DXF/Undo에서 방향 유지. 자동 신규 1/1, 영향 11/11, 전체 59/59 PASS. Release build 0 warnings/errors. Published artifacts/CosmicDesigner-1.20.14/CosmicDesigner.exe.
@@ -545,3 +551,81 @@ Implemented: 설치 화면/제품명/기본 폴더/그룹/선택형 바탕 화�
 Implemented: SetupClassicIcon.ico applied; Freeze 1.20.29-rc1 rebuilt. Affected AUTO 3/3 and full 75/75 PASS. Actual installer progress window title-bar classic icon observed via computer-use. Taskbar/user visual confirmation pending; TC-067-001 SEMI_AUTO PENDING_MANUAL. No actual installation action performed by Codex; user advanced installer independently. Output artifacts/release/1.20.29-rc1-cr067/output/CosmicDesignerSetup.exe. Next CR-068.
 
 CR-067 verification update: user confirmed taskbar classic icon in conversation (2026-10-06); TC-067-001 SEMI_AUTO PASS, CR-067 Verified. Initial language-dialog visual capture coverage limited; no installation lifecycle PASS asserted.
+
+## CR-068 — 2026-10-06 (original request; implemented with CR-069)
+다음 설치 빌드 전에 기본 디렉토리를 C:\Program Files\VCutting으로 적용한다. 현재 재빌드/기존 설치 이동 없음. 사용자 제거 후 재설치 방식 승인. 제품명/파일명 유지. installer/README.md의 다음 빌드 지침 및 change-requests/CR-068.md 참조. Next CR-069.
+
+## CR-069 — 2026-10-06
+Implemented: VCutting 개발/제품·솔루션 이름 변경 및 CR-068 기본 설치 폴더 적용. Release build 0 warnings/errors; new AUTO 2/2, affected 10/10, full 77/77 PASS; Viewer/Drawer verification PASS; Help 35 HTML PASS; VCuttingSetup.exe compile/version PASS. Existing settings/metadata/AppId and prior Freeze preserved. TC-069-002/TC-068-002 PENDING_MANUAL; WAITING FOR USER VERIFICATION. Next CR-070. Result: tests/regression/results/CR-069-2026-10-06.md.
+
+- [CR-070](change-requests/CR-070.md) — Implemented / WAITING FOR USER VERIFICATION: 고객 버전/Freeze 정책; 이번 작업에서 실제 Freeze/출시 없음. Next CR-071.
+
+- CR-071: 설치 매뉴얼 6단계 원본 화면 구현; New/affected/full AUTO 1/1, 2/2, 79/79 PASS; Release build 0 warnings/errors; TC-071-002 PENDING_MANUAL. Next CR-072. Freeze/출시 없음.
+
+## Identity clarification — 2026-10-06
+패키지 VCutting, 현재 사용자 매뉴얼 대상 CosmicDesigner, 향후 CosmicExplorer 계획. AGENTS 및 매뉴얼 정정 완료. 주 앱/installer의 현재 VCutting.exe 산출물 정합성 변경은 남아 있다. CR-071 follow-up, 새 CR 번호 미소비. 이전 테스트는 당시 결과로 보존; 사람 검증 대기.
+
+2026-10-07 CR-071 명칭 정정 후 검증: 공식 22페이지 패키지/프로그램 구분 및 CosmicDesigner.exe 안내 PASS; Help 35 HTML 로컬 링크 PASS; Release verification build 0 warnings/errors; 영향 AUTO TC-064-001/TC-071-001 2/2 PASS; full AUTO 79/79 PASS. 기존 원본 설치 화면 유지. TC-071-002 사람 브라우저/인쇄 검증 PENDING_MANUAL; 사람 PASS 기록 없음. 실제 코드/설치 VCutting.exe를 CosmicDesigner.exe와 일치시키는 작업은 미구현 상태로 내부 Gap에 기록.
+
+2026-10-07 CR-072 다국어 / CR-073 기본 mm Implemented / WAITING FOR USER VERIFICATION. 별도 요구 추적. Next CR-074. Freeze 발급 없음.
+
+CR-072/073 final: new AUTO 2/2, affected 7/7, full 81/81 PASS; solution Release 0 warnings/errors. Human TC-072-002/TC-073-002 pending. 319 external keys; user override compatibility and legacy cm semantics retained. No new Freeze/installer/release. Next CR-074. Result: tests/regression/results/CR-072-073-2026-10-07.md.
+`nCR-074 In Progress — CosmicDesigner 타원 Hole 방향 드래그 생성. Next CR-075. 프로젝트 VCutting / 프로그램 CosmicDesigner 유지.
+
+## CR-074 — 2026-10-07 final
+Implemented / WAITING FOR USER VERIFICATION: CosmicDesigner 원 옆 Ellipse outline 아이콘과 장축 방향 드래그 생성. 기존 48 LINE 구조/설정/DXF/Undo/unit 호환. Build 0 warnings/errors; new AUTO 1/1, affected 13/13, full 82/82 PASS. Help 35 HTML links PASS. TC-074-002 MANUAL PENDING_MANUAL; 사람 PASS 없음. 고객 버전/Freeze/installer 발급 없음. 실행: artifacts/cr074-build/Release/net10.0-windows/VCutting.exe (프로그램 CosmicDesigner; 기존 binary naming 후속 항목 유지). Next CR-075. Report tests/regression/results/CR-074-2026-10-07.md.
+`nCR-075/076 In Progress — 타원 고유 속성 및 사전 승인된 주 프로그램 executable 이름 적용. Next CR-077.
+
+## CR-075 / CR-076 — 2026-10-07 final
+Implemented / WAITING FOR USER VERIFICATION. CosmicDesigner 타원 중심 X/Y, 장축/단축 전체 길이, 반시계 회전각, 읽기 전용 비율. 정상 타원 단일 트리 객체, invalid/no-op 안전 처리. Native DXF ELLIPSE 저장은 미구현 후속 항목; 기존 LINE/metadata 저장 호환 유지. 사전 승인된 주 앱 실행 파일명 CosmicDesigner.exe 적용, package/project/namespace/AppId/settings 유지. New AUTO 2/2, affected 14/14, full 84/84 PASS. Build 0 warnings/errors; Help 35 HTML PASS. Human TC-075-002/TC-076-002 PENDING_MANUAL. No new installer/Freeze/customer version. Run artifacts/cr075-build/Release/net10.0-windows/CosmicDesigner.exe. Next CR-077. Result tests/regression/results/CR-075-076-2026-10-07.md.
+## CR-077 — 2026-10-07 final
+Implemented / WAITING FOR USER VERIFICATION. 내부 겹침 연결 그룹 주황색 선택/윤곽 및 명시적 우클릭 통합. 하나의 Compound Cut/Inner Contour, analytic LINE/ARC 및 재료 섬 보존; 이동/동일비율 곡선 resize/직선 축별 resize/한 Undo/Redo/DXF/단위 처리. New AUTO 1/1, affected 17/17, full 85/85 PASS; solution Release 0 errors/warnings; Viewer/Drawer checks and Help 35 HTML PASS. TC-077-002 MANUAL PENDING_MANUAL; no human PASS. Multi-loop Compound Fillet 제한 및 과거 앱의 새 compound loop 해석 비보장은 ADR-003/Gap에 기록. No customer version/Freeze/installer/release. Run artifacts/cr077-build/Release/net10.0-windows/CosmicDesigner.exe. Next CR-078. Result tests/regression/results/CR-077-2026-10-07.md.
+
+## CR-078 — 2026-10-07 final
+Implemented / WAITING FOR USER VERIFICATION. CosmicDesigner Regular Polygon icon/Sides6 input, center/first-vertex two-click preview, logical center/sides3..512/radius/CCW rotation properties; whole selection/body move/delete and single Undo/Redo. Shared vertex calculator, closed LWPOLYLINE and optional JSON/history parameters, generic straight polyline import without regular inference. Existing contour/units/Flat/3D/localization preserved; Fillet/union transitions to Compound. New11/11, affected20/20, full96/96 AUTO PASS. Final solution Release0 errors/0 warnings; actual CosmicDesigner.exe startup AUTO PASS; Viewer/Drawer and Help35 HTML PASS. TC-078-012 MANUAL PENDING_MANUAL including actual UI/AutoCAD. 341 keys en/ko; ADR-004 and original attachment retained. No customer version/Freeze/installer/release/commit/push. Run artifacts/cr078-build/Release/net10.0-windows/CosmicDesigner.exe. Next CR-079. Result tests/regression/results/CR-078-2026-10-07.md.
+2026-10-07 CR-079 intake: crossing regular star tool approved; CR-078 vertex calculator reused. No Freeze.
+
+## CR-079 — 2026-10-07 final
+Implemented / WAITING FOR USER VERIFICATION. CosmicDesigner Regular Star crossing icon, Sides5..512/Step2..floor((N−1)/2), default {5/2}, center/first-vertex preview. One logical parametric object, gcd cycles, center/radius/CCW rotation/N/Step properties, movement/deletion/history/units; one closed DXF LWPOLYLINE per cycle plus metadata. Even-odd Flat/3D preserves material islands. Self-intersection split before internal union; nonmanifold rejected. Direct star Fillet/Outer merge unavailable. New3/3, affected22/22, full99/99 AUTO PASS; solution0 errors/warnings, actual startup AUTO PASS, Viewer/Drawer PASS, Help35 HTML links PASS, en/ko346 keys. MANUAL TC-079-004 PENDING_MANUAL (UI/Korean layout/external CAD/screenshots), no human PASS. No Freeze/customer version/installer/commit/push. Run artifacts/cr079-build/Release/net10.0-windows/CosmicDesigner.exe. Next CR-080. Report tests/regression/results/CR-079-2026-10-07.md.
+
+CR-079 follow-up In Progress: user explicitly requires solid interior hole; star nonzero winding replaces prior even-odd, Compound unchanged. Next CR-080.
+
+CR-079 follow-up final: user-requested full star interior/center cut via nonzero winding in Flat/3D/hit/internal union; existing Compound islands preserved. Old saved stars use corrected rule, geometry/metadata/history unchanged. New1/1 affected11/11 full99/99 AUTO PASS; final build0 errors/warnings, Help35 PASS; MANUAL006 pending. Implemented / WAITING FOR USER VERIFICATION. Execute artifacts/cr079-solid-build/Release/net10.0-windows/CosmicDesigner.exe. No Freeze/customer version/installer/commit/push. Next CR-080. Report tests/regression/results/CR-079-solid-2026-10-07.md.
+
+CR-079 cutting-profile follow-up In Progress: internal cutting paths removed, only exterior star boundary retained. Next CR-080.
+
+CR-079 profile-only final: internal star cutting lines removed; one analytic closed2N-edge exterior profile shared by preview/Flat/3D/DXF. N/K/R/CCW rotation/center/history/units preserved; old stars regenerate optimized paths on load. New2/2 affected12/12 full100/100 AUTO PASS, final solution0 errors/warnings, Help35 PASS, Viewer/Drawer PASS, active manifest100 IDs match. Required MANUAL009 pending. Implemented / WAITING FOR USER VERIFICATION. Run artifacts/cr079-profile-build/Release/net10.0-windows/CosmicDesigner.exe; report tests/regression/results/CR-079-profile-2026-10-07.md. No Freeze/customer version/installer/commit/push; Next080.
+
+CR-080 In Progress: move Parallelogram between Diamond/RegularPolygon, always report actual BuildIdentity. Next CR-081.
+
+CR-080 final: Diamond→Parallelogram→RegularPolygon→RegularStar, unchanged button appearance/handler/shape. Persistent AGENTS exact artifact BuildIdentity+path completion report rule. Existing override distinct development ID 7dd14f5-working-tree.cr080.20261007T060727Z. Run artifacts/cr080-build/Release/net10.0-windows/CosmicDesigner.exe. Build0 errors/warnings, affected6/6 full100/100 AUTO PASS, Help35 PASS, Viewer/Drawer PASS, metadata match. MANUAL080001 pending, Implemented / WAITING FOR USER VERIFICATION. No Freeze/customer version/installer/commit/push. Next081. Report tests/regression/results/CR-080-2026-10-07.md.
+
+CR-081/082 In Progress: all ARC start/end angles and Rectangle rotation; next083.
+
+CR-081/082 final: Implemented / WAITING FOR USER VERIFICATION. All ARC start/end signed angle editing with valid contour reconnection; Rectangle local dimensions/CCW rotation shared across hit/cache/DXF/history/units/merge. New2/2 affected18/18 full102/102 AUTO PASS, solution0 errors/warnings, Help35 links/Viewer/Drawer PASS. MANUAL081002/082002 PENDING_MANUAL; no human PASS. Run artifacts/cr081-082-build/Release/net10.0-windows/CosmicDesigner.exe; actual About Build identifier 7dd14f5-working-tree.cr081-082.20261007T095210Z. Report tests/regression/results/CR-081-082-2026-10-07.md. No Freeze/customer version/installer/commit/push. Next CR-083.
+
+CR-083 In Progress: selected shape Copy/Paste, Windows clipboard and units/history compatibility. Next CR-084.
+
+CR-083 final: Implemented / WAITING FOR USER VERIFICATION. Ctrl+C/V and Edit Copy/Paste for selected Cut/Slit/contour segments and imported DXF; independent geometry/IDs/joints/sequence, physical units, 10mm cascade/clamp, one Undo/Redo/DXF, text clipboard retained. New1/1 affected14/14 full103/103 AUTO PASS; solution0 warnings/errors, Help35/Viewer/Drawer PASS, en/ko361 keys, manifest103 IDs match. TC-083-002 MANUAL pending, no human PASS. Run artifacts/cr083-build/Release/net10.0-windows/CosmicDesigner.exe; actual About Build identifier 7dd14f5-working-tree.cr083.20261007T100959Z. Report tests/regression/results/CR-083-2026-10-07.md. No Freeze/customer version/installer/commit/push. Next CR-084.
+
+CR-084 In Progress: SVG import editable geometry and physical units. Next CR-085.
+
+CR-084 final: Implemented / WAITING FOR USER VERIFICATION. File Import SVG: viewport/units/groups/path primitives, winding-resolved editable Cut/open Slit, native similarity Circle and nominal0.01mm curve LINE approximation; data-only bounded XML/unsupported warnings/Save As DXF. New3/3 affected9/9 full106/106 AUTO PASS, final -m:1 solution0 errors/warnings; Help35/Viewer/Drawer PASS, en/ko373 keys, manifest106 IDs match. MANUAL084004 pending, no human PASS. Execute artifacts/cr084-build/Release/net10.0-windows/CosmicDesigner.exe; actual About Build identifier 7dd14f5-working-tree.cr084.20261007T102842Z. Report tests/regression/results/CR-084-2026-10-07.md. No Freeze/customer version/installer/commit/push. Next CR-085.
+
+CR-085 In Progress — separate CosmicConvert.exe, certified curve optimization, quiet/GUI, tests/help. User2026-10-08; no release/commit. Next CR-086.
+
+CR-085 Implemented / WAITING FOR USER VERIFICATION — standalone CosmicConvert.exe; new4/4 affected6/6 existingfull106/106 + new4 = accumulated110/110 AUTO PASS, Viewer/Drawer/Help PASS. TC-085-005 MANUAL pending; no merge/commit/release. Apple846shapeLINE→LINE70+ARC97; .0499256865mm bound; original hashes preserved. Output artifacts/cr085-final-build/Release/net10.0-windows/CosmicConvert.exe; actual BuildIdentity 7dd14f5-working-tree.cr085.20261007T160928Z. Report tests/regression/results/CR-085-2026-10-08.md. Mixed contours import as individual entities; crossing fill unsupported. Next CR-086.
+
+CR-086 In Progress: CosmicConvert output frame with10mm margin all sides, rigid relocation. Next CR-087.
+
+CR-086 Implemented / WAITING FOR USER VERIFICATION: frame margin10mm, Apple82.1222108×94.0460344mm / shape167+frame4=171entities. New1/1, affected converter3PASS/1NOT_RUN + Designer2/2, full existing106/106 + converter4PASS/1NOT_RUN =110PASS,0FAIL,1NOT_RUN. Historical850LINE Apple DXF replaced externally by167entity file; expectation retained, not fabricated PASS. HumanTC-086-002 pending. Build0warnings/errors, actual BuildIdentity7dd14f5-working-tree.cr086.20261007T163951Z at artifacts/cr086-build/Release/net10.0-windows/CosmicConvert.exe. Report tests/regression/results/CR-086-2026-10-08.md. Next CR-087; no release/commit.
+
+CR-087 In Progress: CosmicConvert native Compound/Slit metadata; actual selection/3D integration. Next CR-088.
+CR-087 Implemented / WAITING FOR USER VERIFICATION: native Compound/Slit metadata; Apple1Compound3loops,171entities,10mm frame/error unchanged. Full112PASS/0FAIL/1NOT_RUN historical850LINE fixture. TC087003 human pending. Build cr087.20261008.native-compat (actual metadata), artifacts/cr087-build/Release/net10.0-windows/CosmicConvert.exe. Evidence tests/regression/results/CR-087-2026-10-08.md. NextCR088; no Freeze/release/commit.
+CR-088 In Progress: invisible auxiliary leaf text blocks outlined SVG; nextCR089.
+CR-088 Implemented / WAITING FOR USER VERIFICATION: invisible auxiliary leaf text and bounded fill topology broad phase. Provided 양영권회장 sample1Compound493entities,error<=.05mm, original preserved. New1/1, affected4/4, full113PASS/0FAIL/1historicalNOT_RUN. TC088002 human pending. Actual BuildIdentity cr088.20261008.invisible-text; artifacts/cr088-build/Release/net10.0-windows/CosmicConvert.exe. Report tests/regression/results/CR-088-2026-10-08.md; nextCR089. No release/Freeze/installer/commit.
+
+CR-089 Implemented / WAITING FOR USER VERIFICATION: H/W Fit/Reset; new1/1 affected8/8 Designer full107/107 AUTO PASS; humanTC089002 pending. Development CosmicDesigner.exe artifacts/cr089-build/Release/net10.0-windows; actual BuildIdentity cr089.20261008.section-fit. Next CR-090.
+CR-089 accumulated regression final: 114 AUTO PASS, 0 FAIL, 1 historical NOT_RUN (TC-085-004). TC-089-002 MANUAL pending. Evidence tests/regression/results/CR-089-2026-10-08.md.
+CR-090 In Progress: all-work commit/push, six-program package; explicit user RC1 Freeze approval2026-10-08. NextCR091.
+CR-090 Implemented / WAITING FOR USER VERIFICATION: converter included in package and Start Menu; solution0warnings/errors, new1/1 affected7/7 fullDesigner108/108 PASS, accumulated115PASS/1historicalNOT_RUN. User-approved RC1 build pending source anchor; ledger under release/freezes and release/builds is authoritative. NextCR091.

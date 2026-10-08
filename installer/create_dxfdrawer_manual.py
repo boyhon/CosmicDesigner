@@ -10,7 +10,7 @@ from docx.shared import Cm, Inches, Pt, RGBColor
 
 
 ROOT = Path(__file__).resolve().parents[1]
-OUT = ROOT / "docs" / "DXFDrawer_사용자_매뉴얼.docx"
+OUT = ROOT / "docs" / "VCutting.Drawer_사용자_매뉴얼.docx"
 SCREENSHOT = ROOT / "help-content" / "help" / "images" / "dxfdrawer-main-window.png"
 
 
@@ -133,7 +133,7 @@ if title_border is not None:
 
 title = doc.add_paragraph(style="Title")
 title.alignment = WD_ALIGN_PARAGRAPH.CENTER
-title.add_run("DXFDrawer 사용자 매뉴얼")
+title.add_run("VCutting.Drawer 사용자 매뉴얼")
 sub = doc.add_paragraph()
 sub.alignment = WD_ALIGN_PARAGRAPH.CENTER
 r = sub.add_run("DXF 도면 작성 편집 저장 및 절곡 단면 확인")
@@ -145,17 +145,17 @@ if SCREENSHOT.exists():
     p = doc.add_paragraph()
     p.alignment = WD_ALIGN_PARAGRAPH.CENTER
     p.add_run().add_picture(str(SCREENSHOT), width=Cm(17.5))
-    cap = doc.add_paragraph("DXFDrawer 기본 작업 화면")
+    cap = doc.add_paragraph("VCutting.Drawer 기본 작업 화면")
     cap.alignment = WD_ALIGN_PARAGRAPH.CENTER
     cap.runs[0].italic = True
     cap.runs[0].font.size = Pt(8.5)
 
 intro = doc.add_paragraph()
 intro.add_run("이 매뉴얼의 목적  ").bold = True
-intro.add_run("DXFDrawer를 처음 사용하는 사용자가 화면 구성을 이해하고, 기존 DXF 파일을 열어 수정하거나 새로운 DXF 도면을 작성하여 저장할 수 있도록 안내합니다. 프로그램은 LINE, ARC, CIRCLE 형상과 L, V, V1 레이어를 중심으로 판금 도면을 편집합니다.")
+intro.add_run("VCutting.Drawer를 처음 사용하는 사용자가 화면 구성을 이해하고, 기존 DXF 파일을 열어 수정하거나 새로운 DXF 도면을 작성하여 저장할 수 있도록 안내합니다. 프로그램은 LINE, ARC, CIRCLE 형상과 L, V, V1 레이어를 중심으로 판금 도면을 편집합니다.")
 
 add_table(doc, ["문서 항목", "내용"], [
-    ("대상 프로그램", "DXFDrawer.exe"),
+    ("대상 프로그램", "VCutting.Drawer.exe"),
     ("지원 작업", "DXF 열기, 신규 작성, 형상 편집, Validation 확인, DXF 저장"),
     ("주요 도형", "LINE, ARC, CIRCLE"),
     ("주요 레이어", "-L- 절단, -V- 정방향 절곡, -V1- 반대방향 절곡"),
@@ -163,7 +163,7 @@ add_table(doc, ["문서 항목", "내용"], [
 
 doc.add_page_break()
 heading(doc, "1 화면 구성", 1)
-doc.add_paragraph("DXFDrawer의 기본 화면은 상단 도구 모음, 왼쪽 설정 및 객체 목록, 중앙 Drawing Canvas, 오른쪽과 아래쪽의 절곡 단면 시뮬레이션 및 Property Editor, 하단 상태 표시줄로 구성됩니다.")
+doc.add_paragraph("VCutting.Drawer의 기본 화면은 상단 도구 모음, 왼쪽 설정 및 객체 목록, 중앙 Drawing Canvas, 오른쪽과 아래쪽의 절곡 단면 시뮬레이션 및 Property Editor, 하단 상태 표시줄로 구성됩니다.")
 add_table(doc, ["영역", "명칭", "기능"], [
     ("A", "상단 도구 모음", "파일 작업, 도형 도구 선택, 실행 취소·다시 실행, 삭제, 화면 맞춤을 실행합니다."),
     ("B", "Layer Visibility", "L, V, V1 레이어를 화면에서 개별 표시하거나 숨깁니다. 숨김은 표시만 바꾸며 객체를 삭제하지 않습니다."),
@@ -233,7 +233,7 @@ bullet(doc, "ARC: 중심 핸들은 중심 이동, 시작·끝 핸들은 각도 �
 
 doc.add_page_break()
 heading(doc, "4 기존 DXF 파일 열기와 수정", 1)
-step(doc, 1, "DXFDrawer 실행", "시작 메뉴 또는 설치 폴더의 DXFDrawer.exe를 실행합니다.")
+step(doc, 1, "VCutting.Drawer 실행", "시작 메뉴 또는 설치 폴더의 VCutting.Drawer.exe를 실행합니다.")
 step(doc, 2, "파일 열기", "상단의 열기를 누르고 수정할 .dxf 파일을 선택합니다.")
 step(doc, 3, "화면 확인", "도면이 자동으로 화면에 맞춰지고, Objects의 Entity 수와 Closed contour 수가 갱신되는지 확인합니다.")
 step(doc, 4, "객체 찾기", "Canvas에서 객체를 클릭하거나 Objects 목록에서 항목을 선택합니다. 찾기 어려우면 목록 항목을 더블 클릭합니다.")
@@ -286,7 +286,7 @@ doc.add_paragraph("단면선이 절곡선을 통과하지 않으면 No bending p
 
 doc.add_page_break()
 heading(doc, "7 Validation과 저장 제한", 1)
-doc.add_paragraph("DXFDrawer는 잘못된 형상을 저장하지 않도록 작성·편집 중과 저장 전에 Validation을 수행합니다. 오류가 있으면 저장을 중단하고 첫 오류 객체를 선택합니다.")
+doc.add_paragraph("VCutting.Drawer는 잘못된 형상을 저장하지 않도록 작성·편집 중과 저장 전에 Validation을 수행합니다. 오류가 있으면 저장을 중단하고 첫 오류 객체를 선택합니다.")
 add_table(doc, ["오류 유형", "의미와 해결 방법"], [
     ("유효하지 않은 좌표", "좌표가 숫자가 아니거나 유한한 값이 아닙니다. Property Editor에서 정상 숫자로 수정합니다."),
     ("길이가 0인 선", "시작점과 끝점이 같습니다. 한쪽 끝점을 이동하거나 Length를 0보다 크게 입력합니다."),
@@ -330,13 +330,13 @@ for section in doc.sections:
     footer = section.footer
     p = footer.paragraphs[0]
     p.alignment = WD_ALIGN_PARAGRAPH.CENTER
-    r = p.add_run("DXFDrawer 사용자 매뉴얼")
+    r = p.add_run("VCutting.Drawer 사용자 매뉴얼")
     r.font.size = Pt(8)
     r.font.color.rgb = RGBColor(100, 100, 100)
 
 OUT.parent.mkdir(parents=True, exist_ok=True)
-doc.core_properties.title = "DXFDrawer 사용자 매뉴얼"
+doc.core_properties.title = "VCutting.Drawer 사용자 매뉴얼"
 doc.core_properties.subject = "DXF 도면 작성 편집 저장 및 절곡 단면 확인"
-doc.core_properties.author = "DXFExplorer"
+doc.core_properties.author = "VCutting.Viewer"
 doc.save(OUT)
 print(OUT)

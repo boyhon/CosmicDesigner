@@ -1,7 +1,7 @@
-# CosmicDesigner Help — Living Documentation
+# VCutting Help — Living Documentation
 
 ## 原本과 배포
-공식 사용자 원본은 이 디렉터리의 HTML이다. Word/PDF/생성 스크립트를 원본으로 사용하지 않는다. 위치는 기존 help-content/help 배포 구조를 재사용하여 실행 파일 옆 help/index.html이 되도록 선택했다. 기존 다른 DXF 앱의 페이지와 대표 HTML 진입점은 유지한다. CosmicDesigner_help.html은 호환 진입점이다.
+공식 사용자 원본은 이 디렉터리의 HTML이다. Word/PDF/생성 스크립트를 원본으로 사용하지 않는다. 위치는 기존 help-content/help 배포 구조를 재사용하여 실행 파일 옆 help/index.html이 되도록 선택했다. 기존 다른 DXF 앱의 페이지와 대표 HTML 진입점은 유지한다. VCutting_help.html은 호환 진입점이다.
 
 Directory.Build.props는 WinExe 빌드/게시마다 HTML/CSS/JS/images를 복사하며 내부 .md/.json은 제외한다. installer는 5개 앱 게시 및 충돌 검증 후 재귀 배포한다. 내부 관리 파일은 사용자 메뉴에서 노출하지 않는다.
 
@@ -20,3 +20,7 @@ User Visible Change와 Manual Impact를 Yes/No로 평가한다. Yes이면 영향
 Release 검증 프로젝트를 빌드하여 --tests TC-064-001을 신규 검사로 실행한다. 영향 테스트 및 전체 suite를 뒤이어 실행한다. installer/Verify-Help.ps1 -Root help-content로 기존 제품 문서 링크도 확인한다. publish 출력에서 HTML 원본 동등성도 검사한다. TC-064-002(메뉴/브라우저/한글/모바일·인쇄·실제 화면 대조)와 TC-064-003(실설치/업데이트/제거)는 사람 이름·일시·관측 근거가 있어야 PASS다.
 
 CR 완료 = 구현 + 관련 자동 테스트 + 필요한 사람 검증 + 회귀 통과 + Manual Impact Yes 문서 갱신. 자동 검사 통과만으로 Verified/Closed로 승격하지 않는다.
+
+
+
+2026-10-07 명칭 확정: VCutting 패키지의 CosmicDesigner 프로그램 사용자 매뉴얼. CosmicExplorer는 향후 계획. 프로그램과 패키지 명칭을 구분하고 설치 캡처는 원본 보존.

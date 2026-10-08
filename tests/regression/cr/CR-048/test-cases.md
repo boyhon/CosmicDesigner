@@ -4,7 +4,7 @@
 Execution Type: AUTO; Status: ACTIVE.
 Purpose: radius edit invariants. Preconditions: Windows/.NET 10 Release.
 Procedure: --tests TC-048-001. Expected: 23.59 radius = 47.18 diameter; unchanged center; invalid/boundary inputs rejected without mutation; synchronized Inner Contour; Undo/Redo, DXF, mm/m; non-Circle rejected.
-Implementation: CosmicDesigner.Verification/Program.cs::CircleRadius.
+Implementation: VCutting.Verification/Program.cs::CircleRadius.
 
 ## TC-048-002
 Execution Type: MANUAL; Status: ACTIVE; Result: PENDING_MANUAL.

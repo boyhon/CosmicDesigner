@@ -8,7 +8,7 @@
 - Preconditions: Windows, .NET 10, Release build.
 - Procedure: `--tests TC-053-001`로 `FlatLengthFromSectionSegments`를 실행한다.
 - Expected: 두께 2의 두 절곡에서 `199 + 1998 + 199 = 2396`이 H와 W 모두 유지되고, 두께를 4로 바꿔도 총 길이는 유지되며 Bent 외곽 치수만 보정된다.
-- Implementation: `CosmicDesigner.Verification/Program.cs::FlatLengthFromSectionSegments`
+- Implementation: `VCutting.Verification/Program.cs::FlatLengthFromSectionSegments`
 
 ## TC-053-002
 

@@ -1,8 +1,8 @@
-# Cosmic Designer 개발 — Development Policy
+# VCutting 개발 — Development Policy
 
 ## 1. Purpose and scope
 
-This document defines change management after the **2026-10-01 baseline**. The official management name is `Cosmic Designer 개발`. Existing technical and product names remain unchanged until an approved Change Request authorizes a rename.
+This document defines change management after the **2026-10-01 baseline**. The official management name is `VCutting 개발`. Existing technical and product names remain unchanged until an approved Change Request authorizes a rename.
 
 ## 2. Required reading order
 
@@ -170,3 +170,16 @@ Every CR includes Documentation Impact: User Visible Change (Yes/No), Manual Imp
 For Manual Impact Yes, update relevant HTML, workflow, troubleshooting, screenshots when needed and manual-traceability.md before full completion. Use current source/tests over superseded historical descriptions; preserve original CR history. Unconfirmed material goes in DOCUMENTATION_GAPS.md. Internal non-user changes should not cause unnecessary user manual edits. See help-content/help/README.md for navigation and validation rules.
 
 Definition of Done: Implementation Complete + Relevant Automated Tests Passed + Required Manual/Human Tests Completed + Regression Tests Passed + User Documentation Updated (when Manual Impact Yes). Keep Implemented / WAITING FOR USER VERIFICATION when required people review remains. No Verified/Closed while required documentation remains outstanding.
+
+## Release Version Authority — CR-070
+Internal development version and customer release version are independent. Read release/Version.props and docs/project/releases/VERSIONING.md before development/Freeze/installer/release work. Customer versions are issued only by explicitly user-authorized Freeze (first target 1.0.0-rc.1) or separately authorized production promotion. Never allocate a Freeze merely because a build was requested. This policy implementation does not authorize a Freeze or release.
+
+Installer builds consume immutable release/freezes records and must block input/commit/build-setting/version-property mismatches before modifying outputs. Rebuilding the same Freeze keeps customer version and records a new build ID/checksum. Any executable-source/Help/installer/dependency change requires a new authorized Freeze even when no new CR exists. Do not rewrite old records, distributed packages or overwrite prior output roots. Ordinary builds display Development; About/installer/Help derive version from the same authority.
+
+Freeze source must be clean and committed. Record approval/source SHA/inputs hashes/included CRs/settings/verification; append build checksums under release/builds. Ledger-only commits are allowed after the source anchor; other changed source blocks builds. Production promotion requires complete actual automated and human verification plus separate user approval; never invent reviewer/evidence. Stable Windows mapping and future release increments follow ADR-001. Preserve historical 1.20.29-rc1 records/artifacts and user data/AppId.
+
+## Localization maintenance — CR-072
+New CosmicDesigner user text must use stable external language keys and validated composite arguments. Preserve internal IDs/DXF schema and numeric culture. Add English/Korean strings together, review translation/layout manually, update localization inventory and regression cases. User overrides remain outside installer ownership. Unit defaults follow CR-073 compatibility rules.
+
+## Build report identity — user2026-10-07
+Whenever delivering an executable/build, include its exact Help > About Build identifier alongside absolute path. Read AssemblyMetadata BuildIdentity from that artifact; do not infer from current source or reuse earlier values. Use existing development override to distinguish concurrent working builds. Freeze/customer version authority unchanged. AGENTS persistent rule applies.
