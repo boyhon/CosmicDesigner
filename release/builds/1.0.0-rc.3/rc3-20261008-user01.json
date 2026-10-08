@@ -1,0 +1,15 @@
+{
+  "version": "1.0.0-rc.3",
+  "sourceCommit": "db5dbf5ee70340f744eefc6683cdb4c5d3c9c020",
+  "buildNumber": "rc3-20261008-user01",
+  "numericVersion": "2.0.0.3",
+  "recordHash": "eace48dbb8216d7f7710adf0f549c0b8dff5b2cfa5d05bfa05bf1cc6f42ef52f",
+  "artifacts": [
+    {
+      "name": "VCuttingSetup.exe",
+      "bytes": 47380607,
+      "sha256": "f93bfc97fba1d2dabdc06dd24d01a4cfb311a502baf03d9bb557cd493e0693a1"
+    }
+  ],
+  "builtAt": "2026-10-08T13:04:43.062137+00:00"
+}
