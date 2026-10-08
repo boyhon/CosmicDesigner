@@ -60,3 +60,4 @@ CR-088 adds AUTO001/MANUAL002: invisible auxiliary text and complex lettering br
 
 CR-089 adds AUTO TC-089-001 actual WPF Section Fit/Reset and MANUAL TC-089-002 visual/button acceptance. Designer107/107 AUTO PASS; accumulated with converter114PASS/1historicalNOT_RUN. Human pending. Results results/CR-089-2026-10-08.md.
 CR-090 adds AUTO TC-090-001 package contract and MANUAL TC-090-002 actual install/shortcuts. Designer108/108PASS; accumulated115PASS/1historicalNOT_RUN. Human pending; release ledger records actual RC builds.
+CR-091 adds AUTO TC-091-001 sharing ReleaseVersionPolicy:5Python checks PASS, Designer109/109PASS, accumulated116PASS/1historicalNOT_RUN. WPF generated project ignored, actual source still blocked. RC2 separately approved.

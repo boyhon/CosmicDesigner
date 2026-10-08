@@ -1,0 +1,3 @@
+User: repository owner, Codex conversation, 2026-10-08 Asia/Seoul.
+Explicit reply: 1.0.0-rc.2 Freeze 승인
+Scope: include CR-091 WPF generated temporary project exclusion after failed rc1 build; preserve immutable rc1. Build and Commit/Push RC2 installer evidence. No production promotion. Human verification remains pending, historical TC-085-004 unavailable.

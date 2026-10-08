@@ -14,7 +14,7 @@ class VersionTests(unittest.TestCase):
         self.root = Path(self.temp.name)
         assert self.root.resolve().is_relative_to((ROOT / 'artifacts').resolve())
         (self.root / 'release').mkdir(); (self.root / 'release/Version.props').write_bytes((ROOT / 'release/Version.props').read_bytes())
-        (self.root / '.gitignore').write_text('artifacts/\nrelease/freezes/\nrelease/builds/\n**/bin/\n**/obj/\n**/__pycache__/\n')
+        (self.root / '.gitignore').write_text('artifacts/\nrelease/freezes/\nrelease/builds/\n**/bin/\n**/obj/\n**/__pycache__/\n' + ('*_wpftmp.csproj\n' if '*_wpftmp.csproj' in (ROOT / '.gitignore').read_text() else ''))
         (self.root / 'source.cs').write_text('source 1')
         (self.root / 'docs/project/change-requests').mkdir(parents=True)
         (self.root / 'docs/project/change-requests/CR-070.md').write_text('fixture')
@@ -26,6 +26,13 @@ class VersionTests(unittest.TestCase):
         self.approval.write_text('TEST FIXTURE ONLY: explicit simulated user Freeze approval',encoding='utf-8')
     def tearDown(self):
         self.approval.unlink(); self.temp.cleanup()
+    def test_wpf_generated_project_is_not_source(self):
+        f = v.allocate(self.root, self.approval)
+        (self.root / 'Viewer').mkdir()
+        (self.root / 'Viewer/Viewer_123_wpftmp.csproj').write_text('generated WPF build project')
+        v.validate(self.root, f)
+        (self.root / 'Viewer/Actual.csproj').write_text('new real source')
+        with self.assertRaisesRegex(ValueError, 'input mismatch'): v.validate(self.root, f)
     def test_rebuild_and_inputs(self):
         with self.assertRaises(ValueError): v.allocate(self.root, None)
         f = v.allocate(self.root, self.approval)

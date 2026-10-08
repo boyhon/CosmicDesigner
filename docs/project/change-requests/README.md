@@ -183,3 +183,4 @@ CR-084 Implemented / WAITING FOR USER VERIFICATION: new3/3 affected9/9 full106/1
 - [CR-089](CR-089.md) — Implemented / WAITING FOR USER VERIFICATION: H/W Section Fit/Reset. Next CR-090.
 - [CR-090](CR-090.md) — In Progress: include CosmicConvert in package; user-approved RC1 Freeze. NextCR091.
 - [CR-090](CR-090.md) — Implemented / WAITING FOR USER VERIFICATION; package6programs, source tests PASS, human installation pending. NextCR091.
+- [CR-091](CR-091.md) — Implemented: exclude generated WPF projects from Freeze inputs; real projects remain protected. NextCR092.
