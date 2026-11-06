@@ -1,4 +1,13 @@
 {
+  "bend.review.Interior": "Crossing V-Cuts found",
+  "bend.review.EndpointTouch": "A V-Cut endpoint touches another bend",
+  "bend.review.SharedEndpoint": "V-Cuts share an endpoint",
+  "bend.review.Overlap": "V-Cuts overlap",
+  "bend.review.instructions": "Review fabrication feasibility. Click the marker to choose Cut or Hole.",
+  "bend.review.cut": "Cut — draw a line slit",
+  "bend.review.hole": "Hole — draw a rectangular opening",
+  "bend.review.preview": "Review preview: V-Cut contacts were found. Inspect the Flat Designer markers.",
+  "section.positionAdjusted": "The {0} section guide moved to a valid position.", "section.positionUnavailable": "No valid position is available for the {0} section guide.",
   "code": "en",
   "name": "English",
   "strings": {

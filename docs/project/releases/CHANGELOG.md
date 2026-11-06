@@ -4,6 +4,9 @@ Release-relevant changes after the baseline are recorded here. CR identifiers mu
 
 ## Unreleased
 
+- CR-095: Repair invalid H/W guides after contour changes and persist guide positions.
+- CR-097: Flag V/V1 contacts and offer manual Cut and Hole tools from Flat Designer.
+
 - CR-096: Enable continuous vertical orbit in 3D Preview, including through the vertical poles.
 
 - 2026-10-06: Freeze current source, HTML Help, resources, accumulated regression/project records and installer definitions as 1.20.29-rc1 on boyhon. No new product features; isolate RC installer output, redact personal temporary-path references and make historical manual scripts repository-relative. Installer suite remains 1.1.0; manual acceptance remains pending.

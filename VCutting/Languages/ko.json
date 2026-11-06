@@ -1,4 +1,13 @@
 {
+  "bend.review.Interior": "교차 V-Cut 발견",
+  "bend.review.EndpointTouch": "V-Cut 끝점이 다른 절곡선에 닿습니다",
+  "bend.review.SharedEndpoint": "V-Cut이 끝점을 공유합니다",
+  "bend.review.Overlap": "V-Cut 구간이 겹칩니다",
+  "bend.review.instructions": "제작 가능성을 검토하세요. 마커를 클릭해 Cut 또는 Hole을 선택할 수 있습니다.",
+  "bend.review.cut": "Cut — 직선 절개 작성",
+  "bend.review.hole": "Hole — 사각 천공 작성",
+  "bend.review.preview": "검토용 3D 미리보기입니다. Flat Designer의 V-Cut 경고 위치를 확인하세요.",
+  "section.positionAdjusted": "{0} 단면 기준선을 유효한 위치로 자동 이동했습니다.", "section.positionUnavailable": "{0} 단면 기준선을 배치할 수 있는 위치가 없습니다.",
   "code": "ko",
   "name": "한국어",
   "strings": {

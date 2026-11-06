@@ -4,6 +4,8 @@ HTML이 공식 사용자 원본. 현재 소스 우선, 과거 CR은 변화 근�
 
 | CR-ID | Title | User Visible Change | Manual Impact | Affected Feature | Affected Manual Section | Related Test | Related Regression Test | Manual Status | Last Updated |
 |---|---|---|---|---|---|---|---|---|---|
+| CR-095 | H/W 단면 기준선 자동 보정 | Yes | Yes | Flat 및 Section Designer | [기준선 자동 보정](features/sections.html#guide-adjustment) | TC-095-002 | TC-095-001 | 반영; 사람 검증 대기 | 2026-11-06 |
+| CR-097 | V/V1 접촉 경고 및 편집 도구 연결 | Yes | Yes | Flat Designer 및 3D Preview | [V/V1 교차 경고](features/bends.html#bend-contact), [3D 결과 확인](features/preview.html) | TC-097-002 | TC-097-001 | 반영; 사람 검증 대기 | 2026-11-06 |
 | CR-096 | 3D Preview 상하 연속 회전 | Yes | Yes | 3D 결과 확인 | [features/preview.html](features/preview.html) | TC-096-002 | TC-096-001 | 반영; 사람 검증 대기 | 2026-11-06 |
 | CR-001 | CR-001 CDF 파일 포맷 제안 및 승인 정책 | No | No | CDF 승인 정책 | 정책 전용: 사용자 기능 미추가 | TC-001-001 | 없음 | 해당 없음 | 2026-10-06 |
 | CR-002 | CR-002 최근 파일 10개 열기 및 지속성 | Yes | Yes | 기본 조작, DXF 열기·가져오기·저장, 환경 설정, 문제 해결 | [basic-operations.html](basic-operations.html), [features/files.html](features/files.html), [features/settings.html](features/settings.html), [troubleshooting/common-errors.html](troubleshooting/common-errors.html) | TC-002-003 | TC-002-001, TC-002-002 | 반영; 사람 검증 대기 | 2026-10-06 |
