@@ -401,3 +401,6 @@ CR-088 Development: skip proven invisible auxiliary leaf text; bounded fill topo
 - CR-091: exclude WPF-generated temporary project files from Freeze source comparison.
 - CR-092: fix duplicate Help version output when publishing referenced programs.
 - CR-093: Development integration-test installer available before manual acceptance and Freeze.
+
+## Development — CR-094 (2026-10-14)
+- Add Subtract overlapping cuts: connected other cuts minus selected cutter, analytic holes/independent components/empty results, single Undo/Redo and DXF persistence. Human acceptance pending; no customer release allocated.

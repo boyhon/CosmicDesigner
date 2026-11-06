@@ -1,4 +1,14 @@
-[{"key":"section.fitReset","english":"Fit/Reset","korean":"Fit/Reset","references":["MainWindow.xaml"],"status":"ACTIVE","surface":"Section viewport button; CR-089"},
+[
+  {
+    "key": "section.fitReset",
+    "english": "Fit/Reset",
+    "korean": "Fit/Reset",
+    "references": [
+      "MainWindow.xaml"
+    ],
+    "status": "ACTIVE",
+    "surface": "Section viewport button; CR-089"
+  },
   {
     "key": "ui.0000",
     "english": "Unsupported boundary segment",
@@ -5468,5 +5478,38 @@
     ],
     "status": "ACTIVE",
     "surface": "presentation-only; internal identifiers preserved"
+  },
+  {
+    "key": "subtract.internal",
+    "english": "Subtract overlapping cuts",
+    "korean": "겹친 천공에서 선택 영역 빼기",
+    "references": [
+      "DesignViews.cs",
+      "MainWindow.xaml.cs"
+    ],
+    "status": "ACTIVE",
+    "surface": "CR-094"
+  },
+  {
+    "key": "subtract.completed",
+    "english": "Overlapping cuts subtracted.",
+    "korean": "겹친 천공에서 선택 영역을 뺐습니다.",
+    "references": [
+      "DesignViews.cs",
+      "MainWindow.xaml.cs"
+    ],
+    "status": "ACTIVE",
+    "surface": "CR-094"
+  },
+  {
+    "key": "subtract.unavailable",
+    "english": "No overlapping cut objects found, or difference is unavailable.",
+    "korean": "겹친 천공이 없거나 영역 빼기를 적용할 수 없습니다.",
+    "references": [
+      "DesignViews.cs",
+      "MainWindow.xaml.cs"
+    ],
+    "status": "ACTIVE",
+    "surface": "CR-094"
   }
 ]

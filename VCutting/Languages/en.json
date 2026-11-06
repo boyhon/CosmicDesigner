@@ -375,6 +375,9 @@
     "svg.empty": "No supported visible geometry.",
     "svg.bounds": "Geometry extends outside the SVG canvas. Expand width/height or viewBox in the source.",
     "svg.skipped": "Unsupported SVG content skipped: {0}",
-    "svg.approx": "Curves converted to LINE profiles with nominal 0.01 mm flattening tolerance; verify the result before cutting."
+    "svg.approx": "Curves converted to LINE profiles with nominal 0.01 mm flattening tolerance; verify the result before cutting.",
+    "subtract.internal": "Subtract overlapping cuts",
+    "subtract.completed": "Overlapping cuts subtracted.",
+    "subtract.unavailable": "No overlapping cut objects found, or difference is unavailable."
   }
 }

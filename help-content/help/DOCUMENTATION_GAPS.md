@@ -81,3 +81,5 @@ CR-085: CosmicConvert GUI/native dialogs/layout/preview and actual CAD visual ac
 CR-086: actual GUI/CAD10mm margin/frame/status screenshots and measurements pending TC-086-002. Automated geometry/quiet/readback evidence kept separately.
 CR-087 supersedes CR-085 entity-only limitation for native metadata output. Actual screen/GUI/external CAD acceptance remains TC-087-003 PENDING_MANUAL; no measured UI performance. Historical850LINE fixture NOT_RUN.
 CR-088 actual provided outlined-text SVG preview/Designer/CAD human review pending TC088002. Nested text remains unsupported even if parent fill-opacity0; no font outlining implementation.
+
+CR-094: actual menu screenshots, Korean layout, Flat/3D and external CAD review pending TC-094-014. No invented screenshot or human PASS.

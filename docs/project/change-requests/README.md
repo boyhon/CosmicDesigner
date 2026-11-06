@@ -6,7 +6,7 @@ Users submit requirements in natural language; they are not expected to assign C
 
 ## Next available number
 
-`CR-089`
+`CR-095`
 
 The project-management setup and baseline documentation do not consume a CR because they do not change application behavior.
 
@@ -188,3 +188,5 @@ CR-084 Implemented / WAITING FOR USER VERIFICATION: new3/3 affected9/9 full106/1
 - [CR-092](CR-092.md) — Implemented: six-project publish/stage verification PASS; RC3 approval pending. NextCR093.
 - [CR-093](CR-093.md) — In Progress: Development integration installer before Freeze approval. NextCR094.
 - [CR-093](CR-093.md) — Implemented / WAITING FOR USER VERIFICATION: pre-Freeze Development integration installer. NextCR094.
+
+- [CR-094](CR-094.md) — Implemented / WAITING FOR USER VERIFICATION: Subtract overlapping cuts (U − selected). Next CR-095.

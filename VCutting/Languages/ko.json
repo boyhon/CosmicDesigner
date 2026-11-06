@@ -375,6 +375,9 @@
     "svg.empty": "가져올 수 있는 표시 도형이 없습니다.",
     "svg.bounds": "도형이 SVG 캔버스를 벗어납니다. 원본의 width/height 또는 viewBox를 확장하세요.",
     "svg.skipped": "지원하지 않는 SVG 요소를 건너뛰었습니다: {0}",
-    "svg.approx": "곡선을 명목 0.01mm 근사 허용값의 LINE 윤곽으로 변환했습니다. 절삭 전에 결과를 확인하세요."
+    "svg.approx": "곡선을 명목 0.01mm 근사 허용값의 LINE 윤곽으로 변환했습니다. 절삭 전에 결과를 확인하세요.",
+    "subtract.internal": "겹친 천공에서 선택 영역 빼기",
+    "subtract.completed": "겹친 천공에서 선택 영역을 뺐습니다.",
+    "subtract.unavailable": "겹친 천공이 없거나 영역 빼기를 적용할 수 없습니다."
   }
 }
