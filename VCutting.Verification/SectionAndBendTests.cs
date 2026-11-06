@@ -48,6 +48,12 @@ internal static class SectionAndBendTests
             var contact = BendContactEngine.Find(document).Single();
             Check(contact.Kind == BendContactKind.Interior && contact.Position.X == 50 && contact.Position.Y == 40, "Crossing");
 
+            Check(document.Cuts.Count == 0 && document.Slits.Count == 0 && document.Bends.Count == 2,
+                "Contact detection does not modify geometry");
+            document.AddSlit("Line", [new LineSegment(50, 40, 60, 50)]);
+            Check(BendContactEngine.Find(document).Single().Kind == BendContactKind.Interior,
+                "An unrelated slit does not dismiss the crossing");
+
             var cut = document.AddHole("Circle", 50, 40);
             document.UpdateCut(cut, 50, 40, 10, 10, 0);
             Check(BendContactEngine.Find(document).Count == 0, "Opening removes the crossing");

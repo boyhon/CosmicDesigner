@@ -16,6 +16,8 @@
 
 ## Current Development Phase
 
+Current task: CR-094 through CR-097 integrated for Development review. Required human tests pending. Next available CR-098.
+
 CR-070 implemented: internal 1.20.29 / customer Development; next target 1.0.0-rc.1, not issued. New/affected/full AUTO 1/1, 6/6, 78/78 PASS; final Release 0 warnings/errors. Mandatory human TC-070-002 pending. No new Freeze/installer/release performed. See releases/VERSIONING.md and tests/regression/results/CR-070-2026-10-06.md.
 
 CR-069: VCutting 이름 변경 구현 완료; 필수 사람 검증 대기. 공식 관리명 VCutting 개발. 아래 기존 Freeze 설명은 2026-10-06 변경 전 기록이다.
@@ -639,7 +641,11 @@ CR-093 actual integration installer generated: artifacts/integration/manual-2026
 
 ## Authorized Freeze — 2026-10-08 / 1.0.0-rc.3
 User explicitly instructed '네, Freeze 하십시오.' after receiving Development integration installer manual-20261008-01. Approval release/approvals/2026-10-08-rc3.txt. Current source is being anchored and registered as immutable RC3; release/freezes/1.0.0-rc.3.json is authoritative for exact source SHA/input hashes/toolchain/settings. Prior RC1/RC2 records retained. Executable/Help/installer/dependency inputs match the delivered integration build; prior AUTO111Designer+7converterPASS/1historicalNOT_RUN evidence retained. Individual human observations not supplied, so human gates remain pending and no Verified/Closed/production promotion is asserted. No new functional CR; nextCR094.
+
+## CR-094 — 2026-10-14
+Implemented / WAITING FOR USER VERIFICATION: U − selected, analytic shared pipeline, holes/islands/empty, history selection/DXF/help. New13/13 affected13/13 Designer full124/124 PASS; accumulated131PASS/1historicalNOT_RUN. TC-094-014 MANUAL pending. Development output artifacts/cr094-build/Release/net10.0-windows/CosmicDesigner.exe; actual About Build identifier cr094.subtract.20261014. Next CR-095.
 CR-095 Implemented / WAITING FOR USER VERIFICATION — Section 기준선 자동 위치 보정 (2026-11-06).
 CR-096 Implemented / WAITING FOR USER VERIFICATION — 3D Preview 상하 연속 회전 (2026-11-06).
 CR-097 Implemented / WAITING FOR USER VERIFICATION — V/V1 절곡선 교차 경고 및 수정 안내 (2026-11-06).
-Next available CR: CR-098. CR-094 is reserved in the original worktree.
+Next available CR: CR-098.
+CR-094–097 integrated Development: 16/16 new, 20/20 affected Designer, 127/127 full Designer and 7/8 Converter AUTO PASS (historical Apple fixture missing, TC-085-004 NOT_RUN). Startup, Viewer and Drawer PASS. Required human TC-094-014, TC-095-002, TC-096-002 and TC-097-002 pending. See tests/regression/results/CR-094-097-2026-11-06.md.

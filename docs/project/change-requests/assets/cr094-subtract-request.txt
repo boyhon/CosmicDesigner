@@ -1,0 +1,635 @@
+## 작업 목적
+
+현재 CosmicDesigner에서는 여러 개의 **Cut Object**가 서로 중첩되어 있을 때, 그중 하나의 Object를 선택한 후 우측 마우스 버튼을 클릭하면 컨텍스트 메뉴에서 다음 기능을 사용할 수 있습니다.
+
+`Merge overlapping cuts`
+
+이 기능은 선택된 Cut Object와 서로 겹쳐 있는 모든 Cut Object를 찾아 이들의 **기하학적 합집합(Boolean Union)** 을 계산하고, 최종적으로 합집합의 외곽선을 갖는 하나의 새로운 닫힌 Cut Object로 만드는 기능입니다.
+
+이번 작업에서는 기존 `Merge overlapping cuts` 기능을 유지하면서, 동일한 컨텍스트 메뉴에 **Boolean Difference 기반의 새로운 기능**을 하나 추가합니다.
+
+---
+
+# 1. 기존 기능 분석을 먼저 수행할 것
+
+코드를 수정하기 전에 반드시 현재 구현을 분석하십시오.
+
+특히 다음 사항을 확인하십시오.
+
+- Cut Object를 표현하는 데이터 모델
+- Cut Object의 폐곡선/Contour 표현 방식
+- `Merge overlapping cuts` 메뉴가 생성되는 위치
+- 선택된 Object를 판별하는 방법
+- 선택 Object와 겹치는 다른 Cut Object를 찾는 방법
+- Boolean Union 연산에 사용하는 Geometry Library 또는 내부 알고리즘
+- Union 결과를 다시 Cut Object로 변환하는 과정
+- 원래 Object들을 삭제하고 결과 Object로 교체하는 과정
+- Undo/Redo가 있다면 명령 기록 방식
+- Selection 상태와 화면 Refresh 처리 방식
+- DXF 저장 시 결과 형상이 어떻게 반영되는지
+
+가능하면 기존 `Merge overlapping cuts`의 구현 로직을 최대한 재사용하고, Boolean 연산 종류만 명확히 분리할 수 있도록 구조화하십시오.
+
+기존에 정상 동작하는 `Merge overlapping cuts` 기능을 훼손하지 마십시오.
+
+---
+
+# 2. 새 컨텍스트 메뉴 추가
+
+기존 메뉴:
+
+`Merge overlapping cuts`
+
+옆 또는 바로 아래에 다음 메뉴를 추가하십시오.
+
+`Subtract overlapping cuts`
+
+사용자 관점에서 두 메뉴의 의미는 다음과 같습니다.
+
+- `Merge overlapping cuts`
+  - 서로 겹치는 Cut Object들의 **합집합**
+  - Boolean Union
+
+- `Subtract overlapping cuts`
+  - 선택한 Object를 다른 겹치는 Object들의 영역에서 **제외**
+  - Boolean Difference
+
+UI 문구가 프로젝트 전체의 명명 규칙과 더 잘 맞는다면 약간 조정할 수 있지만, 의미는 명확하게 **Subtract / Difference** 연산임을 알 수 있어야 합니다.
+
+---
+
+# 3. Subtract 연산의 정확한 정의
+
+사용자가 Cut Object 하나를 선택한 상태에서 `Subtract overlapping cuts`를 실행하면 다음과 같이 처리하십시오.
+
+선택된 Object를:
+
+`S`
+
+선택 Object와 중첩되는 다른 Cut Object들을:
+
+`O1, O2, O3, ... On`
+
+이라고 정의합니다.
+
+먼저 선택된 Object를 제외한 나머지 겹치는 Cut Object들의 합집합을 계산합니다.
+
+`U = O1 ∪ O2 ∪ O3 ∪ ... ∪ On`
+
+그 후 선택된 Object `S`를 이 합집합에서 제외합니다.
+
+최종 결과는 다음과 같습니다.
+
+`Result = U - S`
+
+즉,
+
+**모든 겹치는 Object의 전체 영역에서 현재 선택된 Object의 영역을 빼는 기능**입니다.
+
+중요:
+
+`S - U`
+
+가 아닙니다.
+
+반드시:
+
+`U - S`
+
+입니다.
+
+선택 Object는 일종의 **Subtraction/Cutter Object** 역할을 합니다.
+
+---
+
+# 4. 예시
+
+예를 들어 Cut Object A와 B가 서로 겹쳐 있고 A가 선택되어 있다고 가정합니다.
+
+기존 기능:
+
+`Merge overlapping cuts`
+
+결과:
+
+`A ∪ B`
+
+새 기능:
+
+`Subtract overlapping cuts`
+
+결과:
+
+`B - A`
+
+입니다.
+
+---
+
+Cut Object A, B, C가 서로 연결 또는 중첩되어 있고 B가 선택되어 있다면:
+
+먼저
+
+`A ∪ C`
+
+를 만든 뒤,
+
+최종 결과는:
+
+`(A ∪ C) - B`
+
+가 되어야 합니다.
+
+---
+
+# 5. 중첩 Object 탐색 범위
+
+기존 `Merge overlapping cuts`가 사용하는 중첩 Object 탐색 규칙을 우선 그대로 재사용하십시오.
+
+단순히 선택 Object와 직접 교차하는 Object만 포함하는지, 아니면 연결된 Overlap Chain 전체를 포함하는지 현재 구현을 분석하십시오.
+
+예를 들어:
+
+- A가 B와 겹침
+- B가 C와 겹침
+- A와 C는 직접 겹치지 않음
+
+현재 `Merge overlapping cuts`가 A-B-C 전체를 하나의 그룹으로 처리한다면, 새 Subtract 기능도 동일한 그룹 탐색 규칙을 사용하십시오.
+
+즉, Union과 Difference가 서로 다른 Object 탐색 규칙을 가지지 않도록 하십시오.
+
+---
+
+# 6. 결과 Geometry 처리
+
+Boolean Difference의 결과가 항상 하나의 단순한 폐곡선이 된다고 가정하지 마십시오.
+
+다음 경우를 고려해야 합니다.
+
+### Case 1. 하나의 폐곡선
+
+가장 일반적인 경우입니다.
+
+결과를 하나의 Cut Object로 생성합니다.
+
+### Case 2. 내부 Hole 발생
+
+선택된 Object가 다른 Object 내부에 완전히 포함되면 다음과 같은 결과가 발생할 수 있습니다.
+
+예:
+
+큰 사각형 B 내부에 작은 사각형 A가 있고 A가 선택됨.
+
+결과:
+
+`B - A`
+
+이 경우 외부 Contour 하나와 내부 Hole 하나가 존재합니다.
+
+CosmicDesigner의 현재 데이터 모델이
+
+- Outer Contour 1개
+- Inner Contour 복수
+
+구조를 지원한다면 반드시 이 구조를 사용하십시오.
+
+즉:
+
+- Outer Contour = B의 외곽선
+- Inner Contour = A의 외곽선
+
+으로 표현합니다.
+
+### Case 3. 여러 개의 독립된 Island 발생
+
+선택된 Object가 영역을 완전히 가로질러 결과가 둘 이상의 독립된 폐곡선으로 분리될 수 있습니다.
+
+예:
+
+큰 사각형을 세로로 가로지르는 Cutter Object를 제거
+
+결과:
+
+왼쪽 Object + 오른쪽 Object
+
+이 경우 결과를 임의로 연결하여 하나의 잘못된 폐곡선으로 만들면 안 됩니다.
+
+현재 CosmicDesigner 데이터 모델이 하나의 Cut Object 안에서 여러 Outer Contour를 지원하지 않는다면:
+
+**각 독립 영역을 각각 별도의 Cut Object로 생성하십시오.**
+
+즉 Geometry 결과가 MultiPolygon이라면 각 Polygon을 독립된 Cut Object로 생성하는 것이 안전합니다.
+
+---
+
+# 7. 원본 Object 처리
+
+연산이 성공하면 연산에 참여한 기존 Object들을 제거하고 결과 Geometry로 교체하십시오.
+
+`Merge overlapping cuts`가 현재 사용하는 교체 정책과 동일한 방식으로 구현하십시오.
+
+Subtract의 경우:
+
+- 선택 Object S
+- 연산 대상 O1...On
+
+모두 결과 계산에 사용된 후 제거됩니다.
+
+그리고 최종 Difference 결과만 Cut Object로 남깁니다.
+
+단, Difference 결과가 빈 Geometry라면 결과 Object를 만들지 않습니다.
+
+---
+
+# 8. 유효하지 않은 경우
+
+다음 경우에는 안정적으로 처리하십시오.
+
+### 겹치는 Object가 없음
+
+선택된 Cut Object 외에 연산 대상이 없다면 아무 작업도 수행하지 않습니다.
+
+가능하면 상태 메시지 또는 기존 UI 방식에 맞는 안내를 제공합니다.
+
+예:
+
+`No overlapping cut objects found.`
+
+### Difference 결과가 Empty
+
+선택 Object가 다른 모든 Object 영역을 완전히 제거하는 경우 결과가 Empty일 수 있습니다.
+
+이 경우 Geometry 오류가 아니라 정상적인 Boolean 결과로 처리하십시오.
+
+### Touch only
+
+두 Object가 면적으로 겹치지 않고 선 또는 점만 접하는 경우 기존 `Merge overlapping cuts`의 Overlap 판정 규칙을 확인하여 동일하게 처리하십시오.
+
+---
+
+# 9. Geometry Robustness
+
+Boolean 연산은 부동소수점 오차에 민감하므로 현재 프로젝트에서 사용하는 Geometry 정밀도 정책을 유지하십시오.
+
+특히 다음 문제를 확인하십시오.
+
+- 거의 같은 좌표
+- 매우 짧은 Edge
+- Self-intersection
+- 중복 Segment
+- Collinear Edge
+- Touching vertices
+- 거의 접하는 Line
+- ARC가 Polygon approximation으로 변환되는 경우의 tolerance
+
+기존 Merge 기능이 안정적으로 사용하는 Boolean 처리 방법이 있다면 반드시 동일한 Geometry Pipeline을 재사용하십시오.
+
+Difference 기능을 구현하기 위해 별도의 불일치하는 tolerance 체계를 새로 만들지 마십시오.
+
+---
+
+# 10. Curve / ARC 처리
+
+Cut Object가 LINE만이 아니라 ARC/CIRCLE 또는 기타 곡선을 포함할 수 있는지 확인하십시오.
+
+기존 Merge 기능에서 곡선을 어떻게 처리하는지 분석하고 동일한 방식을 사용하십시오.
+
+Boolean 과정에서 곡선을 Polygon으로 Tessellation하는 구조라면:
+
+- 기존 tolerance 유지
+- 불필요하게 Geometry 정밀도를 낮추지 말 것
+- 결과 DXF의 품질이 기존 Merge보다 나빠지지 않도록 할 것
+
+가능하다면 기존 Geometry primitive를 보존하는 방식을 우선하십시오.
+
+---
+
+# 11. Undo / Redo
+
+프로젝트에 Undo/Redo가 구현되어 있다면 이번 작업도 반드시 하나의 사용자 명령으로 기록하십시오.
+
+사용자가 `Subtract overlapping cuts`를 한 번 실행한 뒤 Undo하면:
+
+- 삭제된 원본 Cut Objects
+- 선택 Object
+- 각 Object의 Geometry
+- Layer
+- 속성
+- Z-order 또는 내부 순서
+- Selection 상태
+
+가 연산 이전 상태로 정확히 복구되어야 합니다.
+
+Redo 역시 동일한 결과를 재현해야 합니다.
+
+---
+
+# 12. 속성 유지 규칙
+
+새 결과 Object가 어떤 속성을 상속할지 기존 `Merge overlapping cuts`의 규칙을 확인하십시오.
+
+가능하면 동일한 정책을 적용합니다.
+
+예:
+
+- Layer
+- Cut type
+- Processing properties
+- Line style
+- Material-related attributes
+- 기타 Object metadata
+
+새 기능 때문에 서로 다른 속성 보존 정책을 만들지 마십시오.
+
+필요하다면 선택된 Object 또는 기존 Merge 결과가 사용하는 기준 Object의 속성을 그대로 계승하십시오.
+
+---
+
+# 13. Selection 처리
+
+연산이 성공하면 기존 Object의 선택은 해제하고 새로 만들어진 결과 Object를 선택 상태로 만드십시오.
+
+결과가 여러 개의 독립 Object라면 새로 만들어진 결과 Object들을 모두 선택하거나, 현재 프로젝트의 Multi-selection 정책에 맞는 일관된 방식으로 처리하십시오.
+
+---
+
+# 14. DXF 결과 검증
+
+이 기능은 화면상의 표시만 바꾸는 기능이 아닙니다.
+
+최종 결과 Geometry가 실제 내부 모델에 반영되어야 하며 DXF 저장/Export 시에도 동일한 Geometry가 출력되어야 합니다.
+
+다음 순서로 검증하십시오.
+
+`Original objects`
+→ `Subtract overlapping cuts`
+→ `Save`
+→ `Reload`
+→ `Export DXF`
+→ `Reload DXF`
+
+이 과정에서 형상이 변형되거나 원래 Object가 다시 나타나면 안 됩니다.
+
+---
+
+# 15. 테스트 케이스 추가
+
+기존 Regression Test Suite 구조를 확인하고 자동화 가능한 Geometry 테스트를 추가하십시오.
+
+최소한 다음 테스트를 포함하십시오.
+
+### TC-SUB-001 — 부분 중첩
+
+두 사각형 A와 B가 일부 겹침.
+
+A 선택.
+
+Expected:
+
+`B - A`
+
+### TC-SUB-002 — 완전 포함
+
+작은 사각형 A가 큰 사각형 B 내부에 존재.
+
+A 선택.
+
+Expected:
+
+큰 Outer Contour + 작은 Inner Contour(Hole)
+
+### TC-SUB-003 — 선택 Object가 더 큼
+
+B가 A 내부에 완전히 포함되어 있고 A 선택.
+
+Expected:
+
+`B - A = Empty`
+
+### TC-SUB-004 — 세 Object
+
+A, B, C가 중첩.
+
+B 선택.
+
+Expected:
+
+`(A ∪ C) - B`
+
+### TC-SUB-005 — 결과가 두 개의 Island
+
+선택 Object가 대상 영역 중앙을 완전히 가로지름.
+
+Expected:
+
+두 개의 독립된 Cut Object
+
+### TC-SUB-006 — 겹침 없음
+
+선택 Object가 다른 Cut Object와 겹치지 않음.
+
+Expected:
+
+변경 없음.
+
+### TC-SUB-007 — Edge Touch
+
+두 Object가 Edge만 접함.
+
+Expected:
+
+현재 Merge 기능의 overlap 정책과 동일하게 처리.
+
+### TC-SUB-008 — Vertex Touch
+
+꼭짓점 하나만 접함.
+
+Expected:
+
+현재 Geometry 정책과 일치.
+
+### TC-SUB-009 — Complex overlap
+
+3개 이상의 Object가 서로 부분적으로 연결됨.
+
+Expected:
+
+Overlap Group 전체를 대상으로 정확한 Difference 수행.
+
+### TC-SUB-010 — Save/Reload
+
+Difference 수행 후 저장하고 다시 열기.
+
+Expected:
+
+Geometry 동일.
+
+### TC-SUB-011 — Undo/Redo
+
+Difference → Undo → Redo
+
+Expected:
+
+모든 Geometry와 Object 상태가 정확히 복원 및 재적용.
+
+### TC-SUB-012 — 기존 Merge 회귀 테스트
+
+동일 Object 세트에서 기존
+
+`Merge overlapping cuts`
+
+실행.
+
+Expected:
+
+기존 Union 결과가 변경되지 않음.
+
+---
+
+# 16. 가능하면 Boolean 연산 구조를 일반화
+
+현재 코드가 허용한다면 Merge와 Subtract를 각각 완전히 별도의 구현으로 복제하지 말고 내부 Geometry 연산 계층을 다음과 같이 구조화하는 것을 검토하십시오.
+
+예:
+
+```text
+CollectOverlapGroup(selectedObject)
+
+BooleanCombine(
+    objects,
+    operation = Union
+)
+
+BooleanDifference(
+    baseObjects,
+    subtractObject
+)
+```
+
+또는:
+
+```text
+BooleanOperation
+    Union
+    Difference
+    Intersection
+```
+
+와 같은 공통 Geometry Service를 사용할 수 있습니다.
+
+다만 이번 CR의 범위를 불필요하게 확장하는 대규모 리팩터링은 피하십시오.
+
+기존 동작의 안정성을 우선하십시오.
+
+---
+
+# 17. UI 요구사항
+
+우측 클릭 메뉴는 대략 다음과 같이 표시됩니다.
+
+```text
+--------------------------------
+Merge overlapping cuts
+Subtract overlapping cuts
+--------------------------------
+...
+```
+
+메뉴 활성화 조건 역시 기존 Merge 기능과 가급적 동일하게 합니다.
+
+Cut Object가 아닌 Object를 선택했거나 Boolean 연산이 불가능한 경우에는:
+
+- 메뉴를 숨기거나
+- Disabled 처리
+
+하는 현재 UI 정책을 따르십시오.
+
+---
+
+# 18. 중요한 의미적 구분
+
+두 기능은 반드시 다음 의미를 가져야 합니다.
+
+```text
+Merge overlapping cuts
+
+Selected + Others
+        ↓
+A ∪ B ∪ C
+        ↓
+One merged cut geometry
+```
+
+반면:
+
+```text
+Subtract overlapping cuts
+
+Selected = Cutter
+Others   = Target
+
+        ↓
+
+(Others Union) - Selected
+
+        ↓
+
+Remaining cut geometry
+```
+
+즉 선택된 Object의 역할이 두 명령에서 다릅니다.
+
+Merge에서는:
+
+`Selected Object = Union 구성원`
+
+Subtract에서는:
+
+`Selected Object = 제거할 영역`
+
+입니다.
+
+---
+
+# 19. 완료 조건
+
+다음 조건을 모두 만족해야 작업 완료로 판단합니다.
+
+1. 기존 `Merge overlapping cuts`가 이전과 동일하게 동작한다.
+2. 새 `Subtract overlapping cuts` 메뉴가 추가된다.
+3. 선택 Object가 Difference의 Subtractor로 사용된다.
+4. 결과가 정확히 `(Union of overlapping others) - Selected`가 된다.
+5. Hole을 올바르게 처리한다.
+6. MultiPolygon 결과를 손실 없이 처리한다.
+7. 빈 결과를 정상적으로 처리한다.
+8. Object 속성이 기존 Merge 정책과 일관되게 유지된다.
+9. Undo/Redo가 정상 동작한다.
+10. 저장 후 재로딩해도 Geometry가 동일하다.
+11. DXF Export 결과가 화면상의 결과와 동일하다.
+12. 기존 Regression Test에 실패가 발생하지 않는다.
+13. 새로운 Difference 관련 테스트를 Regression Test Suite에 추가한다.
+
+---
+
+# 20. 작업 후 보고
+
+구현 완료 후 다음 내용을 정리해서 보고하십시오.
+
+1. 수정한 파일 목록
+2. 기존 `Merge overlapping cuts` 구현 구조 분석 결과
+3. 새 `Subtract overlapping cuts` 구현 방식
+4. 사용한 Boolean Difference 알고리즘 또는 Geometry Library
+5. Overlap Group 탐색 방식
+6. Hole 처리 방식
+7. MultiPolygon 처리 방식
+8. 속성 상속 규칙
+9. Undo/Redo 처리 방식
+10. 추가한 Test Case 목록
+11. 자동 테스트 결과
+12. 기존 Regression Test 결과
+13. 수동 확인이 필요한 항목
+14. 알려진 제한사항
+
+중요:
+
+기존의 정상 동작을 임의로 변경하지 말고, 먼저 현재 구현을 분석한 후 최소 변경 원칙으로 기능을 추가하십시오.

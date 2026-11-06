@@ -122,6 +122,8 @@ public sealed class GeometryObject : DesignObject
 
 public sealed partial class VCuttingDocument : INotifyPropertyChanged
 {
+    public string? HistorySelectionId { get; set; }
+
     bool _preserveOuterContour;
     public MaterialModel Material { get; } = new() { Id = "MATERIAL" };
     public ContourObject OuterContour { get; } = new() { Id = "OUTER", Kind = ContourKind.Outer };
@@ -281,6 +283,25 @@ public sealed partial class VCuttingDocument : INotifyPropertyChanged
         if(!CutUnionEngine.TryBuild(this,selected,out var members,out var contour))return false;
         foreach(var cut in members.Where(c=>!ReferenceEquals(c,selected))){Cuts.Remove(cut);foreach(var inner in InnerContours.Where(c=>c.Id==cut.Id).ToList())InnerContours.Remove(inner);}
         selected.Shape="Compound";ApplyCutContour(selected,contour);return true;
+    }
+    public bool CanSubtractInternalCuts(CutOperation selected)=>CutUnionEngine.TryDifference(this,selected,out _,out _);
+    public bool TrySubtractInternalCuts(CutOperation selected,out IReadOnlyList<CutOperation> results)
+    {
+        results=[];
+        if(!CutUnionEngine.TryDifference(this,selected,out var members,out var polygons))return false;
+        var index=Cuts.IndexOf(selected);var created=new List<CutOperation>();
+        var used=Cuts.Select(c=>c.Id).ToHashSet();
+        foreach(var polygon in polygons)
+        {
+            var id=selected.Id;
+            if(created.Count>0){var n=1;while(used.Contains($"H{n:000}"))n++;id=$"H{n:000}";used.Add(id);}
+            var cut=new CutOperation{Id=id,Sequence=selected.Sequence,Kind=selected.Kind,Shape="Compound",ParentContourId=selected.ParentContourId,Sides=selected.Sides};
+            cut.Geometry.AddRange(polygon);created.Add(cut);
+        }
+        foreach(var member in members){Cuts.Remove(member);foreach(var inner in InnerContours.Where(c=>c.Id==member.Id).ToList())InnerContours.Remove(inner);}
+        index=Math.Min(index,Cuts.Count);
+        foreach(var cut in created){Cuts.Insert(index++,cut);InnerContours.Add(new ContourObject{Id=cut.Id,Kind=ContourKind.Inner});ApplyCutContour(cut,cut.Geometry.ToArray());}
+        if(created.Count==0)Recalculate();results=created;return true;
     }
     public bool CanUpdateCompound(CutOperation cut,double x,double y,double width,double height)
     {

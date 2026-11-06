@@ -1,7 +1,79 @@
 {
   "schemaVersion": 2,
   "created": "2026-10-05",
-  "cases": [{"implementation":"VCutting.Verification/SectionAndBendTests.cs","status":"ACTIVE","relatedCR":"CR-095","executionType":"AUTO","purpose":"Section guide validity and persistence","testId":"TC-095-001","automation":"AUTO"},{"implementation":"tests/regression/cr/CR-095/test-cases.md","status":"ACTIVE","relatedCR":"CR-095","executionType":"MANUAL","purpose":"Section guide and view synchronization","testId":"TC-095-002","automation":"MANUAL"},{"implementation":"VCutting.Verification/SectionAndBendTests.cs","status":"ACTIVE","relatedCR":"CR-097","executionType":"AUTO","purpose":"Material-clipped V/V1 contacts","testId":"TC-097-001","automation":"AUTO"},{"implementation":"tests/regression/cr/CR-097/test-cases.md","status":"ACTIVE","relatedCR":"CR-097","executionType":"MANUAL","purpose":"Bend contact overlay, editing, and preview","testId":"TC-097-002","automation":"MANUAL"},{"testId":"TC-096-001","relatedCR":"CR-096","status":"ACTIVE","executionType":"AUTO","automation":"AUTO","purpose":"Continuous bidirectional orbit angle","implementation":"VCutting.Verification/PreviewOrbitTests.cs::Run"},{"testId":"TC-096-002","relatedCR":"CR-096","status":"ACTIVE","executionType":"MANUAL","automation":"MANUAL","purpose":"Preview camera drag and rendering","implementation":"tests/regression/cr/CR-096/test-cases.md"},{"testId":"TC-093-001","relatedCR":"CR-093","status":"ACTIVE","executionType":"AUTO","automation":"AUTO","purpose":"Pre-Freeze Development installer validation","implementation":"VCutting.Verification/PackageTests.cs::IntegrationInstaller"},{"testId":"TC-093-002","relatedCR":"CR-093","status":"ACTIVE","executionType":"MANUAL","automation":"MANUAL","purpose":"Installation and use before Freeze","implementation":"tests/regression/cr/CR-093/test-cases.md"},{"testId":"TC-092-001","relatedCR":"CR-092","status":"ACTIVE","executionType":"AUTO","automation":"AUTO","purpose":"Referenced applications publish one Help version file","implementation":"VCutting.Verification/Program.cs::ReleaseVersionPolicy"},{"testId":"TC-091-001","relatedCR":"CR-091","status":"ACTIVE","executionType":"AUTO","automation":"AUTO","purpose":"WPF temporary projects excluded; real source additions blocked","implementation":"VCutting.Verification/Program.cs::ReleaseVersionPolicy"},{"testId":"TC-090-001","relatedCR":"CR-090","status":"ACTIVE","executionType":"AUTO","automation":"AUTO","purpose":"Converter installer integration","implementation":"VCutting.Verification/PackageTests.cs::Run"},{"testId":"TC-090-002","relatedCR":"CR-090","status":"ACTIVE","executionType":"MANUAL","automation":"MANUAL","purpose":"RC installer lifecycle and shortcuts","implementation":"tests/regression/cr/CR-090/test-cases.md"},{"testId":"TC-089-001","relatedCR":"CR-089","status":"ACTIVE","executionType":"AUTO","automation":"AUTO","purpose":"Section fit reset and option/editor preservation","implementation":"VCutting.Verification/SectionFitTests.cs::Run"},{"testId":"TC-089-002","relatedCR":"CR-089","status":"ACTIVE","executionType":"MANUAL","automation":"MANUAL","purpose":"H/W fit visual acceptance","implementation":"tests/regression/cr/CR-089/test-cases.md"},
+  "cases": [{"implementation":"VCutting.Verification/SectionAndBendTests.cs","status":"ACTIVE","relatedCR":"CR-095","executionType":"AUTO","purpose":"Section guide validity and persistence","testId":"TC-095-001","automation":"AUTO"},{"implementation":"tests/regression/cr/CR-095/test-cases.md","status":"ACTIVE","relatedCR":"CR-095","executionType":"MANUAL","purpose":"Section guide and view synchronization","testId":"TC-095-002","automation":"MANUAL"},{"implementation":"VCutting.Verification/SectionAndBendTests.cs","status":"ACTIVE","relatedCR":"CR-097","executionType":"AUTO","purpose":"Material-clipped V/V1 contacts","testId":"TC-097-001","automation":"AUTO"},{"implementation":"tests/regression/cr/CR-097/test-cases.md","status":"ACTIVE","relatedCR":"CR-097","executionType":"MANUAL","purpose":"Bend contact overlay, editing, and preview","testId":"TC-097-002","automation":"MANUAL"},{"testId":"TC-096-001","relatedCR":"CR-096","status":"ACTIVE","executionType":"AUTO","automation":"AUTO","purpose":"Continuous bidirectional orbit angle","implementation":"VCutting.Verification/PreviewOrbitTests.cs::Run"},{"testId":"TC-096-002","relatedCR":"CR-096","status":"ACTIVE","executionType":"MANUAL","automation":"MANUAL","purpose":"Preview camera drag and rendering","implementation":"tests/regression/cr/CR-096/test-cases.md"},
+    {
+      "testId": "TC-093-001",
+      "relatedCR": "CR-093",
+      "status": "ACTIVE",
+      "executionType": "AUTO",
+      "automation": "AUTO",
+      "purpose": "Pre-Freeze Development installer validation",
+      "implementation": "VCutting.Verification/PackageTests.cs::IntegrationInstaller"
+    },
+    {
+      "testId": "TC-093-002",
+      "relatedCR": "CR-093",
+      "status": "ACTIVE",
+      "executionType": "MANUAL",
+      "automation": "MANUAL",
+      "purpose": "Installation and use before Freeze",
+      "implementation": "tests/regression/cr/CR-093/test-cases.md"
+    },
+    {
+      "testId": "TC-092-001",
+      "relatedCR": "CR-092",
+      "status": "ACTIVE",
+      "executionType": "AUTO",
+      "automation": "AUTO",
+      "purpose": "Referenced applications publish one Help version file",
+      "implementation": "VCutting.Verification/Program.cs::ReleaseVersionPolicy"
+    },
+    {
+      "testId": "TC-091-001",
+      "relatedCR": "CR-091",
+      "status": "ACTIVE",
+      "executionType": "AUTO",
+      "automation": "AUTO",
+      "purpose": "WPF temporary projects excluded; real source additions blocked",
+      "implementation": "VCutting.Verification/Program.cs::ReleaseVersionPolicy"
+    },
+    {
+      "testId": "TC-090-001",
+      "relatedCR": "CR-090",
+      "status": "ACTIVE",
+      "executionType": "AUTO",
+      "automation": "AUTO",
+      "purpose": "Converter installer integration",
+      "implementation": "VCutting.Verification/PackageTests.cs::Run"
+    },
+    {
+      "testId": "TC-090-002",
+      "relatedCR": "CR-090",
+      "status": "ACTIVE",
+      "executionType": "MANUAL",
+      "automation": "MANUAL",
+      "purpose": "RC installer lifecycle and shortcuts",
+      "implementation": "tests/regression/cr/CR-090/test-cases.md"
+    },
+    {
+      "testId": "TC-089-001",
+      "relatedCR": "CR-089",
+      "status": "ACTIVE",
+      "executionType": "AUTO",
+      "automation": "AUTO",
+      "purpose": "Section fit reset and option/editor preservation",
+      "implementation": "VCutting.Verification/SectionFitTests.cs::Run"
+    },
+    {
+      "testId": "TC-089-002",
+      "relatedCR": "CR-089",
+      "status": "ACTIVE",
+      "executionType": "MANUAL",
+      "automation": "MANUAL",
+      "purpose": "H/W fit visual acceptance",
+      "implementation": "tests/regression/cr/CR-089/test-cases.md"
+    },
     {
       "testId": "TC-064-001",
       "relatedCR": "CR-064",
@@ -3029,6 +3101,132 @@
       "implementation": "Human GUI/CAD review",
       "introduced": "2026-10-08",
       "origin": "User provided 양영권회장 SVG text error"
+    },
+    {
+      "testId": "TC-094-001",
+      "relatedCR": "CR-094",
+      "status": "ACTIVE",
+      "executionType": "AUTO",
+      "automation": "AUTO",
+      "purpose": "부분 중첩 U-S",
+      "implementation": "VCutting.Verification/CutDifferenceTests.cs::Run(1)"
+    },
+    {
+      "testId": "TC-094-002",
+      "relatedCR": "CR-094",
+      "status": "ACTIVE",
+      "executionType": "AUTO",
+      "automation": "AUTO",
+      "purpose": "완전 포함 Hole",
+      "implementation": "VCutting.Verification/CutDifferenceTests.cs::Run(2)"
+    },
+    {
+      "testId": "TC-094-003",
+      "relatedCR": "CR-094",
+      "status": "ACTIVE",
+      "executionType": "AUTO",
+      "automation": "AUTO",
+      "purpose": "빈 결과",
+      "implementation": "VCutting.Verification/CutDifferenceTests.cs::Run(3)"
+    },
+    {
+      "testId": "TC-094-004",
+      "relatedCR": "CR-094",
+      "status": "ACTIVE",
+      "executionType": "AUTO",
+      "automation": "AUTO",
+      "purpose": "세 객체",
+      "implementation": "VCutting.Verification/CutDifferenceTests.cs::Run(4)"
+    },
+    {
+      "testId": "TC-094-005",
+      "relatedCR": "CR-094",
+      "status": "ACTIVE",
+      "executionType": "AUTO",
+      "automation": "AUTO",
+      "purpose": "두 Island",
+      "implementation": "VCutting.Verification/CutDifferenceTests.cs::Run(5)"
+    },
+    {
+      "testId": "TC-094-006",
+      "relatedCR": "CR-094",
+      "status": "ACTIVE",
+      "executionType": "AUTO",
+      "automation": "AUTO",
+      "purpose": "겹침 없음",
+      "implementation": "VCutting.Verification/CutDifferenceTests.cs::Run(6)"
+    },
+    {
+      "testId": "TC-094-007",
+      "relatedCR": "CR-094",
+      "status": "ACTIVE",
+      "executionType": "AUTO",
+      "automation": "AUTO",
+      "purpose": "공유 변",
+      "implementation": "VCutting.Verification/CutDifferenceTests.cs::Run(7)"
+    },
+    {
+      "testId": "TC-094-008",
+      "relatedCR": "CR-094",
+      "status": "ACTIVE",
+      "executionType": "AUTO",
+      "automation": "AUTO",
+      "purpose": "점 접촉",
+      "implementation": "VCutting.Verification/CutDifferenceTests.cs::Run(8)"
+    },
+    {
+      "testId": "TC-094-009",
+      "relatedCR": "CR-094",
+      "status": "ACTIVE",
+      "executionType": "AUTO",
+      "automation": "AUTO",
+      "purpose": "연쇄 그룹",
+      "implementation": "VCutting.Verification/CutDifferenceTests.cs::Run(9)"
+    },
+    {
+      "testId": "TC-094-010",
+      "relatedCR": "CR-094",
+      "status": "ACTIVE",
+      "executionType": "AUTO",
+      "automation": "AUTO",
+      "purpose": "Save/Reload/DXF",
+      "implementation": "VCutting.Verification/CutDifferenceTests.cs::Run(10)"
+    },
+    {
+      "testId": "TC-094-011",
+      "relatedCR": "CR-094",
+      "status": "ACTIVE",
+      "executionType": "AUTO",
+      "automation": "AUTO",
+      "purpose": "Undo/Redo 선택 및 순서",
+      "implementation": "VCutting.Verification/CutDifferenceTests.cs::Run(11)"
+    },
+    {
+      "testId": "TC-094-012",
+      "relatedCR": "CR-094",
+      "status": "ACTIVE",
+      "executionType": "AUTO",
+      "automation": "AUTO",
+      "purpose": "기존 Merge 회귀",
+      "implementation": "VCutting.Verification/CutDifferenceTests.cs::Run(12)"
+    },
+    {
+      "testId": "TC-094-013",
+      "relatedCR": "CR-094",
+      "status": "ACTIVE",
+      "executionType": "AUTO",
+      "automation": "AUTO",
+      "purpose": "정확한 원호",
+      "implementation": "VCutting.Verification/CutDifferenceTests.cs::Run(13)"
+    },
+    {
+      "testId": "TC-094-014",
+      "relatedCR": "CR-094",
+      "status": "ACTIVE",
+      "executionType": "MANUAL",
+      "automation": "MANUAL",
+      "purpose": "UI/selection/Flat/3D/external CAD/help review",
+      "implementation": "tests/regression/cr/CR-094/test-cases.md"
     }
   ],
   "baselineMethods": [
