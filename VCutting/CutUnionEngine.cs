@@ -68,7 +68,13 @@ public static class CutUnionEngine
     const double Tolerance=1e-6;
     public static bool TryBuild(VCuttingDocument document,CutOperation selected,out IReadOnlyList<CutOperation> members,out IReadOnlyList<GeometrySegment> contour)
     {
-        members=[];contour=[];if(!document.Cuts.Contains(selected))return false;
+        contour=[];
+        if(!TryCollectGroup(document,selected,out members))return false;
+        return TryUnion(members.Select(c=>CutContourEngine.Loops(c.Geometry).SelectMany(l=>l).ToList()).ToList(),members.Select(c=>c.Shape=="RegularStar").ToArray(),out contour);
+    }
+    public static bool TryCollectGroup(VCuttingDocument document,CutOperation selected,out IReadOnlyList<CutOperation> members)
+    {
+        members=[];if(!document.Cuts.Contains(selected))return false;
         var outer=CutContourEngine.Loops(document.OuterContour.Segments).SelectMany(l=>l).ToList();if(outer.Count==0)return false;
         var nodes=new List<(CutOperation Cut,List<GeometrySegment> Segments,PathGeometry Path)>();
         foreach(var cut in document.Cuts)
@@ -85,9 +91,29 @@ public static class CutUnionEngine
             var i=queue.Dequeue();for(int j=0;j<nodes.Count;j++)if(!included.Contains(j)&&Connected(nodes[i].Segments,nodes[j].Segments,nodes[i].Path,nodes[j].Path)){included.Add(j);queue.Enqueue(j);}
         }
         if(included.Count<2)return false;
-        var group=included.Order().Select(i=>nodes[i]).ToList();var paths=group.Select(n=>n.Segments).ToList();
-        if(!TryUnion(paths,group.Select(n=>n.Cut.Shape=="RegularStar").ToArray(),out contour))return false;
+        var group=included.Order().Select(i=>nodes[i]).ToList();
         members=group.Select(n=>n.Cut).ToList();return true;
+    }
+    public static bool TryDifference(VCuttingDocument document,CutOperation selected,out IReadOnlyList<CutOperation> members,out IReadOnlyList<IReadOnlyList<GeometrySegment>> polygons)
+    {
+        polygons=[];
+        if(!TryCollectGroup(document,selected,out members))return false;
+        var paths=members.Select(c=>CutContourEngine.Loops(c.Geometry).SelectMany(l=>l).ToList()).ToList();
+        var cutter=members.ToList().IndexOf(selected);
+        if(!TryUnion(paths,members.Select(c=>c.Shape=="RegularStar").ToArray(),out var boundary,cutter))return false;
+        if(boundary.Count==0)return true;
+        var loops=CutContourEngine.Loops(boundary);
+        var outers=loops.Where(l=>C.SignedArea(l)>0).ToList();
+        var result=outers.Select(l=>l.ToList()).ToList();
+        foreach(var hole in loops.Where(l=>C.SignedArea(l)<0))
+        {
+            var point=C.At(hole[0],.5);
+            var owner=outers.Select((l,i)=>(l,i)).Where(x=>CutContourEngine.Contains(x.l,point)).OrderBy(x=>Math.Abs(C.SignedArea(x.l))).FirstOrDefault();
+            if(owner.l is null)return false;
+            result[owner.i].AddRange(hole);
+        }
+        if(result.Count==0)return false;
+        polygons=result;return true;
     }
     static bool Internal(IReadOnlyList<GeometrySegment> outer,IReadOnlyList<GeometrySegment> segments)
     {
@@ -109,13 +135,14 @@ public static class CutUnionEngine
         }
         return false;
     }
-    static bool TryUnion(IReadOnlyList<List<GeometrySegment>> paths,IReadOnlyList<bool> solidStars,out IReadOnlyList<GeometrySegment> contour)
+    static bool TryUnion(IReadOnlyList<List<GeometrySegment>> paths,IReadOnlyList<bool> solidStars,out IReadOnlyList<GeometrySegment> contour,int cutter=-1)
     {
         contour=[];var sources=paths.SelectMany((path,owner)=>path.Select(s=>(Segment:s,Owner:owner,Ts:new List<double>{0,1}))).ToList();
         for(int i=0;i<sources.Count;i++)for(int j=i+1;j<sources.Count;j++)C.AllIntersections(sources[i].Segment,sources[j].Segment,sources[i].Ts,sources[j].Ts);
         var points=sources.SelectMany(s=>CutContourEngine.Extrema([s.Segment])).ToList();var span=Math.Max(points.Max(p=>p.X)-points.Min(p=>p.X),points.Max(p=>p.Y)-points.Min(p=>p.Y));
         var offset=Math.Max(1e-7,span*1e-8);var pieces=new List<GeometrySegment>();
-        bool Filled(Point p)=>paths.Select((path,i)=>solidStars[i]?RegularStarGeometry.Contains(path,p):CutContourEngine.Contains(path,p)).Any(inside=>inside);
+        bool Inside(int i,Point p)=>solidStars[i]?RegularStarGeometry.Contains(paths[i],p):CutContourEngine.Contains(paths[i],p);
+        bool Filled(Point p)=>Enumerable.Range(0,paths.Count).Any(i=>i!=cutter&&Inside(i,p))&&(cutter<0||!Inside(cutter,p));
         foreach(var source in sources)foreach(var piece in C.Split(source.Segment,source.Ts))
         {
             var mid=C.At(piece,.5);var tangent=Tangent(piece,.5);if(tangent.Length<=1e-12)return false;tangent.Normalize();var normal=new Vector(-tangent.Y,tangent.X)*offset;
@@ -123,6 +150,7 @@ public static class CutUnionEngine
             var kept=left?piece:C.Reverse(piece);
             if(!pieces.Any(p=>Same(p,kept)))pieces.Add(kept);
         }
+        if(pieces.Count==0&&cutter>=0)return true;
         if(pieces.Count<2)return false;
         var ordered=new List<GeometrySegment>();var remaining=pieces.ToList();
         while(remaining.Count>0)

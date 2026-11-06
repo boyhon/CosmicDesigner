@@ -26,6 +26,53 @@ public static class FileShortcutEngine
 public static class SectionSelectionEngine
 {
     public static double Clamp(double position,double extent)=>Math.Clamp(position,0,Math.Max(0,extent));
+
+    public static double? Resolve(VCuttingDocument document, SectionAxis axis, double? position)
+    {
+        var extent = axis == SectionAxis.H ? document.Material.Width : document.Material.Height;
+        var outer = document.OuterContour.Segments;
+        bool Valid(double value) => value >= 0 && value <= extent &&
+            ContourSectionEngine.MaterialIntervals(outer, axis, value).Count > 0;
+
+        if (position is double current && Valid(current)) return current;
+        var center = extent / 2;
+        if (Valid(center)) return center;
+
+        var stations = new List<double> { 0, extent };
+        foreach (var segment in outer)
+        {
+            if (segment is LineSegment line)
+            {
+                stations.Add(axis == SectionAxis.H ? line.X1 : line.Y1);
+                stations.Add(axis == SectionAxis.H ? line.X2 : line.Y2);
+            }
+            else if (segment is CircleSegment circle)
+            {
+                var origin = axis == SectionAxis.H ? circle.Cx : circle.Cy;
+                stations.Add(origin - circle.Radius);
+                stations.Add(origin + circle.Radius);
+            }
+            else if (segment is ArcSegment arc)
+            {
+                var start = Math.Min(arc.StartDegrees, arc.EndDegrees);
+                var end = Math.Max(arc.StartDegrees, arc.EndDegrees);
+                var firstExtremum = axis == SectionAxis.H ? 0 : 90;
+                var nextExtremum = firstExtremum + Math.Ceiling((start - firstExtremum) / 180) * 180;
+                var angles = new[] { start, end, nextExtremum, nextExtremum + 180 };
+                foreach (var angle in angles.Where(angle => angle <= end))
+                {
+                    var radians = angle * Math.PI / 180;
+                    stations.Add(axis == SectionAxis.H
+                        ? arc.Cx + arc.Radius * Math.Cos(radians)
+                        : arc.Cy + arc.Radius * Math.Sin(radians));
+                }
+            }
+        }
+
+        var sorted = stations.Where(value => value >= 0 && value <= extent).Distinct().Order().ToArray();
+        return sorted.Zip(sorted.Skip(1), (a, b) => a + (b - a) / 2)
+            .OrderBy(value => Math.Abs(value - center)).Where(Valid).Select(value => (double?)value).FirstOrDefault();
+    }
 }
 
 public static class BoundaryCutEngine
@@ -207,6 +254,17 @@ public static class ContourSectionEngine
                 var a=axis==SectionAxis.H?line.X1:line.Y1;var b=axis==SectionAxis.H?line.X2:line.Y2;
                 if(Math.Abs(a-b)<=Epsilon||position<Math.Min(a,b)-Epsilon||position>=Math.Max(a,b)-Epsilon)continue;
                 var t=(position-a)/(b-a);crossings.Add(axis==SectionAxis.H?line.Y1+(line.Y2-line.Y1)*t:line.X1+(line.X2-line.X1)*t);
+            }
+            else if(segment is CircleSegment circle)
+            {
+                var center=axis==SectionAxis.H?circle.Cx:circle.Cy;
+                var other=axis==SectionAxis.H?circle.Cy:circle.Cx;
+                var offset=position-center;
+                var chord=circle.Radius*circle.Radius-offset*offset;
+                if(chord<=Epsilon*Epsilon)continue;
+                var half=Math.Sqrt(chord);
+                crossings.Add(other-half);
+                crossings.Add(other+half);
             }
             else if(segment is ArcSegment arc)
             {
@@ -496,7 +554,7 @@ public static class VCuttingDxfSerializer
         if(line is null) throw new InvalidDataException(Localization.Text("ui.0010")); var dto=JsonSerializer.Deserialize<DocumentDto>(line[MetadataMarker.Length..]) ?? throw new InvalidDataException(Localization.Text("ui.0011"));
         var recognized=MeasurementUnits.TryParse(dto.Unit,out var unit);var scale=recognized?1d:.1d;if(!recognized)unit=MeasurementUnit.Centimeter;var d=new VCuttingDocument();d.SetUnit(unit);d.WSegments.Clear();d.HSegments.Clear();d.Bends.Clear();d.Cuts.Clear();d.InnerContours.Clear();d.MicroJoints.Clear();
         foreach(var x in dto.WSegments)d.WSegments.Add(new SectionSegment{Id=x.Id,Axis=SectionAxis.W,Index=x.Index,Length=x.Length*scale}); foreach(var x in dto.HSegments)d.HSegments.Add(new SectionSegment{Id=x.Id,Axis=SectionAxis.H,Index=x.Index,Length=x.Length*scale});
-        foreach(var x in dto.Bends)d.Bends.Add(new(){Id=x.Id,Sequence=x.Sequence,Axis=x.Axis,Direction=x.Direction,Position=x.Position*scale});foreach(var x in dto.Cuts??[]){var cut=new CutOperation{Id=x.Id,Sequence=x.Sequence,Kind=CutKind.Hole,Shape=x.Shape,CenterX=x.CenterX*scale,CenterY=x.CenterY*scale,Width=x.Width*scale,Height=x.Height*scale,Sides=x.Sides,Radius=(x.Radius??2.5)*scale,Rotation=x.Rotation??0,StarStep=x.StarStep??2};if(cut.Shape=="Rectangle"&&x.Rotation.HasValue){if(!RotatedRectangleGeometry.Parameters(cut).Fits(d.WSegments.Sum(s=>s.Length),d.HSegments.Sum(s=>s.Length)))throw new InvalidDataException(Localization.Text("rectangle.invalid"));RotatedRectangleGeometry.Rebuild(cut);}else if(cut.Shape=="RegularStar"){if(!RegularStarGeometry.Parameters(cut).Fits(d.WSegments.Sum(s=>s.Length),d.HSegments.Sum(s=>s.Length)))throw new InvalidDataException(Localization.Text("star.invalid"));RegularStarGeometry.Rebuild(cut);}else if(cut.Shape=="RegularPolygon"){if(!RegularPolygonGeometry.Parameters(cut).Fits(d.WSegments.Sum(s=>s.Length),d.HSegments.Sum(s=>s.Length)))throw new InvalidDataException(Localization.Text("polygon.invalid"));RegularPolygonGeometry.Rebuild(cut);}else if(x.Geometry is {Count:>0})cut.Geometry.AddRange(x.Geometry.Select(g=>Scale(FromDto(g),scale)));else HoleGeometryEngine.Rebuild(cut);d.Cuts.Add(cut);var contour=new ContourObject{Id=cut.Id,Kind=ContourKind.Inner};contour.Segments.AddRange(cut.Geometry);d.InnerContours.Add(contour);} foreach(var x in dto.MicroJoints)d.MicroJoints.Add(new(){Id=x.Id,Sequence=x.Sequence,ParentContourId=x.ParentContourId,Position=x.Position*scale,Width=x.Width*scale,Enabled=x.Enabled}); d.ChangeThickness(dto.Thickness*scale);if(dto.Outer is {Count:>0})d.PreserveOuterGeometry(dto.Outer.Select(g=>Scale(FromDto(g),scale)));ApplyView(d.WView,dto.WView);ApplyView(d.HView,dto.HView);foreach(var x in dto.Slits??[]){var slit=new SlitOperation{Id=x.Id,Sequence=x.Sequence,Shape=x.Shape};slit.Geometry.AddRange(x.Geometry.Select(g=>Scale(FromDto(g),scale)));d.Slits.Add(slit);}return d;
+        foreach(var x in dto.Bends)d.Bends.Add(new(){Id=x.Id,Sequence=x.Sequence,Axis=x.Axis,Direction=x.Direction,Position=x.Position*scale});foreach(var x in dto.Cuts??[]){var cut=new CutOperation{Id=x.Id,Sequence=x.Sequence,Kind=CutKind.Hole,Shape=x.Shape,CenterX=x.CenterX*scale,CenterY=x.CenterY*scale,Width=x.Width*scale,Height=x.Height*scale,Sides=x.Sides,Radius=(x.Radius??2.5)*scale,Rotation=x.Rotation??0,StarStep=x.StarStep??2};if(cut.Shape=="Rectangle"&&x.Rotation.HasValue){if(!RotatedRectangleGeometry.Parameters(cut).Fits(d.WSegments.Sum(s=>s.Length),d.HSegments.Sum(s=>s.Length)))throw new InvalidDataException(Localization.Text("rectangle.invalid"));RotatedRectangleGeometry.Rebuild(cut);}else if(cut.Shape=="RegularStar"){if(!RegularStarGeometry.Parameters(cut).Fits(d.WSegments.Sum(s=>s.Length),d.HSegments.Sum(s=>s.Length)))throw new InvalidDataException(Localization.Text("star.invalid"));RegularStarGeometry.Rebuild(cut);}else if(cut.Shape=="RegularPolygon"){if(!RegularPolygonGeometry.Parameters(cut).Fits(d.WSegments.Sum(s=>s.Length),d.HSegments.Sum(s=>s.Length)))throw new InvalidDataException(Localization.Text("polygon.invalid"));RegularPolygonGeometry.Rebuild(cut);}else if(x.Geometry is {Count:>0})cut.Geometry.AddRange(x.Geometry.Select(g=>Scale(FromDto(g),scale)));else HoleGeometryEngine.Rebuild(cut);d.Cuts.Add(cut);var contour=new ContourObject{Id=cut.Id,Kind=ContourKind.Inner};contour.Segments.AddRange(cut.Geometry);d.InnerContours.Add(contour);} foreach(var x in dto.MicroJoints)d.MicroJoints.Add(new(){Id=x.Id,Sequence=x.Sequence,ParentContourId=x.ParentContourId,Position=x.Position*scale,Width=x.Width*scale,Enabled=x.Enabled}); d.ChangeThickness(dto.Thickness*scale);if(dto.Outer is {Count:>0})d.PreserveOuterGeometry(dto.Outer.Select(g=>Scale(FromDto(g),scale)));ApplyView(d.WView,dto.WView,scale);ApplyView(d.HView,dto.HView,scale);foreach(var x in dto.Slits??[]){var slit=new SlitOperation{Id=x.Id,Sequence=x.Sequence,Shape=x.Shape};slit.Geometry.AddRange(x.Geometry.Select(g=>Scale(FromDto(g),scale)));d.Slits.Add(slit);}return d;
     }
     static IEnumerable<object> Ordered(VCuttingDocument d) { yield return d.OuterContour; foreach(var x in d.Bends.Cast<DesignObject>().Concat(d.Cuts).Concat(d.Slits).OrderBy(x=>x.Sequence))yield return x; }
     static void WriteEntity(StringBuilder sb,object item)
@@ -527,9 +585,9 @@ public static class VCuttingDxfSerializer
     static GeometryDto ToDto(GeometrySegment x)=>x switch{LineSegment l=>new("LINE",l.X1,l.Y1,l.X2,l.Y2,0),CircleSegment c=>new("CIRCLE",c.Cx,c.Cy,0,0,c.Radius),ArcSegment a=>new("ARC",a.Cx,a.Cy,a.StartDegrees,a.EndDegrees,a.Radius),_=>throw new NotSupportedException()};
     static GeometrySegment FromDto(GeometryDto x)=>x.Type switch{"LINE"=>new LineSegment(x.A,x.B,x.C,x.D),"CIRCLE"=>new CircleSegment(x.A,x.B,x.Radius),"ARC"=>new ArcSegment(x.A,x.B,x.Radius,x.C,x.D),_=>throw new InvalidDataException(Localization.Format("ui.0012", x.Type))};
     static GeometrySegment Scale(GeometrySegment x,double s)=>x switch{LineSegment l=>new LineSegment(l.X1*s,l.Y1*s,l.X2*s,l.Y2*s),CircleSegment c=>new CircleSegment(c.Cx*s,c.Cy*s,c.Radius*s),ArcSegment a=>new ArcSegment(a.Cx*s,a.Cy*s,a.Radius*s,a.StartDegrees,a.EndDegrees),_=>x};
-    static ViewDto ToDto(SectionViewState x)=>new(x.Dimensions,x.BentMode,x.RotationQuarterTurns);static void ApplyView(SectionViewState target,ViewDto? source){if(source is null)return;target.Dimensions=source.Dimensions;target.BentMode=source.BentMode;target.RotationQuarterTurns=((source.RotationQuarterTurns%4)+4)%4;}
+    static ViewDto ToDto(SectionViewState x)=>new(x.Dimensions,x.BentMode,x.RotationQuarterTurns,x.Position);static void ApplyView(SectionViewState target,ViewDto? source,double scale){if(source is null)return;target.Position=source.Position*scale;target.Dimensions=source.Dimensions;target.BentMode=source.BentMode;target.RotationQuarterTurns=((source.RotationQuarterTurns%4)+4)%4;}
     record DocumentDto(double Thickness,List<SegmentDto> WSegments,List<SegmentDto> HSegments,List<BendDto> Bends,List<CutDto>? Cuts,List<MicroJoint> MicroJoints,List<GeometryDto>? Outer=null,string? Unit=null,ViewDto? WView=null,ViewDto? HView=null,List<SlitDto>? Slits=null);
     record SlitDto(string Id,int Sequence,string Shape,List<GeometryDto> Geometry);
-    record ViewDto(bool Dimensions,bool BentMode,int RotationQuarterTurns);
+    record ViewDto(bool Dimensions,bool BentMode,int RotationQuarterTurns,[property:System.Text.Json.Serialization.JsonIgnore(Condition=System.Text.Json.Serialization.JsonIgnoreCondition.WhenWritingNull)] double? Position=null);
     record SegmentDto(string Id,int Index,double Length); record BendDto(string Id,int Sequence,SectionAxis Axis,BendDirection Direction,double Position);record CutDto(string Id,int Sequence,string Shape,double CenterX,double CenterY,double Width,double Height,int Sides,List<GeometryDto>? Geometry=null,double? Radius=null,double? Rotation=null,int? StarStep=null);record GeometryDto(string Type,double A,double B,double C,double D,double Radius);
 }

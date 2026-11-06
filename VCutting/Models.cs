@@ -105,6 +105,7 @@ public sealed class SectionViewState
     public bool Dimensions { get; set; } = true;
     public bool BentMode { get; set; }
     public int RotationQuarterTurns { get; set; }
+    public double? Position { get; set; }
 }
 
 public abstract record GeometrySegment;
@@ -121,6 +122,8 @@ public sealed class GeometryObject : DesignObject
 
 public sealed partial class VCuttingDocument : INotifyPropertyChanged
 {
+    public string? HistorySelectionId { get; set; }
+
     bool _preserveOuterContour;
     public MaterialModel Material { get; } = new() { Id = "MATERIAL" };
     public ContourObject OuterContour { get; } = new() { Id = "OUTER", Kind = ContourKind.Outer };
@@ -281,6 +284,25 @@ public sealed partial class VCuttingDocument : INotifyPropertyChanged
         foreach(var cut in members.Where(c=>!ReferenceEquals(c,selected))){Cuts.Remove(cut);foreach(var inner in InnerContours.Where(c=>c.Id==cut.Id).ToList())InnerContours.Remove(inner);}
         selected.Shape="Compound";ApplyCutContour(selected,contour);return true;
     }
+    public bool CanSubtractInternalCuts(CutOperation selected)=>CutUnionEngine.TryDifference(this,selected,out _,out _);
+    public bool TrySubtractInternalCuts(CutOperation selected,out IReadOnlyList<CutOperation> results)
+    {
+        results=[];
+        if(!CutUnionEngine.TryDifference(this,selected,out var members,out var polygons))return false;
+        var index=Cuts.IndexOf(selected);var created=new List<CutOperation>();
+        var used=Cuts.Select(c=>c.Id).ToHashSet();
+        foreach(var polygon in polygons)
+        {
+            var id=selected.Id;
+            if(created.Count>0){var n=1;while(used.Contains($"H{n:000}"))n++;id=$"H{n:000}";used.Add(id);}
+            var cut=new CutOperation{Id=id,Sequence=selected.Sequence,Kind=selected.Kind,Shape="Compound",ParentContourId=selected.ParentContourId,Sides=selected.Sides};
+            cut.Geometry.AddRange(polygon);created.Add(cut);
+        }
+        foreach(var member in members){Cuts.Remove(member);foreach(var inner in InnerContours.Where(c=>c.Id==member.Id).ToList())InnerContours.Remove(inner);}
+        index=Math.Min(index,Cuts.Count);
+        foreach(var cut in created){Cuts.Insert(index++,cut);InnerContours.Add(new ContourObject{Id=cut.Id,Kind=ContourKind.Inner});ApplyCutContour(cut,cut.Geometry.ToArray());}
+        if(created.Count==0)Recalculate();results=created;return true;
+    }
     public bool CanUpdateCompound(CutOperation cut,double x,double y,double width,double height)
     {
         if(!Cuts.Contains(cut)||cut.Shape!="Compound"||CutContourEngine.Loops(cut.Geometry).Count==0||!double.IsFinite(x)||!double.IsFinite(y)||!double.IsFinite(width)||!double.IsFinite(height)||width<.1||height<.1)return false;
@@ -359,7 +381,7 @@ public sealed partial class VCuttingDocument : INotifyPropertyChanged
     public void ConfigureNew(double width,double height,double thickness,MeasurementUnit unit){if(width<=0||height<=0||thickness<=0)throw new ArgumentOutOfRangeException();Unit=unit;Bends.Clear();Cuts.Clear();InnerContours.Clear();MicroJoints.Clear();WSegments.Clear();HSegments.Clear();WSegments.Add(new(){Id="W-S001",Axis=SectionAxis.W,Index=0,Length=width});HSegments.Add(new(){Id="H-S001",Axis=SectionAxis.H,Index=0,Length=height});Material.Thickness=thickness;_preserveOuterContour=false;Recalculate();}
     public void ChangeUnit(MeasurementUnit unit,UnitChangeMode mode)
     {
-        if(unit==Unit)return;if(mode==UnitChangeMode.PreserveNumbers){Unit=unit;PropertyChanged?.Invoke(this,new(null));Changed?.Invoke(this,EventArgs.Empty);return;}var factor=Unit.Metres()/unit.Metres();foreach(var s in WSegments.Concat(HSegments))s.Length*=factor;foreach(var b in Bends)b.Position*=factor;foreach(var c in Cuts){c.CenterX*=factor;c.CenterY*=factor;c.Width*=factor;c.Height*=factor;if(c.Shape is "RegularPolygon" or "RegularStar")c.Radius*=factor;for(var i=0;i<c.Geometry.Count;i++)c.Geometry[i]=ScaleGeometry(c.Geometry[i],factor);var inner=InnerContours.FirstOrDefault(x=>x.Id==c.Id);if(inner is not null){inner.Segments.Clear();inner.Segments.AddRange(c.Geometry);}}foreach(var slit in Slits)for(var i=0;i<slit.Geometry.Count;i++)slit.Geometry[i]=ScaleGeometry(slit.Geometry[i],factor);foreach(var j in MicroJoints){j.Position*=factor;j.Width*=factor;}for(var i=0;i<OuterContour.Segments.Count;i++)OuterContour.Segments[i]=ScaleGeometry(OuterContour.Segments[i],factor);Material.Thickness*=factor;Unit=unit;_preserveOuterContour=true;Recalculate();
+        if(unit==Unit)return;if(mode==UnitChangeMode.PreserveNumbers){Unit=unit;PropertyChanged?.Invoke(this,new(null));Changed?.Invoke(this,EventArgs.Empty);return;}var factor=Unit.Metres()/unit.Metres();WView.Position*=factor;HView.Position*=factor;foreach(var s in WSegments.Concat(HSegments))s.Length*=factor;foreach(var b in Bends)b.Position*=factor;foreach(var c in Cuts){c.CenterX*=factor;c.CenterY*=factor;c.Width*=factor;c.Height*=factor;if(c.Shape is "RegularPolygon" or "RegularStar")c.Radius*=factor;for(var i=0;i<c.Geometry.Count;i++)c.Geometry[i]=ScaleGeometry(c.Geometry[i],factor);var inner=InnerContours.FirstOrDefault(x=>x.Id==c.Id);if(inner is not null){inner.Segments.Clear();inner.Segments.AddRange(c.Geometry);}}foreach(var slit in Slits)for(var i=0;i<slit.Geometry.Count;i++)slit.Geometry[i]=ScaleGeometry(slit.Geometry[i],factor);foreach(var j in MicroJoints){j.Position*=factor;j.Width*=factor;}for(var i=0;i<OuterContour.Segments.Count;i++)OuterContour.Segments[i]=ScaleGeometry(OuterContour.Segments[i],factor);Material.Thickness*=factor;Unit=unit;_preserveOuterContour=true;Recalculate();
     }
     public void Recalculate() { BendCalculationEngine.Recalculate(this); RebuildOuterContour(); PropertyChanged?.Invoke(this, new(null)); Changed?.Invoke(this, EventArgs.Empty); }
     internal void ApplyImportedGeometry(double width,double height,IEnumerable<GeometrySegment> outer,IEnumerable<CutOperation> cuts,IEnumerable<(SectionAxis Axis,double Position,BendDirection Direction)> bends,double thickness=.2)

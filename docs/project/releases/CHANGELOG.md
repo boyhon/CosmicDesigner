@@ -4,6 +4,11 @@ Release-relevant changes after the baseline are recorded here. CR identifiers mu
 
 ## Unreleased
 
+- CR-095: Repair invalid H/W guides after contour changes and persist guide positions.
+- CR-097: Flag V/V1 contacts and offer manual Cut and Hole tools from Flat Designer.
+
+- CR-096: Enable continuous vertical orbit in 3D Preview, including through the vertical poles.
+
 - 2026-10-06: Freeze current source, HTML Help, resources, accumulated regression/project records and installer definitions as 1.20.29-rc1 on boyhon. No new product features; isolate RC installer output, redact personal temporary-path references and make historical manual scripts repository-relative. Installer suite remains 1.1.0; manual acceptance remains pending.
 
 - CR-064: Add a Korean offline HTML user manual with 22 current-source pages, workflows, troubleshooting, terminology, shortcuts, local navigation/search and print styles. Connect four Help routes, include CosmicDesigner/help in installer configuration and track documentation impact for all past CRs. Automated regression 73/73 PASS; required browser/UI and actual installation review pending.
@@ -401,3 +406,6 @@ CR-088 Development: skip proven invisible auxiliary leaf text; bounded fill topo
 - CR-091: exclude WPF-generated temporary project files from Freeze source comparison.
 - CR-092: fix duplicate Help version output when publishing referenced programs.
 - CR-093: Development integration-test installer available before manual acceptance and Freeze.
+
+## Development — CR-094 (2026-10-14)
+- Add Subtract overlapping cuts: connected other cuts minus selected cutter, analytic holes/independent components/empty results, single Undo/Redo and DXF persistence. Human acceptance pending; no customer release allocated.

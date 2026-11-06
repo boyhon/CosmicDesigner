@@ -205,3 +205,9 @@ CR-088: skip proven invisible leaf text only (fill/stroke none or explicit paint
 Each H/W Section toolbar provides Fit/Reset to restore zoom1/pan0 and existing panel-centered fit. Current Flat/Bent, rotation, dimension visibility, section station and geometry are preserved; only the target Section is reset.
 CR-090: six-program installer includes CosmicConvert.exe/Start Menu, preserving CosmicDesigner.exe as main program and existing package/AppId/upgrade paths.
 CR-093 user correction: create Development integration-test installer before actual installation/use manual review and subsequent explicit Freeze. Same AppId/path/settings, unique BuildIdentity and source/checksum evidence; no customer version allocation. Customer/production installer Freeze gates unchanged.
+
+## CR-094 internal subtraction
+Subtract overlapping cuts computes union of the other eligible transitive overlap group minus selected cutter. Shared edges included, point contact excluded; exact analytic LINE/ARC, per-component Compound with hole loops, empty success consumes sources. First result selected; one Undo/Redo restores geometry/order/properties and selection; native DXF persistence.
+- CR-096: 3D Preview supports continuous horizontal and vertical mouse orbit. Orbit updates the camera only.
+- CR-095: H/W guides use valid cross-sections of the outer contour; retain valid stations and persist adjusted stations with document view state.
+- CR-097: material-clipped V/V1 contacts display review markers and open existing manual Cut/Hole tools. The preview shows a review warning; contact alone does not determine fabrication feasibility.

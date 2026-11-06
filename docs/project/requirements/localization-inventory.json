@@ -1,4 +1,14 @@
-[{"key":"section.fitReset","english":"Fit/Reset","korean":"Fit/Reset","references":["MainWindow.xaml"],"status":"ACTIVE","surface":"Section viewport button; CR-089"},
+[{"status":"ACTIVE","english":"Crossing V-Cuts found","key":"bend.review.Interior","references":"FlatBendContacts.cs","korean":"교차 V-Cut 발견","surface":"presentation-only"},{"status":"ACTIVE","english":"A V-Cut endpoint touches another bend","key":"bend.review.EndpointTouch","references":"FlatBendContacts.cs","korean":"V-Cut 끝점이 다른 절곡선에 닿습니다","surface":"presentation-only"},{"status":"ACTIVE","english":"V-Cuts share an endpoint","key":"bend.review.SharedEndpoint","references":"FlatBendContacts.cs","korean":"V-Cut이 끝점을 공유합니다","surface":"presentation-only"},{"status":"ACTIVE","english":"V-Cuts overlap","key":"bend.review.Overlap","references":"FlatBendContacts.cs","korean":"V-Cut 구간이 겹칩니다","surface":"presentation-only"},{"status":"ACTIVE","english":"Review fabrication feasibility. Click the marker to choose Cut or Hole.","key":"bend.review.instructions","references":"FlatBendContacts.cs","korean":"제작 가능성을 검토하세요. 마커를 클릭해 Cut 또는 Hole을 선택할 수 있습니다.","surface":"presentation-only"},{"status":"ACTIVE","english":"Cut — draw a line slit","key":"bend.review.cut","references":"FlatBendContacts.cs","korean":"Cut — 직선 절개 작성","surface":"presentation-only"},{"status":"ACTIVE","english":"Hole — draw a rectangular opening","key":"bend.review.hole","references":"FlatBendContacts.cs","korean":"Hole — 사각 천공 작성","surface":"presentation-only"},{"status":"ACTIVE","english":"Review preview: V-Cut contacts were found. Inspect the Flat Designer markers.","key":"bend.review.preview","references":"MainWindow.xaml.cs","korean":"검토용 3D 미리보기입니다. Flat Designer의 V-Cut 경고 위치를 확인하세요.","surface":"presentation-only"},{"status":"ACTIVE","english":"The {0} section guide moved to a valid position.","key":"section.positionAdjusted","references":"MainWindow.xaml.cs","korean":"{0} 단면 기준선을 유효한 위치로 자동 이동했습니다.","surface":"presentation-only"},{"status":"ACTIVE","english":"No valid position is available for the {0} section guide.","key":"section.positionUnavailable","references":"MainWindow.xaml.cs","korean":"{0} 단면 기준선을 배치할 수 있는 위치가 없습니다.","surface":"presentation-only"},
+  {
+    "key": "section.fitReset",
+    "english": "Fit/Reset",
+    "korean": "Fit/Reset",
+    "references": [
+      "MainWindow.xaml"
+    ],
+    "status": "ACTIVE",
+    "surface": "Section viewport button; CR-089"
+  },
   {
     "key": "ui.0000",
     "english": "Unsupported boundary segment",
@@ -5468,5 +5478,38 @@
     ],
     "status": "ACTIVE",
     "surface": "presentation-only; internal identifiers preserved"
+  },
+  {
+    "key": "subtract.internal",
+    "english": "Subtract overlapping cuts",
+    "korean": "겹친 천공에서 선택 영역 빼기",
+    "references": [
+      "DesignViews.cs",
+      "MainWindow.xaml.cs"
+    ],
+    "status": "ACTIVE",
+    "surface": "CR-094"
+  },
+  {
+    "key": "subtract.completed",
+    "english": "Overlapping cuts subtracted.",
+    "korean": "겹친 천공에서 선택 영역을 뺐습니다.",
+    "references": [
+      "DesignViews.cs",
+      "MainWindow.xaml.cs"
+    ],
+    "status": "ACTIVE",
+    "surface": "CR-094"
+  },
+  {
+    "key": "subtract.unavailable",
+    "english": "No overlapping cut objects found, or difference is unavailable.",
+    "korean": "겹친 천공이 없거나 영역 빼기를 적용할 수 없습니다.",
+    "references": [
+      "DesignViews.cs",
+      "MainWindow.xaml.cs"
+    ],
+    "status": "ACTIVE",
+    "surface": "CR-094"
   }
 ]
