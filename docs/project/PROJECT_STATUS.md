@@ -639,3 +639,7 @@ CR-093 actual integration installer generated: artifacts/integration/manual-2026
 
 ## Authorized Freeze — 2026-10-08 / 1.0.0-rc.3
 User explicitly instructed '네, Freeze 하십시오.' after receiving Development integration installer manual-20261008-01. Approval release/approvals/2026-10-08-rc3.txt. Current source is being anchored and registered as immutable RC3; release/freezes/1.0.0-rc.3.json is authoritative for exact source SHA/input hashes/toolchain/settings. Prior RC1/RC2 records retained. Executable/Help/installer/dependency inputs match the delivered integration build; prior AUTO111Designer+7converterPASS/1historicalNOT_RUN evidence retained. Individual human observations not supplied, so human gates remain pending and no Verified/Closed/production promotion is asserted. No new functional CR; nextCR094.
+CR-095 Open — Section 기준선 자동 위치 보정 (2026-11-06).
+CR-096 Implemented / WAITING FOR USER VERIFICATION — 3D Preview 상하 연속 회전 (2026-11-06).
+CR-097 Open — V/V1 절곡선 교차 경고 및 수정 안내 (2026-11-06).
+Next available CR: CR-098. CR-094 is reserved in the original worktree.

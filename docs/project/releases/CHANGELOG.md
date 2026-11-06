@@ -4,6 +4,8 @@ Release-relevant changes after the baseline are recorded here. CR identifiers mu
 
 ## Unreleased
 
+- CR-096: Enable continuous vertical orbit in 3D Preview, including through the vertical poles.
+
 - 2026-10-06: Freeze current source, HTML Help, resources, accumulated regression/project records and installer definitions as 1.20.29-rc1 on boyhon. No new product features; isolate RC installer output, redact personal temporary-path references and make historical manual scripts repository-relative. Installer suite remains 1.1.0; manual acceptance remains pending.
 
 - CR-064: Add a Korean offline HTML user manual with 22 current-source pages, workflows, troubleshooting, terminology, shortcuts, local navigation/search and print styles. Connect four Help routes, include CosmicDesigner/help in installer configuration and track documentation impact for all past CRs. Automated regression 73/73 PASS; required browser/UI and actual installation review pending.

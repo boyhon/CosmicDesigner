@@ -5,6 +5,7 @@ using System.Text;
 
 Localization.Initialize("en");
 var regressionTests=new (string Id,Action Run)[]{
+    ("TC-096-001", (Action)PreviewOrbitTests.Run),
     ("TC-093-001", (Action)PackageTests.IntegrationInstaller),
     ("TC-092-001", (Action)ReleaseVersionPolicy),
     ("TC-091-001", (Action)ReleaseVersionPolicy),

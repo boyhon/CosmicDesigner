@@ -305,7 +305,8 @@ public sealed class Preview3DView : Grid
     }
     void Down(object s,MouseButtonEventArgs e){_dragging=true;_last=e.GetPosition(this);CaptureMouse();}
     void Up(object s,MouseButtonEventArgs e){_dragging=false;ReleaseMouseCapture();}
-    void Move(object s,MouseEventArgs e){if(!_dragging)return;var p=e.GetPosition(this);_yaw+=(p.X-_last.X)*.5;_pitch=Math.Clamp(_pitch+(p.Y-_last.Y)*.5,-85,85);_last=p;UpdateCamera();}
+    void Move(object s,MouseEventArgs e){if(!_dragging)return;var p=e.GetPosition(this);_yaw=AdvanceOrbitAngle(_yaw,p.X-_last.X);_pitch=AdvanceOrbitAngle(_pitch,p.Y-_last.Y);_last=p;UpdateCamera();}
     void Wheel(object s,MouseWheelEventArgs e){_distance*=e.Delta>0?.88:1.14;UpdateCamera();}
-    void UpdateCamera(){var yr=_yaw*Math.PI/180;var pr=_pitch*Math.PI/180;var cp=Math.Cos(pr);_camera.Position=new(_distance*cp*Math.Sin(yr),-_distance*cp*Math.Cos(yr),_distance*Math.Sin(-pr));_camera.LookDirection=new(-_camera.Position.X,-_camera.Position.Y,-_camera.Position.Z);_camera.UpDirection=new(0,0,1);_camera.NearPlaneDistance=.1;_camera.FarPlaneDistance=Math.Max(10000,_distance*10);}
+    internal static double AdvanceOrbitAngle(double angle,double pixels)=>Math.IEEERemainder(angle+pixels*.5,360);
+    void UpdateCamera(){var yr=_yaw*Math.PI/180;var pr=_pitch*Math.PI/180;var cp=Math.Cos(pr);_camera.Position=new(_distance*cp*Math.Sin(yr),-_distance*cp*Math.Cos(yr),_distance*Math.Sin(-pr));_camera.LookDirection=new(-_camera.Position.X,-_camera.Position.Y,-_camera.Position.Z);_camera.UpDirection=new(Math.Sin(pr)*Math.Sin(yr),-Math.Sin(pr)*Math.Cos(yr),cp);_camera.NearPlaneDistance=.1;_camera.FarPlaneDistance=Math.Max(10000,_distance*10);}
 }
